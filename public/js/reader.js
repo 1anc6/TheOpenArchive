@@ -123,8 +123,14 @@
     const cssWidth = p.el.clientWidth;
     if (!cssWidth || p.renderedAt === cssWidth) return;
     if (p.task) p.task.cancel();
-    const dpr = Math.min(window.devicePixelRatio || 1, 2.5);
-    const vp = p.page.getViewport({ scale: (cssWidth / p.w) * dpr });
+    // At least 2x even on standard screens, so small print is drawn finely and
+    // scaled down instead of looking pixelated; capped at about 5 megapixels
+    // so a zoomed-in page stays light on phones.
+    const density = Math.min(Math.max(window.devicePixelRatio || 1, 2), 3);
+    let scale = (cssWidth / p.w) * density;
+    const area = p.w * p.h * scale * scale;
+    if (area > 5e6) scale *= Math.sqrt(5e6 / area);
+    const vp = p.page.getViewport({ scale });
     const canvas = document.createElement("canvas");
     canvas.width = Math.floor(vp.width);
     canvas.height = Math.floor(vp.height);
@@ -216,11 +222,26 @@
         if (e.isIntersecting) {
           visible.add(p);
           render(p);
-        } else visible.delete(p);
+        } else {
+          visible.delete(p);
+          release(p);
+        }
       }
     },
     { rootMargin: "800px 0px" }
   );
+  // Pages well out of view give their canvas back, so a long read doesn't
+  // keep every sharp page in memory; they are redrawn on the way back.
+  function release(p) {
+    // A page still drawing is left to finish: slow pages would never complete
+    // if every scroll past them started the drawing over.
+    const canvas = p.el.querySelector("canvas");
+    if (!canvas || p.task) return;
+    canvas.width = canvas.height = 0;
+    p.el.replaceChildren();
+    p.el.classList.remove("is-rendered");
+    p.renderedAt = 0;
+  }
   pages.forEach((p) => io.observe(p.el));
 
   /* ---------- "You made it!" card after the last page ---------- */
