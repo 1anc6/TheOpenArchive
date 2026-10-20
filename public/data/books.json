@@ -830,5 +830,99 @@
     ],
     "added": "2026-10-20",
     "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDhba2jlQMZQpz0NWPIjRSVlDEdqoRuqryTmpkmTvmuiDsyS0CNtFVTKO3Siuj2iEVKUUUVyoY+iiirA//Z"
+  },
+  {
+    "id": "campussafe",
+    "kind": "project",
+    "title": "CampusSafe: A Hold-to-Send Safety Loop for One Real Campus",
+    "shortTitle": "CampusSafe",
+    "author": "Lanchenba Mutum",
+    "file": "books/campussafe.pdf",
+    "pages": 30,
+    "category": "Projects",
+    "glyph": "wait(S)",
+    "colors": [
+      "#12201e",
+      "#1f3a35"
+    ],
+    "description": "The full write-up of CampusSafe, a campus safety app for Graphic Era University built with teammates: a hold-to-send SOS with live GPS, photo and anonymous reports, and a live console where campus command assigns responders and every status change flows back to the student.",
+    "excerpt": {
+      "text": "The path to help is never more than one deliberate action away, but it is never an accident either: the SOS needs a two-second hold and gives five seconds to cancel. Once sent, the student always sees what happened next.",
+      "page": 3
+    },
+    "image": "images/campussafe.jpg",
+    "imageAlt": "The cover of the CampusSafe documentation: the title in white and orange on dark green, with rings spreading from a red dot.",
+    "topics": [
+      "A hold-to-send SOS with live GPS and two-way chat",
+      "Anonymous reports tracked by a random code",
+      "Operating-System ideas in real features: priority scheduling with aging, semaphores, watchdogs",
+      "Database design: migrations, constraints, indexes, a view and a trigger",
+      "Security, privacy and abuse protection"
+    ],
+    "year": 2026,
+    "sections": [
+      {
+        "title": "Summary and Key Numbers",
+        "page": 3
+      },
+      {
+        "title": "The Problem",
+        "page": 4
+      },
+      {
+        "title": "Timeline",
+        "page": 5
+      },
+      {
+        "title": "System Architecture",
+        "page": 6
+      },
+      {
+        "title": "The Safety Loop, Feature by Feature",
+        "page": 8
+      },
+      {
+        "title": "Operating-System Concepts in the Code",
+        "page": 11
+      },
+      {
+        "title": "Database Design",
+        "page": 13
+      },
+      {
+        "title": "API: the Server Functions",
+        "page": 15
+      },
+      {
+        "title": "Frontend and Design System",
+        "page": 17
+      },
+      {
+        "title": "Security, Privacy and Abuse Protection",
+        "page": 20
+      },
+      {
+        "title": "Testing and Quality",
+        "page": 22
+      },
+      {
+        "title": "Deployment and Operations",
+        "page": 23
+      },
+      {
+        "title": "Limitations",
+        "page": 25
+      },
+      {
+        "title": "Future Work",
+        "page": 28
+      },
+      {
+        "title": "Glossary and Credits",
+        "page": 29
+      }
+    ],
+    "added": "2026-10-20",
+    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDk3svPmkbzUX5uhNRy2Pl4/fRt9DROwE0gyAd1NQqe4qV8KKlb2juV3TaSOtFTSgAcUU0yZRsxl5/x9SfWmxdaKKS+FFS/iMkk6UUUULYJbn//2Q=="
   }
 ]

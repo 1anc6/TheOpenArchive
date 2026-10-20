@@ -42,6 +42,7 @@ FROM_PDF = {
 # For PDFs drawn as one designed page with no separate images, like a project cover.
 FROM_PAGE = {
     "metaproof": (0, 0.0, 0.5),  # cover: title, tagline and rings, not the stats
+    "campussafe": (0, 0.0, 0.5),
 }
 # Pictures with their title running edge to edge: shown whole on a blurred copy
 # of themselves instead of being cropped to the card shape.
