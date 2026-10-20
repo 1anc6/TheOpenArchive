@@ -3,7 +3,7 @@
   "url": "https://theopenarchive.onrender.com",
   "title": "The Open Archive",
   "author": "Lanchenba Mutum",
-  "description": "A collection of mathematical essays by Lanchenba Mutum, free to read online, with PDFs on request.",
+  "description": "Essays on maths and science, and write-ups of the projects he builds, by Lanchenba Mutum. Free to read online, with PDFs on request.",
   "curator": "Lanchenba Mutum",
   "_help_stats": "Visitor stats: sign up at goatcounter.com, put your code here (e.g. \"lance\" for lance.goatcounter.com), then run python scripts/build_pages.py",
   "goatcounter": "lance",

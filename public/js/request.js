@@ -12,7 +12,7 @@
     const body = [
       "Hi Lance,",
       "",
-      `Could I have the PDF of your essay "${title}"?`,
+      `Could I have the PDF of "${title}"?`,
       ...(note ? ["", note] : []),
       ...(name ? ["", `Thanks!`, name] : ["", "Thanks!"]),
     ].join("\n");
@@ -47,7 +47,7 @@
           <button class="ib" type="button" data-close aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
         </div>
         <form class="request-form" novalidate>
-          <p class="request-intro">The essay is free to read here, and I share the PDFs by email. Send me a quick request and I'll reply with the file.</p>
+          <p class="request-intro">Everything is free to read here, and I share the PDFs by email. Send me a quick request and I'll reply with the file.</p>
           <label class="field">
             <span>Your name <small>(optional)</small></span>
             <input name="name" type="text" autocomplete="name">
@@ -116,7 +116,7 @@
     open(a.dataset.title || document.querySelector("h1")?.textContent || "your essay");
   }, true);
 
-  // "Email me new essays": the visitor sends a short request from their own
+  // "Email me new writing": the visitor sends a short request from their own
   // email app, so the reply address is theirs.
   const notifyForm = document.getElementById("notifyForm");
   notifyForm?.addEventListener("submit", (e) => {
@@ -125,13 +125,13 @@
     const body = [
       "Hi Lance,",
       "",
-      "Please email me when there's a new essay on The Open Archive.",
+      "Please email me when there's a new essay or project write-up on The Open Archive.",
       ...(name ? ["", `Name: ${name}`] : []),
       "",
       "Thanks!",
     ].join("\n");
     window.Sfx?.pop?.();
-    location.href = `mailto:${EMAIL}?subject=${encodeURIComponent("New essay alerts")}&body=${encodeURIComponent(body)}`;
+    location.href = `mailto:${EMAIL}?subject=${encodeURIComponent("New writing alerts")}&body=${encodeURIComponent(body)}`;
     notifyForm.querySelector(".notify-done").hidden = false;
   });
 

@@ -744,5 +744,91 @@
     "added": "2026-10-12",
     "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDiCPejbx1pM+tHbimdQbR60UDBPNFACUUUUwAdaKKKQH//2Q==",
     "permission": false
+  },
+  {
+    "id": "metaproof",
+    "kind": "project",
+    "title": "MetaProof: Evidence-Based Authenticity Analysis for Images",
+    "shortTitle": "MetaProof",
+    "author": "Lanchenba Mutum",
+    "file": "books/metaproof.pdf",
+    "pages": 31,
+    "category": "Projects",
+    "glyph": "P(AI | x)",
+    "colors": [
+      "#1b1f4a",
+      "#3a3f8f"
+    ],
+    "description": "The full write-up of MetaProof, a web app I built that checks an image's metadata, file structure, C2PA Content Credentials, hidden watermarks and pixels, then explains whether it is likely authentic, edited, AI-generated or inconclusive.",
+    "excerpt": {
+      "text": "Wrongly calling a real photo fake is the costlier mistake. So missing data is never held against a file, the detector's score only decides a verdict on its own when it is very high, signed proof (C2PA) outranks statistical guesses, and when the evidence is weak the answer is inconclusive.",
+      "page": 3
+    },
+    "image": "images/metaproof.jpg",
+    "imageAlt": "The cover of the MetaProof documentation: the title in white on deep indigo, with faint concentric rings.",
+    "topics": [
+      "Image metadata, file structure and C2PA Content Credentials",
+      "Training an AI-image detector on frozen CLIP features",
+      "Calibration, ROC-AUC and testing on unseen generators",
+      "Weighing evidence into an explainable verdict",
+      "Shipping and running a full-stack app on free tiers"
+    ],
+    "year": 2026,
+    "sections": [
+      {
+        "title": "Summary and Key Numbers",
+        "page": 3
+      },
+      {
+        "title": "The Problem",
+        "page": 4
+      },
+      {
+        "title": "Timeline and Time Spent",
+        "page": 5
+      },
+      {
+        "title": "System Architecture",
+        "page": 7
+      },
+      {
+        "title": "The Five Analyzers and the Evidence Engine",
+        "page": 9
+      },
+      {
+        "title": "The AI-Image Detector",
+        "page": 11
+      },
+      {
+        "title": "Model Benchmark and Efficiency",
+        "page": 14
+      },
+      {
+        "title": "Experiments That Did Not Ship",
+        "page": 17
+      },
+      {
+        "title": "Security, Privacy and Abuse Protection",
+        "page": 20
+      },
+      {
+        "title": "How MetaProof Compares",
+        "page": 24
+      },
+      {
+        "title": "Limitations",
+        "page": 25
+      },
+      {
+        "title": "Future Work",
+        "page": 29
+      },
+      {
+        "title": "Glossary",
+        "page": 30
+      }
+    ],
+    "added": "2026-10-20",
+    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDhba2jlQMZQpz0NWPIjRSVlDEdqoRuqryTmpkmTvmuiDsyS0CNtFVTKO3Siuj2iEVKUUUVyoY+iiirA//Z"
   }
 ]

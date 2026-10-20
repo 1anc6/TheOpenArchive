@@ -30,7 +30,8 @@ def embed_missing_fonts(doc, name):
     browser substitutes its own and the text comes out garbled or misaligned.
     Re-writing the document through MuPDF embeds the fonts it draws with; the
     text stays real, selectable text."""
-    missing = {f[3] for page in doc for f in page.get_fonts() if f[1] == "n/a"}
+    # Type 3 fonts also report "n/a", but their glyphs are drawn inside the PDF itself.
+    missing = {f[3] for page in doc for f in page.get_fonts() if f[1] == "n/a" and f[2] != "Type3"}
     if not missing:
         return doc
     meta = doc.metadata

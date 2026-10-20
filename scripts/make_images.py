@@ -38,6 +38,11 @@ FROM_PDF = {
     "secret-santa": (0, 0.0, 0.52),  # top half only: ornaments, no title text
     "tale-of-two-infinities": 0,
 }
+# Pictures cut from a whole page: (page index, top, bottom) as fractions of the page.
+# For PDFs drawn as one designed page with no separate images, like a project cover.
+FROM_PAGE = {
+    "metaproof": (0, 0.0, 0.5),  # cover: title, tagline and rings, not the stats
+}
 # Pictures with their title running edge to edge: shown whole on a blurred copy
 # of themselves instead of being cropped to the card shape.
 FIT = {"tale-of-two-infinities"}
@@ -88,6 +93,14 @@ def from_pdf(name: str, spec):
     _, pno, rect = found[rank]
     rect = pymupdf.Rect(rect.x0, rect.y0 + rect.height * y0, rect.x1, rect.y0 + rect.height * y1)
     pix = doc[pno].get_pixmap(clip=rect, dpi=220)
+    save(Image.frombytes("RGB", (pix.width, pix.height), pix.samples), name)
+
+
+def from_page(name: str, spec):
+    pno, y0, y1 = spec
+    page = pymupdf.open(SRC / f"{name}.pdf")[pno]
+    r = page.rect
+    pix = page.get_pixmap(clip=pymupdf.Rect(r.x0, r.y0 + r.height * y0, r.x1, r.y0 + r.height * y1), dpi=220)
     save(Image.frombytes("RGB", (pix.width, pix.height), pix.samples), name)
 
 
@@ -284,6 +297,11 @@ def main():
             print(f"  {name}.jpg kept")
             continue
         from_pdf(name, spec)
+    for name, spec in FROM_PAGE.items():
+        if (OUT / f"{name}.jpg").exists():
+            print(f"  {name}.jpg kept")
+            continue
+        from_page(name, spec)
     paradox()
     glitch()
     prisoners()

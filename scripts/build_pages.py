@@ -19,7 +19,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 ROOT = Path(__file__).resolve().parent.parent
 PUBLIC = ROOT / "public"
-VERSION = "40"  # bump to make browsers fetch new CSS/JS
+VERSION = "41"  # bump to make browsers fetch new CSS/JS
 
 books = json.loads((PUBLIC / "data/books.json").read_text(encoding="utf-8"))
 site = json.loads((PUBLIC / "data/site.json").read_text(encoding="utf-8"))
@@ -192,10 +192,12 @@ def og_home():
         d.text((x, y), line, font=SERIF(68), fill=INK)
         y += 76
     y += 20
-    for line in wrap(d, "Mathematical essays about infinity, proof, probability and patterns, to read online.", SERIF_I(28), 520):
+    for line in wrap(d, "Essays on maths and science, and write-ups of the projects I build, to read online.", SERIF_I(28), 520):
         d.text((x, y), line, font=SERIF_I(28), fill=MUTED)
         y += 38
-    d.text((x, 550), f"By {AUTHOR}  ·  {len(books)} essays", font=MONO(22), fill=MUTED)
+    projects = sum(b.get("kind") == "project" for b in books)
+    count = f"{len(books) - projects} essays" + (f"  ·  {projects} project{'s' * (projects != 1)}" if projects else "")
+    d.text((x, 550), f"By {AUTHOR}  ·  {count}", font=MONO(22), fill=MUTED)
     img.convert("RGB").save(PUBLIC / "og" / "home.jpg", quality=86, optimize=True, progressive=True)
 
 
@@ -394,11 +396,12 @@ def related(b):
 def essay_page(b):
     prefix = "../../"
     minutes = b["pages"] * 2
+    noun = "write-up" if b.get("kind") == "project" else "essay"
     title = f"{b['title']} · {AUTHOR}"
     og = og_tags(b["title"], b["description"], f"essays/{b['id']}/", f"og/{b['id']}.jpg", kind="article")
     ld = {
         "@context": "https://schema.org",
-        "@type": "ScholarlyArticle",
+        "@type": "TechArticle" if b.get("kind") == "project" else "ScholarlyArticle",
         "headline": b["title"],
         "author": {"@type": "Person", "name": b["author"]},
         "datePublished": str(b.get("year", "")),
@@ -443,7 +446,7 @@ def essay_page(b):
             <span><b>PDF</b><small>format</small></span>
           </div>
           <div class="essay-actions">
-            <a class="btn primary" data-read href="{prefix}reader.html?id={b['id']}">Read essay<svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a>
+            <a class="btn primary" data-read href="{prefix}reader.html?id={b['id']}">Read {noun}<svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a>
             <a class="btn ghost" href="{prefix}{e(b['file'])}" download data-title="{e(b['title'])}">Request PDF</a>
             <button class="btn ghost" data-cite>Cite</button>
             <button class="btn ghost" data-share>Share</button>
@@ -457,7 +460,7 @@ def essay_page(b):
       </article>
 
       <section class="essay-section">
-        <div class="section-heading plain"><h2>Inside this essay</h2><span class="section-note">Open any section in the reader</span></div>
+        <div class="section-heading plain"><h2>Inside this {noun}</h2><span class="section-note">Open any section in the reader</span></div>
         <ol class="topic-list toc-links">
 {topics}
         </ol>

@@ -82,12 +82,19 @@
   const topics = new Set(books.map((b) => b.category)).size;
   const totalPages = books.reduce((n, b) => n + b.pages, 0);
   const hours = Math.round((totalPages * MIN_PER_PAGE) / 60);
+  // Project write-ups ("kind": "project") are counted apart from the essays.
+  const projects = books.filter((b) => b.kind === "project").length;
+  const essays = books.length - projects;
+  const plural = (n, word) => `${n} ${word}${n === 1 ? "" : "s"}`;
   $("aboutStats").innerHTML = `
-    <span><b>${books.length}</b>essays</span>
+    <span><b>${essays}</b>essays</span>
+    ${projects ? `<span><b>${projects}</b>${projects === 1 ? "project" : "projects"}</span>` : ""}
     <span><b>${topics}</b>subject areas</span>
     <span><b>${totalPages}</b>pages</span>
     <span><b>~${hours}h</b>reading time</span>`;
-  const contentsTotals = `${books.length} essays · ${totalPages} pages · about ${hours} hours of reading`;
+  const contentsTotals = `${plural(essays, "essay")}${projects ? ` · ${plural(projects, "project")}` : ""} · ${totalPages} pages · about ${hours} hours of reading`;
+  // What to call a piece in buttons and labels.
+  const noun = (b) => (b.kind === "project" ? "write-up" : "essay");
   function renderContentsSum() {
     const all = progress.all();
     const done = books.filter((b) => isDone(all[b.id])).length;
@@ -156,11 +163,11 @@
     $("feature").innerHTML = `
       <div class="feature-copy">
         <h2 class="feature-title" id="featureTitle"><a href="essays/${b.id}/">${esc(b.shortTitle)}</a></h2>
-        <p class="feature-meta"><span class="feature-today">Today's essay</span><span>No. ${pad(b.num)}</span><span>${esc(b.category)}</span><span>${b.pages} pages · ~${b.pages * MIN_PER_PAGE} min</span></p>
+        <p class="feature-meta"><span class="feature-today">Today's ${noun(b)}</span><span>No. ${pad(b.num)}</span><span>${esc(b.category)}</span><span>${b.pages} pages · ~${b.pages * MIN_PER_PAGE} min</span></p>
         ${quote}
         <div class="feature-actions">
-          <a class="btn primary" data-read href="${readerURL(b, resume ? p.page : null)}">${resume ? `Continue from page ${p.page}` : "Read the essay"}<svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a>
-          <a class="btn ghost" href="essays/${b.id}/">About this essay</a>
+          <a class="btn primary" data-read href="${readerURL(b, resume ? p.page : null)}">${resume ? `Continue from page ${p.page}` : `Read the ${noun(b)}`}<svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a>
+          <a class="btn ghost" href="essays/${b.id}/">About this ${noun(b)}</a>
         </div>
       </div>
       <figure class="feature-figure">
@@ -307,7 +314,7 @@
     });
     const more = $("indexMore");
     more.hidden = !!q || !!indexTopic || books.length <= INDEX_SHOWN;
-    more.textContent = indexAll ? "Show fewer essays" : `Show all ${books.length} essays`;
+    more.textContent = indexAll ? "Show fewer" : `Show all ${books.length}`;
     more.setAttribute("aria-expanded", String(indexAll));
     $("indexEmpty").hidden = shown > 0;
     if (!shown) $("indexEmptyQuery").textContent = $("indexSearch").value.trim();

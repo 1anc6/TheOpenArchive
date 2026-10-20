@@ -4,9 +4,17 @@
     <title>The Open Archive</title>
     <link>https://theopenarchive.onrender.com/</link>
     <atom:link href="https://theopenarchive.onrender.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <description>A collection of mathematical essays by Lanchenba Mutum, free to read online, with PDFs on request.</description>
+    <description>Essays on maths and science, and write-ups of the projects he builds, by Lanchenba Mutum. Free to read online, with PDFs on request.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 12 Oct 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 09:00:00 +0000</lastBuildDate>
+    <item>
+      <title>MetaProof: Evidence-Based Authenticity Analysis for Images</title>
+      <link>https://theopenarchive.onrender.com/essays/metaproof/</link>
+      <guid isPermaLink="true">https://theopenarchive.onrender.com/essays/metaproof/</guid>
+      <description>The full write-up of MetaProof, a web app I built that checks an image&#x27;s metadata, file structure, C2PA Content Credentials, hidden watermarks and pixels, then explains whether it is likely authentic, edited, AI-generated or inconclusive. “Wrongly calling a real photo fake is the costlier mistake. So missing data is never held against a file, the detector&#x27;s score only decides a verdict on its own when it is very high, signed proof (C2PA) outranks statistical guesses, and when the evidence is weak the answer is inconclusive.”</description>
+      <category>Projects</category>
+      <pubDate>Tue, 20 Oct 2026 09:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Mathematics Behind Jujutsu Kaisen: Gojo Satoru&#x27;s Infinity</title>
       <link>https://theopenarchive.onrender.com/essays/gojo-infinity/</link>
