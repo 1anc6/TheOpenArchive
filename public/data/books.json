@@ -924,5 +924,107 @@
     ],
     "added": "2026-10-20",
     "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDk3svPmkbzUX5uhNRy2Pl4/fRt9DROwE0gyAd1NQqe4qV8KKlb2juV3TaSOtFTSgAcUU0yZRsxl5/x9SfWmxdaKKS+FFS/iMkk6UUUULYJbn//2Q=="
+  },
+  {
+    "id": "metrigo",
+    "kind": "project",
+    "title": "MetriGo: Smart Metro Booking for the Delhi Metro",
+    "shortTitle": "MetriGo",
+    "author": "Lanchenba Mutum",
+    "file": "books/metrigo.pdf",
+    "pages": 33,
+    "category": "Projects",
+    "glyph": "O(E log V)",
+    "colors": [
+      "#1f2633",
+      "#384658"
+    ],
+    "description": "The full write-up of MetriGo, a booking app for all nine Delhi Metro lines: shortest routes with Dijkstra's algorithm, seats that keep a group together, fares by distance and time of day, and a QR ticket that opens with no signal. A student project, not affiliated with DMRC.",
+    "excerpt": {
+      "text": "The server is the source of truth for anything that costs money, and a ticket must open without a network. Prices are computed on the server and never read from the browser.",
+      "page": 3
+    },
+    "image": "images/metrigo.jpg",
+    "imageAlt": "The Delhi Metro network from the MetriGo documentation cover: nine coloured lines with their main stations, on a cream grid.",
+    "topics": [
+      "Shortest routes with Dijkstra's algorithm and a binary heap",
+      "Seat suggestions: a greedy pass, then pruned backtracking",
+      "A timetable simulator shared by the server and the live map",
+      "Never selling a seat twice: holds, transactions and settling payments once",
+      "Offline QR tickets in an installable web app"
+    ],
+    "year": 2026,
+    "sections": [
+      {
+        "title": "Summary and Key Numbers",
+        "page": 3
+      },
+      {
+        "title": "The Problem",
+        "page": 5
+      },
+      {
+        "title": "Timeline and Time Spent",
+        "page": 6
+      },
+      {
+        "title": "System Architecture",
+        "page": 8
+      },
+      {
+        "title": "The Metro Network Data",
+        "page": 11
+      },
+      {
+        "title": "The Algorithms",
+        "page": 13
+      },
+      {
+        "title": "Benchmark and Efficiency",
+        "page": 16
+      },
+      {
+        "title": "Payments and Booking Integrity",
+        "page": 18
+      },
+      {
+        "title": "Database Design",
+        "page": 20
+      },
+      {
+        "title": "Frontend: the Web App",
+        "page": 21
+      },
+      {
+        "title": "Security, Privacy and Consent",
+        "page": 23
+      },
+      {
+        "title": "Testing and Quality",
+        "page": 24
+      },
+      {
+        "title": "Deployment and Operations",
+        "page": 25
+      },
+      {
+        "title": "Limitations",
+        "page": 28
+      },
+      {
+        "title": "Version 1 versus Version 2",
+        "page": 29
+      },
+      {
+        "title": "Future Work",
+        "page": 31
+      },
+      {
+        "title": "Glossary",
+        "page": 32
+      }
+    ],
+    "added": "2026-10-20",
+    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD0dx35qrIW3bgauGmbAeoFSUhkLM3U0U9ABkCigQ+iiigCNP8AWGiiigD/2Q=="
   }
 ]

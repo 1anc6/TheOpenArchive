@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#eee9e3">
+  <title>MetriGo: Smart Metro Booking for the Delhi Metro · Lanchenba Mutum</title>
+  <meta name="description" content="The full write-up of MetriGo, a booking app for all nine Delhi Metro lines: shortest routes with Dijkstra&#x27;s algorithm, seats that keep a group together, fares by distance and time of day, and a QR ticket that opens with no signal. A student project, not affiliated with DMRC.">
+  <meta name="author" content="Lanchenba Mutum">
+  <!-- og:start -->
+  <link rel="canonical" href="https://theopenarchive.onrender.com/essays/metrigo/">
+  <meta property="og:url" content="https://theopenarchive.onrender.com/essays/metrigo/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="The Open Archive">
+  <meta property="og:title" content="MetriGo: Smart Metro Booking for the Delhi Metro">
+  <meta property="og:description" content="The full write-up of MetriGo, a booking app for all nine Delhi Metro lines: shortest routes with Dijkstra&#x27;s algorithm, seats that keep a group together, fares by distance and time of day, and a QR ticket that opens with no signal. A student project, not affiliated with DMRC.">
+  <meta property="og:image" content="https://theopenarchive.onrender.com/og/metrigo.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MetriGo: Smart Metro Booking for the Delhi Metro">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MetriGo: Smart Metro Booking for the Delhi Metro">
+  <meta name="twitter:description" content="The full write-up of MetriGo, a booking app for all nine Delhi Metro lines: shortest routes with Dijkstra&#x27;s algorithm, seats that keep a group together, fares by distance and time of day, and a QR ticket that opens with no signal. A student project, not affiliated with DMRC.">
+  <meta name="twitter:image" content="https://theopenarchive.onrender.com/og/metrigo.jpg">
+  <!-- og:end -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23544c40'/><path d='M8 10c3-1 6-1 8 1 2-2 5-2 8-1v13c-3-1-6-1-8 1-2-2-5-2-8-1z' fill='none' stroke='%23f7f3ed' stroke-width='1.6'/></svg>">
+  <script>
+    try {
+      const t = localStorage.getItem("books.theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.dataset.theme = t;
+      const u = localStorage.getItem("books.ui");
+      if (u === "neu" || u === "glass") document.documentElement.dataset.ui = u;
+    } catch (e) {}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=STIX+Two+Text:ital@0;1&family=Noto+Sans+Math&display=swap" rel="stylesheet">
+  <link rel="alternate" type="application/rss+xml" title="The Open Archive" href="../../feed.xml">
+  <link rel="stylesheet" href="../../css/styles.css?v=42">
+  <link rel="stylesheet" href="../../css/looks.css?v=42">
+  <script data-goatcounter="https://lance.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+
+  <a class="skip-link" href="#content">Skip to content</a>
+  <div class="stage">
+    <header class="site-header">
+      <a class="brand" href="../../" aria-label="The Open Archive, home">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 8c4-1.6 8-1.4 12 1.4C20 6.6 24 6.4 28 8v17c-4-1.6-8-1.4-12 1.4C12 23.6 8 23.4 4 25z"/><path d="M16 9.4v17"/><path d="M8 13c1.8-.5 3.6-.4 5 .4M8 17c1.8-.5 3.6-.4 5 .4M19 13.4c1.4-.8 3.2-.9 5-.4"/></svg>
+        <span><strong>THE OPEN</strong><small>ARCHIVE</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="../../" class="active" aria-current="page">Essays</a>
+        <a href="../../#room">Library</a>
+        <a href="../../#reviews">Reviews</a>
+        <a href="../../#about">About</a>
+      </nav>
+      <span class="acts">
+        <button class="ib music-btn" data-music aria-pressed="false" aria-label="Background music" title="Music">
+          <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        </button>
+        <button class="ib" id="sfxBtn" aria-label="Sound effects" aria-pressed="true" title="Sound effects on">
+          <svg class="ic-sound" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M17 9.5a4 4 0 0 1 0 5"/></svg>
+          <svg class="ic-mute" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="m17 10 4 4m0-4-4 4"/></svg>
+        </button>
+        <button class="ib" id="shareBtn" aria-label="Share" title="Share">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>
+        </button>
+        <button class="ib" id="uiBtn" aria-label="Change the look" title="Look">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12.5 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg>
+        </button>
+        <button class="ib" id="themeBtn" aria-label="Toggle theme" title="Toggle theme">
+          <svg class="ic-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="ic-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>
+        </button>
+      </span>
+    </header>
+    <main class="page-wrap essay-page" id="content" tabindex="-1">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="../../">Essays</a><span>/</span><span>Projects</span><span>/</span><span>No. 15</span></nav>
+
+      <article class="essay-hero">
+        <div class="essay-copy">
+          <h1>MetriGo: Smart Metro Booking for the Delhi Metro</h1>
+          <p class="byline">By Lanchenba Mutum · 2026 · Added 20 October 2026<span class="new-badge" data-added="2026-10-20" hidden>NEW</span></p>
+          
+          <p class="summary">The full write-up of MetriGo, a booking app for all nine Delhi Metro lines: shortest routes with Dijkstra&#x27;s algorithm, seats that keep a group together, fares by distance and time of day, and a QR ticket that opens with no signal. A student project, not affiliated with DMRC.</p>
+          <blockquote class="excerpt"><p>The server is the source of truth for anything that costs money, and a ticket must open without a network. Prices are computed on the server and never read from the browser.</p><footer>From page 3</footer></blockquote>
+          <div class="hero-numbers left">
+            <span><b>33</b><small>pages</small></span>
+            <span><b>~66</b><small>min read</small></span>
+            <span><b>PDF</b><small>format</small></span>
+          </div>
+          <div class="essay-actions">
+            <a class="btn primary" data-read href="../../reader.html?id=metrigo">Read write-up<svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a>
+            <a class="btn ghost" href="../../books/metrigo.pdf" download data-title="MetriGo: Smart Metro Booking for the Delhi Metro">Request PDF</a>
+            <button class="btn ghost" data-cite>Cite</button>
+            <button class="btn ghost" data-share>Share</button>
+          </div>
+          <p class="progress-note" id="progressNote" hidden></p>
+        </div>
+        <figure class="essay-sheet">
+          <span class="sheet-glyph" aria-hidden="true">O(E log V)</span>
+          <span class="sheet-photo"><span class="photo" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD0dx35qrIW3bgauGmbAeoFSUhkLM3U0U9ABkCigQ+iiigCNP8AWGiiigD/2Q==);view-transition-name:ph-metrigo"><img src="../../images/metrigo-640.jpg" srcset="../../images/metrigo-640.jpg 640w, ../../images/metrigo.jpg 1200w" sizes="(max-width: 1000px) 50vw, 280px" alt="The Delhi Metro network from the MetriGo documentation cover: nine coloured lines with their main stations, on a cream grid." loading="eager" decoding="async" onload="this.classList.add('loaded')"></span></span>
+        </figure>
+      </article>
+
+      <section class="essay-section">
+        <div class="section-heading plain"><h2>Inside this write-up</h2><span class="section-note">Open any section in the reader</span></div>
+        <ol class="topic-list toc-links">
+          <li style="--i:0"><a href="../../reader.html?id=metrigo&amp;page=3"><span class="n">01</span><span class="t">Summary and Key Numbers</span><span class="p">p. 3</span></a></li>
+          <li style="--i:1"><a href="../../reader.html?id=metrigo&amp;page=5"><span class="n">02</span><span class="t">The Problem</span><span class="p">p. 5</span></a></li>
+          <li style="--i:2"><a href="../../reader.html?id=metrigo&amp;page=6"><span class="n">03</span><span class="t">Timeline and Time Spent</span><span class="p">p. 6</span></a></li>
+          <li style="--i:3"><a href="../../reader.html?id=metrigo&amp;page=8"><span class="n">04</span><span class="t">System Architecture</span><span class="p">p. 8</span></a></li>
+          <li style="--i:4"><a href="../../reader.html?id=metrigo&amp;page=11"><span class="n">05</span><span class="t">The Metro Network Data</span><span class="p">p. 11</span></a></li>
+          <li style="--i:5"><a href="../../reader.html?id=metrigo&amp;page=13"><span class="n">06</span><span class="t">The Algorithms</span><span class="p">p. 13</span></a></li>
+          <li style="--i:6"><a href="../../reader.html?id=metrigo&amp;page=16"><span class="n">07</span><span class="t">Benchmark and Efficiency</span><span class="p">p. 16</span></a></li>
+          <li style="--i:7"><a href="../../reader.html?id=metrigo&amp;page=18"><span class="n">08</span><span class="t">Payments and Booking Integrity</span><span class="p">p. 18</span></a></li>
+          <li style="--i:8"><a href="../../reader.html?id=metrigo&amp;page=20"><span class="n">09</span><span class="t">Database Design</span><span class="p">p. 20</span></a></li>
+          <li style="--i:9"><a href="../../reader.html?id=metrigo&amp;page=21"><span class="n">10</span><span class="t">Frontend: the Web App</span><span class="p">p. 21</span></a></li>
+          <li style="--i:10"><a href="../../reader.html?id=metrigo&amp;page=23"><span class="n">11</span><span class="t">Security, Privacy and Consent</span><span class="p">p. 23</span></a></li>
+          <li style="--i:11"><a href="../../reader.html?id=metrigo&amp;page=24"><span class="n">12</span><span class="t">Testing and Quality</span><span class="p">p. 24</span></a></li>
+          <li style="--i:12"><a href="../../reader.html?id=metrigo&amp;page=25"><span class="n">13</span><span class="t">Deployment and Operations</span><span class="p">p. 25</span></a></li>
+          <li style="--i:13"><a href="../../reader.html?id=metrigo&amp;page=28"><span class="n">14</span><span class="t">Limitations</span><span class="p">p. 28</span></a></li>
+          <li style="--i:14"><a href="../../reader.html?id=metrigo&amp;page=29"><span class="n">15</span><span class="t">Version 1 versus Version 2</span><span class="p">p. 29</span></a></li>
+          <li style="--i:15"><a href="../../reader.html?id=metrigo&amp;page=31"><span class="n">16</span><span class="t">Future Work</span><span class="p">p. 31</span></a></li>
+          <li style="--i:16"><a href="../../reader.html?id=metrigo&amp;page=32"><span class="n">17</span><span class="t">Glossary</span><span class="p">p. 32</span></a></li>
+        </ol>
+      </section>
+
+      <section class="essay-section essay-reviews" id="essayReviews" data-essay-id="metrigo" aria-labelledby="reviewsTitle" hidden>
+        <div class="section-heading plain"><h2 id="reviewsTitle">Reviews</h2><a class="link small" href="../../#reviews">All reviews</a></div>
+        <p class="er-sum" id="erSum"></p>
+        <ul class="rev-list" id="erList"></ul>
+        <div class="er-actions">
+          <button class="btn primary" type="button" data-write-review="metrigo">Write a review</button>
+          <a class="btn ghost" id="erAll" href="../../#reviews" hidden>See all reviews</a>
+        </div>
+      </section>
+
+      <section class="essay-section">
+        <div class="section-heading plain"><h2>Further reading</h2><a class="link small" href="../../">All essays</a></div>
+        <div class="related-grid">
+          <a class="related-card" href="../metaproof/" style="--i:0">
+            <span class="photo" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDhba2jlQMZQpz0NWPIjRSVlDEdqoRuqryTmpkmTvmuiDsyS0CNtFVTKO3Siuj2iEVKUUUVyoY+iiirA//Z);view-transition-name:ph-metaproof"><img src="../../images/metaproof-640.jpg" srcset="../../images/metaproof-640.jpg 640w, ../../images/metaproof.jpg 1200w" sizes="(max-width: 650px) 92px, (max-width: 1000px) 30vw, 360px" alt="The cover of the MetaProof documentation: the title in white on deep indigo, with faint concentric rings." loading="lazy" decoding="async" onload="this.classList.add('loaded')"></span>
+            <span class="meta"><span>Projects</span><span class="num">13</span></span>
+            <span class="related-name">MetaProof</span>
+            <span class="related-desc">The full write-up of MetaProof, a web app I built that checks an image&#x27;s metadata, file structure, C2PA Content Credentials, hidden watermarks and pixels, then explains whether it is likely authentic, edited, AI-generated or inconclusive.</span>
+            <span class="related-foot"><span>31 pages · ~62 min</span><span class="related-go">Read<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></span></span>
+          </a>
+          <a class="related-card" href="../campussafe/" style="--i:1">
+            <span class="photo" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDk3svPmkbzUX5uhNRy2Pl4/fRt9DROwE0gyAd1NQqe4qV8KKlb2juV3TaSOtFTSgAcUU0yZRsxl5/x9SfWmxdaKKS+FFS/iMkk6UUUULYJbn//2Q==);view-transition-name:ph-campussafe"><img src="../../images/campussafe-640.jpg" srcset="../../images/campussafe-640.jpg 640w, ../../images/campussafe.jpg 1200w" sizes="(max-width: 650px) 92px, (max-width: 1000px) 30vw, 360px" alt="The cover of the CampusSafe documentation: the title in white and orange on dark green, with rings spreading from a red dot." loading="lazy" decoding="async" onload="this.classList.add('loaded')"></span>
+            <span class="meta"><span>Projects</span><span class="num">14</span></span>
+            <span class="related-name">CampusSafe</span>
+            <span class="related-desc">The full write-up of CampusSafe, a campus safety app for Graphic Era University built with teammates: a hold-to-send SOS with live GPS, photo and anonymous reports, and a live console where campus command assigns responders and every status change flows back to the student.</span>
+            <span class="related-foot"><span>30 pages · ~60 min</span><span class="related-go">Read<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></span></span>
+          </a>
+          <a class="related-card" href="../gojo-infinity/" style="--i:2">
+            <span class="photo" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD06sma4n+2gKxxnAFWdY+0f2dL9lbbJjg+leT6z4svLe5WC2lJdD8z9yaT7IaWlz2Rc7RnrRWZ4bu5b7Rbe4nOZHXJopiL9z/x7Sf7pr541f8A5DU//XQ/zoooA908Kf8AIvWn+4KKKKENn//Z);view-transition-name:ph-gojo-infinity"><img src="../../images/gojo-infinity-640.jpg" srcset="../../images/gojo-infinity-640.jpg 640w, ../../images/gojo-infinity.jpg 1200w" sizes="(max-width: 650px) 92px, (max-width: 1000px) 30vw, 360px" alt="Manga illustration of Gojo Satoru, smiling and reaching one hand towards the viewer." loading="lazy" decoding="async" onload="this.classList.add('loaded')"></span>
+            <span class="meta"><span>Infinity</span><span class="num">01</span></span>
+            <span class="related-name">Gojo Satoru&#x27;s Infinity</span>
+            <span class="related-desc">An examination of Zeno&#x27;s paradox, convergent series and limits through the &#x27;Infinity&#x27; technique of Gojo Satoru in Jujutsu Kaisen.</span>
+            <span class="related-foot"><span>10 pages · ~20 min</span><span class="related-go">Read<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></span></span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <script type="application/json" id="essayData">{"id": "metrigo", "title": "MetriGo: Smart Metro Booking for the Delhi Metro", "author": "Lanchenba Mutum", "year": 2026}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "MetriGo: Smart Metro Booking for the Delhi Metro", "author": {"@type": "Person", "name": "Lanchenba Mutum"}, "datePublished": "2026", "description": "The full write-up of MetriGo, a booking app for all nine Delhi Metro lines: shortest routes with Dijkstra's algorithm, seats that keep a group together, fares by distance and time of day, and a QR ticket that opens with no signal. A student project, not affiliated with DMRC.", "about": ["Shortest routes with Dijkstra's algorithm and a binary heap", "Seat suggestions: a greedy pass, then pruned backtracking", "A timetable simulator shared by the server and the live map", "Never selling a seat twice: holds, transactions and settling payments once", "Offline QR tickets in an installable web app"], "isPartOf": {"@type": "CreativeWorkSeries", "name": "The Open Archive", "author": {"@type": "Person", "name": "Lanchenba Mutum"}}, "image": "https://theopenarchive.onrender.com/images/metrigo.jpg", "encoding": {"@type": "MediaObject", "encodingFormat": "application/pdf", "contentUrl": "https://theopenarchive.onrender.com/books/metrigo.pdf"}, "url": "https://theopenarchive.onrender.com/essays/metrigo/"}</script>
+
+    <footer class="site-footer">
+      <span>© 2026 Lanchenba Mutum · The Open Archive</span>
+      <a href="../../#about">About the author</a>
+    </footer>
+    <div class="toast" id="toast" role="status" hidden></div>
+  </div>
+  <script src="../../js/common.js?v=42"></script>
+  <script src="../../js/sfx.js?v=42"></script>
+  <script src="../../js/site.js?v=42"></script>
+  <script src="../../js/reviews.js?v=42"></script>
+  <script src="../../js/request.js?v=42"></script>
+  <script src="../../js/music.js?v=42"></script>
+</body>
+</html>

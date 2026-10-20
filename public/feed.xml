@@ -24,6 +24,14 @@
       <pubDate>Tue, 20 Oct 2026 09:00:00 +0000</pubDate>
     </item>
     <item>
+      <title>MetriGo: Smart Metro Booking for the Delhi Metro</title>
+      <link>https://theopenarchive.onrender.com/essays/metrigo/</link>
+      <guid isPermaLink="true">https://theopenarchive.onrender.com/essays/metrigo/</guid>
+      <description>The full write-up of MetriGo, a booking app for all nine Delhi Metro lines: shortest routes with Dijkstra&#x27;s algorithm, seats that keep a group together, fares by distance and time of day, and a QR ticket that opens with no signal. A student project, not affiliated with DMRC. “The server is the source of truth for anything that costs money, and a ticket must open without a network. Prices are computed on the server and never read from the browser.”</description>
+      <category>Projects</category>
+      <pubDate>Tue, 20 Oct 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
       <title>Mathematics Behind Jujutsu Kaisen: Gojo Satoru&#x27;s Infinity</title>
       <link>https://theopenarchive.onrender.com/essays/gojo-infinity/</link>
       <guid isPermaLink="true">https://theopenarchive.onrender.com/essays/gojo-infinity/</guid>

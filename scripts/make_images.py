@@ -38,12 +38,16 @@ FROM_PDF = {
     "secret-santa": (0, 0.0, 0.52),  # top half only: ornaments, no title text
     "tale-of-two-infinities": 0,
 }
-# Pictures cut from a whole page: (page index, top, bottom) as fractions of the page.
+# Pictures cut from a whole page: (page index, top, bottom[, left, right]) as fractions of the page.
 # For PDFs drawn as one designed page with no separate images, like a project cover.
 FROM_PAGE = {
     "metaproof": (0, 0.0, 0.5),  # cover: title, tagline and rings, not the stats
     "campussafe": (0, 0.0, 0.5),
+    "metrigo": (0, 0.376, 0.713, 0.024, 0.70),  # the network map, without the legend
 }
+# Text at or above this size (pt) is left out of a page picture, e.g. a cover paragraph
+# that overlaps the edge of the map; small labels stay.
+HIDE_TEXT = {"metrigo": 9}
 # Pictures with their title running edge to edge: shown whole on a blurred copy
 # of themselves instead of being cropped to the card shape.
 FIT = {"tale-of-two-infinities"}
@@ -98,10 +102,18 @@ def from_pdf(name: str, spec):
 
 
 def from_page(name: str, spec):
-    pno, y0, y1 = spec
+    pno, y0, y1, x0, x1 = (*spec, 0.0, 1.0) if len(spec) == 3 else spec
     page = pymupdf.open(SRC / f"{name}.pdf")[pno]
+    if name in HIDE_TEXT:  # on this in-memory copy only; the PDF itself is untouched
+        for b in page.get_text("dict")["blocks"]:
+            for line in b.get("lines", []):
+                for span in line["spans"]:
+                    if span["size"] >= HIDE_TEXT[name]:
+                        page.add_redact_annot(span["bbox"], fill=False)
+        page.apply_redactions(images=pymupdf.PDF_REDACT_IMAGE_NONE, graphics=pymupdf.PDF_REDACT_LINE_ART_NONE)
     r = page.rect
-    pix = page.get_pixmap(clip=pymupdf.Rect(r.x0, r.y0 + r.height * y0, r.x1, r.y0 + r.height * y1), dpi=220)
+    clip = pymupdf.Rect(r.x0 + r.width * x0, r.y0 + r.height * y0, r.x0 + r.width * x1, r.y0 + r.height * y1)
+    pix = page.get_pixmap(clip=clip, dpi=300)
     save(Image.frombytes("RGB", (pix.width, pix.height), pix.samples), name)
 
 
