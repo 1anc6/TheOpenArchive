@@ -629,7 +629,11 @@ body.no-scroll { overflow: hidden; }
 }
 
 /* ============ Pictures: placeholder while loading ============ */
-.photo { background-size: cover; background-position: center; }
+/* The blurred placeholder (inline background-image) fills only the picture
+   area, never tiles, and goes once the real photo has loaded, so frames with
+   padding (the Glass and Neumorphic looks) never show it around the edge. */
+.photo { background-size: cover; background-position: center; background-repeat: no-repeat; background-origin: content-box; }
+.photo:has(img.loaded) { background-image: none !important; }
 .photo img { opacity: 0; transition: opacity .5s ease, transform .6s var(--ease); }
 .photo img.loaded { opacity: 1; }
 

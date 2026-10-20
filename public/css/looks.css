@@ -128,7 +128,7 @@
 }
 
 /* ---- photos: mounted like prints ---- */
-:root[data-ui] .photo { border: var(--u-border); border-radius: calc(var(--u-r-md) - 2px); padding: 8px; background: var(--u-face); box-shadow: var(--u-raise-md); }
+:root[data-ui] .photo { border: var(--u-border); border-radius: calc(var(--u-r-md) - 2px); padding: 8px; background-color: var(--u-face); box-shadow: var(--u-raise-md); }
 :root[data-ui] .photo img { border-radius: max(4px, calc(var(--u-r-md) - 10px)); }
 :root[data-ui] .row .photo { padding: 3px; box-shadow: var(--u-raise-sm); }
 :root[data-ui] :is(.author-photo, .greeting-photo) { border: var(--u-border); padding: 5px; background: var(--u-face); box-shadow: var(--u-raise-md); }
