@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>A Voyage to the Planet of Fractal Geometry</title>
+<meta name="author" content="Lanchenba Mutum">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=block" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
+<style>
+:root{
+  --space:#06141b; --space-2:#0c2530; --teal:#1e4a52; --teal-2:#2f7a7a; --aqua:#5fd3c6; --aqua-soft:#d9f2ee; --peach:#f2b48a; --violet:#7b5ea7;
+  --paper:#f4f7f6; --card:#ffffff; --ink:#0d1f26; --ink-2:#34474d; --muted:#6f8287; --line:#d5e1df;
+}
+@page{ size:A4; margin:18mm 19mm 20mm; background:var(--paper);
+  @top-left{ content:"VOYAGE LOG · PLANET OF FRACTAL GEOMETRY"; font:700 7.2pt 'Space Mono'; letter-spacing:.1em; color:var(--teal-2); }
+  @top-right{ content:"LANCHENBA MUTUM"; font:700 7.2pt 'Space Mono'; letter-spacing:.1em; color:var(--muted); }
+  @bottom-left{ content:"D ≈ 1.26"; font:700 7.2pt 'Space Mono'; color:var(--muted); }
+  @bottom-right{ content:"LOG " counter(page); font:700 8pt 'Space Mono'; color:var(--teal); }
+}
+@page cover{ margin:0; @top-left{content:none} @top-right{content:none} @bottom-left{content:none} @bottom-right{content:none} }
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:var(--paper);color:var(--ink-2);font:400 10.2pt/1.66 'Outfit',sans-serif}
+p{margin:0 0 3.3mm} b{color:var(--ink);font-weight:600}
+.katex{color:var(--ink)}
+
+.cover{page:cover;width:210mm;height:297mm;position:relative;overflow:hidden;background:var(--space)}
+.cover .bg{position:absolute;right:-6mm;top:0;width:120mm;height:297mm;background:url(img/gen-mandelbrot-cover.jpg) center/cover}
+.cover .fade{position:absolute;inset:0;background:linear-gradient(90deg,var(--space) 30%,rgba(6,20,27,.75) 52%,rgba(6,20,27,0) 75%)}
+.cover .stars{position:absolute;inset:0}
+.cover .inner{position:absolute;left:18mm;top:24mm;width:118mm;color:#fff}
+.cover .k{font:700 8.4pt 'Space Mono';letter-spacing:.2em;color:var(--aqua)}
+.cover h1{font:800 36pt/1.04 'Syne';margin:8mm 0 0;letter-spacing:-.01em}
+.cover h1 span{display:block;color:var(--aqua)}
+.cover .sub{font:300 13pt/1.5 'Outfit';color:#b8cfd0;margin-top:7mm;max-width:100mm}
+.cover .route{position:absolute;left:18mm;bottom:40mm;width:120mm}
+.cover .by{position:absolute;left:18mm;bottom:18mm;font:700 9pt 'Space Mono';letter-spacing:.14em;color:#b8cfd0}
+.cover .by b{color:#fff;font-weight:700}
+
+.stop{display:grid;grid-template-columns:auto 1fr;gap:4mm;align-items:center;margin:9mm 0 4mm;break-after:avoid}
+.stop:first-child{margin-top:0}
+.stop .tag{width:19mm;height:19mm;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--c2,#3c9c99),var(--c,#1e4a52));display:grid;place-items:center;color:#fff;font:700 8pt/1 'Space Mono';text-align:center;box-shadow:0 0 0 1.4mm var(--paper),0 0 0 1.8mm var(--line)}
+.stop .tag b{display:block;font:800 16pt 'Syne';color:#fff}
+.stop .k{font:700 7.6pt 'Space Mono';letter-spacing:.16em;color:var(--teal-2)}
+.stop h2{font:800 23pt/1.05 'Syne';color:var(--ink);margin:1mm 0 0}
+h3{font:700 14pt/1.2 'Syne';color:var(--teal);margin:6mm 0 2.5mm;break-after:avoid}
+h3 .n{display:inline-block;min-width:8mm;height:8mm;border-radius:50%;background:var(--teal);color:#fff;font:700 9pt/8mm 'Space Mono';text-align:center;margin-right:2.5mm;vertical-align:2px}
+
+figure{margin:3mm 0 4mm;break-inside:avoid}
+figure img{width:100%;display:block;border-radius:2.5mm}
+figure svg{width:100%;display:block}
+figcaption{font:500 8.4pt/1.4 'Outfit';color:var(--muted);margin-top:1.6mm}
+figcaption .me{font:700 6.8pt 'Space Mono';letter-spacing:.1em;color:#fff;background:var(--teal-2);padding:.3mm 1.6mm;border-radius:1mm;margin-left:1.4mm;vertical-align:1px}
+.side{display:grid;grid-template-columns:1fr 62mm;gap:6mm;align-items:start}
+.side.l{grid-template-columns:62mm 1fr}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:3mm;padding:4mm}
+.dark{background:var(--space);color:#d4e4e4;border-radius:3.5mm;padding:5mm 6mm;break-inside:avoid}
+.dark .katex{color:#fff}
+.dark b{color:var(--aqua)}
+.chips{display:flex;flex-wrap:wrap;gap:2mm;margin:2mm 0 4mm}
+.chips span{background:var(--aqua-soft);color:var(--teal);font:600 8.8pt 'Outfit';padding:1.2mm 3.4mm;border-radius:10mm}
+.nature{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm;margin:4mm 0;break-inside:avoid}
+.nature figure{margin:0}
+.nature img{height:30mm;object-fit:cover}
+.nature figcaption{font:600 8.4pt 'Outfit';color:var(--ink);margin-top:1.2mm}
+.eqbox{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--aqua);border-radius:0 3mm 3mm 0;padding:2mm 5mm;margin:3mm 0 4mm;break-inside:avoid}
+.legend{display:grid;grid-template-columns:repeat(3,1fr);gap:2mm;margin:2mm 0 4mm}
+.legend div{background:var(--card);border:1px solid var(--line);border-radius:2mm;padding:2mm 3mm;font-size:9pt}
+.legend b{font:700 11pt 'Space Mono';color:var(--teal)}
+.steps{counter-reset:s;display:grid;gap:2mm;margin:3mm 0 4mm;break-inside:avoid}
+.steps>div{display:grid;grid-template-columns:8mm 1fr 1fr;gap:3mm;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:2.5mm;padding:2mm 4mm}
+.steps>div::before{counter-increment:s;content:counter(s);width:7mm;height:7mm;border-radius:50%;background:var(--teal-2);color:#fff;font:700 9pt/7mm 'Space Mono';text-align:center}
+.steps .katex-display{margin:0}
+.escape{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin:3mm 0 4mm;break-inside:avoid}
+.escape>div{border-radius:3mm;padding:3.5mm 4mm;font:400 9pt/1.5 'Space Mono'}
+.escape .in{background:var(--aqua-soft);color:var(--teal)}
+.escape .out{background:#fbe6d8;color:#8a4a22}
+.escape b{display:block;font:700 12pt 'Syne';color:inherit;margin-bottom:1mm}
+.list{margin:0 0 3mm;padding:0;list-style:none}
+.list li{padding-left:6mm;position:relative;margin-bottom:1mm}
+.list li::before{content:"";position:absolute;left:0;top:2.2mm;width:2.4mm;height:2.4mm;border-radius:50%;background:var(--aqua);box-shadow:0 0 0 1px var(--teal-2)}
+.gallery{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3mm;margin:4mm 0;break-inside:avoid}
+.gallery figure{margin:0}
+.gallery img{height:40mm;object-fit:cover}
+.quote{font:600 15pt/1.4 'Syne';color:var(--teal);border-left:4px solid var(--aqua);padding:1mm 0 1mm 6mm;margin:5mm 0}
+.refs{font-size:8.6pt;line-height:1.5;word-break:break-word}
+.refs li{margin-bottom:1.6mm}
+.ack{background:var(--teal);color:#e4f1ef;border-radius:3.5mm;padding:6mm 7mm;margin-top:6mm;break-inside:avoid}
+.ack h2{font:800 17pt 'Syne';color:#fff;margin:0 0 2mm}
+.ack p{margin:0;color:#d7ebe8}
+.credits{font:400 7.4pt/1.5 'Space Mono';color:var(--muted);margin-top:4mm}
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="bg"></div>
+  <div class="fade"></div>
+  <svg class="stars" id="stars" viewBox="0 0 210 297" preserveAspectRatio="none"></svg>
+  <div class="inner">
+    <div class="k">MISSION LOG · GEOMETRY · CHAOS · ART</div>
+    <h1>A Voyage<br>to the Planet of<span>Fractal Geometry</span></h1>
+    <div class="sub">A trip through the solar system of geometry to the planet of infinite coastlines and endless folds.</div>
+  </div>
+  <svg class="route" viewBox="0 0 480 90" xmlns="http://www.w3.org/2000/svg" font-family="Space Mono">
+    <path d="M10 60 C 90 10, 150 80, 230 40 S 380 10, 460 46" fill="none" stroke="#5fd3c6" stroke-width="1.6" stroke-dasharray="4 5"/>
+    <g font-size="9" fill="#b8cfd0" text-anchor="middle">
+      <circle cx="10" cy="60" r="7" fill="#f2b48a"/><text x="10" y="84">EUCLID</text>
+      <circle cx="120" cy="44" r="5" fill="#7b5ea7"/><text x="120" y="68">NATURE</text>
+      <circle cx="230" cy="40" r="5" fill="#2f7a7a"/><text x="230" y="64">EQUATIONS</text>
+      <circle cx="340" cy="24" r="5" fill="#5fd3c6"/><text x="340" y="48">CREATIVITY</text>
+      <circle cx="460" cy="46" r="10" fill="#5fd3c6"/><circle cx="460" cy="46" r="15" fill="none" stroke="#5fd3c6" stroke-width="1"/><text x="460" y="76">FRACTAL</text>
+    </g>
+  </svg>
+  <div class="by">VOYAGE LOGGED BY <b>LANCHENBA MUTUM</b></div>
+</section>
+
+<div class="stop"><div class="tag" style="--c:#8a4a22;--c2:#f2b48a"><span>STOP<b>01</b></span></div><div><div class="k">DEPARTURE</div><h2>Introduction</h2></div></div>
+<div class="side">
+  <div>
+    <p>Welcome to the solar system of geometry created by our father of geometry, known as Euclid. In the vast universe of mathematics, the solar system of geometry stands as the most notable and elegant solar system. Mathematics has a long history that dates back to prehistoric societies. Ancient mathematical writings come from Egypt and Mesopotamia. From then on the development of the Hindu-Arabic numeral system, which gave us the digits 0 −9, and the invention of the equals sign (=) by Robert Recorde in 1557 became a huge turning point of mathematics.</p>
+    <p>Today, our exploration begins with the solar system of geometry, and we sail in the planet of infinite and endless coastlines - the planet of fractal geometry.</p>
+  </div>
+  <figure style="margin:0"><img src="img/orig-p1-x28.png" style="height:68mm;object-fit:cover"><figcaption>Euclid</figcaption></figure>
+</div>
+
+<div class="stop"><div class="tag" style="--c:#7a5512;--c2:#e7b25a"><span>STOP<b>02</b></span></div><div><div class="k">THE SOLAR SYSTEM</div><h2>Geometry</h2></div></div>
+<p>Now let’s launch our rocket into the solar system of geometry. Geometry is a branch of mathematics concerned with properties of space such as the distance, shape, size, and relative position of figures. The word “geometry” comes from the Greek words <i>geo</i> (earth) and <i>metria</i> (measuring), meaning “measurement of the earth”. The father or else the king of geometry is the Greek mathematician Euclid. Until the 19th century, geometry was almost exclusively devoted to Euclidean geometry, which includes the notions of point, line, plane, distance, angle, surface, and curve, as fundamental concepts.</p>
+<figure>
+  <svg id="solar" viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" font-family="Outfit"></svg>
+  <figcaption>The solar system of geometry, with Euclid at its centre and fractal geometry glowing on its orbit.</figcaption>
+</figure>
+<div class="side l">
+  <figure style="margin:0" class="panel"><img src="img/orig-p1-x29.png"><figcaption>Types of Geometry — A visual map of the planets under Euclid’s control.<span class="me">CREATED BY THE AUTHOR</span></figcaption></figure>
+  <div>
+    <p>This unique solar system of geometry consists of vast number of planets, such as Euclidean geometry, non-Euclidean geometry, analytic geometry, differential geometry, projective geometry topology, finite geometry, fractal geometry and discrete geometry planets.</p>
+    <p>But for today, let’s begin our voyage on the planet of fractal geometry, the mysterious planet consisting of infinite coastlines and home to endless folds.</p>
+  </div>
+</div>
+
+<div class="stop"><div class="tag" style="--c:#0c2530;--c2:#2f7a7a"><span>STOP<b>03</b></span></div><div><div class="k">LANDING</div><h2>Fractal Geometry</h2></div></div>
+<div class="side">
+  <div>
+    <p>Now, we have arrived to a mysterious and a unique planet in the solar system of geometry - The planet of fractal geometry. Fractal geometry is a type of geometry where a certain figure is repeated in an irregular and similar way but in different scales. In 1975, the term “fractal” was coined by the mathematician, Benoît Mandelbrot as a Latin term <i>fractus</i> meaning ‘fractured’ and that is how this planet got its name as the planet of fractal geometry. The father or else the founder of this planet is Benoît Mandelbrot.</p>
+  </div>
+  <figure style="margin:0"><img src="img/mandelbrot-portrait.jpg" style="height:56mm;object-fit:cover;filter:grayscale(.2)"><figcaption>Benoît Mandelbrot (1924–2010), who coined the word “fractal”</figcaption></figure>
+</div>
+<p>Fractal geometry is totally different from ordinary geometric shapes because it contains endless complexity and when you zoom into a fractal it appears new structures and they’re the smaller versions of the whole figure which is known as self-similarity. Not only that, a fractal often has a non-integer dimension. That means the coastline in this planet might have a decimal or a fraction dimension.</p>
+<div class="side">
+  <div>
+    <p>Some examples for self-similarity are</p>
+    <div class="chips"><span>A branch of a tree is the smaller version of the whole tree</span><span>Clouds</span><span>Blood vessels</span><span>Lightning</span></div>
+    <figure style="margin:0"><svg id="tree" viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg"></svg><figcaption>Every branch of this tree is a smaller copy of the whole tree.</figcaption></figure>
+  </div>
+  <figure style="margin:0" class="panel"><img src="img/orig-p2-x37.png"><figcaption>A Fractal</figcaption></figure>
+</div>
+<figure>
+  <img src="img/gen-mandelbrot-map.jpg" style="height:92mm;object-fit:cover">
+  <figcaption>The Mandelbrot set: the map of the planet. Every point inside the dark shape stays bounded forever; the glowing edge is the infinite coastline.</figcaption>
+</figure>
+<p>The one of the most iconic and the famous fractals in mathematics is the Mandelbrot set which is also the map of the planet. A unique feature of the Mandelbrot set is that it is not a perfect self-similar figure because different regions are made up of dramatically different shapes, but all are connected to one infinite boundary. So, when we zoom into the map of the planet of fractal geometry, it’s almost like travelling around the planet where every ocean, island, tree, mountain and so on are all fractals.</p>
+<div class="side">
+  <div>
+    <p>This is also another fractal called the Sierpinski triangle named after the Polish mathematician Waclaw Sierpinski which metaphorically indicates a glazier on the planet of fractal geometry while revealing the uniqueness of fractals. This is a fractal formed by subdividing recursively into smaller equilateral triangles with an overall shape of an equilateral triangle.</p>
+    <p>Now, before starting to sail around the planet, make sure to tuck up the map - the Mandelbrot set, before getting lost in the infinite coastlines.</p>
+  </div>
+  <figure style="margin:0" class="panel"><img src="img/orig-p2-x39.png"><figcaption>The Sierpinski Triangle<span class="me">CREATED BY THE AUTHOR</span></figcaption></figure>
+</div>
+
+<div class="stop"><div class="tag" style="--c:#2d5a1e;--c2:#7fbf5a"><span>STOP<b>04</b></span></div><div><div class="k">EXPEDITION</div><h2>Fractals in nature</h2></div></div>
+<p>As we continue our voyage around the planet of fractal geometry, the first thing we can’t overlook is the mother nature. Luckily this planet also somewhat similar to the earth when it comes to the diversity of nature but the most unbelievable part is that all the trees, mountains, oceans, islands and many other nature inspired elements are actually fractals giving a unique identity to this planet.</p>
+<p>So, when we further explore the unique nature owned by this planet, it is clearly visible that a tree’s branch portrays, the miniature version of the large tree. The following artistic and inspiring natural elements set good examples to portray the beauty of fractal inspired nature.</p>
+<div class="nature">
+  <figure><img src="img/orig-p3-x42.png"><figcaption>Fern Fronds</figcaption></figure>
+  <figure><img src="img/orig-p3-x43.png"><figcaption>Romansonesco Broccoli</figcaption></figure>
+  <figure><img src="img/orig-p3-x44.png"><figcaption>Pinecones</figcaption></figure>
+  <figure><img src="img/orig-p3-x45.png"><figcaption>Lightning</figcaption></figure>
+  <figure><img src="img/orig-p3-x46.png"><figcaption>Coastlines</figcaption></figure>
+  <figure><img src="img/orig-p3-x47.png"><figcaption>Blood vessels</figcaption></figure>
+  <figure><img src="img/orig-p3-x48.png"><figcaption>River networks</figcaption></figure>
+  <figure><img src="img/orig-p3-x49.png"><figcaption>Snowflakes</figcaption></figure>
+</div>
+<p>Mathematicians capture this complexity of fractals using deep ideas, knowledge and equations with the aid of the core equation, fractal dimension, Julia sets and chaos theory and fractal calculus. These drive us to much more complex paths in the planet of fractal geometry. So now, it’s time to explore the most interesting plus complex paths in this world.</p>
+
+<div class="stop"><div class="tag" style="--c:#3a2a5e;--c2:#7b5ea7"><span>STOP<b>05</b></span></div><div><div class="k">THE MATHEMATICAL CORE</div><h2>Equations of fractal geometry</h2></div></div>
+<p>Now we have arrived at our new destination, the mathematical core in the planet of fractal geometry.</p>
+<figure class="panel"><img src="img/orig-p5-x72.png" style="width:78%;margin:0 auto"><figcaption>The Mathematical Core of Fractal Geometry<span class="me">CREATED BY THE AUTHOR</span></figcaption></figure>
+
+<h3><span class="n">1</span>The Core Equation - The Mandelbrot Set</h3>
+<p>The Mandelbrot set is the core equation of fractal geometry and that is,</p>
+<div class="dark">$$Z_{n+1} = Z_n^{\,2} + c$$
+<div class="legend" style="margin:0"><div style="background:#0c2530;border-color:#1e4a52;color:#d4e4e4"><b style="color:#5fd3c6">z</b> = a complex number</div><div style="background:#0c2530;border-color:#1e4a52;color:#d4e4e4"><b style="color:#5fd3c6">c</b> = a constant complex parameter (varies for each pixel)</div><div style="background:#0c2530;border-color:#1e4a52;color:#d4e4e4"><b style="color:#5fd3c6">z₀</b> = 0, the starting point</div></div></div>
+<p style="margin-top:4mm">Start with \(z_0 = 0\) and we check whether the sequence stays bounded or escapes to infinity. If it remains bounded, then \(c\) belongs to the Mandelbrot set: otherwise, it lies outside.</p>
+<div class="escape">
+  <div class="in"><b>c = −1 · stays bounded</b>z: 0 → −1 → 0 → −1 → 0 → −1 …<br>Inside the Mandelbrot set</div>
+  <div class="out"><b>c = 1 · escapes</b>z: 0 → 1 → 2 → 5 → 26 → 677 …<br>Outside the Mandelbrot set</div>
+</div>
+<p>As shown in the image of the Mandelbrot set in page 3, coastlines, snowflakes and river networks set good examples to portray the Mandelbrot boundaries and recursive spirals. And it acts not only as the map of this planet but also as a map of all Julia sets.</p>
+
+<h3><span class="n">2</span>Fractal dimension</h3>
+<p>Fractal geometry showcases dimension beyond whole numbers, such as decimal numbers and fractional numbers that portray the roughness of nature.</p>
+<div class="eqbox">$$D = \frac{\log(N)}{\log(r)}$$</div>
+<div class="legend"><div><b>D</b> = Dimension</div><div><b>N</b> = Number of self-similar copies</div><div><b>r</b> = Magnification factor</div></div>
+<p>For example, if a snowflake divides to 4 smaller parts each scaled by 3, what would be the dimension?</p>
+<figure>
+  <svg id="koch" viewBox="0 0 640 130" xmlns="http://www.w3.org/2000/svg" font-family="Space Mono"></svg>
+  <figcaption>The Koch curve, the edge of the Koch snowflake: each step swaps every segment for 4 copies a third as long.</figcaption>
+</figure>
+<div class="steps">
+  <div><span>Write down the fractal dimension equation</span>$$D = \frac{\log(N)}{\log(r)}$$</div>
+  <div><span>Substitute the values N=4 and r=3</span>$$D = \frac{\log(4)}{\log(3)}$$</div>
+  <div><span>Find out the log values and solve the rest</span>$$D \approx \frac{0.6021}{0.4771} \approx 1.262$$</div>
+</div>
+<div class="dark" style="display:grid;grid-template-columns:auto 1fr;gap:6mm;align-items:center">
+  <div style="font:800 30pt 'Syne';color:#5fd3c6">D ≈ 1.26</div>
+  <p style="margin:0">The final answer shows that a snowflake is much more complex than a straight line revealing the roughness of nature while making it more beautiful</p>
+</div>
+
+<h3><span class="n">3</span>Julia Sets</h3>
+<div class="side">
+  <div>
+    <p>Even though Julia sets use the same equation as the Mandelbrot set, the significant difference is that \(c\) is actually fixed for a single set, unlike in the Mandelbrot set, and we’re supposed to test different starting points \(z\). Julia sets were discovered by a French mathematician Gaston Julia. They perform a unique and mysterious job to portray it as the mystical landscape of the planet of fractal geometry where order exists.</p>
+  </div>
+  <figure style="margin:0"><img src="img/gen-julia.jpg" style="height:44mm;object-fit:cover"><figcaption>Julia Sets</figcaption></figure>
+</div>
+
+<h3><span class="n">4</span>Chaos Theory</h3>
+<div class="side">
+  <div>
+    <p>Chaos theory is the study of complex systems, that appear random while following deterministic rules that are highly sensitive to previous conditions. This is mostly famous through the butterfly effect.</p>
+    <p>The main key concepts related to chaos theory are,</p>
+    <ul class="list"><li>Determinstic chaos</li><li>Sensitive to initial conditions</li><li>Underlying patterns</li><li>Non linearity</li></ul>
+  </div>
+  <figure style="margin:0"><img src="img/orig-p5-x70.png" style="height:40mm;object-fit:cover"><figcaption>Chaos Theory</figcaption></figure>
+</div>
+<figure>
+  <svg id="chaos" viewBox="0 0 640 170" xmlns="http://www.w3.org/2000/svg" font-family="Space Mono"></svg>
+  <figcaption>The butterfly effect in one line of maths: the rule x → 4x(1 − x), started from 0.2 and from 0.2001. The two paths agree at first, then split apart completely.</figcaption>
+</figure>
+<div class="side">
+  <p>Weather forecasting, fluid dynamics, biology and astronomy are the best examples for chaos theory, since it performs a vital role as the law of unpredictability in the planet of fractal geometry.</p>
+  <figure style="margin:0"><img src="img/orig-p5-x71.png" style="height:36mm;object-fit:cover"><figcaption>Chaos Theory in weather forecasting</figcaption></figure>
+</div>
+
+<h3><span class="n">5</span>Fractal Calculus</h3>
+<p>Fractal calculus extends traditional calculus in a more complex way that includes calculus to fractal spaces. Although traditional calculus assumes smoothness including smooth curves, fractal calculus is totally different from it due to its adaptability to derivatives and integrals to fractal geometry while dealing with irregular and self-similar structures.</p>
+<p>Fractal calculus in the planet of fractal geometry is vividly showcased by coastlines, mountains, heat diffusion and blood flowing through vessels.</p>
+<div class="quote">Wait a second! Does the complexity and beauty of fractal geometry indirectly imply that this world is inhabited by human beings to do such exceptional work? So, to find out the answer, let’s continue our voyage up to a new destination and discover this mystery.</div>
+
+<div class="stop"><div class="tag" style="--c:#7a2f3f;--c2:#e07a8a"><span>STOP<b>06</b></span></div><div><div class="k">FIRST CONTACT</div><h2>Fractals in Human Creativity</h2></div></div>
+<div class="side">
+  <div>
+    <p>After some time in our journey, we finally arrived at a continent which is very much similar to our earth and it is inhabited by living beings. Yet, the houses seemed to be constructed by using Sierpinski triangles and carpets and decorated with Koch curves, as a part of the uniqueness and creativity in the planet of fractal geometry. And look! A living being is coming out of the house who seemed to have the same structure of humans but in a completely different way, as they are decorated with fractals, which symbolizes the beauty of the planet of fractal geometry. So now it’s time to explore their mysterious discoveries.</p>
+  </div>
+  <figure style="margin:0" class="panel"><img src="img/orig-p6-x75.png" style="height:62mm;object-fit:contain"><figcaption>A fractal human composed of recursive patterns like Sierpinski triangles and carpets<span class="me">CREATED BY THE AUTHOR</span></figcaption></figure>
+</div>
+<p>As we continue our voyage with a new member, a fractal human, their unique and wonderful art galleries including fractal-inspired portraits of Jackson Pollock such as Number 1, 1950 (Lavender Mist), Autumn Rhythm (Number 30), and Number 32, 1950 emerges the creativity of fractal geometry through its complexity. Not only that, even the ancient art forms such as Islamic mosaics, Celtic knots and mandalas effectively portray fractals in human creativity through art.</p>
+<figure><img src="img/orig-p6-x76.png" style="height:58mm;object-fit:cover"><figcaption>Number 1, 1950 (Lavender Mist) by Jackson Pollock</figcaption></figure>
+<p>There are numerous cities built by fractal humans as true wonders of the fractal geometry. While some constructions including religious architectural buildings and Gothic architecture brings out the ancient and cultural value to this planet, the modern buildings like The lotus temple and Infosys Building, Pune upgrades the value of fractal geometry. Not only that, even Gardens by the Bay connects fractals in nature with human creativity, enhancing the uniqueness of the planet of fractal geometry, making our journey much more fascinating.</p>
+<div class="gallery">
+  <figure><img src="img/lotus.jpg"><figcaption>The Lotus Temple, New Delhi</figcaption></figure>
+  <figure><img src="img/orig-p6-x77.png"><figcaption>Infosys Building, Pune</figcaption></figure>
+  <figure><img src="img/supertrees.jpg"><figcaption>Supertree Grove, Gardens by the Bay</figcaption></figure>
+</div>
+<div class="side">
+  <p>The attire of our fractal friend gives a unique identity to the planet of fractal geometry because its beauty is blended with various fractals. It gives the idea that even in fashion designing, the usage of fractals effectively creates an aesthetic and fashionable sense through its complexity. Iris Van Herpen, a fashion designer sets a good example for introducing new fashion designs using fractals.</p>
+  <figure style="margin:0"><img src="img/orig-p6-x78.png" style="height:62mm;object-fit:cover;object-position:50% 30%"><figcaption>Iris van Herpen</figcaption></figure>
+</div>
+<p>In addition to that, modern discoveries in the planet of fractal geometry including modern Science and technology (medicine, computer graphics and animation), Philosophical and metaphorical reflections (human imagination and infinity &amp; beauty) and future explorations like in space and sustainability, especially this adventurous yet inspiring voyage to this mysterious planet of fractal geometry as a part of an exploration showcases fractals in human creativity.</p>
+
+<div class="stop"><div class="tag" style="--c:#0c2530;--c2:#5fd3c6"><span>STOP<b>07</b></span></div><div><div class="k">RETURN JOURNEY</div><h2>Conclusion</h2></div></div>
+<div class="side">
+  <div>
+    <p>After completing our journey throughout the solar system of geometry, we can conclude that, the planet of fractal geometry shines the brightest among the other planets not for its simplicity, but for its endless, infinite nature combined with creativity and imagination, making it impossible to leave our fractal companion and the planet of fractal geometry. From Mandelbrot’s infinite coastlines to Julia’s mystical landscapes, fractals remind us that mathematics is not just confined to calculations but also the open to imagination, blending mathematics, art, science and creativity together.</p>
+  </div>
+  <figure style="margin:0" class="panel"><img src="img/orig-p7-x81.png"><figcaption>The Sierpinski Carpet<span class="me">CREATED BY THE AUTHOR</span></figcaption></figure>
+</div>
+<p>This journey vividly brings out the idea that fractals are something beyond equations as they live in patterns shaping the nature, space and human creativity. This endlessly creative, infinite, mysterious and beautiful fractal geometry showcases that geometry is not actually a cold set of rules and theorems but a vast universe waiting to be explored.</p>
+<div class="quote">In my view, fractal geometry brings out a profound lesson: within every fractal, infinity sparks imagination and creativity making for us to voyage in the planet of fractal geometry forever.</div>
+
+<div style="break-inside:avoid">
+<h3 style="margin-top:8mm">References</h3>
+<ul class="list refs">
+  <li>Fractals, Self-Similarity, and Power Laws — SFI Press</li>
+  <li>10 Fantastic Examples of Fractals in Nature</li>
+  <li>https://thearchitectsdiary.com/fractal-in-architecture-harmony-in-nature/</li>
+  <li>https://www.sciencedirect.com/science/article/pii/S0960077915003999#:~:text=Some%20of%20Pollock's%20paintings%20studied,Art%2C%20Washington%2C%201950).</li>
+  <li>https://brilliant.org/wiki/fractals</li>
+  <li>https://study.com/academy/lesson/video/how-to-create-a-fractal.html</li>
+  <li>www.youtube.com</li>
+  <li>https://en.wikipedia.org/wiki/</li>
+</ul>
+</div>
+<div class="ack">
+  <h2>Acknowledgements</h2>
+  <p>I would like to thank Dr Tom Crawford and the Oxford University for giving such valuable opportunities to maths lovers to showcase their passion and interest in mathematics through creativity and imagination. As the roots of my journey, I am deeply grateful to my parents, siblings, and teachers for encouraging and supporting me. I also acknowledge my own passion for mathematics and graphic design, which inspired the original illustrations including Sierpinski carpets and triangles and creative metaphors in this essay. This voyage has been both mathematical and imaginative, and I am thankful to everyone who helped me explore the planet of fractal geometry in the solar system of geometry under the control of Euclid.</p>
+</div>
+<div class="credits">Photos via Wikimedia Commons: Benoît Mandelbrot by Rama, CC BY-SA 2.0 FR · Lotus Temple by A.Savin, Free Art Licence · Supertree Grove by Mustang Joe, CC0. Mandelbrot, Julia, tree, Koch and chaos images computed for this edition. Other photographs as in the author’s original essay.</div>
+
+<script>
+(function(){
+  const NS='http://www.w3.org/2000/svg';
+  function E(s,t,a,x){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(x!==undefined)e.textContent=x;s.appendChild(e);return e}
+  let seed=7;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+  // stars
+  const st=document.getElementById('stars');
+  for(let i=0;i<140;i++)E(st,'circle',{cx:rnd()*130,cy:rnd()*297,r:rnd()*.45+.08,fill:'#fff',opacity:(rnd()*.7+.2).toFixed(2)});
+  // solar system
+  const so=document.getElementById('solar');
+  E(so,'rect',{x:0,y:0,width:640,height:300,rx:14,fill:'#06141b'});
+  for(let i=0;i<70;i++)E(so,'circle',{cx:rnd()*640,cy:rnd()*300,r:rnd()*1.1+.2,fill:'#fff',opacity:(rnd()*.6+.15).toFixed(2)});
+  const cx=320,cy=150;
+  const P=[['Euclidean',1,'#f2b48a'],['Non-Euclidean',2,'#e07a8a'],['Analytic',3,'#e7b25a'],['Differential',4,'#7fbf5a'],['Projective',5,'#7b5ea7'],['Topology',6,'#3c9c99'],['Finite',7,'#c9a7e0'],['Fractal',8,'#5fd3c6'],['Discrete',9,'#8fb0c0']];
+  P.forEach(([n,k])=>E(so,'ellipse',{cx,cy,rx:34+k*29,ry:16+k*13,fill:'none',stroke:'#2f7a7a','stroke-width':.8,opacity:.6}));
+  E(so,'circle',{cx,cy,r:24,fill:'#f2b48a'});E(so,'circle',{cx,cy,r:32,fill:'#f2b48a',opacity:.2});
+  E(so,'text',{x:cx,y:cy+4,'text-anchor':'middle','font-size':11,'font-weight':700,fill:'#06141b'},'EUCLID');
+  const ang=[-.4,2.4,4.1,.9,3.3,5.6,1.9,-1.05,1.22];
+  P.forEach(([n,k,c],i)=>{const a=ang[i],x=cx+(34+k*29)*Math.cos(a),y=cy+(16+k*13)*Math.sin(a),r=n==='Fractal'?11:5+k*.3;
+    if(n==='Fractal'){E(so,'circle',{cx:x,cy:y,r:20,fill:'#5fd3c6',opacity:.18});E(so,'circle',{cx:x,cy:y,r:15,fill:'none',stroke:'#5fd3c6','stroke-width':1})}
+    E(so,'circle',{cx:x,cy:y,r,fill:c});
+    const right=x<cx;const _r=!right;
+    E(so,'text',{x:x+(_r?r+5:-(r+5)),y:y+4,'text-anchor':_r?'start':'end','font-size':n==='Fractal'?14:11,'font-weight':n==='Fractal'?700:500,fill:n==='Fractal'?'#5fd3c6':'#c8dada'},n);
+  });
+  // fractal tree
+  const tr=document.getElementById('tree');
+  (function br(x,y,len,a,d){if(d===0)return;const x2=x+len*Math.cos(a),y2=y-len*Math.sin(a);
+    E(tr,'line',{x1:x,y1:y,x2,y2,stroke:d>3?'#1e4a52':'#2f7a7a','stroke-width':d*.9,'stroke-linecap':'round'});
+    br(x2,y2,len*.7,a+.45,d-1);br(x2,y2,len*.7,a-.45,d-1)})(150,148,40,Math.PI/2,9);
+  // koch
+  const ko=document.getElementById('koch');
+  function koch(p,q,n){if(!n)return[p];const dx=(q[0]-p[0])/3,dy=(q[1]-p[1])/3,a=[p[0]+dx,p[1]+dy],b=[p[0]+2*dx,p[1]+2*dy],c=Math.cos(-Math.PI/3),s=Math.sin(-Math.PI/3),m=[a[0]+dx*c-dy*s,a[1]+dx*s+dy*c];return[...koch(p,a,n-1),...koch(a,m,n-1),...koch(m,b,n-1),...koch(b,q,n-1)]}
+  for(let n=0;n<4;n++){const x0=10+n*160,w=140,pts=[...koch([x0,92],[x0+w,92],n),[x0+w,92]];
+    E(ko,'polyline',{points:pts.map(p=>p.join(',')).join(' '),fill:'none',stroke:'#1e4a52','stroke-width':2,'stroke-linejoin':'round'});
+    E(ko,'text',{x:x0+w/2,y:118,'text-anchor':'middle','font-size':11,fill:'#6f8287'},'step '+n+' · '+(4**n)+' piece'+(n?'s':''));}
+  // chaos
+  const ch=document.getElementById('chaos');let a=.2,b=.2001;const L=40,W=590,T=10,H=130,N=50;
+  E(ch,'line',{x1:L,y1:T+H,x2:L+W,y2:T+H,stroke:'#d5e1df'});E(ch,'line',{x1:L,y1:T,x2:L,y2:T+H,stroke:'#d5e1df'});
+  E(ch,'text',{x:L-6,y:T+8,'text-anchor':'end','font-size':10,fill:'#6f8287'},'1');E(ch,'text',{x:L-6,y:T+H,'text-anchor':'end','font-size':10,fill:'#6f8287'},'0');
+  const pa=[],pb=[];for(let i=0;i<=N;i++){pa.push([L+i*W/N,T+H-a*H]);pb.push([L+i*W/N,T+H-b*H]);a=4*a*(1-a);b=4*b*(1-b)}
+  E(ch,'polyline',{points:pa.map(p=>p.join(',')).join(' '),fill:'none',stroke:'#1e4a52','stroke-width':1.8});
+  E(ch,'polyline',{points:pb.map(p=>p.join(',')).join(' '),fill:'none',stroke:'#f28a4a','stroke-width':1.8,'stroke-dasharray':'5 3'});
+  E(ch,'text',{x:L+W/2,y:T+H+22,'text-anchor':'middle','font-size':10,fill:'#6f8287'},'step 0 → 50');
+  E(ch,'rect',{x:L+8,y:T+H+12,width:14,height:3,fill:'#1e4a52'});E(ch,'text',{x:L+28,y:T+H+17,'font-size':10,fill:'#34474d'},'start 0.2');
+  E(ch,'rect',{x:L+110,y:T+H+12,width:14,height:3,fill:'#f28a4a'});E(ch,'text',{x:L+130,y:T+H+17,'font-size':10,fill:'#34474d'},'start 0.2001');
+})();
+</script>
+</body>
+</html>

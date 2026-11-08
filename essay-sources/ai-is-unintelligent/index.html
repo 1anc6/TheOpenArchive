@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AI Is Fundamentally Unintelligent</title>
+<meta name="author" content="Lanchenba Mutum">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=block" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
+<style>
+:root{
+  --night:#0b1520; --night-2:#132433; --ink:#0f1c27; --ink-2:#2c3c49; --muted:#6a7b88;
+  --paper:#f2f4f2; --card:#ffffff; --rule:#d7dee2;
+  --cyan:#16b3a8; --cyan-soft:#d6f2ee; --red:#e5484d; --red-soft:#fde3e3; --amber:#f2a516;
+}
+@page{ size:A4; margin:18mm 18mm 20mm; background:var(--paper);
+  @top-left{ content:"AI IS FUNDAMENTALLY UNINTELLIGENT"; font:600 6.8pt 'JetBrains Mono'; letter-spacing:.18em; color:#9aa8b2; }
+  @bottom-right{ content:"p." counter(page); font:600 7.6pt 'JetBrains Mono'; color:var(--cyan); }
+}
+@page cover{ margin:0; @top-left{content:none} @bottom-right{content:none} }
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:var(--paper);color:var(--ink-2);font:400 10.6pt/1.6 'Newsreader',serif}
+p{margin:0 0 3mm} b{color:var(--ink);font-weight:600}
+.mono{font-family:'JetBrains Mono',monospace}
+.katex{font-size:1.04em;color:var(--ink)}
+
+/* cover */
+.cover{page:cover;width:210mm;height:297mm;position:relative;overflow:hidden;background:var(--night);color:#e7eef2}
+.cover .dots{position:absolute;inset:0;background-image:radial-gradient(rgba(120,200,210,.16) 1px,transparent 1.2px);background-size:5mm 5mm}
+.cover .inner{position:absolute;inset:20mm 18mm 18mm;display:flex;flex-direction:column}
+.cover .top{display:flex;justify-content:space-between;font:600 7.4pt 'JetBrains Mono';letter-spacing:.2em;color:#7fd8cf}
+.cover h1{font:700 54pt/.95 'Space Grotesk';letter-spacing:-.035em;margin:16mm 0 0;color:#fff}
+.cover h1 s{text-decoration:none;color:var(--red);position:relative}
+.cover h1 s::after{content:"";position:absolute;left:-1mm;right:-1mm;top:52%;height:2.2mm;background:var(--red);transform:rotate(-2deg)}
+.cover h1 .un{color:#7fd8cf}
+.cover .sub{margin-top:7mm;font:400 15pt/1.3 'Newsreader';font-style:italic;color:#b8c7d0}
+.cover .by{margin-top:4mm;font:500 9pt 'JetBrains Mono';color:#7f93a1}
+.prompt{margin-top:auto;background:var(--night-2);border:1px solid #23394a;border-radius:4mm;padding:6mm 7mm}
+.prompt .lbl{font:600 7pt 'JetBrains Mono';letter-spacing:.2em;color:#7fd8cf;margin-bottom:3mm}
+.prompt .q{font:400 10.5pt/1.55 'Newsreader';color:#dbe5ea}
+.tokens{display:flex;flex-wrap:wrap;gap:1.6mm;margin-top:5mm}
+.tok{font:500 8.6pt 'JetBrains Mono';padding:1.6mm 2.4mm;border-radius:1.6mm;background:#1b3142;color:#cfe3ea;position:relative}
+.tok i{display:block;height:1mm;background:var(--cyan);border-radius:1mm;margin-top:1mm;font-style:normal}
+.tok.bad{background:#3a1d24;color:#ffb3b5}.tok.bad i{background:var(--red)}
+.prompt .verdict{display:flex;justify-content:space-between;align-items:center;margin-top:5mm;padding-top:4mm;border-top:1px dashed #2c4558;font:600 8pt 'JetBrains Mono';color:#9fb2bf}
+.prompt .verdict b{color:var(--red)} .prompt .verdict em{color:#7fd8cf;font-style:normal}
+
+/* body */
+.chap{display:flex;align-items:center;gap:3mm;font:700 7.4pt 'JetBrains Mono';letter-spacing:.22em;color:var(--cyan);text-transform:uppercase;margin:9mm 0 1.5mm;break-after:avoid}
+.chap::after{content:"";flex:1;height:1px;background:var(--rule)}
+h2{font:700 21pt/1.08 'Space Grotesk';letter-spacing:-.025em;color:var(--ink);margin:0 0 4mm;break-after:avoid}
+.chap:first-child{margin-top:0}
+.problem{background:var(--ink);color:#e6eef2;border-radius:4mm;padding:6mm 7mm;margin:4mm 0 5mm;break-inside:avoid;position:relative;overflow:hidden}
+.problem .lbl{font:700 7pt 'JetBrains Mono';letter-spacing:.2em;color:var(--amber);margin-bottom:2mm}
+.problem p{color:#e6eef2;font-size:11.2pt;margin:0}
+.problem .katex{color:#fff}
+.problem .eq{margin-top:4mm;padding-top:3mm;border-top:1px dashed #33505f;text-align:center;font-size:12pt}
+.outcomes{display:grid;grid-template-columns:repeat(8,1fr);gap:2mm;margin:4mm 0 2mm;break-inside:avoid}
+.oc{background:var(--card);border:1px solid var(--rule);border-radius:2.5mm;padding:2.4mm 1mm;text-align:center;font:700 10pt 'JetBrains Mono';color:var(--ink)}
+.oc small{display:block;font:500 6.6pt 'JetBrains Mono';color:var(--muted);margin-top:1mm;letter-spacing:.04em}
+.oc.out{opacity:.38;text-decoration:line-through;text-decoration-color:var(--red)}
+.oc.in{border-color:var(--cyan);box-shadow:inset 0 -1mm 0 var(--cyan)}
+.oc.zero{border-color:var(--red);box-shadow:inset 0 -1mm 0 var(--red)}
+.oc.zero small{color:var(--red)}
+.cap{font:500 7.6pt/1.5 'JetBrains Mono';color:var(--muted);margin:1.5mm 0 5mm}
+.eqline{background:var(--card);border:1px solid var(--rule);border-radius:3mm;padding:2mm 5mm;margin:3mm 0 4mm;break-inside:avoid}
+.eqline .katex-display{margin:1.4mm 0}
+figure{margin:3mm 0 5mm;break-inside:avoid}
+figure svg,figure img{width:100%;display:block}
+figcaption{font:500 7.6pt/1.5 'JetBrains Mono';color:var(--muted);margin-top:2mm}
+.chain{background:var(--card);border:1px solid var(--rule);border-radius:3mm;padding:4mm}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:5mm;margin:4mm 0 5mm;break-inside:avoid}
+.figure-card{background:var(--card);border:1px solid var(--rule);border-radius:3.5mm;overflow:hidden;display:grid;grid-template-columns:30mm 1fr}
+.figure-card img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05)}
+.figure-card div{padding:3.5mm 4mm}
+.figure-card .k{font:700 6.8pt 'JetBrains Mono';letter-spacing:.18em;color:var(--cyan)}
+.figure-card b{display:block;font:700 12pt 'Space Grotesk';margin:1mm 0}
+.figure-card span{font:400 9pt/1.45 'Newsreader';color:var(--ink-2)}
+.key{border-left:3px solid var(--cyan);background:var(--cyan-soft);padding:3.5mm 5mm;border-radius:0 3mm 3mm 0;margin:4mm 0 5mm;font:500 11.4pt/1.45 'Newsreader';font-style:italic;color:var(--ink);break-inside:avoid}
+.warn{border-left-color:var(--red);background:var(--red-soft)}
+.fn{font:400 7.4pt/1.5 'JetBrains Mono';color:var(--muted);border-top:1px solid var(--rule);padding-top:2mm;margin:3mm 0 4mm;word-break:break-all}
+sup{font:700 7pt 'JetBrains Mono';color:var(--cyan)}
+.matrix{display:grid;grid-template-columns:auto 1fr 1fr;gap:1.4mm;font:600 8.6pt 'JetBrains Mono';text-align:center;max-width:120mm;margin:3mm auto 2mm}
+.matrix div{padding:2.6mm 1mm;border-radius:2mm;background:var(--card);border:1px solid var(--rule)}
+.matrix .h{background:transparent;border:0;color:var(--muted);font-size:7.4pt}
+.matrix .ok{background:var(--cyan-soft);border-color:var(--cyan)}
+.matrix .no{background:var(--red-soft);border-color:var(--red);color:var(--red)}
+.end{background:var(--night);color:#dfe8ec;border-radius:4mm;padding:7mm 8mm;margin-top:5mm;break-inside:avoid}
+.end p{color:#c8d5dc}
+.end .big{font:700 17pt/1.25 'Space Grotesk';color:#fff;letter-spacing:-.015em;margin-bottom:3mm}
+.end .big span{color:#7fd8cf}
+.credits{font:400 7pt/1.5 'JetBrains Mono';color:var(--muted);margin-top:6mm}
+.cartoon{float:right;width:46mm;margin:0 0 3mm 5mm;border-radius:2mm;filter:grayscale(.2)}
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="dots"></div>
+  <div class="inner">
+    <div class="top"><span>// PROBABILITY · LOGIC · AI</span><span>THE OPEN ARCHIVE</span></div>
+    <h1>AI is<br>fundamentally<br><span class="un">un</span>intelligent</h1>
+    <div class="sub">Why can AI fail simple questions?</div>
+    <div class="by">by Lanchenba Mutum</div>
+    <svg viewBox="0 0 520 190" style="width:150mm;margin:12mm 0 8mm" xmlns="http://www.w3.org/2000/svg" font-family="Space Grotesk">
+      <g font-size="44" font-weight="700" text-anchor="middle">
+        <circle cx="80" cy="85" r="62" fill="#132433" stroke="#7fd8cf" stroke-width="3"/><circle cx="80" cy="85" r="50" fill="none" stroke="#7fd8cf" stroke-opacity=".35" stroke-dasharray="2 5"/><text x="80" y="101" fill="#7fd8cf">H</text>
+        <circle cx="260" cy="85" r="62" fill="#132433" stroke="#7fd8cf" stroke-width="3"/><circle cx="260" cy="85" r="50" fill="none" stroke="#7fd8cf" stroke-opacity=".35" stroke-dasharray="2 5"/><text x="260" y="101" fill="#7fd8cf">H</text>
+        <circle cx="440" cy="85" r="62" fill="#132433" stroke="#e5484d" stroke-width="3"/><circle cx="440" cy="85" r="50" fill="none" stroke="#e5484d" stroke-opacity=".35" stroke-dasharray="2 5"/><text x="440" y="101" fill="#e5484d">?</text>
+      </g>
+      <g font-family="JetBrains Mono" font-size="11" fill="#7f93a1" text-anchor="middle"><text x="80" y="172">P(H) = 1/3</text><text x="260" y="172">P(H) = 1/3</text><text x="440" y="172">even # of tails</text></g>
+    </svg>
+
+    <div class="prompt">
+      <div class="lbl">&gt; PROMPT · AN ILLUSTRATION OF A TYPICAL WRONG ANSWER</div>
+      <div class="q">Three coins are flipped. Each lands on heads with probability 1/3 … the total number of tails is even. What is the probability that all three coins land on heads?</div>
+      <div class="tokens">
+        <span class="tok">The<i style="width:92%"></i></span>
+        <span class="tok">outcomes<i style="width:71%"></i></span>
+        <span class="tok">with<i style="width:64%"></i></span>
+        <span class="tok">even<i style="width:58%"></i></span>
+        <span class="tok">tails<i style="width:83%"></i></span>
+        <span class="tok">are<i style="width:77%"></i></span>
+        <span class="tok">HHH, HTT, THT, TTH<i style="width:88%"></i></span>
+        <span class="tok">so<i style="width:60%"></i></span>
+        <span class="tok">the<i style="width:90%"></i></span>
+        <span class="tok">answer<i style="width:69%"></i></span>
+        <span class="tok">is<i style="width:95%"></i></span>
+        <span class="tok bad">1/13<i style="width:41%"></i></span>
+      </div>
+      <div class="verdict"><span>each token: the most likely next word</span><span>model: <b>✗ wrong</b> &nbsp;·&nbsp; constraints: <em>P(HHH) = 0</em></span></div>
+    </div>
+  </div>
+</section>
+
+<div class="chap">01 · Introduction</div>
+<h2>A near-flawless calculator?</h2>
+<p>Nowadays, AI is considered to be a near-flawless calculator capable of solving any question. Yet, a simple probability question can highlight a surprising weakness. Consider the following problem:</p>
+<div class="problem">
+  <div class="lbl">THE QUESTION</div>
+  <p>Three coins are flipped. Each lands on heads with probability 1/3 and tails with probability 2/3. We are told that the total number of tails is even. What is the probability that all three coins land on heads?</p>
+  <div class="eq">\(P(\mathrm{HHH} \mid \text{even number of tails})\)</div>
+</div>
+<p>At first glance, this seems like a simple puzzle yet, when I posed it to ChatGPT, Copilot and Gemini, each answered incorrectly. When we work through this problem and find the solution, we gain an insight into the weaknesses behind Artificial Intelligence.</p>
+
+<div class="chap">02 · The problem</div>
+<h2>A global constraint hiding in plain sight</h2>
+<p>Within the question posed, the key phrase is the “number of tails is always even”; it is not just a one-off condition, but a global constraint. This means that any outcome with 1 or 3 tails must have probability zero and is therefore excluded leaving only four possible outcomes: HHH, HTT, THT, TTH.</p>
+<div class="outcomes">
+  <div class="oc zero">HHH<small>0 tails · P=0</small></div>
+  <div class="oc in">HTT<small>2 tails</small></div>
+  <div class="oc in">THT<small>2 tails</small></div>
+  <div class="oc in">TTH<small>2 tails</small></div>
+  <div class="oc out">HHT<small>1 tail</small></div>
+  <div class="oc out">HTH<small>1 tail</small></div>
+  <div class="oc out">THH<small>1 tail</small></div>
+  <div class="oc out">TTT<small>3 tails</small></div>
+</div>
+<div class="cap">FIG 1 — The eight outcomes. Odd numbers of tails are ruled out; the marginals then squeeze HHH down to zero.</div>
+<p>At the same time, each coin is supposed to have a marginal probability of 1/3 being heads. Therefore, for each coin, the total probability of the outcomes in which that coin is heads must be 1/3. Applied to the four outcomes (HHH, HTT, THT, TTH), this gives three linear constraints. Together with the requirement that their probabilities sum to one, these constraints force the probability of HHH to be zero.</p>
+<div class="eqline">$$\begin{aligned} p_{HHH}+p_{HTT}&=\tfrac13 \quad &\text{(coin 1 heads)}\\ p_{HHH}+p_{THT}&=\tfrac13 &\text{(coin 2 heads)}\\ p_{HHH}+p_{TTH}&=\tfrac13 &\text{(coin 3 heads)}\\ p_{HHH}+p_{HTT}+p_{THT}+p_{TTH}&=1 \end{aligned}\qquad\Longrightarrow\qquad p_{HHH}=0$$</div>
+<p>The marginal probabilities suggest independence between the coins, while the even-tails condition introduces a dependence, creating a contradiction within the system. If we try to satisfy both conditions simultaneously, the probability of HHH cannot be anything other than zero. Therefore, flipping HHH is impossible if both constraints are to hold.</p>
+<div class="key">Straightforward, right? Yet, an AI trained on huge datasets fails to solve a problem that I, an amateur mathematician, can.</div>
+<p>This suggests that the limitation lies not in the information available to the model, but in the mathematics behind how it produces answers. Problems like this form as a kind of “final mathematics exam” for Artificial Intelligence.</p>
+
+<div class="chap">03 · AI the probability machine</div>
+<h2>One word at a time</h2>
+<p>To understand where AI goes wrong, we need to understand the maths behind it. Large language models (LLMs) generate responses using probability, by predicting the likelihood of the next word given the previous context. This can be written as</p>
+<div class="eqline">$$P(\text{next word} \mid \text{previous words})$$</div>
+<p>meaning that at each step the model selects the most likely continuation. A complete response is therefore built as a sequence of these predictions. In probabilistic terms, the probability of a sequence \((x_1, x_2, \dots, x_n)\) can be expressed as</p>
+<div class="eqline">$$P(x_1, x_2, \dots, x_n) = \prod_{i=1}^{n} P(x_i \mid x_1, \dots, x_{i-1})$$</div>
+<figure class="chain">
+  <svg viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono">
+    <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#16b3a8"/></marker></defs>
+    <g font-size="11" text-anchor="middle">
+      <rect x="10" y="30" width="96" height="40" rx="7" fill="#0f1c27"/><text x="58" y="55" fill="#e6eef2">x₁</text>
+      <rect x="132" y="30" width="96" height="40" rx="7" fill="#0f1c27"/><text x="180" y="55" fill="#e6eef2">x₂</text>
+      <rect x="254" y="30" width="96" height="40" rx="7" fill="#0f1c27"/><text x="302" y="55" fill="#e6eef2">x₃</text>
+      <rect x="376" y="30" width="96" height="40" rx="7" fill="#0f1c27"/><text x="424" y="55" fill="#e6eef2">…</text>
+      <rect x="498" y="30" width="96" height="40" rx="7" fill="#e5484d"/><text x="546" y="55" fill="#fff">xₙ</text>
+    </g>
+    <g stroke="#16b3a8" stroke-width="2" marker-end="url(#ar)"><line x1="108" y1="50" x2="128" y2="50"/><line x1="230" y1="50" x2="250" y2="50"/><line x1="352" y1="50" x2="372" y2="50"/><line x1="474" y1="50" x2="494" y2="50"/></g>
+    <g font-size="9" fill="#6a7b88" text-anchor="middle"><text x="118" y="22">P(x₂|x₁)</text><text x="240" y="22">P(x₃|x₁,x₂)</text><text x="362" y="22">…</text><text x="484" y="22">P(xₙ|…)</text></g>
+    <path d="M10 92 H594" stroke="#d7dee2" stroke-dasharray="4 4"/>
+    <text x="300" y="112" font-size="10" fill="#e5484d" text-anchor="middle">no step ever looks back to check that the whole answer is consistent</text>
+  </svg>
+  <figcaption>FIG 2 — A response is a chain of local choices. Each link is locally sensible; the chain as a whole is never checked.</figcaption>
+</figure>
+<p>This factorisation expresses the joint probability of a sequence as a product of conditional probabilities, meaning the model evaluates likelihoods locally at each step rather than constructing a single global distribution.</p>
+<p>Essentially, the model is using a form of local optimisation, selecting the most probable continuation at each stage though not ensuring it satisfies all the constraints. This helps explain why, in the coin problem, an AI may produce an answer that appears reasonable in isolation however still fails to satisfy all the conditions of the problem.</p>
+
+<div class="chap">04 · When local logic fails globally</div>
+<h2>Gödel and Turing saw it first</h2>
+<p>The coin puzzle is not the only place where local rules and global structure clash. Mathematics has been dealing with these same problems for a long time, and two classic results show why these contradictions matter.</p>
+<div class="two">
+  <div class="figure-card"><img src="img/godel.jpg" alt=""><div><span class="k">1931 · INCOMPLETENESS</span><b>Kurt Gödel</b><span>A system strong enough for arithmetic contains true statements it cannot prove.</span></div></div>
+  <div class="figure-card"><img src="img/turing.jpg" alt=""><div><span class="k">1936 · HALTING PROBLEM</span><b>Alan Turing</b><span>No algorithm can decide, for every program, whether it halts.</span></div></div>
+</div>
+<h3 style="font:700 13pt 'Space Grotesk';color:var(--ink);margin:5mm 0 2mm">Gödel: When a System Trips Over Itself</h3>
+<p>In the early 1930s, Kurt Gödel, an Australian mathematician and philosopher, proved that any formal mathematical system strong enough to describe arithmetic will contain true statements that the system itself cannot prove. His idea was to encode statements as numbers and then construct a sentence, usually called G (presumably after himself), that effectively says “G is not provable”.</p>
+<figure>
+  <svg viewBox="0 0 600 190" xmlns="http://www.w3.org/2000/svg" font-family="Space Grotesk">
+    <text x="150" y="20" text-anchor="middle" font-size="13" font-weight="700" fill="#0f1c27">Before Gödel</text>
+    <text x="150" y="36" text-anchor="middle" font-size="10" fill="#6a7b88" font-family="JetBrains Mono">true = provable</text>
+    <circle cx="150" cy="110" r="66" fill="#16b3a8"/><text x="150" y="114" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">TRUE · PROVABLE</text>
+    <text x="450" y="20" text-anchor="middle" font-size="13" font-weight="700" fill="#0f1c27">Since Gödel</text>
+    <text x="450" y="36" text-anchor="middle" font-size="10" fill="#6a7b88" font-family="JetBrains Mono">provable ⊂ true</text>
+    <circle cx="450" cy="110" r="70" fill="#0f1c27"/><text x="450" y="64" text-anchor="middle" fill="#7fd8cf" font-size="11" font-weight="700">TRUE</text>
+    <circle cx="450" cy="118" r="36" fill="#16b3a8"/><text x="450" y="122" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">PROVABLE</text>
+    <circle cx="405" cy="150" r="6" fill="#e5484d"/><line x1="410" y1="152" x2="540" y2="172" stroke="#e5484d"/><text x="545" y="176" font-size="11" fill="#e5484d" font-weight="700">G</text>
+  </svg>
+  <figcaption>FIG 3 — Before Gödel, all true statements in basic arithmetic were thought to be provable. Gödel showed there are statements that are true but not provable. <sup>1</sup></figcaption>
+</figure>
+<p>If the system proves G, then it has proved something false, because G claims it has no proof. If the system cannot prove G, then G is true but unprovable. Either way, the system is incomplete. Every step in Gödel’s construction is locally valid, yet the global picture forces a contradiction.</p>
+<p>This is similar to what happens with AI models. They build answers one piece at a time, and each piece may look fine on its own. What they do not do is step back and check whether the entire argument fits together.</p>
+<div class="fn"><sup>1</sup> Noson S. Yanofsky, "Most truths cannot be expressed in language”, iai, 14th December 2022, https://iai.tv/articles/most-truths-cannot-be-expressed-in-language-auid-2335</div>
+
+<h3 style="font:700 13pt 'Space Grotesk';color:var(--ink);margin:5mm 0 2mm">Turing: When No Algorithm Can Decide Everything</h3>
+<p>A few years later, Alan Turing proved the halting problem. He showed that there is no algorithm that can decide, for every possible computer program, whether that program will eventually halt or run forever.</p>
+<figure>
+  <svg viewBox="0 0 600 150" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono">
+    <defs><marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#0f1c27"/></marker></defs>
+    <rect x="200" y="45" width="200" height="56" rx="10" fill="#0f1c27"/><text x="300" y="70" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">H(D, D)</text><text x="300" y="88" text-anchor="middle" fill="#7fd8cf" font-size="9">“does D halt on D?”</text>
+    <path d="M200 60 C120 40 100 20 60 20" stroke="#0f1c27" fill="none" stroke-width="1.6" marker-end="url(#a2)"/>
+    <path d="M400 60 C480 40 500 20 540 20" stroke="#0f1c27" fill="none" stroke-width="1.6" marker-end="url(#a2)"/>
+    <text x="150" y="40" text-anchor="middle" font-size="10" fill="#6a7b88">says “halts”</text><text x="450" y="40" text-anchor="middle" font-size="10" fill="#6a7b88">says “loops”</text>
+    <rect x="0" y="100" width="190" height="44" rx="8" fill="#fde3e3" stroke="#e5484d"/><text x="95" y="120" text-anchor="middle" font-size="11" fill="#e5484d" font-weight="700">D(D) loops forever</text><text x="95" y="135" text-anchor="middle" font-size="9" fill="#2c3c49">H was wrong</text>
+    <rect x="410" y="100" width="190" height="44" rx="8" fill="#fde3e3" stroke="#e5484d"/><text x="505" y="120" text-anchor="middle" font-size="11" fill="#e5484d" font-weight="700">D(D) halts</text><text x="505" y="135" text-anchor="middle" font-size="9" fill="#2c3c49">H was wrong</text>
+    <path d="M60 24 L60 98" stroke="#0f1c27" stroke-width="1.6" marker-end="url(#a2)"/><path d="M540 24 L540 98" stroke="#0f1c27" stroke-width="1.6" marker-end="url(#a2)"/>
+  </svg>
+  <figcaption>FIG 4 — Turing’s program D does the opposite of whatever the decider H predicts.</figcaption>
+</figure>
+<p>His proof constructs a program D that behaves in the opposite way to what a hypothetical halting‑decider H predicts. If H(D,D) says “halts”, then D(D) loops forever. If H(D,D) says “loops”, then D(D) halts. The contradiction only appears when you consider the whole construction at once.</p>
+<p>AI models often fall into the same pattern. They treat halting‑style questions as if they were ordinary computations, unaware that the question is undecidable in principle.</p>
+
+<div class="chap">05 · A glimpse beyond</div>
+<h2>Marginals that cannot coexist</h2>
+<p>Similar issues appear in probability. You can specify marginal distributions such as \(P(X=1) = 1/2\) and \(P(Y=1) = 1/2\), then impose a global rule like “X=Y always". This forces \(P(X=1, Y=0) = 0\) and \(P(X=0, Y=1) = 0\). If you also require independence, then \(P(X=1,Y=1)=P(X=1)P(Y=1) =1/4\), which contradicts the global rule. The marginals and the constraint cannot both be true.</p>
+<div class="matrix">
+  <div class="h"></div><div class="h">Y = 0</div><div class="h">Y = 1</div>
+  <div class="h">X = 0</div><div class="ok">“X=Y”: allowed<br>indep.: 1/4</div><div class="no">“X=Y”: 0<br>indep.: 1/4</div>
+  <div class="h">X = 1</div><div class="no">“X=Y”: 0<br>indep.: 1/4</div><div class="ok">“X=Y”: allowed<br>indep.: 1/4</div>
+</div>
+<div class="cap" style="text-align:center">FIG 5 — The rule “X = Y” and independence demand different tables. Both cannot hold.</div>
+<p>Modern contractionary prompts for AI work in a similar way. Each instruction looks harmless when viewed alone, but the combination leads to something impossible.</p>
+<div class="key">Across all these examples, the pattern is the same. The local steps behave perfectly well, the global picture breaks, and the contradiction only appears when you look at everything at once.</div>
+<p>This is exactly the kind of reasoning that current AI systems struggle with.</p>
+
+<div class="chap">06 · A question that always trips up AI</div>
+<h2>Building an impossible world</h2>
+<img class="cartoon" src="img/coin-cartoon.jpg" alt="">
+<p>Once you understand the structure behind the coin puzzle, it becomes surprisingly easy to build new questions that fool AI models. The idea is to create a probability space where the constraints cannot all hold at the same time, then ask the model to compute something inside that impossible world.</p>
+<p>Suppose we have three events A, B and C with marginal probabilities \(P(A)=1/2\), \(P(B)=1/2\) and \(P(C)=1/2\). Nothing unusual so far. Now add a global rule saying that exactly one of the three events can occur. This forces \(P(A\cap B)=P(B\cap C)=P(A\cap C)=0\).</p>
+<p>If we also require independence, then for example \(P(A\cap B)=P(A)P(B)=1/4\), which contradicts the global rule. A human usually notices this quickly. The marginals and the global constraint cannot both be true.</p>
+<div class="key warn">An AI model, however, tends to ignore the contradiction and tries to compute something like \(P(A \mid \text{“exactly one occurs”})\) as if the underlying distribution were perfectly consistent.</div>
+<p>It is not that the model is being careless. It simply does not check whether the whole system makes sense before answering. It predicts the next likely sentence, and if the question is built on an impossible structure, the model walks straight into it.</p>
+
+<div class="chap">07 · How long until we won't need to think</div>
+<h2>Bigger models, slower reasoning</h2>
+<p>So, how long until we can put our feet up and relax? Models keep getting bigger - and larger models usually perform better on many tasks. However, reasoning does not seem to improve at the same rate as pattern recognition.</p>
+<p>Researchers at MIT describe this using scaling laws. A rough version says that the error rate behaves like \(\text{error}(N)\approx kN^{-\alpha}\), where N is the model size and α depends on the task. For image classification or translation, α is large, so accuracy improves quickly. For reasoning tasks, α is much smaller. If α=0.1, then reducing the error by a factor of ten requires</p>
+<div class="eqline">$$10^{1/\alpha} = 10^{10}\ \text{times more data or parameters}$$</div>
+<figure>
+  <svg id="scale" viewBox="0 0 600 230" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono"></svg>
+  <figcaption>FIG 6 — error(N) ≈ kN<sup style="color:inherit">−α</sup>. With α = 0.5 the error falls ten-fold after 100× more scale; with α = 0.1 it barely moves.</figcaption>
+</figure>
+<p>which is clearly unrealistic. This suggests that simply scaling up models will not fix global‑reasoning failures. The architecture itself, which predicts one token at a time, is part of the limitation.</p>
+<figure>
+  <img src="img/orig-mmlu.png" alt="" style="border:1px solid var(--rule);border-radius:3mm;background:#fff;padding:3mm">
+  <figcaption>FIG 7 — This graph of AI’s performance in MMLU baseline tests represents the relationship between the advancements in the size of LLMs and the change in performance. <sup>2</sup></figcaption>
+</figure>
+<div class="fn"><sup>2</sup> EPOCH AI, EPOCH AI, https://upload.wikimedia.org/wikipedia/commons/0/05/MMLU_performance_vs_AI_scale.png</div>
+<p>New designs may help. These researchers are exploring models that run internal simulations, hybrids that combine neural networks with symbolic logic, and systems that use search rather than pure prediction. These approaches might handle contradictions more effectively.</p>
+<p>Even so, some limits will remain. Gödel and Turing showed that certain problems are undecidable for any formal system. No amount of training data will allow a machine to resolve a contradiction that mathematics itself says cannot be resolved.</p>
+<p>The future is likely to be mixed. AI will improve at many tasks, but the deeper issues, the ones involving global structure or impossible constraints, are not going away.</p>
+
+<div class="chap">08 · What this really tells us about thought</div>
+<h2>Stepping back</h2>
+<p>A small coin‑flip puzzle ends up revealing something surprisingly deep about how AI works. These models are excellent at producing fluent text and recognising patterns, but when a problem requires stepping back and checking whether everything fits together, they can miss the contradiction entirely.</p>
+<p>Mathematics has known about this kind of limitation for a long time. Gödel showed that some true statements cannot be proven inside a system. Turing showed that some questions cannot be decided by any algorithm. Probability theory contains many examples where the local pieces do not form a consistent whole.</p>
+<p>AI models inherit these limitations, not because they lack data, but because of the way they build answers, one small step at a time, without checking the whole picture. The future probably is not one where humans stop thinking. Instead, it is one where we understand more clearly what kinds of thinking humans are uniquely good at.</p>
+<div class="end">
+  <div class="big">AI predicts the next word. <span>Humans can look at the system as a whole</span> and notice when something does not add up.</div>
+  <p>That difference, the ability to step back and see the bigger picture, might be what keeps us useful for many years to come.</p>
+</div>
+<div class="credits">Pictures: Alan Turing (1951), Elliott &amp; Fry; Kurt Gödel as a student (1925); “Head I Win, Tails You Lose”, Charles Lewis Bartholomew. All public domain, via Wikimedia Commons. MMLU chart: Epoch AI, via Wikimedia Commons. Figures 1–6 drawn for this edition.</div>
+
+<script>
+// scaling-law chart
+(function(){
+  const s=document.getElementById('scale'), NS='http://www.w3.org/2000/svg';
+  const L=60,R=580,T=20,B=190, el=(n,a,t)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(t)e.textContent=t;s.appendChild(e);return e};
+  const x=lg=>L+(lg/6)*(R-L), y=v=>B-(v)*(B-T);
+  for(let i=0;i<=6;i++){el('line',{x1:x(i),x2:x(i),y1:T,y2:B,stroke:'#e3e8eb'});el('text',{x:x(i),y:B+16,'font-size':9,'text-anchor':'middle',fill:'#6a7b88'},'10'+['⁰','¹','²','³','⁴','⁵','⁶'][i]+'×');}
+  for(let v=0;v<=1;v+=.25){el('line',{x1:L,x2:R,y1:y(v),y2:y(v),stroke:'#e3e8eb'});el('text',{x:L-8,y:y(v)+3,'font-size':9,'text-anchor':'end',fill:'#6a7b88'},v.toFixed(2));}
+  el('text',{x:(L+R)/2,y:B+34,'font-size':9.5,'text-anchor':'middle',fill:'#2c3c49'},'model size N (relative)');
+  el('text',{x:14,y:(T+B)/2,'font-size':9.5,'text-anchor':'middle',fill:'#2c3c49',transform:`rotate(-90 14 ${(T+B)/2})`},'error');
+  [[.5,'#16b3a8','α = 0.5 (pattern tasks)'],[.1,'#e5484d','α = 0.1 (reasoning)']].forEach(([a,c,lab],i)=>{
+    let d='';for(let k=0;k<=120;k++){const lg=k/20;d+=(k?'L':'M')+x(lg)+' '+y(Math.pow(10,-a*lg))}
+    el('path',{d,fill:'none',stroke:c,'stroke-width':3});
+    el('rect',{x:R-200,y:T+8+i*20,width:14,height:4,fill:c});el('text',{x:R-180,y:T+14+i*20,'font-size':10,fill:'#0f1c27'},lab);
+  });
+})();
+</script>
+</body>
+</html>

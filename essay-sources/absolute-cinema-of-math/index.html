@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Absolute Cinema of Math</title>
+<meta name="author" content="Lanchenba Mutum">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;0,6..96,800;1,6..96,400;1,6..96,600&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Pinyon+Script&display=block" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
+<style>
+:root{
+  --velvet:#5c0f1b; --velvet-2:#7d1626; --velvet-d:#2e060c; --gold:#c9a24a; --gold-2:#e6c977; --gold-soft:#f3e6c2;
+  --cream:#fbf5e8; --card:#fffdf6; --ink:#24131a; --ink-2:#47343a; --muted:#8a7369; --line:#e4d5b4;
+}
+@page{ size:A4; margin:20mm 20mm 22mm; background:var(--cream);
+  @top-center{ content:"✦  ABSOLUTE CINEMA OF MATH  ✦"; font:600 7.4pt 'Bodoni Moda'; letter-spacing:.32em; color:var(--velvet); }
+  @bottom-center{ content:"— " counter(page) " —"; font:italic 400 10pt 'Bodoni Moda'; color:var(--velvet); }
+}
+@page cover{ margin:0; @top-center{content:none} @bottom-center{content:none} }
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:var(--cream);color:var(--ink-2);font:400 10.8pt/1.65 'Spectral',serif}
+p{margin:0 0 3.3mm} b{color:var(--ink);font-weight:600}
+.katex{color:var(--ink)}
+
+.cover{page:cover;width:210mm;height:297mm;position:relative;overflow:hidden;background:var(--velvet-d)}
+.cover .hall{position:absolute;left:0;right:0;top:40mm;height:150mm;background:url(img/garnier.jpg) center/cover;filter:saturate(1.05) brightness(.8)}
+.cover .curtain{position:absolute;inset:0;width:100%;height:100%}
+.cover .marquee{position:absolute;left:24mm;right:24mm;top:186mm;bottom:22mm;border:1.2mm solid var(--gold);outline:.4mm solid var(--gold);outline-offset:1.4mm;background:var(--velvet-d);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--gold-soft)}
+.cover .bulbs{position:absolute;inset:-3.4mm;pointer-events:none;background:
+  radial-gradient(circle,#ffe9a6 0 .9mm,transparent 1.1mm) 0 0/7mm 3.4mm repeat-x,
+  radial-gradient(circle,#ffe9a6 0 .9mm,transparent 1.1mm) 0 100%/7mm 3.4mm repeat-x}
+.cover .now{font:600 8.4pt 'Bodoni Moda';letter-spacing:.42em;color:var(--gold)}
+.cover h1{font:800 46pt/.98 'Bodoni Moda';margin:3mm 0 2mm;color:#fff;letter-spacing:-.01em}
+.cover h1 i{font-weight:400;color:var(--gold-2)}
+.cover .sub{font:italic 300 12pt 'Spectral';color:#e9d9c0;max-width:130mm}
+.cover .by{font:600 8pt 'Bodoni Moda';letter-spacing:.32em;color:var(--gold);margin-top:5mm}
+
+.act{text-align:center;margin:11mm 0 5mm;break-after:avoid;break-inside:avoid}
+.act:first-child{margin-top:0}
+.act .no{font:400 22pt/1 'Pinyon Script';color:var(--gold)}
+.act h2{font:600 24pt/1.1 'Bodoni Moda';color:var(--velvet);margin:1mm 0 0}
+.act .orn{display:flex;align-items:center;gap:4mm;justify-content:center;margin-top:2.6mm;color:var(--gold);font-size:9pt}
+.act .orn::before,.act .orn::after{content:"";width:28mm;height:1px;background:var(--gold)}
+.lead::first-letter{font:800 40pt/.8 'Bodoni Moda';float:left;color:var(--velvet);margin:1.6mm 2.4mm 0 0}
+.aside{font:italic 400 11pt/1.5 'Spectral';color:var(--velvet);text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:2.6mm 8mm;margin:0 6mm 5mm}
+
+figure{margin:4mm 0 5mm;break-inside:avoid}
+figure img{width:100%;display:block}
+figure svg{width:100%;display:block}
+figcaption{font:italic 400 9pt/1.4 'Spectral';color:var(--muted);margin-top:1.8mm;text-align:center}
+figcaption .tag{font:600 7.4pt 'Bodoni Moda';letter-spacing:.2em;color:var(--velvet);font-style:normal;margin-right:2mm}
+.frame{border:1px solid var(--gold);padding:2mm;background:var(--card);box-shadow:0 0 0 1.4mm var(--cream),0 0 0 1.7mm var(--gold)}
+.side{display:grid;grid-template-columns:1fr 60mm;gap:7mm;align-items:start}
+
+.brothers{display:grid;grid-template-columns:1fr 1fr;gap:5mm;margin:4mm 0;break-inside:avoid}
+.bro{border-radius:2mm;padding:4mm 4mm 3mm;position:relative}
+.bro .nm{font:600 15pt 'Bodoni Moda';margin-bottom:.4mm}
+.bro .tr{font:italic 400 9.4pt 'Spectral';margin-bottom:2mm}
+.bro .katex-display{margin:1.2mm 0}
+.bro .katex{font-size:1.05em}
+.bro.sin{background:#f6e3e3;border:1px solid #d9a3a8}
+.bro.sin .nm,.bro.sin .tr{color:var(--velvet)}
+.bro.cos{background:#e5ebf3;border:1px solid #a9bbd3}
+.bro.cos .nm,.bro.cos .tr{color:#2b4a78}
+
+.formula{background:var(--velvet-d);color:#f2e6d0;border-radius:2mm;padding:4mm 6mm;margin:4mm 0 5mm;break-inside:avoid;position:relative}
+.formula .katex{color:#fff}
+.formula .katex-display{margin:2mm 0}
+.formula .ttl{font:600 7.6pt 'Bodoni Moda';letter-spacing:.3em;color:var(--gold);text-align:center}
+.legend{display:grid;grid-template-columns:repeat(4,1fr);gap:2.4mm;margin-top:3mm}
+.legend div{border:1px solid rgba(201,162,74,.45);border-radius:1.4mm;padding:1.6mm 2.4mm;font-size:8.6pt;line-height:1.35;color:#e9d9c0}
+.legend b{display:block;font:600 12pt 'Bodoni Moda';color:var(--gold-2)}
+
+.ticket{display:grid;grid-template-columns:30mm 1fr;margin:4mm 0 5mm;break-inside:avoid;background:var(--card);border:1px solid var(--line);border-radius:2mm;overflow:hidden}
+.ticket .stub{background:var(--velvet);color:var(--gold-soft);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4mm 2mm;border-right:2px dashed var(--cream)}
+.ticket .stub small{font:600 6.8pt 'Bodoni Moda';letter-spacing:.24em;color:var(--gold)}
+.ticket .stub b{font:600 24pt/1 'Bodoni Moda';color:#fff;margin:1mm 0}
+.ticket .body{padding:4mm 5mm}
+.ticket .given{display:flex;flex-wrap:wrap;gap:1.6mm;margin-bottom:2.4mm}
+.ticket .given span{background:var(--gold-soft);color:var(--ink);font:500 9pt 'Spectral';padding:.5mm 2.4mm;border-radius:1mm}
+.ticket .line{display:grid;grid-template-columns:22mm 1fr;gap:3mm;align-items:baseline;padding:1.2mm 0;border-top:1px dotted var(--line)}
+.ticket .line .k{font:600 7.4pt 'Bodoni Moda';letter-spacing:.14em;color:var(--velvet)}
+.ticket .line code{font:500 10pt 'Spectral';color:var(--ink)}
+.ticket .ans{margin-top:2mm;font:600 14pt 'Bodoni Moda';color:var(--velvet)}
+.bravo{font:400 22pt/1 'Pinyon Script';color:var(--velvet);text-align:center;margin:1mm 0 4mm}
+.pipeline{margin:4mm 0 5mm;break-inside:avoid}
+.closing{background:var(--velvet);color:#f2e3cf;padding:8mm 10mm;margin-top:5mm;text-align:center;border-radius:2mm;break-inside:avoid;box-shadow:inset 0 0 0 1.4mm var(--velvet),inset 0 0 0 1.7mm var(--gold)}
+.closing p{color:#f0dfc8}
+.closing .big{font:italic 400 17pt/1.4 'Bodoni Moda';color:#fff;margin-bottom:4mm}
+.closing .sign{font:400 21pt/1.2 'Pinyon Script';color:var(--gold-2);margin-top:4mm}
+.credits{font:italic 400 8pt/1.5 'Spectral';color:var(--muted);margin-top:5mm;text-align:center}
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="hall"></div>
+  <svg class="curtain" viewBox="0 0 210 297" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="fold" x1="0" x2="1"><stop offset="0" stop-color="#3a0710"/><stop offset=".25" stop-color="#8a1a2b"/><stop offset=".5" stop-color="#4a0a14"/><stop offset=".75" stop-color="#9a2234"/><stop offset="1" stop-color="#3a0710"/></linearGradient>
+      <pattern id="pleat" width="14" height="297" patternUnits="userSpaceOnUse"><rect width="14" height="297" fill="url(#fold)"/></pattern>
+      <linearGradient id="gold" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#f1d98b"/><stop offset="1" stop-color="#a67c2a"/></linearGradient>
+    </defs>
+    <rect x="0" y="0" width="210" height="44" fill="url(#pleat)"/>
+    <path d="M0 44 Q 26 58 52 44 Q 78 58 105 44 Q 132 58 158 44 Q 184 58 210 44" fill="#7d1626" stroke="url(#gold)" stroke-width="1.2"/>
+    <path d="M0 0 H 46 C 40 70, 30 130, 40 190 L 0 190 Z" fill="url(#pleat)"/>
+    <path d="M210 0 H 164 C 170 70, 180 130, 170 190 L 210 190 Z" fill="url(#pleat)"/>
+    <path d="M30 118 q 8 4 14 -2" stroke="url(#gold)" stroke-width="2.2" fill="none"/>
+    <path d="M180 118 q -8 4 -14 -2" stroke="url(#gold)" stroke-width="2.2" fill="none"/>
+    <rect x="0" y="186" width="210" height="111" fill="#2e060c"/>
+    <rect x="0" y="186" width="210" height="2" fill="url(#gold)"/>
+  </svg>
+  <div class="marquee">
+    <div class="bulbs"></div>
+    <div class="now">NOW PLAYING · AN ESSAY IN SEVEN ACTS</div>
+    <h1>Absolute Cinema<br><i>of Math</i></h1>
+    <div class="sub">Why a melody gives you goosebumps, and whether we can rebuild that feeling from numbers alone.</div>
+    <div class="by">WRITTEN &amp; PERFORMED BY LANCHENBA MUTUM</div>
+  </div>
+</section>
+
+<div class="act"><div class="no">Act I</div><h2>Introduction</h2><div class="orn">✦</div></div>
+<div class="aside">Hello reader! While reading, jazz or classic music is recommended for better dive into this essay’s world. Hope you will like it!</div>
+<p class="lead">You are sitting in the most majestic and beautiful theater in your town. The main light dimmed and the one spotlight centered on the, for moment, empty chair. The viewers focused their sight on the stage, getting ready to be amused. The show starts… Hearing the heartbreaking melody gives you goosebumps, you might wonder why?</p>
+<figure class="frame"><img src="img/garnier.jpg" style="height:62mm;object-fit:cover"></figure>
+<figcaption style="margin:-1mm 0 5mm"><span class="tag">THE HOUSE</span>The auditorium of the Opéra Garnier, Paris</figcaption>
+<div class="side">
+  <div>
+    <p>Well, math is the answer. While you enjoy the melody “silent” mathematical problems are happening all around you. Every elegant move of violinist’s hand and every note he plays is controlled by the principle of math. Musicians practice for years to build muscle memory to “hit” the right pitch that needs to be accurate within a micrometer. This is where both fields merge into a single thing. As we know music is nothing without the aesthetic, the same with math. His aesthetic lies in visual symmetry of every angle you draw, every right equation you solve and seeking for right formula to get clear solution.</p>
+  </div>
+  <figure class="frame" style="margin:1mm 0 0"><img src="img/violin-hand.jpg" style="height:56mm;object-fit:cover"><figcaption>A violinist’s hand: years of practice, accurate to a micrometer</figcaption></figure>
+</div>
+<p>In this essay I will reveal what is hiding behind the scenes of music, where there is more math than might be expected. The real question we are chasing is this: <b>what exactly is that feeling- and can we recreate it from scratch using only numbers?</b></p>
+
+<div class="act"><div class="no">Act II</div><h2>Foundation of wave knowledge</h2><div class="orn">✦</div></div>
+<p>To answer that question, we need to start at the very beginning. What is actually happening when the bow touches the string? When the bow touches string they produce tiny, invisible for our eyes, waves. Those waves spread across the room, but the room is not empty right? They undergo diffraction process, which consists of waves bending around obstacles. For instance, you are sitting at the last row. Waves navigate their way to get to you through bending around the heads of people in front of you. That’s why your seat is important. By the time they reach the last row they have fought with every obstacle on their way.</p>
+<figure>
+  <svg id="hall" viewBox="0 0 640 200" xmlns="http://www.w3.org/2000/svg" font-family="Spectral"></svg>
+  <figcaption><span class="tag">FIG. A</span>Sound spreads from the stage in rings and bends around the heads in every row on its way to the back.</figcaption>
+</figure>
+
+<div class="act"><div class="no">Act III</div><h2>The two brothers</h2><div class="orn">✦</div></div>
+<p>So now we know how the wave travels to us. But what gives each note its unique character? That is where sin and cos come in. If you are new to math, imagine them as brothers. They are almost identical, but they have a difference in their “behavior”. Cos is the coolest and the selfish one, while sin is the kindest and altruist. If you don’t understand fully look at their formulas in trigonometry. For example, let’s look at the angle addition formulas. (pic.1)</p>
+<div class="brothers">
+  <div class="bro sin"><div class="nm">Sin</div><div class="tr">the kind, fair brother</div>
+    $$\sin(a+b) = \sin a\cos b + \cos a\sin b$$
+    $$\sin(a-b) = \sin a\cos b - \cos a\sin b$$</div>
+  <div class="bro cos"><div class="nm">Cos</div><div class="tr">the cool, selfish brother</div>
+    $$\cos(a+b) = \cos a\cos b - \sin a\sin b$$
+    $$\cos(a-b) = \cos a\cos b + \sin a\sin b$$</div>
+</div>
+<figcaption style="margin:-2mm 0 4mm"><span class="tag">PIC. 1</span>Addition Formulas</figcaption>
+<p>Here we can prove that for cos himself, he always comes first, and even if he added his brother at the end he was like “you won’t get away with it easily” and gave opposite signs. Meanwhile sin made it fair, shared his angles with brother and gave right signs making it clear and simple.</p>
+
+<div class="act"><div class="no">Act IV</div><h2>How wave is shaped</h2><div class="orn">✦</div></div>
+<p>So, how do they really look like with their “specific” shape. Here comes the second fact of their distinguishes, the starting point. Starting points also represent their “personalities”. If we look at the graph (pic.2), we can see that cos is already starting at very top, while sin starts just from zero.</p>
+<figure>
+  <svg id="sincos" viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg" font-family="Spectral"></svg>
+  <figcaption><span class="tag">PIC. 2</span>sin(x) and cos(x) from 0 to 2π. Cos starts at the very top; sin starts from zero.</figcaption>
+</figure>
+<p>In music, this starting point does not affect the melody it produces, that means it does not matter if we are using cos or sin, it keeps the same melody as long as its frequency and amplitude are the same. What truly matters is that it is not created of a single wave, but a sum of many waves. A string vibrates in different way, making a combination of frequencies called harmonics. These harmonics control the outcome tone of the instrument. The Fourier Transform explains this perfectly- it says we can break down any complex sound into cos or sin waves.</p>
+<figure>
+  <svg id="fourier" viewBox="0 0 640 250" xmlns="http://www.w3.org/2000/svg" font-family="Spectral"></svg>
+  <figcaption><span class="tag">FIG. B</span>Three harmonics of one string, and the single richer wave you hear when they play together.</figcaption>
+</figure>
+<p>As a result we can say, that if we are in math lesson the difference between them matters, and if in music class they are the same. This is essential for better understanding how sounds work.</p>
+
+<div class="act"><div class="no">Act V</div><h2>Fundamental wave equations</h2><div class="orn">✦</div></div>
+<p>Now that we understand the shape and behavior of these waves, we can do something remarkable- describe them with a single formula, you can see it at picture 3.</p>
+<div class="formula">
+  <div class="ttl">PIC. 3 · FUNDAMENTAL WAVE FORMULAS</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm">
+    <div>$$y = A\sin(2\pi f t + \phi)$$</div>
+    <div>$$y = A\cos(2\pi f t + \phi)$$</div>
+  </div>
+  <div class="legend">
+    <div><b>A</b>amplitude (peak height)</div><div><b>f</b>frequency (cycles per second)</div><div><b>t</b>time</div><div><b>φ</b>phase shift (starting point)</div>
+  </div>
+</div>
+<p>These formulas are essential for our problem solving, let’s get more familiar with it. “A” stands for amplitude, it means the highest point of the wave. Frequency is for describing how often the same pattern repeats itself over a specific amount of time, also it can be measured in hertz (Hz). Phase shift is simply a horizontal slide of the entire wave.</p>
+<p>Now let’s get to calculations. Imagine a violinist plays a perfect A4 note (440 Hz) and he wants to find where the string is exactly 0.001 seconds after the bow starts moving, we need to write it like this: A=1mm f=440 Hz t=0.001s and the phase is 0 because like we said in real world application the starting point doesn’t matter.</p>
+<p>Now we need to put these numbers into formula above (pic.3), A for A, f for f and etc. Should look like this:</p>
+<div class="ticket">
+  <div class="stub"><small>PROBLEM</small><b>I</b><small>A4 · 440 HZ</small></div>
+  <div class="body">
+    <div class="given"><span>A = 1 mm</span><span>f = 440 Hz</span><span>t = 0.001 s</span><span>φ = 0</span></div>
+    <div class="line"><span class="k">FORMULA</span><code>y= 1*sin(2*pi*440*0.001+0)</code></div>
+    <div class="line"><span class="k">SIMPLIFY</span><code>y= sin(0.88pi)</code></div>
+    <div class="ans">y = 0.368 mm</div>
+  </div>
+</div>
+<figure>
+  <svg id="a4" viewBox="0 0 640 170" xmlns="http://www.w3.org/2000/svg" font-family="Spectral"></svg>
+  <figcaption><span class="tag">FIG. C</span>The first few milliseconds of the A4 string. At t = 0.001 s it sits 0.368 mm from rest.</figcaption>
+</figure>
+<p>Ta dam! We solved our first problem. Feels easy right? It was the beginning now we are moving on a little difficult problem.</p>
+<p>Robot is playing a normal note (440 Hz), but needs to add a second harmonic for breathtaking harmony melody. To help him we need to find the total displacement (y total)</p>
+<div class="ticket">
+  <div class="stub"><small>PROBLEM</small><b>II</b><small>TWO HARMONICS</small></div>
+  <div class="body">
+    <div class="given"><span>A1=1</span><span>f1=440 Hz</span><span>frequency (1) = 0</span><span>A2=0.5</span><span>f2=pi/4 (slightly shifted)</span><span>t=0.001 s</span></div>
+    <p style="font-size:9.6pt;margin:0 0 1.6mm">The equation looks a little bit different, because we need to sum first with second.</p>
+    <div class="line"><span class="k">1 STEP</span><code>find the solution for 1: y1=1*sin (2pi*440*0.001)=0.368</code></div>
+    <div class="line"><span class="k">2 STEP</span><code>find the solution for second one: y2=0.5*sin(2pi*880*0.001+pi/4)</code></div>
+    <div class="line"><span class="k"></span><code>y2=0.5*sin(1.76pi+0.25pi)=0.5*sin(2.01pi)=0.0157</code></div>
+    <div class="line"><span class="k">3 STEP</span><code>add them together: y total=y1+y2=0.368+0.0157</code></div>
+    <div class="ans">y total = 0.3837 mm</div>
+  </div>
+</div>
+<p>We solved our second problem. You did a great job. This was a little tricky one.</p>
+
+<div class="act"><div class="no">Act VI</div><h2>Advanced equations</h2><div class="orn">✦</div></div>
+<p>Now that we are masters of solving wave equations, I think it is time to make a bigger step in it and solve more complex problem. Don’t be scared, we can do this!</p>
+<p>The equations look like this:</p>
+<div class="formula">
+  <div class="ttl">PIC. 4 · THE EQUATION OF A WAVE</div>
+  <p style="margin:2mm 0 0;color:#e9d9c0;font-size:9.6pt;text-align:center">A simple, general function that solves this equation is:</p>
+  $$f(x - vt) = \frac{2\pi}{\lambda}(x - vt) + \phi$$
+  <p style="margin:0;color:#e9d9c0;font-size:9.6pt;text-align:center">Thus the equation for our sinusoidal traveling wave is:</p>
+  $$y(x,t) = A\sin\!\Big(\frac{2\pi}{\lambda}(x - vt) + \phi\Big)$$
+</div>
+<p>Here we see new signs, what are they?</p>
+<figure class="frame"><img src="img/orig-breakdown.png"><figcaption>Understanding the traveling wave equation: variable breakdown</figcaption></figure>
+<p>In this picture there is a breakdown of every variable we need. The difference between these formulas and the previous is that the new one tells us how the wave travels down the length of the string.</p>
+<p>Let’s get to calculations!</p>
+<p>When violinist plays the vibration doesn’t stay in one spot it travels back and forth. We need to find the position of the wave at a specific point on the string. Given numbers:</p>
+<div class="ticket">
+  <div class="stub"><small>PROBLEM</small><b>III</b><small>TRAVELLING WAVE</small></div>
+  <div class="body">
+    <div class="given"><span>A=1mm</span><span>v=220m/s</span><span>x=0.25</span><span>t=0.001 s</span><span>phase=0</span><span>wavelength=0.5m</span></div>
+    <div class="line"><span class="k">1 STEP</span><code>Calculating (x-vt): (0.25-220*0.001)=0.03</code></div>
+    <div class="line"><span class="k">2 STEP</span><code>put it in equation with other numbers: y=1*sin(2pi/0.5*0.03+0)</code></div>
+    <div class="ans">y = 0.368125 mm</div>
+  </div>
+</div>
+<div class="bravo">Bravo!</div>
+<p>Phew! We did it! Now you are “the master of solving wave length problems”.</p>
+
+<div class="act"><div class="no">Act VII</div><h2>How to train a robot</h2><div class="orn">✦</div></div>
+<p>Remember our question “can we create that feeling from scratch using only numbers?”- this is where we find out. In these decades technology improved so much, that we can train robots how to play a classical music, impressive. Teaching the robot how to perform can be called “transforming hardware to soft gracefully movements of hardware”, hope you got the joke.</p>
+<p>So how does math actually become physical movement? Every joint of the robot arm is controlled by moving it to an exact angle to accomplish task. When we need our 440 Hz, the wave equation helps us to find the exact displacement it needs, and those calculations get converted into a motor angle command. See, our equations we solved earlier can become a real melody!</p>
+<figure class="pipeline">
+  <svg viewBox="0 0 640 250" xmlns="http://www.w3.org/2000/svg" font-family="Spectral">
+    <defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5c0f1b"/></marker></defs>
+    <g font-size="13" text-anchor="middle">
+      <rect x="4" y="20" width="140" height="58" rx="6" fill="#2e060c"/><text x="74" y="44" fill="#e6c977" font-family="Bodoni Moda" font-weight="600">wave equation</text><text x="74" y="63" fill="#f2e6d0" font-size="11.5">y = A sin(2πft + φ)</text>
+      <rect x="168" y="20" width="140" height="58" rx="6" fill="#fffdf6" stroke="#c9a24a"/><text x="238" y="44" fill="#24131a" font-family="Bodoni Moda" font-weight="600">displacement</text><text x="238" y="63" fill="#8a7369" font-size="11.5">for 440 Hz</text>
+      <rect x="332" y="20" width="140" height="58" rx="6" fill="#fffdf6" stroke="#c9a24a"/><text x="402" y="44" fill="#24131a" font-family="Bodoni Moda" font-weight="600">motor angle</text><text x="402" y="63" fill="#8a7369" font-size="11.5">one per joint</text>
+      <rect x="496" y="20" width="140" height="58" rx="6" fill="#5c0f1b"/><text x="566" y="44" fill="#fff" font-family="Bodoni Moda" font-weight="600">melody</text><text x="566" y="63" fill="#f3e6c2" font-size="11.5">the bow moves</text>
+    </g>
+    <path d="M146 49 H 164" stroke="#5c0f1b" stroke-width="2" marker-end="url(#ah)"/><path d="M310 49 H 328" stroke="#5c0f1b" stroke-width="2" marker-end="url(#ah)"/><path d="M474 49 H 492" stroke="#5c0f1b" stroke-width="2" marker-end="url(#ah)"/>
+    <text x="320" y="120" text-anchor="middle" font-family="Bodoni Moda" font-size="14" font-weight="600" fill="#5c0f1b" letter-spacing="2">REHEARSAL, OVER AND OVER</text>
+    <g font-size="12.5" text-anchor="middle" fill="#24131a">
+      <circle cx="140" cy="186" r="40" fill="#f3e6c2" stroke="#c9a24a"/><text x="140" y="183">attempt in</text><text x="140" y="199">simulation</text>
+      <circle cx="320" cy="186" r="40" fill="#f3e6c2" stroke="#c9a24a"/><text x="320" y="183">feedback:</text><text x="320" y="199">right or not?</text>
+      <circle cx="500" cy="186" r="40" fill="#f3e6c2" stroke="#c9a24a"/><text x="500" y="183">adjust,</text><text x="500" y="199">try again</text>
+    </g>
+    <path d="M182 186 H 276" stroke="#5c0f1b" stroke-width="2" marker-end="url(#ah)"/><path d="M362 186 H 456" stroke="#5c0f1b" stroke-width="2" marker-end="url(#ah)"/>
+    <path d="M500 228 C 480 250, 160 250, 140 230" stroke="#5c0f1b" stroke-width="1.6" fill="none" stroke-dasharray="4 4" marker-end="url(#ah)"/>
+  </svg>
+  <figcaption><span class="tag">FIG. D</span>Top: how a solved equation becomes movement. Bottom: how the robot learns, through many attempts in simulation.</figcaption>
+</figure>
+<p>But here is the fun fact. Most people would think scientist would put every equation for every note manually (including me a year ago), instead the robot makes a lot of attempts in simulation, receiving feedback, the feedback includes if the attempt was right or not. This is how real “training” looks like, make sense right?</p>
+<div class="side">
+  <p>If we look back to our equations, we see a lot of variables it needs to control, like velocity or force. This is one of the coolest and convenient applications of those formulas. The closest anyone has come to capturing those goosebump feelings in pure math are the same equations that are stored in robot’s memory. Is it really possible for a robot to replicate it? Even the equations are still unable to provide a solution to that yet.</p>
+  <figure class="frame" style="margin:1mm 0 0"><img src="img/strings.jpg" style="height:44mm;object-fit:cover"><figcaption>Four strings, endless waves</figcaption></figure>
+</div>
+
+<div class="act"><div class="no">Finale</div><h2>Conclusion</h2><div class="orn">✦</div></div>
+<div class="closing">
+  <div class="big">And just like that, the spotlight fades.</div>
+  <p>We started with asking why a melody gives us goosebumps, and we leave knowing the answer is sin/cos waves, a Fourier Transform, and a set of equations a robot can now solve in milliseconds.</p>
+  <p style="margin:0">Math was never just numbers. It was always the invisible system of every beautiful thing. Next time the melody hits you, you will know what hides behind it.</p>
+  <div class="sign">Waiting for the next Lanchenba Mutum, but in robot version</div>
+</div>
+<div class="credits">Photographs via Wikimedia Commons: Opéra Garnier auditorium by Joe deSousa, CC0 · Hand on an old violin by Shixart1985, CC BY 2.0 · Violin strings by Providence Doucet, CC0. Variable breakdown image from the author’s original essay; other figures drawn for this edition.</div>
+
+<script>
+(function(){
+  const NS='http://www.w3.org/2000/svg';
+  function E(s,t,a,x){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(x!==undefined)e.textContent=x;s.appendChild(e);return e}
+  const RED='#a3182c',BLUE='#2b4a78',GOLD='#c9a24a',INK='#24131a',MUT='#8a7369';
+  function path(fn,x0,x1,X,Y,n){let d='';for(let i=0;i<=n;i++){const x=x0+(x1-x0)*i/n;d+=(i?'L':'M')+X(x).toFixed(1)+' '+Y(fn(x)).toFixed(1)}return d}
+  // hall
+  const h=document.getElementById('hall');
+  E(h,'rect',{x:0,y:0,width:640,height:200,fill:'#2e060c',rx:6});
+  E(h,'rect',{x:0,y:20,width:70,height:160,fill:'#5c0f1b'});E(h,'text',{x:35,y:105,'text-anchor':'middle','font-size':12,fill:GOLD,transform:'rotate(-90 35 105)','letter-spacing':3},'STAGE');
+  E(h,'circle',{cx:56,cy:100,r:7,fill:'#e6c977'});
+  for(let r=40;r<620;r+=34)E(h,'path',{d:`M${56} ${100-r*.95} A ${r} ${r} 0 0 1 ${56} ${100+r*.95}`,fill:'none',stroke:GOLD,'stroke-width':1.1,opacity:Math.max(.12,.9-r/700)});
+  for(let row=0;row<6;row++)for(let s=0;s<5;s++){const x=170+row*80,y=30+s*35+(row%2)*12;E(h,'circle',{cx:x,cy:y,r:9,fill:'#7d1626',stroke:'#2e060c','stroke-width':2});E(h,'rect',{x:x-11,y:y+8,width:22,height:8,rx:3,fill:'#7d1626'})}
+  E(h,'circle',{cx:610,cy:100,r:10,fill:GOLD});E(h,'text',{x:610,y:128,'text-anchor':'middle','font-size':11,fill:'#f3e6c2'},'you');
+  // sin cos
+  const s=document.getElementById('sincos'),L=50,W=570,Y0=110,A=80,X=x=>L+x/(2*Math.PI)*W,Y=v=>Y0-v*A;
+  E(s,'line',{x1:L,y1:Y0,x2:L+W,y2:Y0,stroke:'#cdbb97'});E(s,'line',{x1:L,y1:Y0-A-12,x2:L,y2:Y0+A+12,stroke:'#cdbb97'});
+  ['0','π/2','π','3π/2','2π'].forEach((t,i)=>{const x=L+i*W/4;E(s,'line',{x1:x,y1:Y0-A,x2:x,y2:Y0+A,stroke:'#efe3c8'});E(s,'text',{x,y:Y0+A+26,'text-anchor':'middle','font-size':13,fill:MUT},t)});
+  [1,-1].forEach(v=>E(s,'text',{x:L-8,y:Y(v)+4,'text-anchor':'end','font-size':12,fill:MUT},v));
+  E(s,'path',{d:path(Math.sin,0,2*Math.PI,X,Y,200),fill:'none',stroke:RED,'stroke-width':3});
+  E(s,'path',{d:path(Math.cos,0,2*Math.PI,X,Y,200),fill:'none',stroke:BLUE,'stroke-width':3,'stroke-dasharray':'8 5'});
+  E(s,'circle',{cx:X(0),cy:Y(0),r:5,fill:RED});E(s,'circle',{cx:X(0),cy:Y(1),r:5,fill:BLUE});
+  E(s,'text',{x:X(Math.PI/2),y:Y(1)-8,'text-anchor':'middle','font-size':14,fill:RED,'font-style':'italic'},'sin(x)');
+  E(s,'text',{x:X(Math.PI*1.75),y:Y(.7)-14,'text-anchor':'middle','font-size':14,fill:BLUE,'font-style':'italic'},'cos(x)');
+  // fourier
+  const f=document.getElementById('fourier'),fl=40,fw=420,fx=x=>fl+x*fw;
+  const hs=[[1,1,RED,'1st harmonic (fundamental)'],[2,.5,BLUE,'2nd harmonic'],[3,.33,GOLD,'3rd harmonic']];
+  hs.forEach(([k,a,c,t],i)=>{const y0=30+i*52;E(f,'path',{d:path(x=>a*Math.sin(2*Math.PI*k*x),0,1,fx,v=>y0-v*20,160),fill:'none',stroke:c,'stroke-width':2.2});E(f,'text',{x:fl,y:y0-26,'font-size':11,fill:MUT},t)});
+  E(f,'text',{x:fl+fw+28,y:84,'font-size':26,fill:INK,'font-family':'Bodoni Moda'},'=');
+  E(f,'path',{d:path(x=>Math.sin(2*Math.PI*x)+.5*Math.sin(4*Math.PI*x)+.33*Math.sin(6*Math.PI*x),0,1,x=>fl+fw+60+x*120,v=>84-v*26,160),fill:'none',stroke:'#5c0f1b','stroke-width':2.6});
+  E(f,'text',{x:fl+fw+120,y:136,'text-anchor':'middle','font-size':11,fill:MUT},'what you hear');
+  E(f,'line',{x1:fl,y1:192,x2:600,y2:192,stroke:'#e4d5b4'});
+  E(f,'text',{x:320,y:222,'text-anchor':'middle','font-size':12.5,fill:INK,'font-style':'italic'},'The Fourier Transform runs this the other way: it splits the rich wave back into its sines.');
+  // a4
+  const g=document.getElementById('a4'),gl=50,gw=570,gy=82,ga=55,T=.0035,gx=t=>gl+t/T*gw,gyv=v=>gy-v*ga;
+  E(g,'line',{x1:gl,y1:gy,x2:gl+gw,y2:gy,stroke:'#cdbb97'});
+  [0,.001,.002,.003].forEach(t=>{E(g,'line',{x1:gx(t),y1:gy-ga,x2:gx(t),y2:gy+ga,stroke:'#efe3c8'});E(g,'text',{x:gx(t),y:gy+ga+20,'text-anchor':'middle','font-size':12,fill:MUT},t+' s')});
+  E(g,'path',{d:path(t=>Math.sin(2*Math.PI*440*t),0,T,gx,gyv,300),fill:'none',stroke:RED,'stroke-width':2.6});
+  const yv=Math.sin(2*Math.PI*440*.001);
+  E(g,'line',{x1:gx(.001),y1:gy,x2:gx(.001),y2:gyv(yv),stroke:'#5c0f1b','stroke-width':2,'stroke-dasharray':'3 3'});
+  E(g,'circle',{cx:gx(.001),cy:gyv(yv),r:6,fill:GOLD,stroke:'#5c0f1b','stroke-width':2});
+  E(g,'text',{x:gx(.001)+10,y:gyv(yv)-8,'font-size':13,fill:'#5c0f1b','font-weight':600},'y = 0.368 mm');
+  E(g,'text',{x:gl-8,y:gyv(1)+4,'text-anchor':'end','font-size':11,fill:MUT},'1 mm');E(g,'text',{x:gl-8,y:gyv(-1)+4,'text-anchor':'end','font-size':11,fill:MUT},'−1 mm');
+})();
+</script>
+</body>
+</html>

@@ -71,7 +71,7 @@
     "shortTitle": "A Tale of Two Infinities",
     "author": "Lanchenba Mutum",
     "file": "books/tale-of-two-infinities.pdf",
-    "pages": 8,
+    "pages": 7,
     "category": "Infinity",
     "glyph": "ℵ₀ < 𝔠",
     "colors": [
@@ -81,7 +81,7 @@
     "description": "An introduction to Cantor's discovery that infinite sets can differ in size, and to the distinction between countable and uncountable infinity.",
     "excerpt": {
       "text": "Numbers, our whole world is dominated by numbers, all of which are finite – even if some are simply too large to comprehend. However, there is one “number” which defies all others: infinity.",
-      "page": 1
+      "page": 2
     },
     "image": "images/tale-of-two-infinities.jpg",
     "topics": [
@@ -94,7 +94,7 @@
     "sections": [
       {
         "title": "Introduction",
-        "page": 1
+        "page": 2
       },
       {
         "title": "Hilbert's Hotel",
@@ -102,20 +102,20 @@
       },
       {
         "title": "Countable infinity",
-        "page": 7
+        "page": 5
       },
       {
         "title": "Uncountable infinity",
-        "page": 7
+        "page": 5
       },
       {
         "title": "Conclusion",
-        "page": 8
+        "page": 6
       }
     ],
-    "imageAlt": "A pink grand hotel façade beneath the title 'Hilbert's Hotel Paradox' and an infinity symbol.",
+    "imageAlt": "An art deco hotel corridor of numbered doors stretching to a vanishing point, under the title 'A Tale of Two Infinities'.",
     "added": "2026-10-12",
-    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCdfKOPkq6sMRUHAxTIF2QqGC575qcTqDt+XpU3O6UWyu/lA4VQaKWSVCjBQu7tRTFZERqI/wCsoorNDZA/+sooorUxR//Z",
+    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDheS2BTtjUqqSal2NtoN0itznBoqRlIOaKBD4+1Wv+WVFFJloqyUUUUyT/2Q==",
     "permission": false
   },
   {
@@ -124,7 +124,7 @@
     "shortTitle": "A Paradox That Isn't",
     "author": "Lanchenba Mutum",
     "file": "books/a-paradox-that-isnt.pdf",
-    "pages": 4,
+    "pages": 7,
     "category": "Infinity",
     "glyph": "0.9̅ = 1",
     "colors": [
@@ -134,7 +134,7 @@
     "description": "A careful demonstration that 0.999… is exactly equal to 1, with an explanation of why the result so often surprises students.",
     "excerpt": {
       "text": "This shows that the infinite sum represented by 0.999… is exactly equal to 1. It does not merely approach 1—it reaches it in a precise mathematical sense.",
-      "page": 2
+      "page": 3
     },
     "image": "images/a-paradox-that-isnt.jpg",
     "topics": [
@@ -148,48 +148,48 @@
     "sections": [
       {
         "title": "Introduction",
-        "page": 1
+        "page": 2
       },
       {
         "title": "Understanding 0.999…",
-        "page": 1
+        "page": 2
       },
       {
         "title": "A Simple Algebraic Proof",
-        "page": 2
+        "page": 3
       },
       {
         "title": "A Geometric Perspective",
-        "page": 2
+        "page": 4
       },
       {
         "title": "Why This Feels Wrong",
-        "page": 3
+        "page": 4
       },
       {
         "title": "The Birth of Limits",
-        "page": 3
+        "page": 5
       },
       {
         "title": "Representation vs. Value",
-        "page": 3
+        "page": 6
       },
       {
         "title": "Why This Matters",
-        "page": 4
+        "page": 6
       },
       {
         "title": "Conclusion",
-        "page": 4
+        "page": 7
       },
       {
         "title": "References",
-        "page": 4
+        "page": 7
       }
     ],
-    "imageAlt": "Four bars labelled 0.9, 0.99, 0.999 and 0.9999, each closer to a dashed line marked 1.",
+    "imageAlt": "The cover title '0.999… = 1' in cream on a wine-red page.",
     "added": "2026-10-12",
-    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDjY7Z5F3L0qU2j44WrVje20UASQHd9Ks/2jZf3W/KuZynfRHWkjFlheI/MKKu6jdW88aiEHIPcUVpFtrUlmeOtOooqgGnrRRRQB//Z",
+    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDGttOmuIhImME461PLotzFGznaQPQ1RiknVcRswHsae9xPgfvH9+awPV1K7KVOGGDRQzM5yxyaKCiWL7hpj9KKKQhlFFFMZ//Z",
     "permission": false,
     "startHere": {
       "order": 1,
@@ -212,7 +212,7 @@
     "description": "An account of Hilbert's programme and Gödel's incompleteness theorems, which showed that not every mathematical truth can be proved.",
     "excerpt": {
       "text": "Let me break a rule, mathematics can't prove everything…",
-      "page": 1
+      "page": 2
     },
     "image": "images/proof-for-the-unprovable.jpg",
     "topics": [
@@ -226,32 +226,32 @@
     "sections": [
       {
         "title": "Introduction",
-        "page": 1
+        "page": 2
       },
       {
         "title": "Hilbert's Programme",
-        "page": 1
+        "page": 2
       },
       {
         "title": "Consistency",
-        "page": 2
+        "page": 3
       },
       {
         "title": "The First Incompleteness Theorem",
-        "page": 2
+        "page": 4
       },
       {
         "title": "The Goodstein Sequence",
-        "page": 4
+        "page": 5
       },
       {
         "title": "The Second Incompleteness Theorem",
         "page": 7
       }
     ],
-    "imageAlt": "Cartoon of two knights holding signs reading 'True!' and 'False!' around the words 'This statement is false.'",
+    "imageAlt": "An old postcard of the Albertina university in Königsberg beneath the title 'A Proof for the Unprovable'.",
     "added": "2026-10-12",
-    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDuIzhck7vpSNcKpwVNRWqtEcuM1bIQ8lRXMzYhlkwoI4zRTbhd+NoxiimhEn8NOHSiikMRuhooopoR/9k=",
+    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDn7Kye4QBYmYn0ovdMntsF42jz2atnw75qCKWNCdtddqkFnqNmPtihSB1FTzakKF0eWGNwpPGBRW9qFnYQWUptXZmzjOKKq5DVjX8Lf8g9PrWtqX/HofoaKKye5vHY5Cb/AJBM3+9RRRWiMp7n/9k=",
     "permission": false,
     "startHere": {
       "order": 3,
@@ -264,7 +264,7 @@
     "shortTitle": "Glitch in the Fourth Wall",
     "author": "Lanchenba Mutum",
     "file": "books/glitch-in-the-fourth-wall.pdf",
-    "pages": 6,
+    "pages": 7,
     "category": "Number Theory",
     "glyph": "73",
     "colors": [
@@ -295,32 +295,32 @@
       },
       {
         "title": "Proof",
-        "page": 2
-      },
-      {
-        "title": "Part 1: An Upper Bound",
         "page": 3
       },
       {
+        "title": "Part 1: An Upper Bound",
+        "page": 4
+      },
+      {
         "title": "Part 2: Fewer Candidates",
-        "page": 4
-      },
-      {
-        "title": "Part 3: Narrowing Down",
-        "page": 4
-      },
-      {
-        "title": "Conclusion",
         "page": 5
       },
       {
-        "title": "Bibliography",
+        "title": "Part 3: Narrowing Down",
         "page": 6
+      },
+      {
+        "title": "Conclusion",
+        "page": 7
+      },
+      {
+        "title": "Bibliography",
+        "page": 7
       }
     ],
-    "imageAlt": "An Ulam spiral of prime numbers with the prime 73 highlighted in gold.",
+    "imageAlt": "A purple retro television showing a glitching number 73.",
     "added": "2026-10-12",
-    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDhwKUgimins27GBjFaljDRR1ooAKU0UUAIaKKKAP/Z",
+    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDl7S8tooQjxbm7nFD3cTHIUAf7tVrFEkmVZDhSQCa37zRrOG0kmhugzIRgHHNatGl0c7cGNjuUnPpiin3oAZcACiqtYCOHr+NXJP8AVf8AAqKKGS9yC+6r9KKKKbKZ/9k=",
     "permission": false
   },
   {
@@ -329,7 +329,7 @@
     "shortTitle": "A Foray into Secret Santa",
     "author": "Lanchenba Mutum",
     "file": "books/secret-santa.pdf",
-    "pages": 10,
+    "pages": 9,
     "category": "Probability",
     "glyph": "n!/e",
     "colors": [
@@ -339,7 +339,7 @@
     "description": "An analysis of the probability that a participant draws their own name in Secret Santa, introducing derangements and the unexpected appearance of e.",
     "excerpt": {
       "text": "In this essay, we’ll explore the mathematics behind why the way we usually play this game is the stuff of nightmares.",
-      "page": 1
+      "page": 2
     },
     "image": "images/secret-santa.jpg",
     "topics": [
@@ -352,7 +352,7 @@
     "sections": [
       {
         "title": "Introduction",
-        "page": 1
+        "page": 2
       },
       {
         "title": "Derangements",
@@ -364,20 +364,20 @@
       },
       {
         "title": "The Limit 1/e",
-        "page": 5
+        "page": 4
       },
       {
         "title": "Is the Draw Fair?",
-        "page": 6
+        "page": 5
       },
       {
         "title": "Conclusion",
-        "page": 10
+        "page": 9
       }
     ],
-    "imageAlt": "Christmas fir branches with gold baubles, red berries and a pine cone.",
+    "imageAlt": "A gift tag reading ''Tis the Season' on red wrapping paper below Christmas fir branches and baubles.",
     "added": "2026-10-12",
-    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCK4gijt2kQl5d21iO9P0i1YXZE9v5m4fLkV2UHh20XTngTLbznceuan0rT5LYGOdVYD7rd6xVMHbm0OH1Lw9KbgGDjcMlfSiu4vtOknPlxfKp6t3op8hDWuhqQ/wCrFPoorRbFhRRRTA//2Q==",
+    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwBmnyw43m0dx2AHArRiuFjEhWxk+YdSvSpfD2p2FvpaR3Eqq4PTFabeINKEbIJgxYYAxXOttzunBKVlA5C8vY44vIjUqwbJNFUdTIa+kI6E0VkpN6nVHCUmrtFYdKfD/rl+tFFJnSyS+/4+moooojsKOyP/2Q==",
     "permission": false,
     "startHere": {
       "order": 2,
@@ -390,7 +390,7 @@
     "shortTitle": "AI Is Fundamentally Unintelligent",
     "author": "Lanchenba Mutum",
     "file": "books/ai-is-unintelligent.pdf",
-    "pages": 7,
+    "pages": 8,
     "category": "Probability",
     "glyph": "P(H | E)",
     "colors": [
@@ -422,32 +422,32 @@
       },
       {
         "title": "AI the Probability Machine",
-        "page": 2
+        "page": 3
       },
       {
         "title": "When Local Logic Fails Globally",
-        "page": 3
+        "page": 4
       },
       {
         "title": "Gödel",
-        "page": 3
+        "page": 4
       },
       {
         "title": "Turing",
-        "page": 4
+        "page": 5
       },
       {
         "title": "A Glimpse Beyond",
-        "page": 4
+        "page": 5
       },
       {
         "title": "What This Tells Us About Thought",
-        "page": 6
+        "page": 8
       }
     ],
-    "imageAlt": "A probability tree for three coin tosses with the path heads-heads-heads highlighted.",
+    "imageAlt": "The title 'AI is fundamentally unintelligent' above three coins marked H, H and a question mark.",
     "added": "2026-10-12",
-    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDjR1qTcA/y8j3qPPrSgDdxzW1jAkRyGYjjIopqdTRTsguMoFFFAD4+p+lFFFAj/9k=",
+    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDkbWK3ntQr4VvWiTT7WJSzTZGOxrPRSY87sUrIcDLZzWljO5EwAY7TkdqKV12nGaKBjl/1RpW6LRRQLqMk+9RRRQM//9k=",
     "permission": false
   },
   {
@@ -456,7 +456,7 @@
     "shortTitle": "A Prisoner's Dilemma",
     "author": "Lanchenba Mutum",
     "file": "books/prisoners-dilemma.pdf",
-    "pages": 7,
+    "pages": 8,
     "category": "Game Theory",
     "glyph": "(C, D)",
     "colors": [
@@ -484,7 +484,7 @@
       },
       {
         "title": "The Probability of Each Outcome",
-        "page": 2
+        "page": 3
       },
       {
         "title": "The Scoring System",
@@ -496,24 +496,24 @@
       },
       {
         "title": "The Iterated Prisoner's Dilemma",
-        "page": 5
+        "page": 6
       },
       {
         "title": "Maths, Ethics and Psychology",
-        "page": 6
+        "page": 7
       },
       {
         "title": "Conclusion",
-        "page": 6
+        "page": 8
       },
       {
         "title": "References",
-        "page": 7
+        "page": 8
       }
     ],
-    "imageAlt": "The Prisoner's Dilemma payoff matrix, with the mutual-betrayal outcome highlighted as the Nash equilibrium.",
+    "imageAlt": "The title 'A Prisoner's Dilemma' over a dark photo of prison cell bars.",
     "added": "2026-10-12",
-    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDjo1DOAehNXJ7aNUBXrVFfvCtXSmha+jE7Ap33VEnZXKSu7GbKgXGKK3PEa2QSP7Lsz320UoS5lcclZ2Ofp6feFFFUSLL2ooooQH//2Q==",
+    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDkb2CSYIUjZh7CqgtJwxJgf8q2LbU0ihQbiCOtF7rLMgFs31yKjn1tYdjLsRsdlKlT70UxZ3aVnfqaKsRH2FJRRQAlFFFMD//Z",
     "permission": false
   },
   {
@@ -522,7 +522,7 @@
     "shortTitle": "The Possibilities of LEGO",
     "author": "Lanchenba Mutum",
     "file": "books/lego-maths.pdf",
-    "pages": 4,
+    "pages": 7,
     "category": "Combinatorics",
     "glyph": "C(n, k)",
     "colors": [
@@ -532,7 +532,7 @@
     "description": "A combinatorial investigation into the number of ways in which a small set of LEGO bricks can be combined.",
     "excerpt": {
       "text": "LEGO. It's such a simple childhood toy that I have played with from a very young age, and I'm sure most of the people reading this would have as well. However, most don't realise how much maths can be behind such a simple plastic block.",
-      "page": 1
+      "page": 2
     },
     "image": "images/lego-maths.jpg",
     "topics": [
@@ -544,32 +544,32 @@
     "sections": [
       {
         "title": "Introduction",
-        "page": 1
-      },
-      {
-        "title": "The Escalation of Combinations",
-        "page": 1
-      },
-      {
-        "title": "The 812 Million Difference",
         "page": 2
       },
       {
-        "title": "The Modern Calculation",
+        "title": "The Escalation of Combinations",
+        "page": 3
+      },
+      {
+        "title": "The 812 Million Difference",
         "page": 4
+      },
+      {
+        "title": "The Modern Calculation",
+        "page": 6
       },
       {
         "title": "Conclusion",
-        "page": 4
+        "page": 7
       },
       {
         "title": "References",
-        "page": 4
+        "page": 7
       }
     ],
-    "imageAlt": "Rows of red two-by-four LEGO bricks alongside the number of possible combinations for one to six bricks.",
+    "imageAlt": "A red LEGO brick on yellow studs beside the number 915,103,765.",
     "added": "2026-10-12",
-    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDvLC4kurVZXTYW6DNEkkyHkrjtmqjPcQQLDaQEKowCaoG31GWZWlDEZqXKx2Ro31bsdBEWK5cjPtRVSD7RHJgqSpoqjGxfooopgJRRRQB//9k=",
+    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwC9fRbrt2CA1PAb4IoVfk7Vcls1kctnGaSaRbK1MkjEqvpXyUqkZQjGOrPU5U3oWIixQFxg0Vm2OtwXcwiQHJ6UVzVKcoStJWNJU5QdpGpVHWf+QbL9KKKdL40KHxI5fwt/yEKKKK6sf/FOnF/H8j//2Q==",
     "permission": false
   },
   {
@@ -578,7 +578,7 @@
     "shortTitle": "Planet of Fractal Geometry",
     "author": "Lanchenba Mutum",
     "file": "books/planet-of-fractal-geometry.pdf",
-    "pages": 8,
+    "pages": 12,
     "category": "Geometry",
     "glyph": "D ≈ 1.26",
     "colors": [
@@ -588,7 +588,7 @@
     "description": "An illustrated journey through the branches of geometry, culminating in fractals: self-similar shapes with non-integer dimensions.",
     "excerpt": {
       "text": "Welcome to the solar system of geometry created by our father of geometry, known as Euclid. In the vast universe of mathematics, the solar system of geometry stands as the most notable and elegant solar system.",
-      "page": 1
+      "page": 2
     },
     "image": "images/planet-of-fractal-geometry.jpg",
     "topics": [
@@ -602,11 +602,11 @@
     "sections": [
       {
         "title": "Introduction",
-        "page": 1
+        "page": 2
       },
       {
         "title": "Geometry",
-        "page": 1
+        "page": 2
       },
       {
         "title": "Fractal Geometry",
@@ -614,24 +614,24 @@
       },
       {
         "title": "Fractals in Nature",
-        "page": 3
+        "page": 5
       },
       {
         "title": "Equations of Fractal Geometry",
-        "page": 4
-      },
-      {
-        "title": "Fractals in Human Creativity",
         "page": 6
       },
       {
+        "title": "Fractals in Human Creativity",
+        "page": 9
+      },
+      {
         "title": "References",
-        "page": 7
+        "page": 11
       }
     ],
-    "imageAlt": "Illustrated solar system whose planets are named after branches of geometry.",
+    "imageAlt": "The title 'A Voyage to the Planet of Fractal Geometry' beside the glowing edge of the Mandelbrot set.",
     "added": "2026-10-12",
-    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDnNUjaDVHR4wCp+6KfdGO6fc0fk7Vxj1qS/uPtV6bw4y5zj0oS2lv2bDAEDPNejRmvZpvdGrw71bM+ARKzeapI7UVdgYRRPbOq/McFj2orCrBTldtlQqOkuXlX3Fc/6tav6d0P0ooroWzOrp8ilJ99qKKKmW5Ej//Z",
+    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDkLOygkt1dzyferdhBHFdgquD061jR3TxoFB4rS0u4LyjPrWiOebaTMvVl2ajKPeirPiKPZqBOPvDNFI2WxQrT0j/Wj60UU1uY1PhJfFf/AB9Q/wC5RRRSRrHZH//Z",
     "permission": false
   },
   {
@@ -640,7 +640,7 @@
     "shortTitle": "Patterns in Nature",
     "author": "Lanchenba Mutum",
     "file": "books/patterns-in-nature.pdf",
-    "pages": 5,
+    "pages": 7,
     "category": "Nature",
     "glyph": "∇²u",
     "colors": [
@@ -650,7 +650,7 @@
     "description": "An examination of Alan Turing's work on morphogenesis, showing how the spots and stripes of animal markings arise from reaction–diffusion between activators and inhibitors.",
     "excerpt": {
       "text": "Many people associate Alan Turing with the Enigma machine, but in this essay, I shall be exploring one of his later works where he discovered the connection between nature and mathematics.",
-      "page": 1
+      "page": 2
     },
     "image": "images/patterns-in-nature.jpg",
     "topics": [
@@ -663,7 +663,7 @@
     "sections": [
       {
         "title": "Introduction",
-        "page": 1
+        "page": 2
       },
       {
         "title": "Morphogens and Reaction–Diffusion",
@@ -671,16 +671,16 @@
       },
       {
         "title": "Leopard Spots and Rosettes",
-        "page": 3
+        "page": 4
       },
       {
         "title": "Bibliography",
-        "page": 4
+        "page": 7
       }
     ],
-    "imageAlt": "A Turing reaction–diffusion pattern of golden spots on a dark green background.",
+    "imageAlt": "A spotted leopard resting on a tree branch.",
     "added": "2026-10-12",
-    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDGAxxRigEHoaCcCuMAAwaKAwPQ0UwIbb7tSn7tFFD3ERQ/6xqKKKGCP//Z",
+    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDAvLKRQY3lLKvQdqyposNtx+IrWFy9xCGZCB60yKJScSjaT0zWL5kzVcrRjtEpZSRnFFW76ERygr0oq077kNW2NWL/AJBEH1FLqPWD6UUVrUJgZt/95aKKKxLP/9k=",
     "permission": false
   },
   {
@@ -689,7 +689,7 @@
     "shortTitle": "Absolute Cinema of Math",
     "author": "Lanchenba Mutum",
     "file": "books/absolute-cinema-of-math.pdf",
-    "pages": 7,
+    "pages": 10,
     "category": "Music",
     "glyph": "♪ f·2ⁿ",
     "colors": [
@@ -699,7 +699,7 @@
     "description": "An exploration of the mathematics underlying music, from the physics of vibrating strings to harmonics and the equation of a wave.",
     "excerpt": {
       "text": "Hearing the heartbreaking melody gives you goosebumps, you might wonder why? Well, math is the answer.",
-      "page": 1
+      "page": 2
     },
     "image": "images/absolute-cinema-of-math.jpg",
     "topics": [
@@ -713,36 +713,36 @@
     "sections": [
       {
         "title": "Introduction",
-        "page": 1
-      },
-      {
-        "title": "Foundations of Wave Knowledge",
-        "page": 1
-      },
-      {
-        "title": "How a Wave Is Shaped",
         "page": 2
       },
       {
-        "title": "Fundamental Wave Equations",
+        "title": "Foundations of Wave Knowledge",
         "page": 3
       },
       {
-        "title": "Advanced Equations",
+        "title": "How a Wave Is Shaped",
+        "page": 4
+      },
+      {
+        "title": "Fundamental Wave Equations",
         "page": 5
       },
       {
+        "title": "Advanced Equations",
+        "page": 7
+      },
+      {
         "title": "Training a Robot",
-        "page": 6
+        "page": 8
       },
       {
         "title": "Conclusion",
-        "page": 7
+        "page": 10
       }
     ],
-    "imageAlt": "Several harmonic sine waves above the combined waveform they produce.",
+    "imageAlt": "A gilded opera stage between red velvet curtains, above a marquee reading 'Absolute Cinema of Math'.",
     "added": "2026-10-12",
-    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDiCPejbx1pM+tHbimdQbR60UDBPNFACUUUUwAdaKKKQH//2Q==",
+    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDko3KxsB1NLGSVOTVRJTJxlV+tSFXx/rFx65rBwbO6U9SzO+6JARyKKpyTOigEq2PSiqUWkaQqJKxU7CrH/LP8KKKpmBX7GiiimB//2Q==",
     "permission": false
   },
   {

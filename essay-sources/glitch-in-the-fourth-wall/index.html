@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>A Mathematical Glitch in the Fourth Wall</title>
+<meta name="author" content="Lanchenba Mutum">
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Archivo:wdth,wght@100..125,400..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=VT323&display=block" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
+<style>
+:root{
+  --violet:#2b1838; --violet-2:#40264f; --plum:#5a3a6e; --paper:#f6f3f8; --card:#fff; --rule:#e2d9e8;
+  --ink:#1c1222; --ink-2:#3d3145; --muted:#7f7189; --cyan:#13c4d9; --mag:#ff3e8f; --yel:#ffc93c;
+}
+@page{ size:A4; margin:19mm 19mm 21mm; background:var(--paper);
+  @top-left{ content:"● REC   S04E10 · THE SHELDON CONJECTURE"; font:400 10pt 'VT323'; color:#b6a7c0; }
+  @bottom-right{ content:"CH " counter(page); font:400 12pt 'VT323'; color:var(--mag); }
+}
+@page cover{ margin:0; @top-left{content:none} @bottom-right{content:none} }
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:var(--paper);color:var(--ink-2);font:400 10.4pt/1.62 'Source Serif 4',serif}
+p{margin:0 0 3.2mm} b{color:var(--ink)}
+.katex{font-size:1.05em;color:var(--ink)}
+.vt{font-family:'VT323',monospace}
+
+.cover{page:cover;width:210mm;height:297mm;position:relative;overflow:hidden;background:var(--violet);color:#fff}
+.cover .scan{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px)}
+.cover .bars{position:absolute;left:0;right:0;top:0;height:9mm;display:flex}
+.cover .bars i{flex:1}
+.cover .inner{position:absolute;inset:22mm 18mm 18mm;display:flex;flex-direction:column}
+.cover .lbl{font:400 13pt 'VT323';color:var(--cyan);letter-spacing:.08em}
+.cover h1{font:900 34pt/.98 'Archivo';font-stretch:125%;letter-spacing:-.01em;margin:5mm 0 0;text-transform:uppercase}
+.cover h1 span{display:block;color:var(--yel)}
+.cover .tv{margin:9mm auto 0;width:150mm}
+.cover .abs{margin-top:auto;display:grid;grid-template-columns:1fr 1.5fr;gap:8mm;border-top:1px solid rgba(255,255,255,.2);padding-top:5mm}
+.cover .abs b{font:400 13pt 'VT323';color:var(--mag);display:block;font-weight:400}
+.cover .abs p{font:400 9.6pt/1.55 'Source Serif 4';color:#dccfe5;margin:0}
+.cover .abs .by{font:800 14pt 'Archivo';color:#fff}
+
+.chap{display:flex;align-items:center;gap:3mm;margin:6mm 0 1mm;break-after:avoid}
+.chap .no{font:400 30pt/1 'VT323';color:var(--mag)}
+.chap .k{font:400 12pt 'VT323';color:var(--muted);letter-spacing:.06em}
+h2{font:900 23pt/1.02 'Archivo';font-stretch:115%;color:var(--ink);text-transform:uppercase;letter-spacing:-.01em;margin:0 0 4mm;text-shadow:1.2px 0 0 rgba(19,196,217,.8),-1.2px 0 0 rgba(255,62,143,.8);break-after:avoid}
+h3{font:800 12.4pt 'Archivo';color:var(--violet-2);text-transform:uppercase;letter-spacing:.02em;margin:6mm 0 2mm;padding:1.5mm 3mm;background:var(--violet);color:#fff;display:inline-block;break-after:avoid}
+.chap:first-child{margin-top:0}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm;margin:4mm 0 5mm;break-inside:avoid}
+.fact{background:var(--violet);color:#fff;border-radius:3mm;padding:4mm 3mm;text-align:center;position:relative;overflow:hidden}
+.fact::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.05) 0 1px,transparent 1px 3px)}
+.fact .big{font:400 40pt/1 'VT323';color:var(--yel)}
+.fact .big.c{color:var(--cyan)} .fact .big.m{color:var(--mag)}
+.fact span{display:block;font:400 9pt/1.3 'Source Serif 4';color:#dccfe5;margin-top:1.5mm}
+.photo{float:right;width:62mm;margin:1mm 0 3mm 5mm;border-radius:3mm;overflow:hidden;position:relative}
+.photo img{width:100%;display:block;filter:saturate(.8)}
+.photo span{position:absolute;left:0;right:0;bottom:0;font:400 10pt 'VT323';background:rgba(43,24,56,.8);color:#fff;padding:1mm 2mm}
+.callout{background:linear-gradient(90deg,rgba(19,196,217,.12),rgba(255,62,143,.1));border-left:3px solid var(--mag);padding:3.5mm 5mm;margin:4mm 0 5mm;font:italic 400 11.4pt/1.5 'Source Serif 4';color:var(--ink);break-inside:avoid}
+.defs{display:grid;grid-template-columns:24mm 1fr;border:1px solid var(--rule);border-radius:3mm;overflow:hidden;margin:3mm 0 5mm;background:var(--card);break-inside:avoid}
+.defs div{padding:2.4mm 3.5mm;border-bottom:1px solid var(--rule);font-size:9.4pt;line-height:1.45}
+.defs div:nth-child(odd){background:var(--violet);color:#fff;text-align:center;display:flex;align-items:center;justify-content:center}
+.defs div:nth-child(odd) .katex{color:#fff}
+.defs div:nth-last-child(-n+2){border-bottom:0}
+.defs small{color:var(--muted);font-family:'VT323';font-size:11pt}
+.props{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin:3mm 0 4mm;break-inside:avoid}
+.prop{border:2px solid var(--cyan);border-radius:3mm;padding:4mm;background:var(--card)}
+.prop.m{border-color:var(--mag)}
+.prop .t{font:400 13pt 'VT323';color:var(--cyan)} .prop.m .t{color:var(--mag)}
+.prop .f{font-size:13pt;margin-top:1mm}
+.def{background:var(--violet);color:#fff;border-radius:3mm;padding:4mm 6mm;margin:3mm 0 5mm;break-inside:avoid}
+.def b{color:var(--yel);font-weight:600}
+.eq{background:var(--card);border:1px solid var(--rule);border-radius:3mm;padding:1.5mm 5mm;margin:3mm 0 4mm;break-inside:avoid}
+.eq .katex-display{margin:1.6mm 0}
+ul.rules{list-style:none;padding:0;margin:3mm 0 5mm;display:grid;gap:2.4mm}
+ul.rules li{background:var(--card);border:1px solid var(--rule);border-radius:3mm;padding:3mm 4mm 3mm 13mm;position:relative;font-size:9.8pt;line-height:1.5;break-inside:avoid}
+ul.rules li::before{content:attr(data-i);position:absolute;left:3.5mm;top:2.6mm;font:400 17pt/1 'VT323';color:var(--mag)}
+figure{margin:4mm 0 5mm;break-inside:avoid}
+figure svg{width:100%;display:block}
+figcaption{font:400 11pt/1.3 'VT323';color:var(--muted);margin-top:2mm}
+.funnel{display:grid;gap:1.6mm;margin:4mm 0 5mm;break-inside:avoid}
+.funnel div{margin:0 auto;border-radius:2mm;color:#fff;display:flex;justify-content:space-between;align-items:center;padding:2.6mm 5mm;font:400 9.4pt 'Source Serif 4'}
+.funnel b{font:400 19pt/1 'VT323';color:#fff;font-weight:400}
+.verdict{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm;margin:4mm 0 3mm;break-inside:avoid}
+.verdict div{background:var(--card);border:1px solid var(--rule);border-radius:3mm;padding:3mm;text-align:center;font-size:12pt}
+.verdict small{display:block;font:400 10.5pt 'VT323';color:var(--muted)}
+.final{background:var(--violet);color:#fff;border-radius:4mm;padding:4.5mm 7mm;margin:3mm 0 4mm;text-align:center;break-inside:avoid;position:relative;overflow:hidden}
+.final .k{font:400 13pt 'VT323';color:var(--cyan)}
+.final .x{font:900 20pt/1.15 'Archivo';font-stretch:115%;color:#fff;text-transform:uppercase;margin-top:2mm}
+.final .x span{color:var(--yel)}
+.bib{font-size:8pt;line-height:1.38;color:var(--ink-2);margin:0;padding-left:6mm}
+.bib li{margin-bottom:1mm;word-break:break-word}
+.credits{font:400 10pt/1.3 'VT323';color:var(--muted);margin-top:2mm}
+.lp{text-align:center;font:400 19pt 'VT323';color:var(--mag);margin:3mm 0 0}
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="bars"><i style="background:#c0c0c0"></i><i style="background:#ffc93c"></i><i style="background:#13c4d9"></i><i style="background:#3fc46a"></i><i style="background:#ff3e8f"></i><i style="background:#e5484d"></i><i style="background:#3a5bd9"></i></div>
+  <div class="scan"></div>
+  <div class="inner">
+    <div class="lbl">▶ THE OPEN ARCHIVE · NUMBER THEORY</div>
+    <h1>A Mathematical Glitch <span>in the Fourth Wall</span></h1>
+    <svg class="tv" viewBox="0 0 600 470" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="scr" cx=".5" cy=".45" r=".7"><stop offset="0" stop-color="#3a2a52"/><stop offset="1" stop-color="#120a1a"/></radialGradient>
+        <pattern id="lines" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="1.4" fill="rgba(255,255,255,.07)"/></pattern>
+      </defs>
+      <line x1="230" y1="40" x2="300" y2="92" stroke="#b6a7c0" stroke-width="4"/><line x1="380" y1="20" x2="300" y2="92" stroke="#b6a7c0" stroke-width="4"/>
+      <rect x="40" y="90" width="520" height="350" rx="34" fill="#6b4a7d"/>
+      <rect x="40" y="90" width="520" height="350" rx="34" fill="none" stroke="#2b1838" stroke-width="5"/>
+      <rect x="70" y="118" width="360" height="294" rx="40" fill="url(#scr)"/>
+      <rect x="70" y="118" width="360" height="294" rx="40" fill="url(#lines)"/>
+      <g font-family="Rubik Glitch" font-size="200" text-anchor="middle">
+        <text x="244" y="335" fill="#13c4d9" opacity=".9">73</text>
+        <text x="256" y="331" fill="#ff3e8f" opacity=".9">73</text>
+        <text x="250" y="333" fill="#fff">73</text>
+      </g>
+      <rect x="70" y="236" width="360" height="9" fill="#ffc93c" opacity=".35"/>
+      <rect x="70" y="300" width="360" height="4" fill="#13c4d9" opacity=".4"/>
+      <g fill="#2b1838"><circle cx="495" cy="170" r="26"/><circle cx="495" cy="250" r="26"/></g>
+      <g stroke="#b6a7c0" stroke-width="4"><line x1="495" y1="150" x2="495" y2="170"/><line x1="495" y1="250" x2="512" y2="236"/></g>
+      <g fill="#2b1838"><rect x="460" y="300" width="70" height="8" rx="4"/><rect x="460" y="318" width="70" height="8" rx="4"/><rect x="460" y="336" width="70" height="8" rx="4"/><rect x="460" y="354" width="70" height="8" rx="4"/></g>
+      <rect x="100" y="440" width="40" height="26" fill="#2b1838"/><rect x="460" y="440" width="40" height="26" fill="#2b1838"/>
+    </svg>
+    <div class="abs">
+      <div><b>BY</b><span class="by">Lanchenba Mutum</span></div>
+      <div><b>ABSTRACT</b><p>A journey through the improbable mathematics of 73. From a sitcom gag to a rigorous proof by Pomerance and Spicer, this essay explores why a single prime number stands unique in the infinite sea of integers, explained for curious minds.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="chap"><span class="no">01</span><span class="k">// INTRODUCTION</span></div>
+<h2>The Chuck Norris of numbers</h2>
+<p>I was just a toddler, oblivious to the beauty of prime numbers, proofs, and arithmetic, when the funniest scientist on television, played by an actor born in 1973, explained why his favourite number was “the Chuck Norris of numbers”. That scientist was Sheldon Cooper in the 73rd episode of The Big Bang Theory, and his marvelous number is 73.</p>
+<p>Let's see what Sheldon likes about this number: 73 is the 21st prime number, and 21 is the product of 73’s digits; its mirror, 37, is the 12th prime number, which is 21’s mirror.</p>
+<div class="facts">
+  <div class="fact"><div class="big">73</div><span>is the 21st prime</span></div>
+  <div class="fact"><div class="big c">7×3</div><span>= 21, its position</span></div>
+  <div class="fact"><div class="big m">37</div><span>its mirror, is the 12th prime</span></div>
+  <div class="fact"><div class="big">12</div><span>is the mirror of 21</span></div>
+</div>
+<div class="photo"><img src="img/tv.jpg" alt=""><span>▶ LIVE · CH 73</span></div>
+<p>When I first watched that episode of the series, I thought that it was just another one of Sheldon’s quirks, so I laughed it off. But one day, while scrolling through Instagram, I encountered a video claiming there is a formal proof of 73’s uniqueness.</p>
+<p>Now that I am no longer a toddler and have become aware of how lovely mathematics is, I decided to delve deeper into the proof.</p>
+<p>I was thrilled when I found the original paper, authored by Carl Pomerance and Chris Spicer. However, my excitement vanished as soon as I opened the file. What did I see? Calculus. The entire proof was built on complex analysis and estimates that I hadn't even begun to study in high school. I quickly skimmed the document, and at first, I couldn’t understand a word; I feared it was way out of my league.</p>
+<p>However, I did not give up, because I truly wanted to see how Sheldon’s favourite number is actually unique. Thus, my longest mathematical endeavour started.</p>
+<p>I spent several weeks working on that paper, trying to decipher those complex mathematical elements. All of that time paid off when I finally closed my textbook, looked at the stack of notes in front of me, and realised I had translated that dense proof into an easier, more intuitive version.</p>
+<div class="callout">I was very proud of myself and felt like a mini-Sheldon for completing this task. Although, unlike Sheldon, I prefer helping people understand instead of judging them for what they don’t know, so I wanted my version of the proof to be accessible to fans who, like me, lack a rigorous mathematical background but share a curiosity for why 73 is so special.</div>
+<p>In accordance with my desire to help others, let me guide you through the proof of the Sheldon Conjecture.</p>
+<figure>
+  <svg id="ulam" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg" font-family="VT323"></svg>
+  <figcaption>▶ THE PRIMES UP TO 400 ON AN ULAM SPIRAL. 73 AND ITS MIRROR 37 ARE LIT UP.</figcaption>
+</figure>
+
+<div class="chap"><span class="no">02</span><span class="k">// PROOF</span></div>
+<h2>Setting the scene</h2>
+<p>For the whole duration of this proof, it will be assumed that:</p>
+<div class="defs">
+  <div>\(n\)</div><div>position of a number in the sequence of prime numbers. <small>Ex: considering 5, n=3;</small></div>
+  <div>\(p_n\)</div><div>the n-th prime number. <small>Ex: if n=3, then p<sub>n</sub> = 5;</small></div>
+  <div>\(\pi(x)\)</div><div>prime counting function, which indicates how many prime numbers are equal or less than \(x\);</div>
+  <div>\(v(p_n)\)</div><div>value of the product of the digits forming p<sub>n</sub>. <small>Ex: if p<sub>n</sub>=19, then v(p<sub>n</sub>)=9;</small></div>
+  <div>\(rev(x)\)</div><div>integer whose sequence of digits is the reverse of the digits of the number \(x\). <small>Ex: if x=765, then rev(x)=567;</small></div>
+  <div>\(k\)</div><div>number of the digits forming a number. <small>Ex: if x=745 then k=3.</small></div>
+</div>
+<p>Before defining what a Sheldon Prime is, it is necessary to define two properties, which will be referred as the Sheldon properties:</p>
+<div class="props">
+  <div class="prop"><div class="t">THE PRODUCT PROPERTY</div>which is satisfied if<div class="f">\(v(p_n) = n\)</div></div>
+  <div class="prop m"><div class="t">THE MIRROR PROPERTY</div>which is satisfied if<div class="f">\(rev(p_n) = p_{rev(n)}\)</div></div>
+</div>
+<div class="def"><b>Definition:</b> The prime p<sub>n</sub> is a Sheldon Prime if it satisfies both the product property and the mirror property. <br><b>The Sheldon Conjecture</b> holds that 73 is the unique Sheldon prime.</div>
+
+<h3>Part 1 · Proving that there is a value over which there are no Sheldon primes</h3>
+<p>The first part of this proof aims to demonstrate that there is no Sheldon Prime that’s greater than a certain integer, which means that these numbers are not to be researched among infinity.</p>
+<p>As a result of the explicit bound for the Prime Number Theorem by Rosser and Schoenfeld, yields that:</p>
+<div class="eq">$$\pi(x) > \frac{x}{\ln x}\quad\text{for all } x \ge 17$$</div>
+<p>Considering \(x = p_n\) and \(x \ge 17\), it follows that</p>
+<div class="eq">$$n = \pi(p_n) > \frac{p_n}{\ln p_n}$$</div>
+<p>Say \(p_n\) has \(k\) digits. Then:</p>
+<ul class="rules">
+  <li data-i="▸">\(v(p_n) \le 9^{k}\) because 9 is the maximum value of each digit;</li>
+  <li data-i="▸">\(p_n \ge 10^{k-1}\) because it is the minimum value of a number with \(k\) digits;</li>
+</ul>
+<p>Also, since \(p_n\) has to satisfy the product property, the following inequality must be satisfied:</p>
+<div class="eq">$$10\,\log\!\left(10^{k}\right) > \left(\frac{10}{9}\right)^{k}$$</div>
+<p>While the first member of this inequality grows linearly, the second one grows exponentially. Through computations and mathematical induction, it can be demonstrated that the inequality fails for \(k \ge 46\).</p>
+<p>It’s been proved that it is impossible to find a Sheldon prime with 46 digits or more, thus the research has been limited to numbers strictly less than \(10^{45}\).</p>
+
+<h3>Part 2 · Reducing the number of possible Sheldon primes</h3>
+<p>In order to narrow the research, some of the rules that Sheldon Primes follow can be logically derived from the Sheldon properties:</p>
+<ul class="rules">
+  <li data-i="0">no Sheldon Prime cannot contain the digit zero, otherwise \(v(p_n) = 0\), but there’s no such thing as the 0th prime;</li>
+  <li data-i="1">no Sheldon Prime can have 1 among its digits, unless it is the first digit: 1 does not make \(v(p_n)\) greater and it is therefore redundant. It can in fact be proved through the usage of <i>Mathematica</i> that \(v(p_n) = n\) is never satisfied by a number with 1 among its digits, unless it is the first one;</li>
+  <li data-i="7">each \(n\) of a Sheldon Prime has to be <i>7-smooth</i>: it means that none of its prime divisors can be greater than 7, since it is the product of digits that are included between 1 and 9;</li>
+  <li data-i="↺">since \(rev(p_n)\) has to be prime, each Sheldon Prime’s first digit must be \(1 \lor 3 \lor 7 \lor 9\), because there are no primes greater than 5 ending with an even number or with a 5.</li>
+</ul>
+<p>Given the constraints above, it can be shown through a software such as <i>Mathematica</i>, which is the one originally used by the authors, that the Sheldon Primes-to-be are now “only” 213,449.</p>
+
+<h3>Part 3 · Narrowing the research further down</h3>
+<p>For each number left, it is supposed that it is manually checked whether each one satisfies the Sheldon properties, although checking all of those numbers would take ages; therefore more “mathematical tricks” have to be used.</p>
+<p>By using the function \(li^{-1}(n)\), the first few digits of a potential \(p_n\) can be determined. It is then assumed that the missing digits of \(p_n\) are all 9s, so the maximum possible value of \(v(p_n)\) is obtained. If it results through the usage of the software that \(v(p_n) &lt; n\), then said number is discarded.</p>
+<p>\(v(p_n) = n\) is true for 338 numbers only. The mirror property was then manually checked on each of them.</p>
+<div class="funnel">
+  <div style="width:100%;background:#2b1838"><span>every prime, out to infinity</span><b>∞</b></div>
+  <div style="width:86%;background:#40264f"><span>Part 1 · fewer than 46 digits</span><b>&lt; 10<sup>45</sup></b></div>
+  <div style="width:72%;background:#5a3a6e"><span>Part 2 · candidates left</span><b>213,449</b></div>
+  <div style="width:58%;background:#13a3b6"><span>Part 3 · product property holds</span><b>338</b></div>
+  <div style="width:44%;background:#ff3e8f"><span>both properties</span><b>73</b></div>
+</div>
+<figcaption style="text-align:center;margin-top:-2mm;margin-bottom:5mm">▶ HOW THE SEARCH SHRINKS, STEP BY STEP</figcaption>
+
+<h3>Conclusion of the proof</h3>
+<p>In conclusion, none of the analyzed numbers satisfied both of the Sheldon Properties, except for 73. In fact:</p>
+<div class="verdict">
+  <div>\(7 \times 3 = 21\)<small>product</small></div>
+  <div>\(p_{21} = 73\)<small>21st prime</small></div>
+  <div>\(rev(73) = 37\)<br>\(rev(21) = 12\)<small>mirrors</small></div>
+  <div>\(p_{12} = 37\)<small>12th prime</small></div>
+</div>
+<div class="eq">$$\text{So}\quad rev(73) = p_{rev(21)} = p_{12} = 37$$</div>
+<p>It has been proven that the Sheldon Conjecture is therefore true.</p>
+
+<div class="chap"><span class="no">03</span><span class="k">// CONCLUSION</span></div>
+<h2>Sheldon was right all along</h2>
+<div class="final"><div class="k">▶ THE VERDICT IS IN</div><div class="x">Out of the infinite sea of integers, <span>73 stands alone</span> on its throne.</div></div>
+<p>So, the verdict is in: Sheldon Cooper was right all along. Out of the infinite sea of integers, 73 stands alone on its throne. It is not just a 'cool' number; it is a mathematical anomaly, a unique point where the prime sequence and our decimal system dance in a perfect, unrepeatable synchrony.</p>
+<p>Maybe all of the mathematics we did today is completely useless and we will not become as smart as Sheldon just by studying it, but the journey through this proof reminded us how the beauty of mathematics is not confined to old, dusty textbooks: it is all around us, alive in our culture, just waiting for someone curious enough to ask “Is this actually true?”.</p>
+<p>Furthermore, working on this paper not only taught me calculus and number theory: it taught me that anything can be understood, even the most formidable mathematical formulas, if you put enough passion into it (and maybe carry some of Sheldon's stubbornness!).</p>
+<p>I hope I was a good cicerone during our journey through the meanders of number theory. I want to thank you for dedicating your time to my work, which I hope has sparked your interest in mathematics and TV shows!</p>
+<p>In conclusion, as Sheldon would say: live long and prosper!</p>
+<div class="lp">🖖 LIVE LONG AND PROSPER</div>
+
+<div class="chap" style="margin-top:3mm"><span class="no">04</span><span class="k">// BIBLIOGRAPHY</span></div>
+<ol class="bib">
+  <li>Lorre, C., &amp; Prady, B. (Producers). (2010). The Alien Parasite Hypothesis [TV Series, Season 4, Episode 10]. In <i>The Big Bang Theory</i>. Warner Bros. Television.</li>
+  <li>Pomerance, C., &amp; Spicer, C. (2019). Proof of the Sheldon Conjecture. <i>The American Mathematical Monthly</i>, 126(1), 1-10.</li>
+  <li>Scorletti, M., &amp; Trioni, M. I. (2021). <i>Tutta la Matematica</i> (6ª ed.). Vallardi A.</li>
+  <li>Wikipedia contributors. (2024). Prime-counting function. <i>Wikipedia, The Free Encyclopedia</i>. Retrieved February 25, 2026, from https://en.wikipedia.org/wiki/Prime-counting_function</li>
+  <li>Wikipedia contributors. (2024). Prime number theorem. <i>Wikipedia, The Free Encyclopedia</i>. Retrieved February 25, 2026, from https://en.wikipedia.org/wiki/Prime_number_theorem</li>
+  <li>YouMath. (s.d.). Integrali. Retrieved March 4, 2026, from https://www.youmath.it/lezioni/analisi-matematica/integrali.html</li>
+  <li>YouMath. (s.d.). Limiti, continuità e asintoti. Retrieved March 5, 2026, from https://www.youmath.it/lezioni/analisi-matematica/limiti-continuita-e-asintoti.html</li>
+</ol>
+<div class="credits">PHOTO: VINTAGE TELEVISION BY SVEN SCHEUERMEIER (UNSPLASH, CC0) VIA WIKIMEDIA COMMONS · TV, SPIRAL AND FUNNEL DRAWN FOR THIS EDITION</div>
+
+<script>
+(function(){
+  const s=document.getElementById('ulam'),NS='http://www.w3.org/2000/svg',E=(t,a,x)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(x!==undefined)e.textContent=x;s.appendChild(e);return e};
+  const isP=n=>{if(n<2)return false;for(let d=2;d*d<=n;d++)if(n%d==0)return false;return true};
+  E('rect',{x:0,y:0,width:600,height:300,rx:12,fill:'#2b1838'});
+  const N=400, c=13.5, ox=300, oy=150; let x=0,y=0,dx=1,dy=0,seg=1,step=0,turns=0;
+  for(let n=1;n<=N;n++){
+    const px=ox+x*c, py=oy-y*c, p=isP(n), hot=(n===73||n===37);
+    if(p) E('rect',{x:px-5,y:py-5,width:10,height:10,rx:2,fill:hot?(n===73?'#ff3e8f':'#13c4d9'):'#ffc93c',opacity:hot?1:.75});
+    else E('circle',{cx:px,cy:py,r:1.1,fill:'#7f7189'});
+    if(hot){E('text',{x:px,y:py-9,'text-anchor':'middle','font-size':16,fill:n===73?'#ff3e8f':'#13c4d9'},n);}
+    x+=dx;y+=dy;step++;
+    if(step===seg){step=0;[dx,dy]=[-dy,dx];turns++;if(turns%2===0)seg++;}
+  }
+  E('text',{x:18,y:28,'font-size':18,fill:'#13c4d9'},'ULAM SPIRAL · n ≤ 400');
+  E('rect',{x:18,y:262,width:10,height:10,rx:2,fill:'#ffc93c'});E('text',{x:34,y:271,'font-size':15,fill:'#dccfe5'},'prime');
+  E('circle',{cx:23,cy:285,r:1.6,fill:'#7f7189'});E('text',{x:34,y:290,'font-size':15,fill:'#dccfe5'},'not prime');
+})();
+</script>
+</body>
+</html>

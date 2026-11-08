@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>A Prisoner's Dilemma</title>
+<meta name="author" content="Lanchenba Mutum">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Libre+Franklin:ital,wght@0,400;0,500;0,700;0,800;1,400&family=Courier+Prime:wght@400;700&display=block" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
+<style>
+:root{
+  --coal:#18181a; --coal-2:#26262a; --steel:#3a3a40; --concrete:#ebe8e1; --card:#f8f6f1; --rule:#d6d1c6;
+  --ink:#161616; --ink-2:#38373a; --muted:#7a766f; --yel:#f2c230; --yel-soft:#fbefc4; --red:#d6461f; --red-soft:#f8dcd2; --teal:#2f7f7a; --teal-soft:#d5ebe8;
+}
+@page{ size:A4; margin:19mm 19mm 21mm; background:var(--concrete);
+  @top-left{ content:"CASE 7 · A PRISONER'S DILEMMA"; font:700 7.6pt 'Courier Prime'; letter-spacing:.12em; color:var(--muted); }
+  @top-right{ content:"CONFIDENTIAL"; font:700 7.6pt 'Courier Prime'; letter-spacing:.2em; color:var(--red); }
+  @bottom-center{ content:counter(page); font:400 14pt 'Bebas Neue'; color:var(--ink); }
+}
+@page cover{ margin:0; @top-left{content:none} @top-right{content:none} @bottom-center{content:none} }
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:var(--concrete);color:var(--ink-2);font:400 9.8pt/1.62 'Libre Franklin',sans-serif}
+p{margin:0 0 3mm} b{color:var(--ink)}
+.katex{font-size:1.04em;color:var(--ink)}
+.cp{font-family:'Courier Prime',monospace}
+
+.cover{page:cover;width:210mm;height:297mm;position:relative;overflow:hidden;background:var(--coal);color:#fff}
+.cover .ph{position:absolute;inset:0;background:var(--coal) center/cover;filter:grayscale(1) contrast(1.25) brightness(.55)}
+.cover .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(24,24,26,.2) 0%,rgba(24,24,26,.55) 45%,var(--coal) 80%)}
+.cover .bars{position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 17mm,rgba(0,0,0,.55) 17mm 19.5mm)}
+.cover .tape{position:absolute;left:-10mm;right:-10mm;top:34mm;height:11mm;background:var(--yel);transform:rotate(-4deg);display:flex;align-items:center;gap:8mm;white-space:nowrap;overflow:hidden;font:400 15pt 'Bebas Neue';letter-spacing:.14em;color:var(--coal)}
+.cover .inner{position:absolute;left:18mm;right:18mm;bottom:18mm}
+.cover .k{font:700 8.4pt 'Courier Prime';letter-spacing:.2em;color:var(--yel)}
+.cover h1{font:400 92pt/.86 'Bebas Neue';letter-spacing:.01em;margin:4mm 0 0}
+.cover h1 span{color:var(--yel)}
+.cover .q{font:italic 400 13pt/1.45 'Libre Franklin';color:#cfcac0;max-width:140mm;margin-top:5mm}
+.cover .row{display:grid;grid-template-columns:1fr 1fr;gap:5mm;margin-top:9mm}
+.suspect{border:1px solid rgba(255,255,255,.25);padding:4mm;display:grid;grid-template-columns:18mm 1fr;gap:4mm;align-items:center}
+.suspect .face{width:18mm;height:18mm;border-radius:50%;background:var(--steel);display:grid;place-items:center;font:400 30pt 'Bebas Neue';color:var(--yel)}
+.suspect b{display:block;font:400 18pt 'Bebas Neue';letter-spacing:.06em;color:#fff}
+.suspect span{font:400 8pt 'Courier Prime';color:#b9b4aa}
+.cover .by{display:flex;justify-content:space-between;margin-top:8mm;padding-top:4mm;border-top:1px solid rgba(255,255,255,.2);font:700 9pt 'Courier Prime';letter-spacing:.1em;color:#cfcac0}
+
+.sec{margin-top:8mm} .sec:first-of-type{margin-top:0}
+.sh{display:grid;grid-template-columns:16mm 1fr;gap:4mm;align-items:end;margin-bottom:4mm;border-bottom:3px solid var(--ink);padding-bottom:2mm;break-after:avoid}
+.sh .n{font:400 46pt/.8 'Bebas Neue';color:var(--red)}
+.sh h2{font:400 30pt/.95 'Bebas Neue';letter-spacing:.02em;color:var(--ink);margin:0}
+.payoff{display:grid;grid-template-columns:30mm 1fr 1fr;gap:1.6mm;margin:3mm 0 1mm;break-inside:avoid}
+.payoff>div{padding:3mm;border-radius:1.5mm;font-size:9pt;line-height:1.4}
+.payoff .h{background:var(--coal);color:#fff;font:400 14pt 'Bebas Neue';letter-spacing:.06em;display:flex;align-items:center;justify-content:center;text-align:center}
+.payoff .h.blank{background:transparent}
+.payoff .c{background:var(--card);border:1px solid var(--rule)}
+.payoff .both-c{background:var(--teal-soft);border-color:var(--teal)}
+.payoff .both-b{background:var(--red-soft);border-color:var(--red)}
+.payoff .mix{background:var(--yel-soft);border-color:var(--yel)}
+.payoff .big{font:400 26pt/1 'Bebas Neue';color:var(--ink);display:flex;gap:4mm;justify-content:center;align-items:baseline}
+.payoff .big small{font:700 8pt 'Courier Prime';color:var(--muted);display:block}
+.fig{font:700 7.8pt/1.5 'Courier Prime';color:var(--muted);margin:1mm 0 5mm}
+.eq{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--yel);padding:1.5mm 5mm;margin:3mm 0 4mm;break-inside:avoid}
+.eq .katex-display{margin:1.5mm 0}
+.eq.dark{background:var(--coal);border-color:var(--coal);border-left-color:var(--yel)}
+.eq.dark .katex{color:#fff}
+.stamp{display:inline-block;font:400 20pt 'Bebas Neue';letter-spacing:.12em;color:var(--red);border:2.4px solid var(--red);padding:0 4mm;transform:rotate(-4deg);margin:2mm 0}
+.verdict{background:var(--coal);color:#fff;padding:6mm 7mm;margin:4mm 0 5mm;break-inside:avoid;display:grid;grid-template-columns:auto 1fr;gap:6mm;align-items:center}
+.verdict .v{font:400 54pt/1 'Bebas Neue';color:var(--yel)}
+.verdict p{color:#dcd7cd;margin:0}
+.verdict .katex{color:#fff}
+figure{margin:4mm 0 5mm;break-inside:avoid}
+figure svg{width:100%;display:block}
+figcaption{font:700 7.8pt/1.5 'Courier Prime';color:var(--muted);margin-top:2mm}
+.note{background:var(--yel);color:var(--coal);padding:4mm 5mm;font:500 10pt/1.5 'Libre Franklin';margin:4mm 0;break-inside:avoid}
+.note b{font-weight:800}
+.rounds{display:grid;grid-template-columns:repeat(2,1fr);gap:4mm;margin:4mm 0 5mm;break-inside:avoid}
+.round{background:var(--card);border:1px solid var(--rule);padding:4mm}
+.round .t{font:400 16pt 'Bebas Neue';letter-spacing:.05em}
+.round .seq{display:flex;gap:1.2mm;margin:2mm 0}
+.round .seq i{width:8mm;height:8mm;border-radius:50%;display:grid;place-items:center;font:700 8pt 'Courier Prime';font-style:normal;color:#fff}
+.round .C{background:var(--teal)} .round .B{background:var(--red)}
+.round .bar{height:2.4mm;background:var(--rule);border-radius:2mm;overflow:hidden}
+.round .bar i{display:block;height:100%}
+.round small{font:700 7.4pt 'Courier Prime';color:var(--muted)}
+.closing{background:var(--coal);color:#e6e1d6;padding:7mm 8mm;margin-top:5mm;break-inside:avoid}
+.closing p{color:#d5d0c6}
+.closing .big{font:400 24pt/1.05 'Bebas Neue';letter-spacing:.03em;color:#fff;margin-bottom:3mm}
+.closing .big span{color:var(--yel)}
+.refs{font-size:8.2pt;line-height:1.5;margin-top:6mm;break-inside:avoid}
+.refs p{margin-bottom:2mm;word-break:break-word}
+.credits{font:700 7.4pt/1.5 'Courier Prime';color:var(--muted);margin-top:4mm}
+.ven{float:right;width:62mm;margin:0 0 3mm 5mm}
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="ph" id="cph"></div>
+  <div class="bars"></div>
+  <div class="shade"></div>
+  <div class="tape">INTERROGATION IN PROGRESS · DO NOT CROSS · INTERROGATION IN PROGRESS · DO NOT CROSS · INTERROGATION IN PROGRESS</div>
+  <div class="inner">
+    <div class="k">GAME THEORY · PROBABILITY · ETHICS</div>
+    <h1>A Prisoner's<br><span>Dilemma</span></h1>
+    <div class="q">Two rational agents, two rooms, no way to talk. Stay loyal, or betray?</div>
+    <div class="row">
+      <div class="suspect"><div class="face">A</div><div><b>Agent A</b><span>co-operates with probability q</span></div></div>
+      <div class="suspect"><div class="face">B</div><div><b>Agent B</b><span>co-operates with probability r</span></div></div>
+    </div>
+    <div class="by"><span>FILED BY LANCHENBA MUTUM</span><span>THE OPEN ARCHIVE</span></div>
+  </div>
+</section>
+
+<section class="sec">
+<div class="sh"><span class="n">1</span><h2>Introduction</h2></div>
+<p>In Game Theory, one of the most important thought experiments is the Prisoner’s Dilemma. It entails two rational agents who have been arrested and are being interrogated separately (i.e., communication is not allowed between them). Each of these agents are posed with two possible options: they can betray their partner; they can co-operate with their partner. However, they don’t know what decision their partner is making. After the agents have made their decisions, they will each receive a prison sentence accordingly.</p>
+<p>Let’s map this out in a table with two rational agents, let’s call them \(\boldsymbol{A}\) and \(\boldsymbol{B}\), and every possible outcome with their respective sentences (see Figure 1).</p>
+<div class="payoff">
+  <div class="h blank"></div><div class="h">A Co-operates</div><div class="h">A Betrays</div>
+  <div class="h">B Co-operates</div>
+  <div class="c both-c">Both \(\boldsymbol{A}\) and \(\boldsymbol{B}\) receive small medium sized sentence (let’s call this sentence \(\alpha\) years)</div>
+  <div class="c mix">\(\boldsymbol{A}\) receives a minimum sentence (let’s call this sentence \(\beta\) years)<br>\(\boldsymbol{B}\) receives a maximum sentence (let’s call this sentence \(\gamma\) years)</div>
+  <div class="h">B Betrays</div>
+  <div class="c mix">\(\boldsymbol{A}\) receives a maximum sentence (this sentence is \(\gamma\) years)<br>\(\boldsymbol{B}\) receives a minimum sentence (this sentence is \(\beta\) years)</div>
+  <div class="c both-b">Both \(\boldsymbol{A}\) and \(\boldsymbol{B}\) receive large medium sized sentence (let’s call this sentence \(\delta\) years)</div>
+</div>
+<div class="fig">FIGURE 1: A TABLE WITH ALL POSSIBLE OUTCOMES AND THEIR RESPECTIVE SENTENCES</div>
+<p>In this table, \(\gamma > \delta > \alpha > \beta\) and \(\{\alpha, \beta, \gamma, \delta \in \mathbb{R} : \alpha, \beta, \gamma, \delta \ge 0\}\). To get a better understanding of this table numerically, we can set \(\alpha, \beta, \gamma\) and \(\delta\) to their typical values which are \(\alpha = 1,\ \beta = 0,\ \gamma = 5\) and \(\delta = 3\) (see Figure 2).</p>
+<div class="payoff">
+  <div class="h blank"></div><div class="h">A Co-operates</div><div class="h">A Betrays</div>
+  <div class="h">B Co-operates</div>
+  <div class="c both-c"><div class="big"><span><small>A</small>1</span><span><small>B</small>1</span></div><div style="text-align:center">Both A and B receive a 1-year sentence</div></div>
+  <div class="c mix"><div class="big"><span><small>A</small>0</span><span><small>B</small>5</span></div><div style="text-align:center">A receives a 0-year sentence, B receives a 5-year sentence</div></div>
+  <div class="h">B Betrays</div>
+  <div class="c mix"><div class="big"><span><small>A</small>5</span><span><small>B</small>0</span></div><div style="text-align:center">A receives a 5-year sentence, B receives a 0-year sentence</div></div>
+  <div class="c both-b"><div class="big"><span><small>A</small>3</span><span><small>B</small>3</span></div><div style="text-align:center">Both A and B receive a 3-year sentence</div></div>
+</div>
+<div class="fig">FIGURE 2: A TABLE WITH ALL POSSIBLE OUTCOMES AND THEIR TYPICAL RESPECTIVE SENTENCES (YEARS)</div>
+<p>We can now see why the prisoners would want to make a certain decision. If a prisoner wants to prioritise getting no sentence at all, they are most likely to take the risk of betraying their partner. If a prisoner is more ethical and believes that his partner is also ethical, they are most likely to co-operate, believing that they will both receive a minimal sentence.</p>
+<div class="note">This dilemma proposes an important question: <b>what is the best choice?</b> To answer this question, we will have to look at the probability of each outcome and create a sort of scoring system that enables the quantification of the data so we can determine, statistically, what the best option is for the rational agent.</div>
+</section>
+
+<section class="sec">
+<div class="sh"><span class="n">2</span><h2>The Probability of each Outcome</h2></div>
+<p>To analyse the problem quantitatively, let’s set the probability of agent \(\boldsymbol{A}\) co-operating equal to \(q\) and set the probability of agent \(\boldsymbol{B}\) co-operating equal to \(r\). This means that the probability of agent \(\boldsymbol{A}\) betraying is equal to \(1-q\) and the probability of agent \(\boldsymbol{B}\) betraying is equal to \(1-r\) (since the probability of co-operating and betraying for the agents must sum to 1).</p>
+<div class="eq">$$\begin{aligned}
+\mathbb{P}(\boldsymbol{A}\ \textbf{co-operates}) &= q \quad\text{where } \{q \in \mathbb{R} : 0 \le q \le 1\} \;\because \text{it is a probability}\\
+\mathbb{P}(\boldsymbol{A}\ \textbf{betrays}) &= 1-q\\
+\mathbb{P}(\boldsymbol{B}\ \textbf{co-operates}) &= r \quad\text{where } \{r \in \mathbb{R} : 0 \le r \le 1\} \;\because \text{it is a probability}\\
+\mathbb{P}(\boldsymbol{B}\ \textbf{betrays}) &= 1-r
+\end{aligned}$$</div>
+<p>Now let’s define the matrix \(M_P\) which encompasses the probabilities of all possible outcomes in a similar way to the table in Figure 1.</p>
+<div class="eq">$$M_P = \begin{pmatrix} \text{Both } \boldsymbol{A} \text{ and } \boldsymbol{B} \text{ co-operate} & \boldsymbol{A} \text{ betrays and } \boldsymbol{B} \text{ co-operates}\\ \boldsymbol{A} \text{ co-operates and } \boldsymbol{B} \text{ betrays} & \text{Both } \boldsymbol{A} \text{ and } \boldsymbol{B} \text{ betray}\end{pmatrix}$$</div>
+<div class="eq">$$M_P = \begin{pmatrix} \mathbb{P}(\boldsymbol{A}\ \text{co-op}) \times \mathbb{P}(\boldsymbol{B}\ \text{co-op}) & \mathbb{P}(\boldsymbol{A}\ \text{betrays}) \times \mathbb{P}(\boldsymbol{B}\ \text{co-op})\\ \mathbb{P}(\boldsymbol{A}\ \text{co-op}) \times \mathbb{P}(\boldsymbol{B}\ \text{betrays}) & \mathbb{P}(\boldsymbol{A}\ \text{betrays}) \times \mathbb{P}(\boldsymbol{B}\ \text{betrays})\end{pmatrix}$$</div>
+<div class="eq dark">$$M_P = \begin{pmatrix} qr & (1-q)r\\ q(1-r) & (1-q)(1-r)\end{pmatrix}$$</div>
+</section>
+
+<section class="sec">
+<div class="sh"><span class="n">3</span><h2>The Scoring System</h2></div>
+<p>To create the scoring system, we need to come back to the prison sentences that were given for each outcome (see Figure 3).</p>
+<div class="payoff">
+  <div class="h blank"></div><div class="h">A Co-operates</div><div class="h">A Betrays</div>
+  <div class="h">B Co-operates</div><div class="c both-c">Both \(\boldsymbol{A}\) and \(\boldsymbol{B}\) receive a \(\alpha\)−year sentence</div><div class="c mix">\(\boldsymbol{A}\) receives a \(\beta\)−year sentence<br>\(\boldsymbol{B}\) receives a \(\gamma\)−year sentence</div>
+  <div class="h">B Betrays</div><div class="c mix">\(\boldsymbol{A}\) receives a \(\gamma\)−year sentence<br>\(\boldsymbol{B}\) receives a \(\beta\)−year sentence</div><div class="c both-b">Both \(\boldsymbol{A}\) and \(\boldsymbol{B}\) receive a \(\delta\)−year sentence</div>
+</div>
+<div class="fig">FIGURE 3: A TABLE WITH ALL POSSIBLE OUTCOMES AND THEIR RESPECTIVE SENTENCES WHERE γ &gt; δ &gt; α &gt; β</div>
+<p>The simplest and best way to create a scoring system is to set the number of points for each agent equal to the size of their prison sentence (i.e., equal to \(\alpha\) or \(\beta\) or \(\gamma\) or \(\delta\)). This would mean that the aim for each agent is to receive the smallest possible number of points as that would equate to the shortest prison sentence. We can sum this up in a table (see Figure 4).</p>
+<div class="payoff">
+  <div class="h blank"></div><div class="h">A Co-operates</div><div class="h">A Betrays</div>
+  <div class="h">B Co-operates</div><div class="c both-c"><b>A's score:</b> \(\alpha\)<br>B's score: \(\alpha\)</div><div class="c mix"><b>A's score:</b> \(\beta\)<br>B's score: \(\gamma\)</div>
+  <div class="h">B Betrays</div><div class="c mix"><b>A's score:</b> \(\gamma\)<br>B's score: \(\beta\)</div><div class="c both-b"><b>A's score:</b> \(\delta\)<br>B's score: \(\delta\)</div>
+</div>
+<div class="fig">FIGURE 4: A TABLE WITH ALL POSSIBLE OUTCOMES AND THEIR SCORES WHERE γ &gt; δ &gt; α &gt; β</div>
+<p>Let’s now convert this table into matrix \(M_{\boldsymbol{A}}\) and \(M_{\boldsymbol{B}}\) to make the next section easier to calculate:</p>
+<div class="eq dark">$$M_{\boldsymbol{A}} = \begin{pmatrix}\alpha & \beta\\ \gamma & \delta\end{pmatrix}\qquad\qquad M_{\boldsymbol{B}} = \begin{pmatrix}\alpha & \gamma\\ \beta & \delta\end{pmatrix}$$</div>
+</section>
+
+<section class="sec">
+<div class="sh"><span class="n">4</span><h2>Combining the Probabilities with the Scoring System</h2></div>
+<p>To combine the probability of each outcome with our scoring system, we can use the concept of expected value (\(E[\boldsymbol{A}]\) and \(E[\boldsymbol{B}]\)). This is done by using the formula:</p>
+<div class="eq">$$E[X] = \sum\big[(\text{Score}) \times (\text{Probability of getting that score})\big]$$</div>
+<p>To calculate \(E[\boldsymbol{A}]\), we must combine matrix \(M_P\) with matrix \(M_{\boldsymbol{A}}\):</p>
+<div class="eq">$$E[\boldsymbol{A}] = \alpha qr + \beta(1-q)r + \gamma q(1-r) + \delta(1-q)(1-r)$$</div>
+<p>To calculate \(E[\boldsymbol{B}]\), we must combine matrix \(M_P\) with matrix \(M_{\boldsymbol{B}}\):</p>
+<div class="eq">$$E[\boldsymbol{B}] = \alpha qr + \gamma(1-q)r + \beta q(1-r) + \delta(1-q)(1-r)$$</div>
+<p>But what does this expected value actually tell us? The expected value represents the average outcome over many repetitions of the game, weighted by the probability of each scenario (see Section 5 but slightly different as we wouldn’t know what the other prisoner previously did in the last round).</p>
+<p>Imagine if we were in the shoes of agent \(\boldsymbol{A}\). If we want to have a lower prison sentence compared to agent \(\boldsymbol{B}\), our expected value should be lower than the expected value for agent \(\boldsymbol{B}\) (i.e., \(E[\boldsymbol{A}] &lt; E[\boldsymbol{B}]\)).</p>
+<p>To help understand this, let’s substitute the typical values for the length of the prison sentence into our expected value (\(\alpha = 1,\ \beta = 0,\ \gamma = 5\) and \(\delta = 3\)):</p>
+<div class="eq">$$\begin{aligned}E[\boldsymbol{A}] &= qr + 5q(1-r) + 3(1-q)(1-r)\\ E[\boldsymbol{B}] &= qr + 5(1-q)r + 3(1-q)(1-r)\end{aligned}$$</div>
+<p>Now we want our expected value to be less than the expected value of agent \(\boldsymbol{B}\):</p>
+<div class="eq">$$\begin{aligned}
+qr + 5q(1-r) + 3(1-q)(1-r) &< qr + 5(1-q)r + 3(1-q)(1-r)\\
+5q(1-r) &< 5(1-q)r\\
+q - qr &< r - qr\\
+q &< r
+\end{aligned}$$</div>
+<p>This tells us that if we want our expected value to be lower than the expected value of agent \(\boldsymbol{B}\), then we should betray them rather than co-operate since we want the probability of us co-operating to be lower than the probability of them co-operating (since \(q &lt; r\)) – this is done by betraying them which sets \(q = 0\).</p>
+<figure>
+  <svg id="qr" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg" font-family="Courier Prime"></svg>
+  <figcaption>EVERY PAIR OF STRATEGIES (q, r). A EXPECTS A SHORTER SENTENCE THAN B EXACTLY WHEN q &lt; r. BETRAYING OUTRIGHT (q = 0) PUTS A ON THE GOOD SIDE OF THE LINE NO MATTER WHAT B DOES.</figcaption>
+</figure>
+<p>Now what if we wanted to do this generally without giving the prison sentences specific values:</p>
+<div class="eq">$$\begin{aligned}
+\alpha qr + \beta(1-q)r + \gamma q(1-r) + \delta(1-q)(1-r) &< \alpha qr + \gamma(1-q)r + \beta q(1-r) + \delta(1-q)(1-r)\\
+\beta(1-q)r + \gamma q(1-r) &< \gamma(1-q)r + \beta q(1-r)\\
+\beta r - \beta qr + \gamma q - \gamma qr &< \gamma r - \gamma qr + \beta q - \beta qr\\
+\beta r + \gamma q &< \gamma r + \beta q\\
+\gamma q - \beta q &< \gamma r - \beta r\\
+q(\gamma - \beta) &< r(\gamma - \beta)\\
+q &< r \qquad [\text{we can divide by } (\gamma - \beta) \because \gamma > \beta]
+\end{aligned}$$</div>
+<p>This gives us the exact same outcome as when we used specific values for the prison sentence. This logically makes sense for a single round of the prisoner’s dilemma. By betraying our partner (though this is not a very ethical choice), the possible sentences we could receive are \(\beta\) and \(\gamma\) years (0 and 3 years) whereas by co-operating with our partner, the possible sentences we could receive are \(\alpha\) and \(\delta\) years (1 and 5 years) – we are essentially minimising our own prison sentence, selfishly. Furthermore, if we expect our partner to have the same selfish thoughts, then they are also most likely to betray us in which case our best choice is still to betray them.</p>
+<div class="verdict"><div class="v">NASH</div><p>This result is an example of a <b style="color:var(--yel)">Nash Equilibrium</b> in which betraying your partner leads to a better or equal outcome and so if you individually tried to change your decision from betraying to co-operating, you wouldn’t get a better result.</p></div>
+</section>
+
+<section class="sec">
+<div class="sh"><span class="n">5</span><h2>The Iterated Prisoner’s Dilemma</h2></div>
+<p>Let’s say that, suddenly, the prisoners can magically go back in time and change their decisions, each knowing what decision the other prisoner made previously. But this repeated round of the prisoner’s dilemma gets added to their original prison sentence. What is the best strategy now, knowing that they will have to face their partner again in another round of the prisoner’s dilemma?</p>
+<p>Essentially, the addition of more rounds helps the prisoners gain a better insight into who their partner is and allows an element of communication. Intuition tells us that it is better for us to co-operate with our partner initially in the first round so that they can create mutual trust in any upcoming rounds.</p>
+<div class="rounds">
+  <div class="round"><div class="t" style="color:var(--red)">Betray in round 1</div>
+    <div class="seq"><i class="B">A</i><i class="B">B</i><i class="B">A</i><i class="B">B</i><i class="B">A</i><i class="B">B</i></div>
+    <small>PARTNER'S TRUST · r FALLS</small><div class="bar"><i style="width:18%;background:var(--red)"></i></div></div>
+  <div class="round"><div class="t" style="color:var(--teal)">Co-operate in round 1</div>
+    <div class="seq"><i class="C">A</i><i class="C">B</i><i class="C">A</i><i class="C">B</i><i class="C">A</i><i class="C">B</i></div>
+    <small>PARTNER'S TRUST · r RISES</small><div class="bar"><i style="width:86%;background:var(--teal)"></i></div></div>
+</div>
+<p>Let’s try and explain this through our probabilities which are \(q\) for us and \(r\) for the other agent for co-operation. Say we decide to betray our partner on the first round. This means that in the next round, our partner is going to have less trust in us so the probability of them betraying us increases (i.e., \((1-r)\) increases) so \(r\) decreases. This means that in future rounds, they are less likely to co-operate with us. However, if we do the opposite and co-operate, they trust us more and so the probability of them co-operating with us increases and therefore \(r\) increases. This means that you both receive prison sentences of \(\alpha\)-years (1 year) for the first round rather than receiving an unequal number of years and regretting it in upcoming rounds.</p>
+<div class="note">Therefore, while <b>betrayal is optimal in a single round</b>, <b>cooperation</b> can be seen as a more effective long-term strategy in repeated interaction.</div>
+</section>
+
+<section class="sec">
+<div class="sh"><span class="n">6</span><h2>Maths, Ethics and Psychology</h2></div>
+<svg class="ven" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" font-family="Bebas Neue">
+  <circle cx="72" cy="70" r="52" fill="#f2c230" fill-opacity=".75"/><circle cx="128" cy="70" r="52" fill="#2f7f7a" fill-opacity=".65"/><circle cx="100" cy="118" r="52" fill="#d6461f" fill-opacity=".6"/>
+  <text x="52" y="56" font-size="17" fill="#18181a" text-anchor="middle">MATHS</text><text x="150" y="56" font-size="17" fill="#fff" text-anchor="middle">ETHICS</text><text x="100" y="150" font-size="17" fill="#fff" text-anchor="middle">PSYCHOLOGY</text>
+  <text x="100" y="94" font-size="14" fill="#fff" text-anchor="middle">q = r</text>
+</svg>
+<p>However, the strategies I have mentioned above highlight the question: when harmful outcomes could occur, do we prioritise our own selfish needs over being moral?</p>
+<p>The overlay between Maths, Ethics and Psychology help understand how to approach this question. For example, say we wanted to reach an equilibrium within the question in which we equally prioritised our own desires whilst remaining ethical. In a single round of the prisoner’s dilemma, this can be achieved by setting our expected values equal (\(E[\boldsymbol{A}] = E[\boldsymbol{B}]\)) so that both agents receive the same prison sentence. This would tell us, mathematically, that \(q = r\) which says that the probability that we co-operate with them is the same as the probability of them co-operating with us. Therefore, the equilibrium is reached when both agents either co-operate with each other or both betray each other. But this equilibrium relies on the ability of one agent to predict the other agent’s decision. Thus, in a situation like this, the optimal result could be achieved by understanding the statistics and behaviour of your partner.</p>
+</section>
+
+<section class="sec">
+<div class="sh"><span class="n">7</span><h2>Conclusion</h2></div>
+<div class="closing">
+  <div class="big">One round: <span>betray.</span> Many rounds: <span>co-operate.</span></div>
+  <p>To summarise, the prisoner’s dilemma teaches us that in a single round, where you will never see your partner again, the best choice you can make for yourself is to betray them. In multiple rounds of the prisoner’s dilemma, the best choice is to co-operate with them to foster mutual trust.</p>
+  <p style="margin:0">Ultimately, the Prisoner’s Dilemma demonstrates how mathematical modelling can be used to analyse decision-making under uncertainty. It shows the versatility and vastness of maths as it can be applied in such seemingly foreign subjects. Thank you for reading this essay and I hoped you have enjoyed it.</p>
+</div>
+<div class="refs">
+  <div class="sh" style="grid-template-columns:16mm 1fr;margin-top:6mm"><span class="n">8</span><h2>References</h2></div>
+  <p>M. V. Rajeev Gowda. Teaching the Prisoners’ Dilemma. <i>Journal of Policy Analysis and Management</i> 15, no. 4 (1996): 646–53. http://www.jstor.org/stable/3326054.</p>
+  <p>Lombrozo, T. (2013) The ‘prisoner’s dilemma’ tests women in and out of jail, NPR. Available at: https://www.npr.org/sections/13.7/2013/07/29/206513599/the-prisoner-s-dilemma-goes-to-jail-and-some-science-reporting-should-follow.</p>
+  <p>Wikipedia Contributors (2025). Prisoner’s dilemma. [online] Wikipedia. Available at: https://en.wikipedia.org/wiki/Prisoner%27s_dilemma#Real-life_examples.</p>
+  <p>Chen, J. (2024). Nash Equilibrium: How It Works in Game Theory, Examples, Plus Prisoner’s Dilemma. [online] Investopedia. Available at: https://www.investopedia.com/terms/n/nash-equilibrium.asp.</p>
+  <div class="credits">COVER PHOTO: YUMA TERRITORIAL PRISON CELL DOORS BY CAPVIDEO, CC BY-SA 4.0, VIA WIKIMEDIA COMMONS · TABLES AND CHARTS DRAWN FOR THIS EDITION</div>
+</div>
+</section>
+
+<script>
+(function(){
+  const im=new Image();im.onload=()=>document.getElementById('cph').style.backgroundImage='url(img/cells.jpg)';im.src='img/cells.jpg';
+  const s=document.getElementById('qr'),NS='http://www.w3.org/2000/svg',E=(t,a,x)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(x!==undefined)e.textContent=x;s.appendChild(e);return e};
+  const L=70,T=15,S=200,X=q=>L+q*S,Y=r=>T+S-r*S;
+  E('rect',{x:L,y:T,width:S,height:S,fill:'#f8f6f1',stroke:'#38373a'});
+  E('path',{d:`M${X(0)} ${Y(0)} L${X(0)} ${Y(1)} L${X(1)} ${Y(1)}Z`,fill:'#d5ebe8'});
+  E('path',{d:`M${X(0)} ${Y(0)} L${X(1)} ${Y(0)} L${X(1)} ${Y(1)}Z`,fill:'#f8dcd2'});
+  E('line',{x1:X(0),y1:Y(0),x2:X(1),y2:Y(1),stroke:'#18181a','stroke-width':2.4,'stroke-dasharray':'6 4'});
+  E('line',{x1:X(0),y1:Y(0),x2:X(0),y2:Y(1),stroke:'#f2c230','stroke-width':7});
+  E('text',{x:X(.28),y:Y(.78),'font-size':13,'font-weight':700,fill:'#2f7f7a','text-anchor':'middle'},'E[A] < E[B]');
+  E('text',{x:X(.72),y:Y(.2),'font-size':13,'font-weight':700,fill:'#d6461f','text-anchor':'middle'},'E[A] > E[B]');
+  E('text',{x:X(.62),y:Y(.66),'font-size':12,fill:'#18181a',transform:`rotate(-45 ${X(.62)} ${Y(.66)})`},'q = r');
+  [0,.5,1].forEach(v=>{E('text',{x:X(v),y:T+S+16,'text-anchor':'middle','font-size':11,fill:'#7a766f'},v);E('text',{x:L-8,y:Y(v)+4,'text-anchor':'end','font-size':11,fill:'#7a766f'},v)});
+  E('text',{x:X(.5),y:T+S+32,'text-anchor':'middle','font-size':12,fill:'#38373a'},'q = P(A co-operates)');
+  E('text',{x:22,y:Y(.5),'text-anchor':'middle','font-size':12,fill:'#38373a',transform:`rotate(-90 22 ${Y(.5)})`},'r = P(B co-operates)');
+  const tx=320;[['#f2c230','q = 0: A always betrays'],['#d5ebe8','A expects the shorter sentence'],['#f8dcd2','B expects the shorter sentence']].forEach(([c,t],i)=>{E('rect',{x:tx,y:40+i*30,width:18,height:14,fill:c,stroke:'#38373a'});E('text',{x:tx+28,y:52+i*30,'font-size':12.5,fill:'#18181a'},t)});
+  E('text',{x:tx,y:160,'font-family':'Bebas Neue','font-size':30,fill:'#18181a'},'BETRAY  ⇒  q = 0');
+})();
+</script>
+</body>
+</html>

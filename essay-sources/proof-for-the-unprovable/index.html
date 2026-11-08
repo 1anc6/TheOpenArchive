@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>A Proof for the Unprovable</title>
+<meta name="author" content="Lanchenba Mutum">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=block" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
+<style>
+:root{
+  --green:#1f3b35; --green-2:#2e5249; --sage:#cfdcd2; --paper:#f1ead8; --paper-2:#e6dcc3; --card:#faf5e8;
+  --ink:#1d1a16; --ink-2:#3c362d; --muted:#7c705f; --red:#b3362a; --red-soft:#f3d6cf; --brass:#a88a4a;
+}
+@page{ size:A4; margin:20mm 20mm 21mm; background:var(--paper);
+  @top-right{ content:"FILE № 1930-K · A PROOF FOR THE UNPROVABLE"; font:400 7pt 'Special Elite'; color:var(--muted); }
+  @bottom-left{ content:"page " counter(page); font:400 8.4pt 'Special Elite'; color:var(--green); }
+}
+@page cover{ margin:0; @top-right{content:none} @bottom-left{content:none} }
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:var(--paper);color:var(--ink-2);font:400 10.2pt/1.66 'Libre Caslon Text',serif}
+p{margin:0 0 3.2mm} b{color:var(--ink)}
+.tw{font-family:'Special Elite',monospace}
+.katex{font-size:1.06em;color:var(--ink)}
+
+.cover{page:cover;width:210mm;height:297mm;position:relative;overflow:hidden;background:var(--green);color:var(--paper)}
+.cover .photo{position:absolute;left:20mm;right:20mm;top:68mm;height:110mm;background:#0d1f1b center/cover;filter:sepia(.4) saturate(.7) contrast(1.05);border:3mm solid #f1ead8;box-shadow:0 2mm 8mm rgba(0,0,0,.35);transform:rotate(-1.6deg)}
+.cover .photo .ph{position:absolute;inset:0;display:grid;place-items:center;font:400 9pt 'Special Elite';color:#cfdcd2;background:repeating-linear-gradient(45deg,#284a42 0 6px,#23423b 6px 12px)}
+.cover .photo-cap{position:absolute;left:26mm;top:182mm;font:400 8.6pt 'Special Elite';color:#cfdcd2;transform:rotate(-1.6deg)}
+.cover .top{position:absolute;left:20mm;right:20mm;top:18mm;display:flex;justify-content:space-between;font:400 8.6pt 'Special Elite';color:#cfdcd2;border-bottom:1px solid rgba(241,234,216,.3);padding-bottom:3mm}
+.cover h1{position:absolute;left:20mm;right:20mm;top:30mm;margin:0;font:400 44pt/1 'DM Serif Display';color:#fff8e8;letter-spacing:-.01em}
+.cover h1 i{color:#e9b3a6}
+.cover .stamp{position:absolute;right:16mm;top:166mm;transform:rotate(-12deg);border:1.2mm double #d65745;color:#e66a57;font:400 20pt 'Special Elite';letter-spacing:.12em;padding:2mm 5mm;opacity:.95;background:rgba(31,59,53,.35)}
+.cover .g{position:absolute;left:20mm;bottom:22mm;width:62mm;height:62mm}
+.cover .meta{position:absolute;right:20mm;bottom:24mm;width:88mm;font:400 9pt/1.6 'Special Elite';color:#cfdcd2}
+.cover .meta b{display:block;font:400 18pt 'DM Serif Display';color:#fff8e8;margin-bottom:2mm}
+
+.sec{margin-top:9mm}
+.sec:first-of-type{margin-top:0}
+.tab{display:inline-block;font:400 8pt 'Special Elite';color:#fff;background:var(--green);padding:1mm 3mm;border-radius:1mm 1mm 0 0}
+h2{font:400 25pt/1.05 'DM Serif Display';color:var(--green);margin:1mm 0 4mm;padding-bottom:3mm;border-bottom:1.5px solid var(--green);break-after:avoid}
+h2 i{color:var(--red)}
+.lead{font-size:11.4pt}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm;margin:4mm 0 5mm;break-inside:avoid}
+.pillar{background:var(--card);border:1px solid var(--paper-2);border-top:4mm solid var(--green);padding:4mm;position:relative}
+.pillar .n{font:400 30pt/1 'DM Serif Display';color:var(--sage);position:absolute;right:3mm;top:1mm}
+.pillar b{font:400 14pt 'DM Serif Display';color:var(--green);display:block;margin-bottom:1.5mm}
+.pillar span{font-size:8.8pt;line-height:1.5;display:block}
+.pillar.fail{border-top-color:var(--red)}
+.pillar.fail b{color:var(--red)}
+.pillar .st{position:absolute;right:2mm;bottom:2mm;transform:rotate(-10deg);font:400 7.6pt 'Special Elite';color:var(--red);border:1.5px solid var(--red);padding:.5mm 2mm}
+.sym{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm;margin:3mm 0 5mm;break-inside:avoid}
+.sym div{background:var(--card);border:1px dashed var(--brass);padding:3mm;text-align:center}
+.sym small{display:block;font:400 7.6pt 'Special Elite';color:var(--muted);margin-bottom:1mm}
+.person{display:grid;grid-template-columns:34mm 1fr;gap:5mm;margin:4mm 0 5mm;align-items:center;break-inside:avoid}
+.person .pic{background:#fff;padding:2mm 2mm 7mm;box-shadow:0 1mm 3mm rgba(0,0,0,.18);transform:rotate(-2deg);position:relative}
+.person .pic img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top;filter:grayscale(1) contrast(1.05)}
+.person .pic span{position:absolute;bottom:1.4mm;left:0;right:0;text-align:center;font:400 7.6pt 'Special Elite';color:var(--ink-2)}
+.person .pic::before{content:"";position:absolute;top:-2.5mm;left:40%;width:12mm;height:5mm;background:rgba(220,205,160,.75);transform:rotate(4deg)}
+.speech{background:var(--green);color:var(--paper);padding:5mm 6mm;border-radius:4mm;position:relative;font:italic 400 12.4pt/1.45 'Libre Caslon Text'}
+.speech::before{content:"";position:absolute;left:-3.4mm;top:9mm;border:3.4mm solid transparent;border-right-color:var(--green);border-left:0}
+.speech small{display:block;font:400 8pt 'Special Elite';font-style:normal;color:#cfdcd2;margin-top:2mm}
+figure{margin:4mm 0 5mm;break-inside:avoid}
+figure img,figure svg{display:block;width:100%}
+figcaption{font:400 7.8pt/1.45 'Special Elite';color:var(--muted);margin-top:2mm}
+.card{background:var(--card);border:1px solid var(--paper-2);padding:4mm 5mm;margin:3mm 0 5mm;break-inside:avoid}
+.quoteblock{border-left:3px solid var(--brass);background:var(--card);padding:4mm 5mm;font-style:italic;margin:3mm 0 4mm;break-inside:avoid}
+.fn-mark{font:400 7.6pt 'Special Elite';color:var(--red);vertical-align:super}
+.fn{font:400 7.6pt/1.5 'Special Elite';color:var(--muted);border-top:1px solid var(--paper-2);padding-top:2mm;margin:2mm 0 5mm}
+.fork{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin:3mm 0 4mm;break-inside:avoid}
+.fork div{padding:4mm;text-align:center;border:1.5px solid var(--green);background:var(--card)}
+.fork b{display:block;font:400 15pt 'DM Serif Display';color:var(--green)}
+.fork .x{border-color:var(--red)} .fork .x b{color:var(--red)}
+.banner{background:var(--red);color:#fff8e8;text-align:center;padding:5mm;margin:4mm 0 5mm;break-inside:avoid}
+.banner .a{font:400 9pt 'Special Elite';letter-spacing:.1em;color:#ffd9d0}
+.banner .b{font:400 28pt/1.1 'DM Serif Display';letter-spacing:.02em}
+.steps{display:grid;grid-template-columns:repeat(7,1fr);gap:2mm;margin:3mm 0 2mm;break-inside:avoid}
+.steps>div{background:var(--card);border:1px solid var(--paper-2);text-align:center;padding:2.5mm 1mm;position:relative}
+.steps .base{font:400 7.4pt 'Special Elite';color:var(--muted)}
+.steps .digits{font:700 11pt 'Libre Caslon Text';color:var(--green);margin:1mm 0}
+.steps .val{font:400 15pt 'DM Serif Display';color:var(--ink)}
+.steps .it{font:400 6.8pt 'Special Elite';color:var(--red)}
+.steps>div:last-child{background:var(--green)} .steps>div:last-child *{color:#fff8e8}
+.eqs{background:var(--card);border:1px solid var(--paper-2);padding:3mm 6mm;margin:3mm 0 5mm;break-inside:avoid}
+.eqs .katex-display{margin:1mm 0}
+.analogies{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin:4mm 0 5mm;break-inside:avoid}
+.an{background:var(--card);border:1px solid var(--paper-2);padding:4mm;display:grid;grid-template-columns:14mm 1fr;gap:3mm;align-items:start}
+.an svg{width:14mm;height:14mm}
+.an b{display:block;font:400 12.4pt 'DM Serif Display';color:var(--green)}
+.an span{font-size:9pt;line-height:1.45}
+.proofbox{background:var(--green);color:var(--paper);padding:5mm 7mm;margin:4mm 0 5mm;break-inside:avoid}
+.proofbox .katex{color:#fff8e8;font-size:1.15em}
+.proofbox .l{display:grid;grid-template-columns:1fr 58mm;gap:4mm;padding:2mm 0;border-bottom:1px dashed rgba(241,234,216,.25);align-items:center}
+.proofbox .l:last-child{border:0}
+.proofbox .l span{font:400 8pt 'Special Elite';color:#cfdcd2}
+.last{display:grid;grid-template-columns:62mm 1fr;gap:6mm;align-items:center;margin-top:6mm;break-inside:avoid}
+.last img{width:100%;border:2mm solid #fff;box-shadow:0 1mm 4mm rgba(0,0,0,.2)}
+.last .q{font:italic 400 19pt/1.3 'DM Serif Display';color:var(--green)}
+.last .q small{display:block;font:400 10pt 'Special Elite';font-style:normal;color:var(--red);margin-top:3mm}
+.credits{font:400 7pt/1.5 'Special Elite';color:var(--muted);margin-top:8mm;border-top:1px solid var(--paper-2);padding-top:2mm}
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="top"><span>KÖNIGSBERG · SEPTEMBER 1930</span><span>CASE FILE № 1930-K</span></div>
+  <h1>A Proof for<br><i>the Unprovable</i></h1>
+  <div class="photo" id="coverphoto"><div class="ph">Albertina, Königsberg</div></div>
+  <div class="photo-cap">The Albertina university, Königsberg: host city of the 1930 conference.</div>
+  <div class="stamp">UNPROVABLE</div>
+  <svg class="g" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <defs><path id="ring" d="M100 100 m-78 0 a78 78 0 1 1 156 0 a78 78 0 1 1 -156 0"/></defs>
+    <circle cx="100" cy="100" r="92" fill="none" stroke="#cfdcd2" stroke-width="1"/>
+    <text font-family="Special Elite" font-size="13.4" fill="#cfdcd2" letter-spacing="2.2"><textPath href="#ring">THIS STATEMENT CANNOT BE PROVEN · THIS STATEMENT CANNOT BE PROVEN ·</textPath></text>
+    <text x="100" y="128" text-anchor="middle" font-family="DM Serif Display" font-size="86" fill="#fff8e8">G</text>
+  </svg>
+  <div class="meta"><b>by Lanchenba Mutum</b>Hilbert's dream, Gödel's bombshell, Goodstein's runaway numbers and a court that cannot judge itself.</div>
+</section>
+
+<section class="sec">
+  <span class="tab">EXHIBIT A</span>
+  <h2>The Königsberg conference, <i>1930</i></h2>
+  <p class="lead">Let me break a rule, mathematics can't prove everything…Imagine gathering of world renowned scientists (David hilbert being the most prominent among them) along with a group of other scholars at the königsberg conference in 1930</p>
+  <div class="person">
+    <div class="pic"><img src="img/hilbert.jpg" alt=""><span>David Hilbert</span></div>
+    <div>
+      <p>What were they doing?in truth,mathematics had reached such an advanced stage that it began to yield certain logical paradoxes. Consequently, Hilbert decided to use the conference to announce what became known as the “Hilbert program” simply put, his vision centered on three main pillars:</p>
+    </div>
+  </div>
+  <div class="pillars">
+    <div class="pillar"><span class="n">I</span><b>Formalization</b><span>Stripping mathematics down to pure symbols.</span></div>
+    <div class="pillar"><span class="n">II</span><b>Consistency</b><span>Ensuring that the system is free of contradictions, it should be impossible to prove both 1=1 and 1=0 simultaneously</span></div>
+    <div class="pillar fail"><span class="n">III</span><b>Completeness</b><span>Establishing a set of axioms sufficient to derive every possible mathematical truth, every mathematical statement must be either provably true or provably false</span><span class="st">DENIED · 1930</span></div>
+  </div>
+  <p><b>Formalization:</b> Stripping mathematics down to pure symbols. for example, instead of writing 1+1=2 Hilbert would represent it as follows:</p>
+  <div class="sym">
+    <div><small>the number 1 is denoted as</small>\(s(0)\)</div>
+    <div><small>the number 2 is denoted as</small>\(s(s(0))\)</div>
+    <div><small>the equation becomes</small>\(s(0)+s(0)=s(s(0))\)</div>
+  </div>
+  <figure class="card" style="padding:3mm">
+    <img src="img/orig-axioms.png" alt="" style="max-height:44mm;object-fit:contain">
+    <figcaption>The natural numbers built from 0 and the successor s, one symbol at a time.</figcaption>
+  </figure>
+  <p>It sounds perfectly logical right?</p>
+</section>
+
+<section class="sec">
+  <span class="tab">EXHIBIT B</span>
+  <h2>A young man raises his hand</h2>
+  <p>But what if I told you there was a young man at that conference who threw all this “logic” out the window?that man was Kurt Gödel. He calmly raised his hand and essentially said:</p>
+  <div class="person">
+    <div class="pic"><img src="img/godel.jpg" alt=""><span>Kurt Gödel</span></div>
+    <div class="speech">Well, I have found a mathematical statement that is true, yet unprovable.<small>— Kurt Gödel, Königsberg, 1930</small></div>
+  </div>
+  <p>He then presented his first incompleteness theorem,which was by every definition of the word a bombshell.</p>
+  <figure>
+    <img src="img/orig-liar.png" alt="" style="border:1px solid var(--paper-2);max-height:72mm;object-fit:contain;background:#f6efdd">
+    <figcaption>Did this image make you feel like your mind has gone blank? Anyways,this image is actually the main concept of Gödel’s incompleteness theorem.</figcaption>
+  </figure>
+</section>
+
+<section class="sec">
+  <span class="tab">EXHIBIT C</span>
+  <h2>The first incompleteness theorem</h2>
+  <div class="quoteblock">The first incompleteness theorem states that no consistent system of axioms whose theorems can be listed by an effective procedure (i.e. an algorithm) is capable of proving all truths about the arithmetic of natural numbers. For any such consistent formal system, there will always be statements about natural numbers that are true, but that are unprovable within the system. Equivalently, there will always be statements about natural numbers that are false, but that cannot be proved false within the system.<span class="fn-mark">1</span></div>
+  <p>Let me take your hand and lead you on a journey to simplify these complex concepts (I'll make you love mathematics,no matter what)</p>
+  <p>A consistent system is one that contains no contradictions. Meanwhile, an undecidable statement is a mathematical proposition that is true, yet the rules of the system are insufficient to prove it. In Gödel theorem, he states that any consistent mathematical system is not necessarily complete. This means that for a certain mathematical statement (let's call it G), the system can neither prove that (G) is true nor prove its negation. Simply put, Gödel represented the mathematical system with a symbol(let's call it F) and a statement (G) then constructed a mathematical statement asserting that (F) can't prove (G)</p>
+  <div class="fork">
+    <div><b>If the statement is true</b>it means it actually cannot be proven (hence, the system is incomplete)</div>
+    <div class="x"><b>If the statement is false</b>it would mean (F) can prove (G) but it would lack an actual consistent proof leading to a contradiction.</div>
+  </div>
+  <p>Reflecting on this, there are two possibilities: 1/the system is Inconsistent, or 2/the system is incomplete</p>
+  <div class="fn">1 Source: Wikipedia</div>
+  <div class="banner"><div class="a">MATHEMATICS CHOSE TO BE INCOMPLETE RATHER THAN BEING INCONSISTENT</div><div class="b">TRUTH &gt; PROVABILITY</div></div>
+  <figure class="card">
+    <svg viewBox="0 0 600 210" xmlns="http://www.w3.org/2000/svg" font-family="Special Elite">
+      <text x="150" y="22" text-anchor="middle" font-family="DM Serif Display" font-size="18" fill="#1f3b35">Before Gödel</text>
+      <text x="150" y="40" text-anchor="middle" font-size="11" fill="#7c705f">True = Provable</text>
+      <circle cx="150" cy="125" r="70" fill="#b3362a"/>
+      <text x="450" y="22" text-anchor="middle" font-family="DM Serif Display" font-size="18" fill="#1f3b35">Since Gödel</text>
+      <text x="450" y="40" text-anchor="middle" font-size="11" fill="#7c705f">Provable ⊂ True</text>
+      <circle cx="450" cy="125" r="76" fill="#1f3b35"/><text x="450" y="70" text-anchor="middle" fill="#cfdcd2" font-size="12">True</text>
+      <circle cx="450" cy="132" r="38" fill="#b3362a"/><text x="450" y="136" text-anchor="middle" fill="#fff8e8" font-size="11">Provable</text>
+      <circle cx="400" cy="168" r="6" fill="#f1ead8"/><path d="M406 170 L530 196" stroke="#1d1a16"/><text x="534" y="200" font-size="12" fill="#1d1a16">Gödel statement</text>
+    </svg>
+    <figcaption>Figure 1. Before Gödel, all true statements in basic arithmetic were thought to be provable. Gödel showed that this view was wrong and that there are statements that are true but not provable.</figcaption>
+  </figure>
+</section>
+
+<section class="sec">
+  <span class="tab">EXHIBIT D</span>
+  <h2>Goodstein's theorem</h2>
+  <p>Well,is Gödel theorem 100% correct?in fact,yeah</p>
+  <p>Do I have proof?I have many,but let's highlight goodstein's theorem. Pick a number - a positive integer - expressed in simple base notation. Then repeatedly - recursively - perform the following two operations:</p>
+  <div class="fork"><div><b>① Increment the base</b>base 2 → base 3 → base 4 …</div><div><b>② Subtract one</b>from the number</div></div>
+  <p>What will happen? The answer is the number eventually converges to 0. Most people incorrectly guess the sequence goes to infinity.</p>
+  <p style="font:400 9pt 'Special Elite';color:var(--green);margin-top:4mm">number = 4 and base = 2,</p>
+  <div class="steps">
+    <div><div class="base">base 2</div><div class="digits">[1, 0, 0]</div><div class="val">4</div><div class="it">start</div></div>
+    <div><div class="base">base 3</div><div class="digits">[1, 1]</div><div class="val">4</div><div class="it">1 iteration</div></div>
+    <div><div class="base">base 4</div><div class="digits">[1, 0]</div><div class="val">4</div><div class="it">2 iterations</div></div>
+    <div><div class="base">base 5</div><div class="digits">[3]</div><div class="val">3</div><div class="it">3 iterations</div></div>
+    <div><div class="base">base 6</div><div class="digits">[2]</div><div class="val">2</div><div class="it">4 iterations</div></div>
+    <div><div class="base">base 7</div><div class="digits">[1]</div><div class="val">1</div><div class="it">5 iterations</div></div>
+    <div><div class="base">base 8</div><div class="digits">[0]</div><div class="val">0</div><div class="it">6 iterations</div></div>
+  </div>
+  <figcaption style="margin-bottom:5mm">Each box: the digits in that base, and the value they stand for.</figcaption>
+  <p>Now that you have examined simple base notation(congratulations), you are ready to tackle Goodstein's Sequence</p>
+  <div class="eqs">$$266 = 2^{8}+2^{3}+2 = 2^{2^{2+1}}+2^{2+1}+2$$</div>
+  <p>If base two is recursively incremented to base three, the right side of the expression becomes</p>
+  <div class="eqs">$$B_2(266) = 3^{3^{3+1}}+3^{3+1}+3$$</div>
+  <p>The Goodstein Sequence is therefore</p>
+  <div class="eqs">$$\begin{aligned}
+  G_0(266) &= 266 = 2^{2^{2+1}}+2^{2+1}+2\\
+  G_1(266) &= B_2(G_0)-1 = 3^{3^{3+1}}+3^{3+1}+2\\
+  G_2(266) &= B_3(G_1)-1 = 4^{4^{4+1}}+4^{4+1}+1\\
+  G_3(266) &= B_4(G_2)-1 = 5^{5^{5+1}}+5^{5+1}\\
+  G_4(266) &= B_5(G_3)-1 = 6^{6^{6+1}}+6^{6+1}-1\\
+  &= 6^{6^{6+1}}+5\cdot6^{6}+5\cdot6^{5}+\dots+5\cdot6+5\\
+  G_5(266) &= B_6(G_4)-1\\
+  &= 7^{7^{7+1}}+5\cdot7^{7}+5\cdot7^{5}+\dots+5\cdot7+4
+  \end{aligned}$$</div>
+  <p>In fact,the sequence growing before us is one of the strongest examples of Gödel’s incompleteness theorem. We know that it eventually terminates at zero using set theory and the concept of infinity. However, we can't prove this using the standard rules of arithmetic(peano arithmetic which we learn at school), because the proof requires an induction that exceeds the capacity of that system.</p>
+  <figure class="card">
+    <svg id="good" viewBox="0 0 600 260" xmlns="http://www.w3.org/2000/svg" font-family="Special Elite"></svg>
+    <figcaption>Goodstein sequence of 6, first 100 values (computed exactly for this edition). It does reach 0 in the end, but only after an unimaginably long climb.</figcaption>
+  </figure>
+  <p>The trajectory of the goodstein's sequence for n=6 starts with a deceptive simplicity, but within just 100 iterations,the values escalate to an astronomical 10¹⁰, this steep, near-vertical incline visually represents the unbounded nature of the sequence when viewed through the lens of standard arithmetic.</p>
+</section>
+
+<section class="sec">
+  <span class="tab">EXHIBIT E</span>
+  <h2>The second incompleteness theorem</h2>
+  <p>To be honest, we are not finished with our story yet. After Gödel presented his bombshell(the first incompleteness theorem) and while scientists were trying to comprehend it, there was a brilliant mind who had already understood it. When one of the scientists returned from the conference and decided to work on the conclusions of the first theorem and analyze them, he reached an idea that radiates more heat than its predecessor, which is that <b>this theorem is true and that the system cannot prove its Consistency by itself.</b><span class="fn-mark">2</span></p>
+  <div class="person">
+    <div class="pic"><img src="img/vonneumann.jpg" alt=""><span>John von Neumann</span></div>
+    <div>
+      <p>Guess the surprise, dear reader? After this, a scientist sent his discovery to Gödel, Gödel sent his reply to him saying:</p>
+      <div class="speech" style="font-size:11pt">thank you for your letter, I have already discovered this and sent the research paper for publication weeks ago<small>— Gödel's reply</small></div>
+    </div>
+  </div>
+  <p>Do you want to know who this scientist is? He's John Von Neumann. And let me make the matter clear to you with a simple example: Imagine that we have a powerful charger,</p>
+  <div class="analogies">
+    <div class="an"><svg viewBox="0 0 40 40"><rect x="10" y="6" width="20" height="28" rx="3" fill="none" stroke="#1f3b35" stroke-width="2.4"/><path d="M22 11 L15 21 H21 L18 30 L26 18 H20 Z" fill="#b3362a"/></svg><div><b>The first theorem</b><span>The existence of a powerful charger doesn't mean that it can charge all devices</span></div></div>
+    <div class="an"><svg viewBox="0 0 40 40"><rect x="10" y="6" width="20" height="28" rx="3" fill="none" stroke="#1f3b35" stroke-width="2.4"/><path d="M14 14 L26 26 M26 14 L14 26" stroke="#b3362a" stroke-width="3"/></svg><div><b>The second theorem</b><span>And the existence of a powerful charger doesn't mean that it's not faulty</span></div></div>
+  </div>
+  <div class="card" style="display:grid;grid-template-columns:20mm 1fr;gap:4mm;align-items:center">
+    <svg viewBox="0 0 40 40"><path d="M6 36 H34 M10 32 H30 M20 6 V32 M8 12 H32" stroke="#1f3b35" stroke-width="2.4" fill="none"/><path d="M8 12 L4 22 H12 Z M32 12 L28 22 H36 Z" fill="#a88a4a"/></svg>
+    <p style="margin:0">Let's suppose we are standing in a courtroom now with judges, if we asked the judges: Is your judgement fair?, whatever their answer is, it's not believable because the court can't judge itself, whether it's fair or unjust, unless we bring another different court to judge it. Consequently, Gödel proved that the system can't prove its consistency by itself.</p>
+  </div>
+  <div class="fn">2 Source: Incompleteness: the proof and paradox of Kurt Gödel (Book) by: Rebecca Goldstein</div>
+</section>
+
+<section class="sec">
+  <span class="tab">EXHIBIT F</span>
+  <h2>The unprovability of consistency</h2>
+  <div class="proofbox">
+    <div class="l"><span>Gödel's first theorem mathematically states that:</span>\(PA \vdash (\mathrm{con}(PA) \rightarrow G)\)</div>
+    <div class="l"><span>And if we assume that the system was able to prove its own consistency, this means that we have a proof for:</span>\(\mathrm{con}(PA)\)</div>
+    <div class="l"><span>∴ Consequently, we now have a proof for (G)</span>\(PA \vdash G\)</div>
+    <div class="l"><span>Here the contradiction appears, as the first theorem proved that (G) can't be proven:</span>\(PA \nvdash G\)</div>
+    <div class="l"><span>So The equation will be:</span>\(PA \nvdash \mathrm{con}(PA)\)</div>
+  </div>
+  <p>And that's simply was the incompleteness theorem.</p>
+  <div class="last">
+    <img src="img/orig-hands.png" alt="">
+    <div class="q">“Either mathematics is too big for the human mind or the human mind is more than a machine”<small>~ Kurt Gödel</small></div>
+  </div>
+  <div class="credits">Photographs: David Hilbert (postcard, c. 1912), Kurt Gödel as a student (1925), John von Neumann (Los Alamos National Laboratory), the Albertina, Königsberg (colour postcard). Via Wikimedia Commons; public domain / attribution as listed there. Drawing Hands (1948) by M. C. Escher. Diagrams and the Goodstein chart drawn for this edition.</div>
+</section>
+
+<script>
+(function(){
+  // cover photo (falls back to pattern if missing)
+  const im=new Image(); im.onload=()=>{const p=document.getElementById('coverphoto');p.style.backgroundImage='url(img/albertina.jpg)';p.innerHTML=''}; im.src='img/albertina.jpg';
+  // Goodstein sequence of 6, computed exactly with BigInt
+  function bump(n,b){ if(n<b) return n; let r=0n,e=0n; while(n>0n){const d=n%b; if(d) r+=d*(b+1n)**bump(e,b); n/=b; e++;} return r; }
+  let n=6n,b=2n; const v=[Number(n)]; for(let i=0;i<100;i++){n=bump(n,b)-1n;b++;v.push(Number(n));}
+  const s=document.getElementById('good'),NS='http://www.w3.org/2000/svg',E=(t,a,x)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(x!==undefined)e.textContent=x;s.appendChild(e);return e};
+  const L=70,R=585,T=18,B=225,max=6e10,X=i=>L+i/100*(R-L),Y=y=>B-y/max*(B-T);
+  for(let k=0;k<=6;k++){E('line',{x1:L,x2:R,y1:Y(k*1e10),y2:Y(k*1e10),stroke:'#e6dcc3'});E('text',{x:L-8,y:Y(k*1e10)+4,'text-anchor':'end','font-size':10,fill:'#7c705f'},k?k+'×10¹⁰':'0')}
+  for(let k=0;k<=100;k+=20){E('text',{x:X(k),y:B+16,'text-anchor':'middle','font-size':10,fill:'#7c705f'},k)}
+  E('text',{x:(L+R)/2,y:B+32,'text-anchor':'middle','font-size':10,fill:'#3c362d'},'iteration');
+  let d='M'+X(0)+' '+Y(v[0]); v.forEach((y,i)=>d+=' L'+X(i)+' '+Y(y));
+  E('path',{d:d+' L'+X(100)+' '+B+' L'+X(0)+' '+B+'Z',fill:'#1f3b35',opacity:.12});
+  E('path',{d,fill:'none',stroke:'#1f3b35','stroke-width':2.6});
+  v.forEach((y,i)=>{if(i%5==0)E('circle',{cx:X(i),cy:Y(y),r:2.6,fill:'#b3362a'})});
+  E('text',{x:X(100)-6,y:Y(v[100])-8,'text-anchor':'end','font-size':11,fill:'#b3362a'},'G₁₀₀(6) = '+v[100].toLocaleString('en'));
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>A Deep Dive into the Possibilities of LEGO</title>
+<meta name="author" content="Lanchenba Mutum">
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&display=block" rel="stylesheet">
+<style>
+:root{
+  --red:#e3000b; --red-d:#a8000a; --yel:#ffcf00; --yel-d:#d9a900; --blue:#0057a8; --blue-d:#003e7a; --green:#00852b; --green-d:#00611f;
+  --paper:#fffaf0; --ink:#1b1b1f; --ink-2:#3d3c42; --muted:#7d786e; --line:#ece3d0;
+}
+@page{ size:A4; margin:18mm 19mm 20mm; background:var(--paper);
+  @top-left{ content:"THE POSSIBILITIES OF LEGO"; font:400 8.5pt 'Lilita One'; letter-spacing:.08em; color:var(--red); }
+  @top-right{ content:"BY LANCHENBA MUTUM"; font:800 7.4pt 'Nunito'; letter-spacing:.14em; color:var(--muted); }
+  @bottom-center{ content:counter(page); font:400 13pt 'Lilita One'; color:#fff; background:var(--blue); border-radius:3mm; width:9mm; height:7mm; margin-bottom:6mm; }
+}
+@page cover{ margin:0; @top-left{content:none} @top-right{content:none} @bottom-center{content:none} }
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:var(--paper);color:var(--ink-2);font:400 10.3pt/1.66 'Nunito',sans-serif}
+p{margin:0 0 3.4mm} b{color:var(--ink);font-weight:800}
+h2{font:400 25pt/1.05 'Lilita One';color:var(--ink);margin:0}
+
+/* cover */
+.cover{page:cover;width:210mm;height:297mm;position:relative;overflow:hidden;background:var(--yel)}
+.cover .studs{position:absolute;inset:0;background:
+  radial-gradient(circle at 50% 50%,rgba(255,255,255,.35) 0 3.1mm,transparent 3.2mm) 0 0/12mm 12mm,
+  radial-gradient(circle at 50% 56%,rgba(0,0,0,.13) 0 3.4mm,transparent 3.5mm) 0 0/12mm 12mm}
+.cover .photo{position:absolute;left:0;right:0;bottom:0;height:118mm;background:#222 center/cover;border-top:5mm solid var(--ink)}
+.cover .inner{position:absolute;left:17mm;right:17mm;top:22mm}
+.cover .k{display:inline-block;background:var(--ink);color:var(--yel);font:900 8.6pt 'Nunito';letter-spacing:.2em;padding:1.6mm 4mm;border-radius:1.5mm}
+.cover h1{font:400 50pt/.98 'Lilita One';color:var(--ink);margin:6mm 0 0;letter-spacing:.005em}
+.cover h1 .lego{display:inline-block;background:var(--red);color:#fff;padding:0 4mm 1mm;border-radius:3mm;box-shadow:0 2mm 0 var(--red-d);font-size:66pt;margin-top:2mm}
+.cover .stat{margin-top:9mm;display:flex;align-items:center;gap:5mm}
+.cover .stat b{font:400 40pt/1 'Lilita One';color:var(--blue)}
+.cover .stat span{font:800 10pt/1.35 'Nunito';color:var(--ink);max-width:62mm}
+.cover .brick{position:absolute;right:12mm;top:106mm;width:80mm}
+.cover .by{position:absolute;left:17mm;bottom:126mm;font:900 9.5pt 'Nunito';letter-spacing:.14em;color:var(--ink)}
+
+/* section head as a brick */
+.sec{margin-top:8mm}
+.sec:first-of-type{margin-top:0}
+.hd{display:flex;align-items:center;gap:4mm;margin-bottom:4mm;break-after:avoid}
+.num{position:relative;width:20mm;height:13mm;border-radius:1.6mm;display:grid;place-items:center;font:400 22pt 'Lilita One';color:#fff;flex:none;margin-top:3mm}
+.num::before{content:"";position:absolute;top:-3mm;left:2.6mm;width:5.4mm;height:3mm;border-radius:1mm 1mm 0 0;background:inherit;box-shadow:9.4mm 0 0 0 var(--c)}
+.r{background:var(--red);--c:var(--red)} .y{background:var(--yel);--c:var(--yel);color:var(--ink)!important} .bl{background:var(--blue);--c:var(--blue)} .g{background:var(--green);--c:var(--green)}
+
+.lead{font-size:11.4pt;line-height:1.6;color:var(--ink)}
+figure{margin:4mm 0 5mm;break-inside:avoid}
+figure img{width:100%;display:block;border-radius:3mm;border:2px solid var(--ink)}
+figure svg{width:100%;display:block}
+figcaption{font:700 8.6pt/1.45 'Nunito';color:var(--muted);margin-top:2mm}
+figcaption b{font:400 9.5pt 'Lilita One';color:var(--red);font-weight:400;margin-right:1.5mm}
+.plate{background:#fff;border:2px solid var(--ink);border-radius:3.5mm;padding:4mm;box-shadow:0 2mm 0 var(--ink)}
+
+.versus{display:grid;grid-template-columns:1fr 1fr;gap:5mm;margin:5mm 0;break-inside:avoid}
+.card{border-radius:3.5mm;padding:5mm;color:#fff;position:relative;box-shadow:0 2mm 0 rgba(0,0,0,.35)}
+.card .who{font:900 7.6pt 'Nunito';letter-spacing:.18em;opacity:.85}
+.card .nm{font:400 19pt/1.1 'Lilita One';margin:1mm 0 2mm}
+.card .n{font:400 27pt/1 'Lilita One'}
+.card p{font-size:9pt;line-height:1.45;margin:2mm 0 0;color:inherit;opacity:.92}
+
+.calc{display:flex;align-items:center;justify-content:center;gap:2.4mm;margin:5mm 0;flex-wrap:wrap;break-inside:avoid}
+.calc .b{position:relative;min-width:15mm;height:12mm;padding:0 2mm;border-radius:1.6mm;display:grid;place-items:center;font:400 16pt 'Lilita One';color:#fff;margin-top:3mm}
+.calc .b::before{content:"";position:absolute;top:-2.6mm;left:2mm;width:4.4mm;height:2.6mm;border-radius:.8mm .8mm 0 0;background:inherit;box-shadow:6.6mm 0 0 0 var(--c)}
+.calc .op{font:400 16pt 'Lilita One';color:var(--ink)}
+.calc .res{background:var(--ink);color:var(--yel);--c:var(--ink)}
+.steps{display:grid;grid-template-columns:1fr 12mm 1fr 12mm 1fr;align-items:center;margin:4mm 0 5mm;break-inside:avoid}
+.steps>div{background:#fff;border:2px solid var(--ink);border-radius:3mm;padding:3.5mm;text-align:center}
+.steps .arrow{border:0;background:none;font:400 20pt 'Lilita One';color:var(--red);padding:0}
+.steps b{display:block;font:400 17pt 'Lilita One';color:var(--blue);font-weight:400}
+.steps small{font:700 8pt/1.35 'Nunito';color:var(--muted)}
+.callout{background:var(--blue);color:#fff;border-radius:3.5mm;padding:5mm 6mm;margin:5mm 0;break-inside:avoid;display:grid;grid-template-columns:auto 1fr;gap:5mm;align-items:center}
+.callout .big{font:400 34pt/1 'Lilita One';color:var(--yel)}
+.callout p{margin:0;color:#e5eefa}
+.row2{display:grid;grid-template-columns:1.25fr 1fr;gap:5mm;align-items:start;margin:4mm 0;break-inside:avoid}
+.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm;margin:4mm 0 5mm;break-inside:avoid}
+.timeline>div{border-top:5px solid var(--c);background:#fff;border-radius:0 0 3mm 3mm;padding:3mm 3.5mm;box-shadow:0 1.4mm 0 var(--line)}
+.timeline .t{font:400 13pt 'Lilita One';color:var(--c)}
+.timeline small{font:600 8.6pt/1.4 'Nunito';color:var(--ink-2);display:block;margin-top:1mm}
+.refs{margin-top:6mm;font-size:9pt;break-inside:avoid}
+.refs p{margin:0 0 1.4mm}
+.credits{font:700 7.6pt/1.5 'Nunito';color:var(--muted);margin-top:4mm}
+.pb{break-before:page}
+.keep{break-inside:avoid}
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="studs"></div>
+  <div class="inner">
+    <span class="k">MATHS · COMBINATORICS</span>
+    <h1>A Deep Dive into<br>the Possibilities of<br><span class="lego">LEGO</span></h1>
+    <div class="stat"><b>915,103,765</b><span>ways to put together just six 2&nbsp;×&nbsp;4 bricks</span></div>
+  </div>
+  <svg class="brick" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="st" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#ff3b3b"/><stop offset="1" stop-color="#c4000a"/></linearGradient></defs>
+    <g transform="translate(16 54)">
+      <polygon points="0,40 104,0 208,40 104,80" fill="#ff2a33"/>
+      <polygon points="0,40 104,80 104,140 0,100" fill="#a8000a"/>
+      <polygon points="104,80 208,40 208,100 104,140" fill="#d0000b"/>
+    </g><g transform="translate(107.0,69.0)"><rect x="-11" y="-8" width="22" height="8" fill="#b3000b"/><ellipse rx="11" ry="4.4" fill="#b3000b"/><ellipse cy="-8" rx="11" ry="4.4" fill="#ff4d55"/></g><g transform="translate(133.0,79.0)"><rect x="-11" y="-8" width="22" height="8" fill="#b3000b"/><ellipse rx="11" ry="4.4" fill="#b3000b"/><ellipse cy="-8" rx="11" ry="4.4" fill="#ff4d55"/></g><g transform="translate(159.0,89.0)"><rect x="-11" y="-8" width="22" height="8" fill="#b3000b"/><ellipse rx="11" ry="4.4" fill="#b3000b"/><ellipse cy="-8" rx="11" ry="4.4" fill="#ff4d55"/></g><g transform="translate(55.0,89.0)"><rect x="-11" y="-8" width="22" height="8" fill="#b3000b"/><ellipse rx="11" ry="4.4" fill="#b3000b"/><ellipse cy="-8" rx="11" ry="4.4" fill="#ff4d55"/></g><g transform="translate(185.0,99.0)"><rect x="-11" y="-8" width="22" height="8" fill="#b3000b"/><ellipse rx="11" ry="4.4" fill="#b3000b"/><ellipse cy="-8" rx="11" ry="4.4" fill="#ff4d55"/></g><g transform="translate(81.0,99.0)"><rect x="-11" y="-8" width="22" height="8" fill="#b3000b"/><ellipse rx="11" ry="4.4" fill="#b3000b"/><ellipse cy="-8" rx="11" ry="4.4" fill="#ff4d55"/></g><g transform="translate(107.0,109.0)"><rect x="-11" y="-8" width="22" height="8" fill="#b3000b"/><ellipse rx="11" ry="4.4" fill="#b3000b"/><ellipse cy="-8" rx="11" ry="4.4" fill="#ff4d55"/></g><g transform="translate(133.0,119.0)"><rect x="-11" y="-8" width="22" height="8" fill="#b3000b"/><ellipse rx="11" ry="4.4" fill="#b3000b"/><ellipse cy="-8" rx="11" ry="4.4" fill="#ff4d55"/></g>
+  </svg>
+  <div class="by">BY LANCHENBA MUTUM</div>
+  <div class="photo" id="cph"></div>
+</section>
+
+<section class="sec">
+  <div class="hd"><div class="num r">1</div><h2>Introduction</h2></div>
+  <p class="lead">LEGO. It's such a simple childhood toy that I have played with from a very young age, and I'm sure most of the people reading this would have as well. However, most don't realise how much maths can be behind such a simple plastic block.</p>
+  <p>Specifically, the number of combinations several bricks (as seen in the pictures underneath) can have with each other. In 2004, Professor Søren Eilers published his findings and calculations of the correct number of combinations for just six LEGO bricks. He used a computer program and determined that the true number of combinations was <b>915,103,765</b>. This broke the already published amount from the official LEGO Group of <b>102,981,500</b>, and after reading this, I want you to see the maths behind both calculations and how there was a difference of over 812 million combinations.</p>
+  <figure class="plate"><img src="img/orig-p1-x18.png" style="border:0;border-radius:2mm"><figcaption><b>Figure 1</b>Potential configurations of two 2 x 4 LEGO bricks</figcaption></figure>
+  <div class="versus">
+    <div class="card r"><div class="who">THE LEGO GROUP · TOWERS ONLY</div><div class="nm">Jørgen Kirk Kristiansen</div><div class="n">102,981,500</div><p>Six bricks stacked straight up, worked out by hand.</p></div>
+    <div class="card bl"><div class="who">2004 · EVERY CONNECTION</div><div class="nm">Prof. Søren Eilers</div><div class="n">915,103,765</div><p>Every possible build, counted by a computer program.</p></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="hd"><div class="num y">2</div><h2>The Very Quick Escalation of Combinations</h2></div>
+  <p>For you to truly understand, I believe we should start by looking at the number of combinations from one singular LEGO brick all the way to the 915,103,765 combinations of six bricks.</p>
+  <figure class="plate"><img src="img/orig-p2-x26.png" style="border:0;border-radius:2mm;width:76%;margin:0 auto"><figcaption><b>Figure 2</b>Shows the combinations of 2 x 4 LEGO bricks from 1 to 6</figcaption></figure>
+  <p>So starting with one brick, there is obviously only one combination, and that is just the brick itself. However, when we get to two bricks, that number gets larger and the number of combinations rises to 24. This accelerates up again with three bricks to 1,560, and so on. This is a clear example of exponential growth and how the number of combinations basically explodes as we increase the amount of bricks.</p>
+  <figure>
+    <svg id="growth" style="width:86%;margin:0 auto" viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" font-family="Nunito"></svg>
+    <figcaption><b>Growth chart</b>Each step up the vertical scale is ten times the one below it. The towers still climb almost evenly, so every extra brick multiplies the count by roughly 60 to 90.</figcaption>
+  </figure>
+</section>
+
+<section class="sec">
+  <div class="hd"><div class="num bl">3</div><h2>The Calculation Behind the 812 Million Difference</h2></div>
+  <p>For the original calculations, the man behind it was Jørgen Kirk Kristiansen. He calculated this with a few simple steps. To start with, he only accounted for the combinations where the six bricks were directly on top of each other, so this means he only accounted for structures that were six bricks high and ignored side-by-side connections. Afterwards, he followed some simple logic and looked at the individual brick, realising that there are exactly 46 different ways to stack two bricks on top of each other. So through this, he deduced that if we stack six bricks on top of each other, the maths behind this would just be 46⁵, because if there are 46 ways to place the second brick on the first, there are also 46 ways for the third brick, and so on.</p>
+  <div class="calc">
+    <div class="b r">46</div><span class="op">×</span><div class="b y" style="color:var(--ink)">46</div><span class="op">×</span><div class="b bl">46</div><span class="op">×</span><div class="b g">46</div><span class="op">×</span><div class="b r">46</div><span class="op">=</span><div class="b res">205,962,976</div>
+  </div>
+  <p>This would leave the total raw permutations at 205,962,976. However, this would not be the final result, as the researchers would then remove duplicate shapes caused by a 180-degree rotation (this is why there are only 24 ways with two bricks as, even though there are 46 ways to connect them, some are duplicates and if rotated are the same). This can be simply explained through the fact that bricks are symmetrical. Through this, they divided their original calculations by two but adjusted some perfectly symmetrical structures that should not be halved and ended up with a total number of combinations of 102,981,500.</p>
+  <div class="steps">
+    <div><b>46⁵</b><small>raw stacks of six</small></div><div class="arrow">→</div>
+    <div><b>÷ 2</b><small>a 180° turn gives the same tower</small></div><div class="arrow">→</div>
+    <div><b style="color:var(--red)">102,981,500</b><small>after keeping the symmetric towers</small></div>
+  </div>
+  <figure class="plate"><img src="img/orig-p3-x30.png" style="border:0;border-radius:2mm"><figcaption><b>Figure 3</b>Shows all 46 different ways two bricks can be put on top of each other. <i>Note that some of these are identical if rotated.</i></figcaption></figure>
+  <div class="row2">
+    <figure class="plate" style="margin:0"><img src="img/orig-p3-x31.png" style="border:0;border-radius:2mm;max-height:52mm;width:auto;margin:0 auto"><figcaption><b>Figure 4</b>Shows rotational symmetry and how when rotated 180 degrees these two structures are the same</figcaption></figure>
+    <figure style="margin:0">
+      <svg viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg" font-family="Lilita One">
+        <g transform="translate(20 40)">
+          <rect x="0" y="40" width="80" height="26" rx="3" fill="#0057a8"/><rect x="30" y="14" width="80" height="26" rx="3" fill="#e3000b"/>
+          <g fill="#0057a8"><rect x="6" y="34" width="12" height="6" rx="1.5"/></g>
+          <g fill="#e3000b"><rect x="36" y="8" width="12" height="6" rx="1.5"/><rect x="56" y="8" width="12" height="6" rx="1.5"/><rect x="76" y="8" width="12" height="6" rx="1.5"/><rect x="96" y="8" width="12" height="6" rx="1.5"/></g>
+        </g>
+        <path d="M120 70 q14-34 28 0" fill="none" stroke="#1b1b1f" stroke-width="3" marker-end="url(#ah)"/>
+        <defs><marker id="ah" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1b1b1f"/></marker></defs>
+        <text x="134" y="34" font-size="15" text-anchor="middle" fill="#1b1b1f">180°</text>
+        <g transform="translate(150 40)">
+          <rect x="30" y="40" width="80" height="26" rx="3" fill="#0057a8"/><rect x="0" y="14" width="80" height="26" rx="3" fill="#e3000b"/>
+          <g fill="#e3000b"><rect x="6" y="8" width="12" height="6" rx="1.5"/><rect x="26" y="8" width="12" height="6" rx="1.5"/><rect x="46" y="8" width="12" height="6" rx="1.5"/><rect x="66" y="8" width="12" height="6" rx="1.5"/></g>
+          <g fill="#0057a8"><rect x="92" y="34" width="12" height="6" rx="1.5"/></g>
+        </g>
+        <text x="130" y="150" font-size="17" text-anchor="middle" fill="#1b1b1f">same tower, counted once</text>
+        <text x="130" y="172" font-family="Nunito" font-weight="700" font-size="12" text-anchor="middle" fill="#7d786e">so 46 ways become 24 shapes</text>
+      </svg>
+    </figure>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="hd"><div class="num g">4</div><h2>The Modern and Correct Calculation</h2></div>
+  <div class="row2">
+    <div>
+      <p>In 2004, Professor Søren Eilers used computational mathematics to try and calculate the true number of combinations. He accomplished this by writing his own custom program in Java that simulated every possible connection. At this time, his home computer, which was an Apple Powerbook G4, had to run this program for an entire week to fully iterate through all the possible combinations. However, with the development of technology, this can now be done in roughly 5 minutes.</p>
+    </div>
+    <figure style="margin:0"><img id="pb" src="img/powerbook.jpg"><figcaption><b>Apple PowerBook G4</b>The kind of laptop that counted every build for a week</figcaption></figure>
+  </div>
+  <div class="timeline">
+    <div style="--c:var(--red)"><div class="t">One week</div><small>Eilers's Java program on a PowerBook G4, trying every connection</small></div>
+    <div style="--c:var(--yel-d)"><div class="t">A second program</div><small>Mikkel Abrahamsen writes his own check in another language</small></div>
+    <div style="--c:var(--green)"><div class="t">About 5 minutes</div><small>The same count on a computer today</small></div>
+  </div>
+  <p>After letting his program run for a week, he had to validate his findings and calculations by asking a high school student by the name of Mikkel Abrahamsen to write a different program in another programming language. After both programs arrived at the same exact number, the result was confirmed and the total number of combinations was 915,103,765.</p>
+  <figure>
+    <svg id="towers" viewBox="0 0 640 150" xmlns="http://www.w3.org/2000/svg" font-family="Nunito"></svg>
+    <figcaption><b>To scale</b>Each brick in a row stands for about 25 million builds. The towers-only count fills 4 bricks; the full count needs 37.</figcaption>
+  </figure>
+</section>
+
+<section class="sec keep">
+  <div class="hd"><div class="num r">5</div><h2>Conclusion</h2></div>
+  <div class="callout"><div class="big">812M+</div><p>builds were missing from the original count, mostly because it only allowed straight towers.</p></div>
+  <p>As we can clearly see, the "tower" constraint of the original number of combinations played a massive role and was one of the main factors that led to that 812 million difference, and it illustrates how a slight change can have a massive impact. Also, it just shows the endless possibilities of LEGO and the fact that with only 6 of the same brick we can have 915,103,765 combinations; it reveals the endless possibilities that LEGO has with all its different pieces.</p>
+  <div class="refs">
+    <h2 style="font-size:16pt;margin-bottom:2mm">References</h2>
+    <p>Eilers S (2005) The LEGO Combinatorics Project</p>
+    <p>The LEGO Group website</p>
+    <p>Abrahamsen M (2004) Verification of LEGO Combinatorics</p>
+    <div class="credits">Photos via Wikimedia Commons: “Lego Color Bricks” by Alan Chia, CC BY-SA 2.0 · “PowerBook G4 Titanium” by Tokumeigakarinoaoshima, CC0. Figures 1–4 by the author; other diagrams drawn for this edition. LEGO® is a trademark of the LEGO Group, which does not sponsor or endorse this essay.</div>
+  </div>
+</section>
+
+<script>
+(function(){
+  document.getElementById('cph').style.backgroundImage='url(img/bricks.jpg)';
+  const NS='http://www.w3.org/2000/svg';
+  function E(s,t,a,x){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(x!==undefined)e.textContent=x;s.appendChild(e);return e}
+  const cols=['#e3000b','#ffcf00','#0057a8','#00852b','#e3000b','#0057a8'], dark=['#a8000a','#d9a900','#003e7a','#00611f','#a8000a','#003e7a'];
+  // growth chart (log scale)
+  const g=document.getElementById('growth'),vals=[1,24,1560,119580,10166403,915103765];
+  const L=60,B=250,H=220,top=9,y=v=>B-Math.log10(v)/top*H;
+  for(let k=0;k<=top;k+=3){E(g,'line',{x1:L,x2:630,y1:y(10**k),y2:y(10**k),stroke:'#ece3d0'});E(g,'text',{x:L-8,y:y(10**k)+4,'text-anchor':'end','font-size':11,'font-weight':700,fill:'#7d786e'},k===0?'1':'10'+['','','','³','','','⁶','','','⁹'][k])}
+  vals.forEach((v,i)=>{const x=L+20+i*94,w=62,yy=Math.min(y(v),B-8);
+    E(g,'rect',{x,y:yy,width:w,height:B-yy,rx:4,fill:cols[i]});
+    for(let s=0;s<2;s++)E(g,'rect',{x:x+10+s*30,y:yy-6,width:13,height:7,rx:2,fill:cols[i]});
+    E(g,'rect',{x:x+w-8,y:yy,width:8,height:B-yy,rx:3,fill:dark[i],opacity:.6});
+    E(g,'text',{x:x+w/2,y:yy-12,'text-anchor':'middle','font-size':12.5,'font-weight':900,fill:'#1b1b1f'},v.toLocaleString('en-GB'));
+    E(g,'text',{x:x+w/2,y:B+18,'text-anchor':'middle','font-size':12,'font-weight':800,fill:'#3d3c42'},(i+1)+(i?' bricks':' brick'));
+  });
+  // towers to scale
+  const t=document.getElementById('towers'),unit=25e6;
+  [[102981500,'Kristiansen (towers only)','#e3000b'],[915103765,'Eilers (every build)','#0057a8']].forEach(([v,lab,c],r)=>{
+    const n=Math.round(v/unit),y0=40+r*90;
+    E(t,'text',{x:0,y:y0-12,'font-size':13,'font-weight':900,fill:'#1b1b1f'},lab+' · '+v.toLocaleString('en-GB'));
+    for(let i=0;i<n;i++){const x=i*17;E(t,'rect',{x,y:y0,width:15,height:22,rx:2,fill:c});E(t,'rect',{x:x+4,y:y0-4,width:7,height:5,rx:1.4,fill:c})}
+  });
+})();
+</script>
+</body>
+</html>

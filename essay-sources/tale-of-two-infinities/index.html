@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>A Tale of Two Infinities</title>
+<meta name="author" content="Lanchenba Mutum">
+<link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Josefin+Sans:wght@400;600;700&display=block" rel="stylesheet">
+<style>
+:root{
+  --plum:#2a1520; --plum-2:#3d2030; --ink:#2a1a14; --ink-2:#4b362c; --muted:#8c7566;
+  --cream:#f7efe3; --cream-2:#efe2cf; --gold:#c39a45; --gold-2:#e2c27d; --rose:#d98b98; --rose-soft:#f6dde0;
+}
+@page{ size:A4; margin:22mm 22mm 22mm; background:var(--cream);
+  @top-center{ content:"✦  A TALE OF TWO INFINITIES  ✦"; font:600 6.8pt 'Josefin Sans'; letter-spacing:.3em; color:var(--gold); }
+  @bottom-center{ content:"— " counter(page) " —"; font:500 10pt 'Cormorant Garamond'; color:var(--ink-2); }
+}
+@page cover{ margin:0; @top-center{content:none} @bottom-center{content:none} }
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:var(--cream);color:var(--ink-2);font:500 12.4pt/1.55 'Cormorant Garamond',serif;hyphens:auto}
+p{margin:0 0 3.4mm;text-align:justify} b{color:var(--ink)}
+
+.cover{page:cover;width:210mm;height:297mm;position:relative;overflow:hidden;background:var(--plum);color:var(--cream)}
+.cover svg.art{position:absolute;inset:0;width:100%;height:100%}
+.cover .t{position:absolute;left:0;right:0;top:30mm;text-align:center}
+.cover .k{font:600 7.6pt 'Josefin Sans';letter-spacing:.42em;color:var(--gold-2)}
+.cover h1{font:400 50pt/1 'Poiret One';letter-spacing:.06em;margin:7mm 0 0;color:#fff4e2}
+.cover h1 span{display:block;font-size:22pt;letter-spacing:.5em;color:var(--gold-2);margin-bottom:3mm}
+.cover .by{margin-top:6mm;font:italic 500 14pt 'Cormorant Garamond';color:#e9d6c0}
+.cover .b{position:absolute;left:0;right:0;bottom:16mm;text-align:center;font:600 7.4pt 'Josefin Sans';letter-spacing:.4em;color:var(--gold-2)}
+
+.chapter{margin-top:9mm}
+.head{break-inside:avoid;break-after:avoid}
+.head+p,.head+.aside{break-before:avoid}
+.ornament{text-align:center;color:var(--gold);font:400 14pt 'Poiret One';letter-spacing:.6em;margin-bottom:2mm}
+.num{text-align:center;font:600 7.4pt 'Josefin Sans';letter-spacing:.4em;color:var(--gold)}
+h2{text-align:center;font:400 30pt/1.05 'Poiret One';color:var(--plum);margin:2mm 0 2mm;letter-spacing:.02em}
+.rule{width:60mm;margin:0 auto 7mm;height:7px;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold)}
+.dropcap::first-letter{font:400 50pt/.8 'Poiret One';float:left;color:var(--gold);margin:2mm 3mm 0 0}
+figure{margin:5mm 0 6mm;break-inside:avoid}
+figure svg{width:100%;height:auto;display:block}
+figcaption{text-align:center;font:600 7pt/1.5 'Josefin Sans';letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:3mm}
+.frame{border:1px solid var(--gold);padding:5mm;position:relative;background:#fbf5ec}
+.frame::before{content:"";position:absolute;inset:1.4mm;border:1px solid var(--gold-2);pointer-events:none}
+.aside{display:grid;grid-template-columns:38mm 1fr;gap:6mm;align-items:center;margin:5mm 0 6mm;break-inside:avoid}
+.aside img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;filter:sepia(.55) contrast(1.05);border:1px solid var(--gold);padding:1.5mm;background:#fbf5ec}
+.aside .who{font:600 7pt 'Josefin Sans';letter-spacing:.3em;color:var(--gold)}
+.aside b{display:block;font:400 20pt 'Poiret One';color:var(--plum);margin:1mm 0}
+.aside span{font:italic 500 12pt/1.45 'Cormorant Garamond'}
+.quote{font:italic 500 17pt/1.35 'Cormorant Garamond';color:var(--plum);text-align:center;margin:6mm 10mm;break-inside:avoid}
+.quote::before,.quote::after{content:"✦";display:block;font-size:9pt;color:var(--gold);margin:2mm 0}
+.alephs{display:grid;grid-template-columns:1fr 1fr;gap:6mm;margin:5mm 0 6mm;break-inside:avoid}
+.al{background:var(--plum);color:var(--cream);padding:6mm;text-align:center;position:relative}
+.al::before{content:"";position:absolute;inset:1.6mm;border:1px solid rgba(226,194,125,.5)}
+.al .s{font:400 46pt/1 'Cormorant Garamond';color:var(--gold-2)}
+.al b{display:block;font:600 8pt 'Josefin Sans';letter-spacing:.3em;color:#fff;margin:2mm 0}
+.al span{font:italic 500 11.5pt/1.4 'Cormorant Garamond';color:#e8d7c4}
+.al svg{width:100%;height:18mm;margin-top:3mm}
+.finale{background:var(--plum);color:var(--cream);padding:8mm 10mm;margin-top:6mm;position:relative;break-inside:avoid}
+.finale::before{content:"";position:absolute;inset:2mm;border:1px solid rgba(226,194,125,.45)}
+.finale p{color:#efe0cf;text-align:left}
+.credits{font:500 7pt/1.5 'Josefin Sans';letter-spacing:.06em;color:var(--muted);margin-top:8mm;text-align:center}
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <svg class="art" viewBox="0 0 210 297" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e2c27d"/><stop offset="1" stop-color="#a77a2c"/></linearGradient>
+      <radialGradient id="glow" cx=".5" cy=".62" r=".5"><stop offset="0" stop-color="#5a2c3e"/><stop offset="1" stop-color="#2a1520"/></radialGradient>
+    </defs>
+    <rect width="210" height="297" fill="url(#glow)"/>
+    <!-- sunburst -->
+    <g stroke="#c39a45" stroke-width=".25" opacity=".55" id="rays"></g>
+    <!-- infinite corridor of doors receding to the vanishing point -->
+    <g id="corridor"></g>
+    <!-- deco frame -->
+    <rect x="9" y="9" width="192" height="279" fill="none" stroke="#c39a45" stroke-width=".5"/>
+    <rect x="11.5" y="11.5" width="187" height="274" fill="none" stroke="#c39a45" stroke-width=".25"/>
+    <!-- marquee -->
+    <g transform="translate(105 222)">
+      <rect x="-46" y="-11" width="92" height="22" fill="#2a1520" stroke="url(#g)" stroke-width=".8"/>
+      <text y="-1.5" text-anchor="middle" font-family="Josefin Sans" font-weight="700" font-size="5.2" letter-spacing="1.6" fill="#e2c27d">HILBERT'S GRAND HOTEL</text>
+      <text y="6" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-size="5" fill="#d98b98">no vacancy … and yet, always room</text>
+    </g>
+    <text x="105" y="252" text-anchor="middle" font-family="Cormorant Garamond" font-size="15" fill="#e2c27d">ℵ₀  &lt;  𝔠</text>
+  </svg>
+  <div class="t">
+    <div class="k">AN ESSAY ON THE SIZES OF INFINITY</div>
+    <h1><span>A TALE OF</span>Two Infinities</h1>
+    <div class="by">by Lanchenba Mutum</div>
+  </div>
+  <div class="b">THE OPEN ARCHIVE</div>
+</section>
+
+<section class="chapter">
+  <div class="head">
+  <div class="ornament">✦ ✦ ✦</div>
+  <div class="num">CHAPTER I</div>
+  <h2>Introduction</h2>
+  <div class="rule"></div>
+  </div>
+  <p class="dropcap">Numbers, our whole world is dominated by numbers, all of which are finite – even if some are simply too large to comprehend. However, there is one “number” which defies all others: infinity.</p>
+  <p>However, infinity isn’t technically a “normal” number, like 2.718, or 6.02*10^23; it’s the representation of a never-ending value that can never be reached or surpassed. Therefore, infinity doesn’t follow the normal rules of arithmetic. Although 1 minus 1 may be 0, infinity minus 1 is still infinity. Since infinity is the representation of something never-ending, you cannot ever run out of infinite things… or can you?</p>
+  <div class="quote">∞ − 1 = ∞</div>
+  <div class="head">
+
+  <div class="ornament" style="margin-top:8mm">✦ ✦ ✦</div>
+  <div class="num">CHAPTER II</div>
+  <h2>Hilbert's Hotel</h2>
+  <div class="rule"></div>
+  </div>
+  <div class="aside">
+    <img src="img/hilbert.jpg" alt="">
+    <div><div class="who">THE PROPRIETOR</div><b>David Hilbert</b><span>German mathematician (1862–1943), whose thought experiment of a hotel with infinitely many rooms is still the friendliest door into infinity.</span></div>
+  </div>
+  <p>At the beginning of the 20th century, a German mathematician named David Hilbert endeavoured to solve this problem with a famous thought experiment. Let’s say you have a hotel with infinite rooms, starting at 1 then going off to infinity. Now, imagine that this hotel is fully booked, every single room is occupied by a guest. What happens if a new guest comes to the reception area and asks for a room, how can you accommodate them? You might first believe that there isn’t an actual way to make room for them, but there is. You tell everyone to move up by one room: the person in room 1 goes to room 2, the person in room 2 to 3, and so on. Now room 1 is free and this customer can go into it.</p>
+  <figure class="frame">
+    <svg id="shift1" viewBox="0 0 600 150" xmlns="http://www.w3.org/2000/svg"></svg>
+    <figcaption>Room n → room n + 1 · room 1 is now free</figcaption>
+  </figure>
+</section>
+
+<section class="chapter">
+  <div class="head">
+  <div class="ornament">✦ ✦ ✦</div>
+  <div class="num">CHAPTER III</div>
+  <h2>An Infinite Bus</h2>
+  <div class="rule"></div>
+  </div>
+  <p class="dropcap">We’ve accommodated one guest successfully – in spite of the hotel being full. But now a bus is pulling up. This bus, using the same method as the hotel, is infinitely large and can therefore hold an unlimited number of people. They all want to have a stay at the hotel. When there was just one guest, we could simply move everyone up by one, but we can’t actually move everyone up by an infinite number of rooms. Well there is actually a way: you tell everyone to move into the corresponding room number double their current one.</p>
+  <figure class="frame">
+    <svg id="shift2" viewBox="0 0 600 170" xmlns="http://www.w3.org/2000/svg"></svg>
+    <figcaption>Room n → room 2n · every odd room opens for the bus</figcaption>
+  </figure>
+  <p>As a result, the person in room 1 goes to room 2, the person in room 2 to room 4, and the person in room 3 to room 6. This leaves an infinite number of gaps between the occupied rooms, all of the odd numbered rooms, which can now be filled by the guests from the bus. Well done, you have successfully managed to fit an infinite number of new people into an already completely full, infinitely large hotel. It surely seems like we can’t run out of room here, I mean the whole point of infinity – as mentioned earlier – is that it is never-ending.</p>
+</section>
+
+<section class="chapter">
+  <div class="head">
+  <div class="ornament">✦ ✦ ✦</div>
+  <div class="num">CHAPTER IV</div>
+  <h2>The Interdimensional Executives</h2>
+  <div class="rule"></div>
+  </div>
+  <p class="dropcap">Finally, a crowd approaches your hotel. They came from an interdimensional business meeting, where an infinite number of executives came together. Because there were multiple identical copies of executives from different universes, each were given their own unique nametag with which to identify themselves. Now, this nametag is composed from an infinitely long, random string of the letters “P” and “I”. The first person pulls up the hotel, his name is “PIPPPPIIIPIPIPIPIIIPIPIPIPIPI…” it’ll probably just be better to call them “PI”. They come up to the counter and ask for rooms for them and all the other business executives, but you tell them that unfortunately you cannot fit them here. Why?</p>
+  <div class="aside">
+    <img src="img/cantor.jpg" alt="">
+    <div><div class="who">THE SPOILER</div><b>Georg Cantor</b><span>(1845–1918) whose diagonal argument showed that some infinities cannot be listed, no matter how clever the hotel manager.</span></div>
+  </div>
+  <p>If the hotel is infinitely large, surely you can fit these people, especially if you could fit everyone from the infinite bus. The reason is rooted in the unique nametags for each guest, and something known as Cantor’s Argument. Let’s say that you do actually match up every single executive on this list to a room in the hotel, since both are infinite we have used up all available hotel rooms, but have also surely used up every executive. Well, Cantor’s Argument says no.</p>
+  <p>Firstly, remember that all of these nametags are infinitely long and don’t follow any pattern, like PI, as it’s just an infinite string of numbers, lacking any known pattern. Now you take the first letter from the first name, “P”, and you flip it to “I”. Then you take the second letter from the second name, let’s imagine it to be “I”, and you flip this to “P”. You repeat this step forever until you have gone through every single name on the list.</p>
+  <figure class="frame">
+    <svg id="diag" viewBox="0 0 600 330" xmlns="http://www.w3.org/2000/svg"></svg>
+    <figcaption>Cantor's diagonal · flip the n-th letter of the n-th name</figcaption>
+  </figure>
+  <p>You have successfully created an entirely new name that wasn’t on this list; the first letter is different to the first letter from the first name, the second from the second name and the third letter from the third name. It is different to every name on the list by at least one letter. But wait, you’ve already used up every single hotel room – seeing as you matched every hotel room to each name. Still, you have managed to create an entirely new name from scratch, while the hotel is already full. But how?</p>
+</section>
+
+<section class="chapter">
+  <div class="head">
+  <div class="ornament">✦ ✦ ✦</div>
+  <div class="num">CHAPTER V</div>
+  <h2>Countable infinity &amp; Uncountable infinity</h2>
+  <div class="rule"></div>
+  </div>
+  <p>The number of rooms in the hotel is countably infinite; you can count towards it, starting at 1 then 2 then 3 then so on -- as it’s the set of all integers, or the set ℤ-- even if there isn’t enough time in the lifespan of the whole universe to finish it. The set of countable numbers is denoted by ℵ₀. In contrast, the name of each executive is uncountably infinite, represented as the set ℵ₁.</p>
+  <div class="alephs">
+    <div class="al"><div class="s">ℵ₀</div><b>COUNTABLE</b><span>The rooms: 1, 2, 3, … you can count towards it, one by one.</span>
+      <svg viewBox="0 0 200 40"><g fill="#e2c27d"><circle cx="10" cy="20" r="4"/><circle cx="34" cy="20" r="4"/><circle cx="58" cy="20" r="4"/><circle cx="82" cy="20" r="4"/><circle cx="106" cy="20" r="4"/><circle cx="130" cy="20" r="4"/><circle cx="154" cy="20" r="4"/></g><text x="180" y="25" fill="#e2c27d" font-size="14" font-family="Cormorant Garamond">…</text></svg></div>
+    <div class="al"><div class="s">ℵ₁</div><b>UNCOUNTABLE</b><span>The nametags: like every number in-between, with no “next” one.</span>
+      <svg viewBox="0 0 200 40"><defs><linearGradient id="c" x1="0" x2="1"><stop offset="0" stop-color="#d98b98"/><stop offset="1" stop-color="#e2c27d"/></linearGradient></defs><rect x="6" y="16" width="188" height="8" rx="4" fill="url(#c)"/></svg></div>
+  </div>
+  <p>You can think of it almost like the amount of all numbers there are, by which I mean not just the integers, 1 2 3 4 and so on, but every number in-between. If you try to count all of these numbers you begin with zero, but… what’s next? A number with an infinite number of zeros and then a one at the end you’d imagine, but you can’t even count this entire individual number, let alone all of the infinitely long numbers. This very fact makes this infinity so much larger than the countably infinite number of hotel rooms that there are, such that you cannot ever possibly hope to accommodate all of the unique guests from the business meeting.</p>
+  <div class="head">
+
+  <div class="ornament" style="margin-top:8mm">✦ ✦ ✦</div>
+  <div class="num">CHAPTER VI</div>
+  <h2>Conclusion</h2>
+  <div class="rule"></div>
+  </div>
+  <p class="dropcap">The significance of this idea is that it reveals that although infinity may initially seem like a simple concept for something without end, it’s actually a layered, hierarchical system, with some infinities being infinitely larger than others. Through this, what may have initially appeared to be a concept for the end of all numbers managed to become a window into a fascinating new world of mathematics.</p>
+  <p>The true nature of infinites raises a deep question about the fundamental nature of humanity. Although our universe is likely finite, with the observable universe only stretching 41.5 billion light years in every direction, the world of mathematics is infinitely large on multiple different scales and allows us to explore a world far beyond the scale of our own. Although it isn’t physically possible to host an infinitely large business meeting, or have an infinitely large bus or hotel, the concepts demonstrated with them are very much real.</p>
+  <div class="finale">
+    <p>Maybe, the implicit meaning behind all of this is not that there are multiple scales of infinity, but instead that our human minds are destined to overcome the finite barriers of our universe, always destined to explore an even larger world beyond our own.</p>
+    <p style="margin:0">Infinity obviously isn’t something to which we can actually count, but we can still comprehend it, we still came up with the concept of infinity, and then with the idea of multiple distinct forms of infinity. In doing this, we don’t just grasp the incomprehensible scale of numbers, but also the desire of humans to reach beyond the bounds of our own universe, creating an entirely new world unbounded by the laws of this universe.</p>
+  </div>
+  <div class="credits">PORTRAITS: DAVID HILBERT (POSTCARD, C. 1912) AND GEORG CANTOR (OTTO ZETH / KUNSTBIBLIOTHEK BERLIN), PUBLIC DOMAIN VIA WIKIMEDIA COMMONS · HOTEL ILLUSTRATIONS DRAWN FOR THIS EDITION</div>
+</section>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function E(svg,n,a,t){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(t!==undefined)e.textContent=t;svg.appendChild(e);return e}
+// cover: rays + receding corridor of doors
+(function(){
+  const svg=document.querySelector('.cover svg'), rays=svg.querySelector('#rays'), cor=svg.querySelector('#corridor');
+  const cx=105, cy=150;
+  for(let a=0;a<360;a+=6){const r=a*Math.PI/180;E(rays,'line',{x1:cx,y1:cy,x2:cx+300*Math.cos(r),y2:cy+300*Math.sin(r)})}
+  // one-point perspective corridor: wall lines, carpet and doors on both sides
+  const X=82, FLOOR=70, CEIL=-70, TOP=-22;
+  const px=(x,z)=>cx+x/z, py=(y,z)=>cy+y/z;
+  [[-X,FLOOR],[X,FLOOR],[-X,CEIL],[X,CEIL]].forEach(([x,y])=>E(cor,'line',{x1:px(x,.6),y1:py(y,.6),x2:px(x,40),y2:py(y,40),stroke:'#c39a45','stroke-width':.4}));
+  E(cor,'path',{d:`M${px(-30,.6)} ${py(FLOOR,.6)} L${px(-30,40)} ${py(FLOOR,40)} L${px(30,40)} ${py(FLOOR,40)} L${px(30,.6)} ${py(FLOOR,.6)}Z`,fill:'#6b2a3c',opacity:.55});
+  for(let i=0;i<22;i++){
+    const z1=1+i*.62, z2=z1+.36;
+    [-1,1].forEach(side=>{
+      const x=side*X;
+      E(cor,'path',{d:`M${px(x,z1)} ${py(FLOOR,z1)} L${px(x,z1)} ${py(TOP,z1)} L${px(x,z2)} ${py(TOP,z2)} L${px(x,z2)} ${py(FLOOR,z2)}Z`,fill:'#3d2030',stroke:'#c39a45','stroke-width':Math.max(.08,.5/z1)});
+      E(cor,'circle',{cx:px(x,z1+.28),cy:py(FLOOR*.1,z1+.28),r:Math.max(.12,1.1/z1),fill:'#e2c27d'});
+      if(z1<7)E(cor,'text',{x:(px(x,z1)+px(x,z2))/2,y:py(TOP-10,z1+.18),'text-anchor':'middle','font-family':'Josefin Sans','font-weight':700,'font-size':6.5/z1,fill:'#e2c27d'},String(2*i+(side<0?1:2)));
+    });
+  }
+  for(let z=1;z<14;z+=1.24)E(cor,'line',{x1:px(-X,z),y1:py(CEIL,z),x2:px(X,z),y2:py(CEIL,z),stroke:'#c39a45','stroke-width':Math.max(.06,.3/z),opacity:.6});
+  E(cor,'circle',{cx:cx,cy:cy,r:2.2,fill:'#e2c27d'});
+})();
+// rooms row helper
+function rooms(svg,y,n,label,occ,colorOcc,colorFree){
+  for(let i=1;i<=n;i++){const x=20+(i-1)*58;
+    E(svg,'rect',{x,y,width:46,height:46,rx:3,fill:occ(i)?colorOcc:colorFree,stroke:'#c39a45','stroke-width':1});
+    E(svg,'text',{x:x+23,y:y+30,'text-anchor':'middle','font-family':'Josefin Sans','font-weight':700,'font-size':16,fill:occ(i)?'#fff4e2':'#2a1520'},i);
+  }
+  E(svg,'text',{x:20+n*58,y:y+30,'font-family':'Cormorant Garamond','font-size':22,fill:'#2a1520'},'…');
+}
+(function(){const s=document.getElementById('shift1');
+  E(s,'defs',{}).innerHTML='<marker id="m1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#c39a45"/></marker>';
+  rooms(s,12,9,'',i=>true,'#2a1520','#fff');
+  rooms(s,92,9,'',i=>i>1,'#2a1520','#f6dde0');
+  for(let i=1;i<9;i++){const x1=20+(i-1)*58+23,x2=20+i*58+23;E(s,'path',{d:`M${x1} 60 C${x1} 76 ${x2} 76 ${x2} 90`,fill:'none',stroke:'#c39a45','stroke-width':1.6,'marker-end':'url(#m1)'})}
+  E(s,'text',{x:43,y:148,'text-anchor':'middle','font-family':'Cormorant Garamond','font-style':'italic','font-size':13,fill:'#b0566a'},'new guest!');
+})();
+(function(){const s=document.getElementById('shift2');
+  E(s,'defs',{}).innerHTML='<marker id="m2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#c39a45"/></marker>';
+  rooms(s,12,9,'',i=>true,'#2a1520','#fff');
+  rooms(s,108,9,'',i=>i%2==0,'#2a1520','#f6dde0');
+  for(let i=1;i<=4;i++){const x1=20+(i-1)*58+23,x2=20+(2*i-1)*58+23;E(s,'path',{d:`M${x1} 60 C${x1} 90 ${x2} 80 ${x2} 106`,fill:'none',stroke:'#c39a45','stroke-width':1.6,'marker-end':'url(#m2)'})}
+  for(let i=1;i<=9;i+=2){E(s,'text',{x:20+(i-1)*58+23,y:168,'text-anchor':'middle','font-family':'Josefin Sans','font-weight':700,'font-size':8,'letter-spacing':1.5,fill:'#b0566a'},'BUS')}
+})();
+// Cantor diagonal
+(function(){const s=document.getElementById('diag');
+  const rows=['PIPPPPIIIPIPIP','IIPIPPIPIIPPIP','PPIIPIIPPPIIPI','IPIPIPIIPPIPII','PPPIIPIPIIPIPP','IIPPIIPIPPIIPI','PIIIPPPIIPIPIP','IPPIPIIIPIIPPI','PPIPIIPPIPIPIP'];
+  const cw=30,ch=27,x0=118,y0=8;
+  rows.forEach((r,i)=>{
+    E(s,'text',{x:20,y:y0+i*ch+19,'font-family':'Josefin Sans','font-weight':700,'font-size':10,'letter-spacing':1,fill:'#8c7566'},'ROOM '+(i+1));
+    [...r].forEach((c,j)=>{const on=i===j;
+      if(on)E(s,'rect',{x:x0+j*cw-2,y:y0+i*ch,width:cw-4,height:ch-4,rx:3,fill:'#2a1520'});
+      E(s,'text',{x:x0+j*cw+11,y:y0+i*ch+17,'text-anchor':'middle','font-family':'Cormorant Garamond','font-weight':700,'font-size':16,fill:on?'#e2c27d':'#4b362c'},c)});
+    E(s,'text',{x:x0+14*cw+4,y:y0+i*ch+17,'font-family':'Cormorant Garamond','font-size':16,fill:'#8c7566'},'…');
+  });
+  E(s,'text',{x:20,y:y0+9*ch+12,'font-family':'Cormorant Garamond','font-size':16,fill:'#8c7566'},'⋮');
+  const ny=y0+10*ch+8;
+  E(s,'text',{x:20,y:ny+4,'font-family':'Josefin Sans','font-weight':700,'font-size':10,'letter-spacing':1,fill:'#b0566a'},'NEW NAME');
+  rows.forEach((r,i)=>{const f=r[i]==='P'?'I':'P';
+    E(s,'rect',{x:x0+i*cw-2,y:ny-14,width:cw-4,height:ch-4,rx:3,fill:'#d98b98'});
+    E(s,'text',{x:x0+i*cw+11,y:ny+3,'text-anchor':'middle','font-family':'Cormorant Garamond','font-weight':700,'font-size':16,fill:'#2a1520'},f)});
+  E(s,'text',{x:x0+9*cw+4,y:ny+3,'font-family':'Cormorant Garamond','font-style':'italic','font-size':14,fill:'#b0566a'},'… differs from every room’s guest');
+})();
+</script>
+</body>
+</html>

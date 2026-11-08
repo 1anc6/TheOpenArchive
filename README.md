@@ -87,6 +87,18 @@ The PDFs in `public/books/` are web copies of the untouched originals kept in `s
   To rebuild only some essays, add their ids: `python scripts/build_pdfs.py gojo-infinity`.
 - The script also updates each essay's page count in `books.json`. It needs `pip install pymupdf`.
 
+### Essays designed in HTML
+
+Eleven essays (the ones with a folder in `essay-sources/`) are laid out as web pages and printed to PDF. Each folder has an `index.html` and an `img/` folder, with photo licences listed in `img/credits.jsonl`.
+
+- To change one of them, edit `essay-sources/<id>/index.html` and render it to `source-pdfs/`:
+  ```bash
+  node scripts/render_essays.mjs <id>
+  ```
+  This needs Playwright (`npm i -g playwright` and `npx playwright install chromium`, or set `PLAYWRIGHT_PATH` to an existing install). Then run `build_pdfs.py` as above.
+- `scripts/essay_art.py` makes the computed Mandelbrot, Julia and Turing-pattern images (`pip install numpy pillow`).
+- If a page moves, update that essay's `sections` page numbers in `books.json`.
+
 ## Sound effects
 
 Tapping a card plays a short tick, saving an essay plays a pop, and opening one plays a two-note ding. On phones you also feel a small vibration. The sounds are generated in the browser (`public/js/sfx.js`), so there are no audio files. The speaker button in the header turns them off.

@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>'Tis the Season: A Mathematical Foray into Secret Santa</title>
+<meta name="author" content="Lanchenba Mutum">
+<link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Kalam:wght@400;700&display=block" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
+<style>
+:root{
+  --red:#a3261f; --red-2:#c8402f; --red-soft:#f7e0da; --pine:#1d4a37; --pine-2:#2f6b50; --pine-soft:#dcebe2;
+  --gold:#c99a3c; --snow:#fbf7f0; --card:#fffdf9; --rule:#eadfce; --ink:#2a1d18; --ink-2:#4a3a32; --muted:#8a776a;
+}
+@page{ size:A4; margin:19mm 19mm 21mm; background:var(--snow);
+  @top-center{ content:"❄  'TIS THE SEASON  ❄"; font:400 9pt 'Kalam'; color:var(--red); }
+  @bottom-center{ content:counter(page); font:400 13pt 'Berkshire Swash'; color:var(--pine); }
+}
+@page cover{ margin:0; @top-center{content:none} @bottom-center{content:none} }
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:var(--snow);color:var(--ink-2);font:400 10.3pt/1.62 'Lora',serif}
+p{margin:0 0 3.2mm} b{color:var(--ink)}
+.katex{font-size:1.04em;color:var(--ink)}
+
+.cover{page:cover;width:210mm;height:297mm;position:relative;overflow:hidden;background:var(--red);color:#fff}
+.cover .wrap{position:absolute;inset:0;background:
+  repeating-linear-gradient(45deg,rgba(255,255,255,.045) 0 8mm,transparent 8mm 16mm),
+  repeating-linear-gradient(-45deg,rgba(0,0,0,.05) 0 8mm,transparent 8mm 16mm)}
+.cover .ribbon-v{position:absolute;top:0;bottom:0;left:138mm;width:16mm;background:var(--gold);box-shadow:inset 3mm 0 0 rgba(255,255,255,.18),inset -3mm 0 0 rgba(0,0,0,.12)}
+.cover .ribbon-h{position:absolute;left:0;right:0;top:182mm;height:16mm;background:var(--gold);box-shadow:inset 0 3mm 0 rgba(255,255,255,.18),inset 0 -3mm 0 rgba(0,0,0,.12)}
+.cover .garland{position:absolute;left:0;right:0;top:0;height:66mm;background:url(img/orig-garland.png) center top/cover;}
+.cover .garland::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,var(--red))}
+.cover .tag{position:absolute;left:20mm;top:80mm;width:118mm;background:var(--snow);color:var(--ink);padding:9mm 10mm 9mm 16mm;border-radius:2mm 14mm 14mm 2mm;box-shadow:0 2mm 6mm rgba(0,0,0,.25);transform:rotate(-3deg)}
+.cover .tag::before{content:"";position:absolute;left:6mm;top:50%;width:5mm;height:5mm;margin-top:-2.5mm;border-radius:50%;background:var(--red);box-shadow:0 0 0 1.4mm var(--snow),0 0 0 2mm var(--gold)}
+.cover .tag .k{font:400 11pt 'Kalam';color:var(--red)}
+.cover .tag h1{font:400 31pt/1.08 'Berkshire Swash';color:var(--pine);margin:2mm 0 3mm}
+.cover .tag .by{font:400 13pt 'Kalam';color:var(--ink-2)}
+.cover .bow{position:absolute;left:118mm;top:162mm;width:56mm}
+.cover .stat{position:absolute;left:20mm;bottom:22mm;width:100mm}
+.cover .stat .n{font:400 58pt/1 'Berkshire Swash';color:#fff}
+.cover .stat span{display:block;font:400 12.6pt/1.35 'Kalam';color:#ffe3d6}
+.cover .date{position:absolute;right:20mm;bottom:24mm;font:400 12pt 'Kalam';color:#fff;text-align:right}
+
+.sec{margin-top:8mm} .sec:first-of-type{margin-top:0}
+h2{font:400 26pt/1.1 'Berkshire Swash';color:var(--red);margin:0 0 4mm;display:flex;align-items:baseline;gap:4mm;break-after:avoid}
+h2 .n{font:700 11pt 'Lora';color:#fff;background:var(--pine);border-radius:50%;width:9mm;height:9mm;display:inline-grid;place-items:center;flex:none;transform:translateY(-1mm)}
+h3{font:700 12pt 'Lora';color:var(--pine);margin:6mm 0 2mm;break-after:avoid}
+h3 .c{font:400 10.5pt 'Kalam';color:#fff;background:var(--red);padding:.4mm 3mm;border-radius:10mm;margin-right:2mm}
+.rule-box{background:var(--pine);color:#fff;border-radius:4mm;padding:5mm 6mm;text-align:center;margin:3mm 0 5mm;break-inside:avoid}
+.rule-box .k{font:400 11pt 'Kalam';color:#cfe8d9}
+.rule-box .r{font:700 17pt/1.2 'Lora';letter-spacing:.02em}
+figure{margin:4mm 0 5mm;break-inside:avoid}
+figure svg{width:100%;display:block}
+figcaption{font:400 10.4pt/1.35 'Kalam';color:var(--muted);margin-top:2mm;text-align:center}
+.perms{display:grid;grid-template-columns:repeat(6,1fr);gap:2.4mm;margin:3mm 0 2mm;break-inside:avoid}
+.perm{background:var(--card);border:1px solid var(--rule);border-radius:3mm;text-align:center;padding:2.6mm 1mm;font:700 11pt 'Lora';color:var(--muted);letter-spacing:.06em}
+.perm small{display:block;font:400 9pt 'Kalam';margin-top:.5mm}
+.perm.d{background:var(--pine);border-color:var(--pine);color:#fff}
+.perm.d small{color:#cfe8d9}
+.eq{background:var(--card);border:1px solid var(--rule);border-radius:3mm;padding:1.4mm 5mm;margin:3mm 0 4mm;break-inside:avoid;position:relative}
+.eq.wide .katex{font-size:.8em}
+.eq .katex-display{margin:1.6mm 0}
+.eq.hl{border:2px solid var(--red);background:var(--red-soft)}
+.note{font:400 11.4pt/1.35 'Kalam';color:var(--red)}
+.big-num{display:grid;grid-template-columns:auto 1fr;gap:6mm;align-items:center;background:var(--red);color:#fff;border-radius:4mm;padding:5mm 7mm;margin:4mm 0 5mm;break-inside:avoid}
+.big-num .n{font:400 46pt/1 'Berkshire Swash'}
+.big-num p{margin:0;color:#ffe9e0}
+.big-num b{color:#fff} .big-num .katex{color:#fff}
+.side{display:grid;grid-template-columns:1fr 58mm;gap:6mm;align-items:start;break-inside:avoid}
+.cases{display:grid;gap:3mm}
+.case{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--pine);border-radius:0 3mm 3mm 0;padding:3mm 4mm;font-size:9.8pt;break-inside:avoid}
+.case b{color:var(--pine)}
+.result{background:var(--pine);color:#fff;border-radius:4mm;padding:5mm 6mm;margin:4mm 0;text-align:center;break-inside:avoid}
+.result .katex{color:#fff;font-size:1.3em}
+.result small{display:block;font:400 11pt 'Kalam';color:#cfe8d9;margin-bottom:1mm}
+.warning{background:var(--card);border:2px dashed var(--red);border-radius:4mm;padding:4mm 5mm;margin:4mm 0;font:400 12pt/1.4 'Kalam';color:var(--ink);break-inside:avoid}
+.two-choice{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin:4mm 0 5mm;break-inside:avoid}
+.two-choice div{border-radius:4mm;padding:4mm 5mm;color:#fff;font-size:9.8pt;line-height:1.5}
+.two-choice b{display:block;font:400 17pt 'Berkshire Swash';color:#fff;margin-bottom:1mm}
+.refs{font-size:8.4pt;line-height:1.5;margin-top:6mm;border-top:1px solid var(--rule);padding-top:3mm;break-inside:avoid}
+.refs h3{margin-top:0}
+.refs ol{padding-left:5mm;margin:0} .refs li{margin-bottom:1.4mm;word-break:break-all}
+.credits{font:400 9.4pt 'Kalam';color:var(--muted);margin-top:4mm}
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="wrap"></div>
+  <div class="ribbon-v"></div><div class="ribbon-h"></div>
+  <div class="garland"></div>
+  <div class="tag">
+    <div class="k">To: every Secret Santa group · From: the maths</div>
+    <h1>'Tis the Season</h1>
+    <div style="font:italic 400 13pt/1.35 'Lora';color:var(--ink-2)">A Mathematical Foray into Secret Santa</div>
+    <div class="by" style="margin-top:4mm">by Lanchenba Mutum</div>
+  </div>
+  <svg class="bow" viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+    <g fill="#c99a3c" stroke="#8e6a22" stroke-width="2">
+      <path d="M100 70 C60 10 10 20 20 60 C28 95 70 90 100 70Z"/>
+      <path d="M100 70 C140 10 190 20 180 60 C172 95 130 90 100 70Z"/>
+      <path d="M96 76 L60 135 L78 128 L86 140 L100 82Z"/><path d="M104 76 L140 135 L122 128 L114 140 L100 82Z"/>
+      <circle cx="100" cy="72" r="15"/>
+    </g>
+    <path d="M40 50 C60 40 80 55 92 66 M160 50 C140 40 120 55 108 66" stroke="#fff" stroke-opacity=".4" stroke-width="3" fill="none"/>
+  </svg>
+  <div class="stat"><div class="n">63.2%</div><span>of Secret Santa draws fail: somebody picks their own name.</span></div>
+  <div class="date">April 2026</div>
+</section>
+
+<section class="sec">
+<h2><span class="n">1</span>Introduction</h2>
+<p>Every December, a switch that triggers the spirit of giving, having been forgotten for the rest of the year, is flicked on inside everybody. And what better way to vent it out than Secret Santa, an annual tradition in schools, workplaces and families alike. In case you are not aware, Secret Santa is a game where a group of people anonymously give gifts to each other, by writing their names on paper chits which are randomly picked up by different members of the group. Each member gives a gift to the person whose name is on the chit they picked, without revealing who they are, (hopefully) making it secret.</p>
+<p>Yet, anyone who’s played the game before knows only too well how much of a hassle picking names can be, going to the extent of crumbling the holiday cheer. In this essay, we’ll explore the mathematics behind why the way we usually play this game is the stuff of nightmares.</p>
+</section>
+
+<section class="sec">
+<h2><span class="n">2</span>Derangements</h2>
+<div class="rule-box"><div class="k">The main rule of Secret Santa is this:</div><div class="r">NO ONE SHOULD PICK THEIR OWN NAME.</div></div>
+<p>If that does happen, everyone returns their chits, and the drawing repeats (most people pick the chits one by one from a hat, bowl, etc.).</p>
+<figure>
+  <svg id="chits" viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" font-family="Kalam"></svg>
+  <figcaption>Top: an acceptable draw. Bottom: NOPE, B got their own name.</figcaption>
+</figure>
+<p>A common problem is the frequent number of times people get their own names, and the draw has to be repeated, often multiple times. To put this in mathematical terms, we are looking for permutations of \(\{A,B,C\}\) such that none of the elements A, B or C remain in their original positions. If S is the set of all permutations of \(\{A,B,C\}\),</p>
+<div class="perms">
+  <div class="perm">A B C<small>all fixed</small></div>
+  <div class="perm">A C B<small>A fixed</small></div>
+  <div class="perm">B A C<small>C fixed</small></div>
+  <div class="perm d">B C A<small>derangement</small></div>
+  <div class="perm d">C A B<small>derangement</small></div>
+  <div class="perm">C B A<small>B fixed</small></div>
+</div>
+<p style="margin-top:3mm">Out of the 6 permutations, only 2 fill our criteria (where A is not in the first position, B is not in the second, and C is not in the third). We call such a permutation a <b>DERANGEMENT</b>.</p>
+<p>So, to see why so many re-attempts need to happen, one way to go is to try and find the probability of a permutation being a derangement. Firstly, we need to find the number of derangements for a set having n elements. Simple combinatorics tells us that the total number of permutations is \(n!\) . From that, we start by subtracting those permutations where one element is fixed in its original position. This is achieved by CHOOSING one term (to be fixed), and arranging the rest of the elements, or</p>
+<div class="eq">$$\binom{n}{1}(n-1)! = \frac{n!}{(n-1)!\,1!}(n-1)! = \frac{n!}{1!}$$</div>
+<p>However, this puts us in the danger of overcounting, as depicted by this Venn Diagram for our scenario when n=3. (Each circle is a set containing all the permutations where the ith term fixed.)</p>
+<figure>
+  <svg viewBox="0 0 600 296" xmlns="http://www.w3.org/2000/svg" font-family="Lora">
+    <g opacity=".85">
+      <circle cx="250" cy="105" r="88" fill="#c8402f" fill-opacity=".55"/>
+      <circle cx="360" cy="105" r="88" fill="#2f6b50" fill-opacity=".55"/>
+      <circle cx="305" cy="180" r="88" fill="#c99a3c" fill-opacity=".6"/>
+    </g>
+    <g font-size="13" font-weight="700" fill="#2a1d18" text-anchor="middle">
+      <text x="215" y="85">{A,C,B}</text><text x="395" y="85">{C,B,A}</text><text x="305" y="232">{B,A,C}</text>
+      <text x="305" y="132" fill="#fff" font-size="14">{A,B,C}</text>
+    </g>
+    <g font-family="Kalam" font-size="13" fill="#2a1d18" text-anchor="middle">
+      <text x="200" y="32">Permutations where A is fixed</text><text x="420" y="32">Permutations where B is fixed</text><text x="305" y="285">Permutations where C is fixed</text>
+    </g>
+    <text x="10" y="150" font-family="Kalam" font-size="12.5" fill="#a3261f"><tspan x="10" dy="0">When subtracting permutations</tspan><tspan x="10" dy="16">with one fixed element, we</tspan><tspan x="10" dy="16">subtract the permutations where</tspan><tspan x="10" dy="16">more than one element is fixed</tspan><tspan x="10" dy="16">too many times, resulting in</tspan><tspan x="10" dy="16">an incorrect count</tspan></text>
+    <path d="M170 140 C220 130 250 128 270 128" stroke="#a3261f" stroke-width="2" fill="none" marker-end="url(#ah)"/>
+    <defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#a3261f"/></marker></defs>
+  </svg>
+  <figcaption>The three “fixed” sets overlap: {A,B,C} sits in all of them and gets subtracted three times.</figcaption>
+</figure>
+<p>Thus, we need to add back the permutations which were subtracted in excess (an example of the Principle of Inclusion-Exclusion, in fact!). We add back the permutations where two elements are fixed, and the rest arranged (as these are in the unions of the sets where one element is fixed and another element is fixed), which is equal to</p>
+<div class="eq">$$\binom{n}{2}(n-2)! = \frac{n!}{(n-2)!\,2!}(n-2)! = \frac{n!}{2!}$$</div>
+<p>But adding the overlap of two sets ensures permutations in the overlap of three sets (i.e three elements fixed in original positions) to be added multiple times, so we need to subtract those as well. The number of permutations where three elements are fixed is equal to, by previous logic, \(\frac{n!}{3!}\). Due to this overlap, it is evident that we need to continue this alternation of addition and subtraction until we come to the union of all n sets - \(\frac{n!}{n!}\). Therefore, if \(!n\) represents the number of derangements of a set of n elements,</p>
+<div class="eq">$$!n = n! - \frac{n!}{1!} + \frac{n!}{2!} - \frac{n!}{3!} + \dots + \frac{(-1)^n\, n!}{n!}$$</div>
+<p>Factoring out the n!,</p>
+<div class="eq hl">$$!n = n!\left(1 - \frac{1}{1!} + \frac{1}{2!} - \frac{1}{3!} + \dots + \frac{(-1)^n}{n!}\right) = n!\sum_{k=0}^{n}\frac{(-1)^k}{k!}$$</div>
+<p>To see it better, I’m going to see the number of derangements for 6 people (the number of people with whom I played last year, with sanity-losing results)</p>
+<div class="eq">$$!6 = 6!\left(1 - \frac{1}{1!} + \frac{1}{2!} - \frac{1}{3!} + \frac{1}{4!} - \frac{1}{5!} + \frac{1}{6!}\right) = 265 \text{ derangements}$$</div>
+<p>To find the probability my group had last year, divide the number of derangements by the total number of permutations</p>
+<div class="big-num"><div class="n">36.8%</div><p>\(P(!6) = \dfrac{!6}{6!} = \dfrac{265}{720} \approx 0.368\) or <b>36.8%</b><br><span style="font:400 12pt 'Kalam'">That’s…. disappointing. Not even 50?</span></p></div>
+<p>In fact, we can generalize this well-known result for any n</p>
+<div class="eq">$$P(!n) = \frac{!n}{n!} = \frac{n!\left(1 - \frac{1}{1!} + \frac{1}{2!} - \dots + \frac{(-1)^n}{n!}\right)}{n!}$$</div>
+<p>The n! cancels out from the numerator and denominator,</p>
+<div class="eq">$$\therefore\; P(!n) = 1 - \frac{1}{1!} + \frac{1}{2!} - \dots + \frac{(-1)^n}{n!}$$</div>
+<p>Interestingly, one may note that as \(n \to \infty\), this is the Taylor Series expansion of \(e^x\) for x = -1</p>
+<div class="eq">$$e^x = 1 + \frac{x}{1!} + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots$$</div>
+<div class="eq hl">$$\text{Ergo,}\quad P(!(n\to\infty)) = e^{-1} = \frac{1}{e} \approx 0.36787 \text{ or } 36.79\%$$</div>
+<figure>
+  <svg id="econv" viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" font-family="Lora"></svg>
+  <figcaption>The chance that a whole draw works, for groups of 1 to 12 people. It settles on 1/e almost at once.</figcaption>
+</figure>
+<p>So, no matter the number of people, the probability will tend to about 36.8%. Around 63.2% of the time, the drawing will fail. Doomed to repeat the Sisyphean cycle! And worse, this isn’t the only thing wrong with the way we play the game, especially if the method involves picking one at a time.</p>
+</section>
+
+<section class="sec">
+<h2><span class="n">3</span>When the probabilities don't match…</h2>
+<p>People playing the game assume that there is an equal probability of them picking the name of anyone else in the group. This must be true, otherwise the game becomes unfair. Or is it? While this is not a problem when chits are drawn at the same time, in the traditional method of picking one by one, it becomes a hidden issue.</p>
+<p>While picking turn by turn in a group of \(n\) people, the \(i\)th person can only pick names that haven’t been picked yet, the number of which is \(n-i+1\). But, for a derangement, the number changes depending on whether or not i’s name has been picked already. If \(i\)’s name has already been picked, \(i\) can draw \(n-i+1\) names. But if \(i\)’s name has not been taken before \(i\)’s turn, their name is still in the pool. Hence, for a derangement, one possibility is subtracted, making the number of choices \(n-i\). Therefore, the probability of \(i\) drawing the name of any person in the group is</p>
+<div class="eq">$$\frac{1}{n-i+1}\quad\text{or}\quad\frac{1}{n-i},\quad\text{depending on when } i \text{ is picked}$$</div>
+<p>To make the notation easier, we can define a function \(T(i)\) (T because I think of it toggling between the values) which takes the value of 1 when \(i\) is picked before \(i\)’s turn, and 0 when \(i\) has not been picked as of \(i\)’s turn. Thus, for a derangement \(D\), the probability of \(i\) picking a particular person in that derangement (represented as \(i \to D(i)\)) is -</p>
+<div class="eq">$$P(i \to D(i)) = \frac{1}{n-i+T(i)}$$</div>
+<p>And the probability for the entire derangement occurring is simply the product of all the \(n\) such terms for each individual \(i\) -</p>
+<div class="eq hl">$$P(D) = \prod_{i=1}^{n}\frac{1}{n-i+T(i)}$$</div>
+<div class="side">
+  <div>
+    <p>For example, in my case of 6 people, and the derangement \(D\) is (→ represents ‘picks’)</p>
+    <div class="eq">$$D = A \to B \to E \to D \to C \to F \to A$$</div>
+    <p>(where A picks first, B second, etc), the probability of the derangement occurring is equal to</p>
+    <div class="eq">$$\left(\tfrac15\right)\left(\tfrac15\right)\left(\tfrac13\right)\left(\tfrac12\right)\left(\tfrac12\right)(1) = \frac{1}{300}$$</div>
+  </div>
+  <figure style="margin:0">
+    <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" font-family="Lora" id="ring"></svg>
+    <figcaption>A → B → E → D → C → F → A</figcaption>
+  </figure>
+</div>
+<p>This evidently means that a change in the order of picking will change the probability of the derangement. We can use this to prove that some derangements are more probable than others, which directly means that there is a greater chance of you picking some people more than others.</p>
+<p>To see this, let’s introduce a few new variables. \(i,\ i+1,\ k,\ y\) (\(i\) and \(i+1\) are consecutive) are position variables in a group of n people. \(\alpha\) and \(\beta\) represent derangements which are otherwise equal, with the key difference being that in \(\alpha\), \(k \to i\) and in \(\beta\), \(k \to i+1\). There are three possible scenarios –</p>
+<div class="cases">
+  <div class="case"><b>1.</b> \(i\) or \(i+1\) are already out of the pool by the time it’s \(i\)’s turn</div>
+  <div class="case"><b>2.</b> Both \(i\) and \(i+1\) are in the pool and \(i\) picks \(i+1\) or vice-versa</div>
+  <div class="case"><b>3.</b> Both \(i\) and \(i+1\) are in the pool and both are picked after \(i+1\)’s turn</div>
+</div>
+<p style="margin-top:3mm">What we will do is compare \(\alpha\) and \(\beta\), which are equal except for the alterations made due to \(k\) picking different people in each, and the changes which occurred due to the difference in \(k\)’s pick. By comparing the probabilities of these two derangements, we can directly compare the probabilities of \(k\) picking \(i\) and \(i+1\).</p>
+
+<h3><span class="c">Case 1</span>Where \(y &lt; i &lt; i+1 &lt; k\)</h3>
+<p>In derangement \(\alpha\), \(k \to i\) (as defined above), and suppose \(y \to i+1\)<br>In derangement \(\beta\), \(k \to i+1\) (“”), and \(y \to i\)</p>
+<p>All other elements in both derangements are equal. Thus, the probabilities of both of these derangements will be equal at all terms of the form \(\frac{1}{n-i+T(x)}\), except at the terms \(\frac{1}{n-i+T(i)}\) and \(\frac{1}{n-(i+1)+T(i+1)}\), as they are picked by different people.</p>
+<p>In \(\alpha\), \(i+1\) drew after they were picked (y is positionally lesser), making \(T(i+1) = 1\). \(i\) drew before they were picked (k is positionally larger), making \(T(i) = 0\).<br>In \(\beta\), \(i+1\) draws before they are picked (\(T(i+1) = 0\)) and \(i\) draws after they are picked (\(T(i) = 1\))</p>
+<p>Thus, by plugging these into the probability of derangement formula we have above,</p>
+<div class="eq wide">$$P(\alpha) = \frac{1}{(n-(i+1)+1)}\,\frac{1}{(n-i)}\prod_{\substack{j=1\\ j\ne i,\ j\ne i+1}}^{n}\frac{1}{n-j+T(j)}
+\qquad
+P(\beta) = \frac{1}{(n-(i+1))}\,\frac{1}{(n-i+1)}\prod_{\substack{j=1\\ j\ne i,\ j\ne i+1}}^{n}\frac{1}{n-j+T(j)}$$</div>
+<p>(j is a variable that runs over all terms, except i and i + 1, as all the other terms are equal). Evaluating the denominator for \(\alpha\):</p>
+<div class="eq">$$(n-(i+1)+1)(n-i) = (n-i)(n-i) = (n-1)^2$$</div>
+<p>And for \(\beta\),</p>
+<div class="eq">$$(n-(i+1))(n-i+1) = (n-i-1)(n-i+1) = (n-i)^2 - 1 < (n-1)^2$$</div>
+<p>Thus, by comparing them, \(P(\beta) > P(\alpha)\). Interesting. But we still have two more cases.</p>
+
+<h3><span class="c">Case 2</span>Where \(i &lt; i+1 &lt; k\) and \(y \in \{1,\dots,n\}\)</h3>
+<p>Suppose in derangement \(\alpha\), \(i \to i+1\), \(i+1 \to y\) and again \(k \to i\)<br>In \(\beta\), everything else is equal, except for the facts that \(i \to y\), \(i+1 \to i\) and as defined, \(k \to i+1\)</p>
+<p>For \(\alpha\), \(i\) is picked by \(k\) after their turn (\(T(i) = 0\)) and \(i+1\) is picked by \(i\) before their turn (\(T(i+1) = 1\))<br>For \(\beta\), \(i\) is picked by \(i+1\) after their turn (\(T(i) = 0\) again) and \(i+1\) is picked \(k\) after their turn (\(T(i+1) = 0\))</p>
+<p>Hence, the probabilities of \(\alpha\) and \(\beta\) are</p>
+<div class="eq wide">$$P(\alpha) = \frac{1}{(n-(i+1)+1)}\,\frac{1}{(n-i)}\prod_{\substack{j=1\\ j\ne i,\ j\ne i+1}}^{n}\frac{1}{n-j+T(j)}
+\qquad
+P(\beta) = \frac{1}{(n-(i+1))}\,\frac{1}{(n-i)}\prod_{\substack{j=1\\ j\ne i,\ j\ne i+1}}^{n}\frac{1}{n-j+T(j)}$$</div>
+<p>Some simple algebra in the denominators will once again get you the result of \(P(\beta) > P(\alpha)\)</p>
+
+<h3><span class="c">Case 3</span>Where \(i &lt; i+1 &lt; k\) and \(y \in \{i+2,\dots,n\}\)</h3>
+<p>In \(\alpha\), let \(y \to i+1\) and \(k \to i\)<br>In \(\beta\), let \(y \to i\) and \(k \to i+1\)</p>
+<p>Since y and k are both positionally larger than \(i+1\), all four scenarios for which we checked the value of the toggle function in the previous two cases will be equal to 0, as both \(i\) and \(i+1\) are picked after their turns. Thus,</p>
+<div class="eq wide">$$P(\alpha) = \frac{1}{(n-(i+1))}\,\frac{1}{(n-i)}\prod_{\substack{j=1\\ j\ne i,\ j\ne i+1}}^{n}\frac{1}{n-j+T(j)}
+\qquad
+P(\beta) = \frac{1}{(n-(i+1))}\,\frac{1}{(n-i)}\prod_{\substack{j=1\\ j\ne i,\ j\ne i+1}}^{n}\frac{1}{n-j+T(j)}$$</div>
+<p>By comparing, we see that \(P(\alpha) = P(\beta)\)</p>
+<p>Summing up our finding from the last three cases, we get to the conclusion that \(P(\beta) \ge P(\alpha)\). Since the only difference between these two is \(k\)’s pick, we can conclude that</p>
+<div class="result"><small>This is a crucial result.</small>\(P(k \to i+1) \ge P(k \to i)\)</div>
+<p>If we inductively apply this over all \(k\)s and \(i\)’s, it leads to the consequence that when drawing one at a time, a person is most likely to pick the name of the person who drew just before him, then the person who drew two people before, and so on. Mathematically,</p>
+<div class="eq">$$P(k \to k-1) \ge P(k \to k-2) \ge P(k \to k-3) \;\dots\; \ge P(k \to 1)$$</div>
+<figure>
+  <svg id="heat" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg" font-family="Lora"></svg>
+  <figcaption>Who picks whom when 6 people draw one at a time (computed for this edition from P(D) above, over every draw that works). The darkest square in each row is the person who drew just before.</figcaption>
+</figure>
+<p>And the first person is most likely to draw the name of the last person. So, in the traditional method of the game, there isn’t even an equal probability of picking everybody else in the group. But maybe this can play to our advantage.</p>
+<div class="warning">The guy who gave you that pen which refused to write and broke the instant in came in contact with paper last year? Yea… you probably should make sure he doesn’t pick immediately after you this time. 🎁</div>
+</section>
+
+<section class="sec">
+<h2><span class="n">4</span>To conclude</h2>
+<p>Hopefully, this essay helped convey a few reasons why Secret Santa just feels so…rigged, and in the process explore the amazing math involved. So, the big question – how do we solve this festive conundrum? Well, I would like to answer that, but with my word count rapidly approaching its limit, I would like to leave that as an exercise for the reader. As December comes around this year once more, this article now presents you with two choices:</p>
+<div class="two-choice">
+  <div style="background:var(--pine)"><b>Choice one</b>either tell everyone you know why the game is fundamentally flawed and put your heads together to devise a solution,</div>
+  <div style="background:var(--red)"><b>…or choice two</b>you can remain silent when you pick your own name, don’t make everyone repeat the draw and buy yourself that nice Klein bottle which you’ve always wanted with your name custom printed on it.</div>
+</div>
+<div class="refs">
+  <h3>References</h3>
+  <ol>
+    <li>Numberphile, The Problems with Secret Santa, YouTube, https://www.youtube.com/watch?v=5kC5k5QBqcc</li>
+    <li>Art of Problem Solving, Derangement, https://artofproblemsolving.com/wiki/index.php/Derangement?srsltid=AfmBOoqn8sNJOE6dym6dXq1iLHH8x1PMWtlEwlJe-EHR1Ls8Ty11TGaJ</li>
+    <li>Crane, Daniel and Dye, Tanner (2017) "The Secret Santa Problem Continues," Rose-Hulman Undergraduate Mathematics Journal: Vol. 18 : Iss. 1 , Article 18</li>
+    <li>Egemen Okte, The (Surprisingly Difficult) Math of Secret Santa, Medium, https://medium.com/@egemenokte/the-surprisingly-difficult-math-of-secret-santa-fea7a536f3d0</li>
+  </ol>
+  <div class="credits">Garland photo from the original essay. All diagrams and charts drawn for this edition.</div>
+</div>
+</section>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const mk=s=>(t,a,x)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(x!==undefined)e.textContent=x;s.appendChild(e);return e};
+// people + chits
+(function(){const s=document.getElementById('chits'),E=mk(s);
+  const person=(x,y,name,chit,bad)=>{
+    E('circle',{cx:x,cy:y,r:14,fill:'#fff',stroke:'#2a1d18','stroke-width':2});
+    E('circle',{cx:x-4,cy:y-2,r:1.6,fill:'#2a1d18'});E('circle',{cx:x+4,cy:y-2,r:1.6,fill:'#2a1d18'});
+    E('path',{d:`M${x-5} ${y+5} Q${x} ${y+(bad?1:9)} ${x+5} ${y+5}`,stroke:'#2a1d18','stroke-width':1.6,fill:'none'});
+    E('path',{d:`M${x} ${y+14} V${y+42} M${x} ${y+42} L${x-10} ${y+60} M${x} ${y+42} L${x+10} ${y+60} M${x} ${y+24} L${x+22} ${y+30}`,stroke:'#2a1d18','stroke-width':2,fill:'none'});
+    E('path',{d:`M${x-12} ${y-12} L${x} ${y-34} L${x+12} ${y-12}Z`,fill:'#a3261f'});E('circle',{cx:x,cy:y-35,r:4,fill:'#fff'});
+    E('rect',{x:x+22,y:y+18,width:28,height:24,rx:3,fill:bad?'#f7e0da':'#fffdf9',stroke:bad?'#a3261f':'#c99a3c','stroke-width':2});
+    E('text',{x:x+36,y:y+36,'text-anchor':'middle','font-size':16,'font-weight':700,fill:bad?'#a3261f':'#1d4a37'},chit);
+    E('text',{x:x+10,y:y+80,'text-anchor':'middle','font-size':14,fill:'#2a1d18'},'Person '+name);
+  };
+  [['A','C'],['B','A'],['C','B']].forEach(([n,c],i)=>person(80+i*150,40,n,c,false));
+  E('text',{x:520,y:70,'font-size':18,fill:'#1d4a37','font-weight':700},'Acceptable');
+  [['A','C'],['B','B'],['C','A']].forEach(([n,c],i)=>person(80+i*150,145,n,c,n===c));
+  E('text',{x:520,y:170,'font-size':18,fill:'#a3261f','font-weight':700},'NOPE,');
+  E('text',{x:520,y:190,'font-size':14,fill:'#a3261f'},'B got their');E('text',{x:520,y:207,'font-size':14,fill:'#a3261f'},'own name');
+})();
+// convergence to 1/e
+(function(){const s=document.getElementById('econv'),E=mk(s);
+  const L=60,R=580,T=15,B=180,X=n=>L+(n-1)/11*(R-L),Y=p=>B-p*(B-T);
+  for(let p=0;p<=1.001;p+=.25){E('line',{x1:L,x2:R,y1:Y(p),y2:Y(p),stroke:'#eadfce'});E('text',{x:L-8,y:Y(p)+4,'text-anchor':'end','font-size':11,fill:'#8a776a'},Math.round(p*100)+'%')}
+  E('line',{x1:L,x2:R,y1:Y(1/Math.E),y2:Y(1/Math.E),stroke:'#a3261f','stroke-dasharray':'5 4','stroke-width':1.5});
+  E('text',{x:R,y:Y(1/Math.E)-6,'text-anchor':'end','font-size':12,fill:'#a3261f','font-family':'Kalam'},'1/e ≈ 36.79%');
+  let f=1,sum=0,pts=[];for(let n=1;n<=12;n++){}
+  for(let n=1;n<=12;n++){let t=0,fa=1;for(let k=0;k<=n;k++){if(k>0)fa*=k;t+=((k%2)?-1:1)/fa}pts.push([n,t])}
+  E('path',{d:pts.map(([n,p],i)=>(i?'L':'M')+X(n)+' '+Y(p)).join(' '),fill:'none',stroke:'#1d4a37','stroke-width':2.5});
+  pts.forEach(([n,p])=>{E('circle',{cx:X(n),cy:Y(p),r:5,fill:n===6?'#a3261f':'#1d4a37',stroke:'#fff','stroke-width':1.5});E('text',{x:X(n),y:B+18,'text-anchor':'middle','font-size':11,fill:'#8a776a'},n)});
+  E('text',{x:X(6)+8,y:Y(pts[5][1])-10,'font-size':12,fill:'#a3261f','font-family':'Kalam'},'my group: 6 people');
+  E('text',{x:(L+R)/2,y:B+36,'text-anchor':'middle','font-size':11,fill:'#4a3a32'},'number of people');
+})();
+// derangement ring
+(function(){const s=document.getElementById('ring'),E=mk(s);
+  E('defs',{}).innerHTML='<marker id="rh" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#a3261f"/></marker>';
+  const order=['A','B','E','D','C','F'],pos={};order.forEach((n,i)=>{const a=-Math.PI/2+i*2*Math.PI/6;pos[n]=[110+78*Math.cos(a),110+78*Math.sin(a)]});
+  order.forEach((n,i)=>{const m=order[(i+1)%6],[x1,y1]=pos[n],[x2,y2]=pos[m],dx=x2-x1,dy=y2-y1,d=Math.hypot(dx,dy);
+    E('line',{x1:x1+dx/d*20,y1:y1+dy/d*20,x2:x2-dx/d*22,y2:y2-dy/d*22,stroke:'#a3261f','stroke-width':2.4,'marker-end':'url(#rh)'})});
+  order.forEach(n=>{const [x,y]=pos[n];E('circle',{cx:x,cy:y,r:18,fill:'#1d4a37'});E('text',{x,y:y+6,'text-anchor':'middle','font-size':17,'font-weight':700,fill:'#fff'},n)});
+  E('text',{x:110,y:116,'text-anchor':'middle','font-family':'Kalam','font-size':15,fill:'#a3261f'},'1/300');
+})();
+// heatmap of P(k -> i) for n = 6, using P(D) = prod 1/(n-i+T(i))
+(function(){const s=document.getElementById('heat'),E=mk(s),n=6,L='ABCDEF';
+  const M=[...Array(n)].map(()=>Array(n).fill(0));let tot=0;
+  const perm=(a,k)=>{if(k===n){let p=1;for(let i=0;i<n;i++){const T=a.slice(0,i).includes(i)?1:0;p*=1/(n-i-1+T)}tot+=p;for(let i=0;i<n;i++)M[i][a[i]]+=p;return}
+    for(let v=0;v<n;v++)if(v!==k&&!a.includes(v)){a.push(v);perm(a,k+1);a.pop()}};
+  perm([],0);
+  const cs=38,x0=150,y0=40;
+  for(let i=0;i<n;i++){E('text',{x:x0-12,y:y0+i*cs+cs/2+5,'text-anchor':'end','font-size':12,fill:'#4a3a32'},'drawer '+(i+1)+' ('+L[i]+')');
+    E('text',{x:x0+i*cs+cs/2,y:y0-10,'text-anchor':'middle','font-size':13,'font-weight':700,fill:'#4a3a32'},L[i]);
+    for(let j=0;j<n;j++){const p=M[i][j]/tot,t=Math.min(1,p/0.3);
+      E('rect',{x:x0+j*cs+1,y:y0+i*cs+1,width:cs-2,height:cs-2,rx:4,fill:i===j?'#eadfce':`rgba(163,38,31,${0.08+t*0.92})`});
+      if(i!==j)E('text',{x:x0+j*cs+cs/2,y:y0+i*cs+cs/2+4,'text-anchor':'middle','font-size':10.5,fill:t>.55?'#fff':'#2a1d18'},(p*100).toFixed(0)+'%')}}
+  E('text',{x:x0+n*cs/2,y:y0+n*cs+22,'text-anchor':'middle','font-size':12,fill:'#4a3a32'},'name on the chit');
+  const lx=x0+n*cs+40;
+  E('text',{x:lx,y:y0+20,'font-family':'Kalam','font-size':16,fill:'#a3261f'},'Read across a row:');
+  ['each drawer is most likely','to pull the name of the','person who drew just before,','and the first drawer is most','likely to get the last name.'].forEach((t,i)=>E('text',{x:lx,y:y0+44+i*20,'font-family':'Kalam','font-size':15,fill:'#4a3a32'},t));
+})();
+</script>
+</body>
+</html>
