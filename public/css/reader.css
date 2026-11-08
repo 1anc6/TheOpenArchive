@@ -90,7 +90,13 @@
   max-width: 100%;
   transition: filter 0.35s;
 }
-.page { filter: var(--r-page-filter); }
+.page { filter: var(--r-page-filter); contain: layout paint style; }
+/* Phones: the blur behind the header is redrawn on every frame of scrolling
+   over the big page images, which makes scrolling stutter. The bar is nearly
+   opaque anyway. */
+@media (pointer: coarse) {
+  .reader-bar { backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
 .page canvas { display: block; width: 100%; height: 100%; }
 .page:not(.is-rendered)::before {
   content: "Loading page " attr(data-num) "…";

@@ -28,7 +28,7 @@ p{margin:0 0 3.3mm} b{color:var(--ink);font-weight:600}
 
 .cover{page:cover;width:210mm;height:297mm;position:relative;overflow:hidden;background:var(--space)}
 .cover .bg{position:absolute;right:-6mm;top:0;width:120mm;height:297mm;background:url(img/gen-mandelbrot-cover.jpg) center/cover}
-.cover .fade{position:absolute;inset:0;background:linear-gradient(90deg,var(--space) 30%,rgba(6,20,27,.75) 52%,rgba(6,20,27,0) 75%)}
+.cover .fade{position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3ClinearGradient id='g'%3E%3Cstop offset='.3' stop-color='%2306141b'/%3E%3Cstop offset='.52' stop-color='%2306141b' stop-opacity='.75'/%3E%3Cstop offset='.75' stop-color='%2306141b' stop-opacity='0'/%3E%3C/linearGradient%3E%3Crect width='100' height='100' fill='url(%23g)'/%3E%3C/svg%3E") 0 0/100% 100% no-repeat}
 .cover .stars{position:absolute;inset:0}
 .cover .inner{position:absolute;left:18mm;top:24mm;width:118mm;color:#fff}
 .cover .k{font:700 8.4pt 'Space Mono';letter-spacing:.2em;color:var(--aqua)}
@@ -91,6 +91,8 @@ figcaption .me{font:700 6.8pt 'Space Mono';letter-spacing:.1em;color:#fff;backgr
 .ack h2{font:800 17pt 'Syne';color:#fff;margin:0 0 2mm}
 .ack p{margin:0;color:#d7ebe8}
 .credits{font:400 7.4pt/1.5 'Space Mono';color:var(--muted);margin-top:4mm}
+/* Each chapter starts on a new page. */
+.stop{break-before:page}
 </style>
 </head>
 <body>

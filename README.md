@@ -98,6 +98,8 @@ Eleven essays (the ones with a folder in `essay-sources/`) are laid out as web p
   This needs Playwright (`npm i -g playwright` and `npx playwright install chromium`, or set `PLAYWRIGHT_PATH` to an existing install). Then run `build_pdfs.py` as above.
 - `scripts/essay_art.py` makes the computed Mandelbrot, Julia and Turing-pattern images (`pip install numpy pillow`).
 - If a page moves, update that essay's `sections` page numbers in `books.json`.
+- Each chapter starts on a new page: the rule is at the end of each essay's `<style>` (look for "Each chapter starts on a new page").
+- Avoid `repeating-linear-gradient`, and gradients with see-through colours or stops away from the ends. Chrome prints them in a form the reader (PDF.js) can't draw, so they vanish on the site. Use an SVG background instead, as the covers do.
 
 ## Sound effects
 

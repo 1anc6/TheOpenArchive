@@ -25,13 +25,11 @@ p{margin:0 0 3.2mm} b{color:var(--ink)}
 .katex{font-size:1.04em;color:var(--ink)}
 
 .cover{page:cover;width:210mm;height:297mm;position:relative;overflow:hidden;background:var(--red);color:#fff}
-.cover .wrap{position:absolute;inset:0;background:
-  repeating-linear-gradient(45deg,rgba(255,255,255,.045) 0 8mm,transparent 8mm 16mm),
-  repeating-linear-gradient(-45deg,rgba(0,0,0,.05) 0 8mm,transparent 8mm 16mm)}
+.cover .wrap{position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'%3E%3Cdefs%3E%3Cpattern id='a' width='60.47' height='60.47' patternUnits='userSpaceOnUse' patternTransform='rotate(-45)'%3E%3Crect width='30.24' height='60.47' fill='%23fff' fill-opacity='.045'/%3E%3C/pattern%3E%3Cpattern id='b' width='60.47' height='60.47' patternUnits='userSpaceOnUse' patternTransform='rotate(45)'%3E%3Crect width='30.24' height='60.47' fill-opacity='.05'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%' height='100%' fill='url(%23a)'/%3E%3Crect width='100%' height='100%' fill='url(%23b)'/%3E%3C/svg%3E") 0 0/100% 100% no-repeat}
 .cover .ribbon-v{position:absolute;top:0;bottom:0;left:138mm;width:16mm;background:var(--gold);box-shadow:inset 3mm 0 0 rgba(255,255,255,.18),inset -3mm 0 0 rgba(0,0,0,.12)}
 .cover .ribbon-h{position:absolute;left:0;right:0;top:182mm;height:16mm;background:var(--gold);box-shadow:inset 0 3mm 0 rgba(255,255,255,.18),inset 0 -3mm 0 rgba(0,0,0,.12)}
 .cover .garland{position:absolute;left:0;right:0;top:0;height:66mm;background:url(img/orig-garland.png) center top/cover;}
-.cover .garland::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,var(--red))}
+.cover .garland::after{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3ClinearGradient id='g' x2='0' y2='1'%3E%3Cstop offset='0.6' stop-color='%23a3261f' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23a3261f' stop-opacity='1'/%3E%3C/linearGradient%3E%3Crect width='100' height='100' fill='url(%23g)'/%3E%3C/svg%3E") 0 0/100% 100% no-repeat}
 .cover .tag{position:absolute;left:20mm;top:80mm;width:118mm;background:var(--snow);color:var(--ink);padding:9mm 10mm 9mm 16mm;border-radius:2mm 14mm 14mm 2mm;box-shadow:0 2mm 6mm rgba(0,0,0,.25);transform:rotate(-3deg)}
 .cover .tag::before{content:"";position:absolute;left:6mm;top:50%;width:5mm;height:5mm;margin-top:-2.5mm;border-radius:50%;background:var(--red);box-shadow:0 0 0 1.4mm var(--snow),0 0 0 2mm var(--gold)}
 .cover .tag .k{font:400 11pt 'Kalam';color:var(--red)}
@@ -83,6 +81,8 @@ figcaption{font:400 10.4pt/1.35 'Kalam';color:var(--muted);margin-top:2mm;text-a
 .refs h3{margin-top:0}
 .refs ol{padding-left:5mm;margin:0} .refs li{margin-bottom:1.4mm;word-break:break-all}
 .credits{font:400 9.4pt 'Kalam';color:var(--muted);margin-top:4mm}
+/* Each chapter starts on a new page. */
+.sec{break-before:page}
 </style>
 </head>
 <body>

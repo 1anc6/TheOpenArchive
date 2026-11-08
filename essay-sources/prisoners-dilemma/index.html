@@ -28,8 +28,8 @@ p{margin:0 0 3mm} b{color:var(--ink)}
 
 .cover{page:cover;width:210mm;height:297mm;position:relative;overflow:hidden;background:var(--coal);color:#fff}
 .cover .ph{position:absolute;inset:0;background:var(--coal) center/cover;filter:grayscale(1) contrast(1.25) brightness(.55)}
-.cover .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(24,24,26,.2) 0%,rgba(24,24,26,.55) 45%,var(--coal) 80%)}
-.cover .bars{position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 17mm,rgba(0,0,0,.55) 17mm 19.5mm)}
+.cover .shade{position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3ClinearGradient id='g' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%2318181a' stop-opacity='0.2'/%3E%3Cstop offset='0.45' stop-color='%2318181a' stop-opacity='0.55'/%3E%3Cstop offset='0.8' stop-color='%2318181a' stop-opacity='1'/%3E%3C/linearGradient%3E%3Crect width='100' height='100' fill='url(%23g)'/%3E%3C/svg%3E") 0 0/100% 100% no-repeat}
+.cover .bars{position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 195 10' preserveAspectRatio='none'%3E%3Crect x='170' width='25' height='10' fill-opacity='.55'/%3E%3C/svg%3E") 0 0/19.5mm 100% repeat-x}
 .cover .tape{position:absolute;left:-10mm;right:-10mm;top:34mm;height:11mm;background:var(--yel);transform:rotate(-4deg);display:flex;align-items:center;gap:8mm;white-space:nowrap;overflow:hidden;font:400 15pt 'Bebas Neue';letter-spacing:.14em;color:var(--coal)}
 .cover .inner{position:absolute;left:18mm;right:18mm;bottom:18mm}
 .cover .k{font:700 8.4pt 'Courier Prime';letter-spacing:.2em;color:var(--yel)}
@@ -89,6 +89,8 @@ figcaption{font:700 7.8pt/1.5 'Courier Prime';color:var(--muted);margin-top:2mm}
 .refs p{margin-bottom:2mm;word-break:break-word}
 .credits{font:700 7.4pt/1.5 'Courier Prime';color:var(--muted);margin-top:4mm}
 .ven{float:right;width:62mm;margin:0 0 3mm 5mm}
+/* Each chapter starts on a new page. */
+.sec{break-before:page}
 </style>
 </head>
 <body>

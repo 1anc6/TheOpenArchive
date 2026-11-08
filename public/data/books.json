@@ -71,7 +71,7 @@
     "shortTitle": "A Tale of Two Infinities",
     "author": "Lanchenba Mutum",
     "file": "books/tale-of-two-infinities.pdf",
-    "pages": 7,
+    "pages": 8,
     "category": "Infinity",
     "glyph": "ℵ₀ < 𝔠",
     "colors": [
@@ -98,19 +98,19 @@
       },
       {
         "title": "Hilbert's Hotel",
-        "page": 2
+        "page": 3
       },
       {
         "title": "Countable infinity",
-        "page": 5
+        "page": 7
       },
       {
         "title": "Uncountable infinity",
-        "page": 5
+        "page": 7
       },
       {
         "title": "Conclusion",
-        "page": 6
+        "page": 8
       }
     ],
     "imageAlt": "An art deco hotel corridor of numbered doors stretching to a vanishing point, under the title 'A Tale of Two Infinities'.",
@@ -124,7 +124,7 @@
     "shortTitle": "A Paradox That Isn't",
     "author": "Lanchenba Mutum",
     "file": "books/a-paradox-that-isnt.pdf",
-    "pages": 7,
+    "pages": 11,
     "category": "Infinity",
     "glyph": "0.9̅ = 1",
     "colors": [
@@ -148,43 +148,43 @@
     "sections": [
       {
         "title": "Introduction",
-        "page": 2
-      },
-      {
-        "title": "Understanding 0.999…",
-        "page": 2
-      },
-      {
-        "title": "A Simple Algebraic Proof",
         "page": 3
       },
       {
-        "title": "A Geometric Perspective",
+        "title": "Understanding 0.999…",
         "page": 4
       },
       {
-        "title": "Why This Feels Wrong",
-        "page": 4
-      },
-      {
-        "title": "The Birth of Limits",
+        "title": "A Simple Algebraic Proof",
         "page": 5
       },
       {
-        "title": "Representation vs. Value",
+        "title": "A Geometric Perspective",
         "page": 6
+      },
+      {
+        "title": "Why This Feels Wrong",
+        "page": 7
+      },
+      {
+        "title": "The Birth of Limits",
+        "page": 8
+      },
+      {
+        "title": "Representation vs. Value",
+        "page": 9
       },
       {
         "title": "Why This Matters",
-        "page": 6
+        "page": 10
       },
       {
         "title": "Conclusion",
-        "page": 7
+        "page": 11
       },
       {
         "title": "References",
-        "page": 7
+        "page": 11
       }
     ],
     "imageAlt": "The cover title '0.999… = 1' in cream on a wine-red page.",
@@ -202,7 +202,7 @@
     "shortTitle": "A Proof for the Unprovable",
     "author": "Lanchenba Mutum",
     "file": "books/proof-for-the-unprovable.pdf",
-    "pages": 8,
+    "pages": 10,
     "category": "Logic",
     "glyph": "⊬ G",
     "colors": [
@@ -234,19 +234,19 @@
       },
       {
         "title": "Consistency",
-        "page": 3
-      },
-      {
-        "title": "The First Incompleteness Theorem",
         "page": 4
       },
       {
-        "title": "The Goodstein Sequence",
+        "title": "The First Incompleteness Theorem",
         "page": 5
       },
       {
-        "title": "The Second Incompleteness Theorem",
+        "title": "The Goodstein Sequence",
         "page": 7
+      },
+      {
+        "title": "The Second Incompleteness Theorem",
+        "page": 9
       }
     ],
     "imageAlt": "An old postcard of the Albertina university in Königsberg beneath the title 'A Proof for the Unprovable'.",
@@ -264,7 +264,7 @@
     "shortTitle": "Glitch in the Fourth Wall",
     "author": "Lanchenba Mutum",
     "file": "books/glitch-in-the-fourth-wall.pdf",
-    "pages": 7,
+    "pages": 9,
     "category": "Number Theory",
     "glyph": "73",
     "colors": [
@@ -295,7 +295,7 @@
       },
       {
         "title": "Proof",
-        "page": 3
+        "page": 4
       },
       {
         "title": "Part 1: An Upper Bound",
@@ -311,11 +311,11 @@
       },
       {
         "title": "Conclusion",
-        "page": 7
+        "page": 8
       },
       {
         "title": "Bibliography",
-        "page": 7
+        "page": 9
       }
     ],
     "imageAlt": "A purple retro television showing a glitching number 73.",
@@ -329,7 +329,7 @@
     "shortTitle": "A Foray into Secret Santa",
     "author": "Lanchenba Mutum",
     "file": "books/secret-santa.pdf",
-    "pages": 9,
+    "pages": 11,
     "category": "Probability",
     "glyph": "n!/e",
     "colors": [
@@ -356,23 +356,23 @@
       },
       {
         "title": "Derangements",
-        "page": 2
-      },
-      {
-        "title": "Inclusion–Exclusion",
         "page": 3
       },
       {
-        "title": "The Limit 1/e",
+        "title": "Inclusion–Exclusion",
         "page": 4
       },
       {
-        "title": "Is the Draw Fair?",
+        "title": "The Limit 1/e",
         "page": 5
       },
       {
+        "title": "Is the Draw Fair?",
+        "page": 7
+      },
+      {
         "title": "Conclusion",
-        "page": 9
+        "page": 11
       }
     ],
     "imageAlt": "A gift tag reading ''Tis the Season' on red wrapping paper below Christmas fir branches and baubles.",
@@ -390,7 +390,7 @@
     "shortTitle": "AI Is Fundamentally Unintelligent",
     "author": "Lanchenba Mutum",
     "file": "books/ai-is-unintelligent.pdf",
-    "pages": 8,
+    "pages": 11,
     "category": "Probability",
     "glyph": "P(H | E)",
     "colors": [
@@ -418,31 +418,31 @@
       },
       {
         "title": "The Problem",
-        "page": 2
-      },
-      {
-        "title": "AI the Probability Machine",
         "page": 3
       },
       {
-        "title": "When Local Logic Fails Globally",
+        "title": "AI the Probability Machine",
         "page": 4
+      },
+      {
+        "title": "When Local Logic Fails Globally",
+        "page": 5
       },
       {
         "title": "Gödel",
-        "page": 4
+        "page": 5
       },
       {
         "title": "Turing",
-        "page": 5
+        "page": 6
       },
       {
         "title": "A Glimpse Beyond",
-        "page": 5
+        "page": 7
       },
       {
         "title": "What This Tells Us About Thought",
-        "page": 8
+        "page": 11
       }
     ],
     "imageAlt": "The title 'AI is fundamentally unintelligent' above three coins marked H, H and a question mark.",
@@ -456,7 +456,7 @@
     "shortTitle": "A Prisoner's Dilemma",
     "author": "Lanchenba Mutum",
     "file": "books/prisoners-dilemma.pdf",
-    "pages": 8,
+    "pages": 10,
     "category": "Game Theory",
     "glyph": "(C, D)",
     "colors": [
@@ -484,31 +484,31 @@
       },
       {
         "title": "The Probability of Each Outcome",
-        "page": 3
-      },
-      {
-        "title": "The Scoring System",
-        "page": 3
-      },
-      {
-        "title": "Combining Probabilities and Scores",
         "page": 4
       },
       {
-        "title": "The Iterated Prisoner's Dilemma",
+        "title": "The Scoring System",
+        "page": 5
+      },
+      {
+        "title": "Combining Probabilities and Scores",
         "page": 6
       },
       {
+        "title": "The Iterated Prisoner's Dilemma",
+        "page": 8
+      },
+      {
         "title": "Maths, Ethics and Psychology",
-        "page": 7
+        "page": 9
       },
       {
         "title": "Conclusion",
-        "page": 8
+        "page": 10
       },
       {
         "title": "References",
-        "page": 8
+        "page": 10
       }
     ],
     "imageAlt": "The title 'A Prisoner's Dilemma' over a dark photo of prison cell bars.",
@@ -578,7 +578,7 @@
     "shortTitle": "Planet of Fractal Geometry",
     "author": "Lanchenba Mutum",
     "file": "books/planet-of-fractal-geometry.pdf",
-    "pages": 12,
+    "pages": 14,
     "category": "Geometry",
     "glyph": "D ≈ 1.26",
     "colors": [
@@ -606,27 +606,27 @@
       },
       {
         "title": "Geometry",
-        "page": 2
+        "page": 3
       },
       {
         "title": "Fractal Geometry",
-        "page": 2
+        "page": 4
       },
       {
         "title": "Fractals in Nature",
-        "page": 5
-      },
-      {
-        "title": "Equations of Fractal Geometry",
         "page": 6
       },
       {
+        "title": "Equations of Fractal Geometry",
+        "page": 7
+      },
+      {
         "title": "Fractals in Human Creativity",
-        "page": 9
+        "page": 11
       },
       {
         "title": "References",
-        "page": 11
+        "page": 13
       }
     ],
     "imageAlt": "The title 'A Voyage to the Planet of Fractal Geometry' beside the glowing edge of the Mandelbrot set.",
@@ -640,7 +640,7 @@
     "shortTitle": "Patterns in Nature",
     "author": "Lanchenba Mutum",
     "file": "books/patterns-in-nature.pdf",
-    "pages": 7,
+    "pages": 10,
     "category": "Nature",
     "glyph": "∇²u",
     "colors": [
@@ -667,15 +667,15 @@
       },
       {
         "title": "Morphogens and Reaction–Diffusion",
-        "page": 2
+        "page": 3
       },
       {
         "title": "Leopard Spots and Rosettes",
-        "page": 4
+        "page": 6
       },
       {
         "title": "Bibliography",
-        "page": 7
+        "page": 10
       }
     ],
     "imageAlt": "A spotted leopard resting on a tree branch.",
@@ -689,7 +689,7 @@
     "shortTitle": "Absolute Cinema of Math",
     "author": "Lanchenba Mutum",
     "file": "books/absolute-cinema-of-math.pdf",
-    "pages": 10,
+    "pages": 14,
     "category": "Music",
     "glyph": "♪ f·2ⁿ",
     "colors": [
@@ -717,27 +717,27 @@
       },
       {
         "title": "Foundations of Wave Knowledge",
-        "page": 3
-      },
-      {
-        "title": "How a Wave Is Shaped",
         "page": 4
       },
       {
+        "title": "How a Wave Is Shaped",
+        "page": 6
+      },
+      {
         "title": "Fundamental Wave Equations",
-        "page": 5
-      },
-      {
-        "title": "Advanced Equations",
-        "page": 7
-      },
-      {
-        "title": "Training a Robot",
         "page": 8
       },
       {
-        "title": "Conclusion",
+        "title": "Advanced Equations",
         "page": 10
+      },
+      {
+        "title": "Training a Robot",
+        "page": 12
+      },
+      {
+        "title": "Conclusion",
+        "page": 14
       }
     ],
     "imageAlt": "A gilded opera stage between red velvet curtains, above a marquee reading 'Absolute Cinema of Math'.",

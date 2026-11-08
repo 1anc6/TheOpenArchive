@@ -119,29 +119,73 @@
     $("zoomLabel").textContent = `${Math.round(zoom * 100)}%`;
   }
 
-  async function render(p) {
+  // Pages are drawn one at a time, nearest to the screen first. Drawing runs on
+  // the main thread, so several at once (or one during a fast swipe) makes
+  // scrolling stutter on phones.
+  const queue = new Set();
+  let drawing = false;
+  let lastScroll = 0;
+  window.addEventListener("scroll", () => (lastScroll = Date.now()), { passive: true });
+  const onScreen = (p) => {
+    const r = p.el.getBoundingClientRect();
+    return r.bottom > 0 && r.top < window.innerHeight;
+  };
+  function render(p) {
+    queue.add(p);
+    pump();
+  }
+  async function pump() {
+    if (drawing || !queue.size) return;
+    const mid = window.innerHeight / 2;
+    const dist = (p) => {
+      const r = p.el.getBoundingClientRect();
+      return Math.abs((r.top + r.bottom) / 2 - mid);
+    };
+    const p = [...queue].sort((a, b) => dist(a) - dist(b))[0];
+    // Pages only coming up soon wait for a swipe to settle; a page already on
+    // screen is drawn straight away.
+    if (Date.now() - lastScroll < 150 && !onScreen(p)) {
+      setTimeout(pump, 150);
+      return;
+    }
+    queue.delete(p);
+    drawing = true;
+    try {
+      await draw(p);
+    } finally {
+      drawing = false;
+      pump();
+    }
+  }
+
+  async function draw(p) {
     const cssWidth = p.el.clientWidth;
     if (!cssWidth || p.renderedAt === cssWidth) return;
     if (p.task) p.task.cancel();
-    // At least 2x even on standard screens, so small print is drawn finely and
-    // scaled down instead of looking pixelated; capped at about 5 megapixels
-    // so a zoomed-in page stays light on phones.
-    const density = Math.min(Math.max(window.devicePixelRatio || 1, 2), 3);
-    let scale = (cssWidth / p.w) * density;
+    // 2x so small print is drawn finely, capped at about 4 megapixels: phones
+    // with 3x screens would otherwise draw (and scroll) pages 2.25x the size
+    // for detail that can't be seen.
+    let scale = (cssWidth / p.w) * 2;
     const area = p.w * p.h * scale * scale;
-    if (area > 5e6) scale *= Math.sqrt(5e6 / area);
+    if (area > 4e6) scale *= Math.sqrt(4e6 / area);
     const vp = p.page.getViewport({ scale });
     const canvas = document.createElement("canvas");
     canvas.width = Math.floor(vp.width);
     canvas.height = Math.floor(vp.height);
-    p.task = p.page.render({ canvasContext: canvas.getContext("2d"), viewport: vp });
+    p.task = p.page.render({ canvasContext: canvas.getContext("2d", { alpha: false }), viewport: vp });
     try {
       await p.task.promise;
-      const text = await textLayer(p, cssWidth);
-      p.el.replaceChildren(canvas, ...(text ? [text] : []));
-      document.dispatchEvent(new CustomEvent("page-rendered", { detail: { num: p.num, el: p.el } }));
+      p.el.replaceChildren(canvas);
       p.el.classList.add("is-rendered");
       p.renderedAt = cssWidth;
+      // The selectable text goes on afterwards, when the browser is idle.
+      const later = window.requestIdleCallback || ((fn) => setTimeout(fn, 200));
+      later(async () => {
+        if (p.renderedAt !== cssWidth) return;
+        const text = await textLayer(p, cssWidth);
+        if (text && p.renderedAt === cssWidth && p.el.firstChild === canvas) p.el.append(text);
+        document.dispatchEvent(new CustomEvent("page-rendered", { detail: { num: p.num, el: p.el } }));
+      }, { timeout: 1500 });
     } catch (err) {
       if (err && err.name !== "RenderingCancelledException") console.error(err);
     } finally {
@@ -224,14 +268,19 @@
           render(p);
         } else {
           visible.delete(p);
-          release(p);
+          queue.delete(p);
         }
       }
     },
-    { rootMargin: "800px 0px" }
+    { rootMargin: "1200px 0px" }
   );
-  // Pages well out of view give their canvas back, so a long read doesn't
-  // keep every sharp page in memory; they are redrawn on the way back.
+  // Pages far out of view give their canvas back, so a long read doesn't keep
+  // every sharp page in memory. The margin is wide so that scrolling back a
+  // little doesn't redraw what was just read.
+  const far = new IntersectionObserver(
+    (entries) => entries.forEach((e) => !e.isIntersecting && release(pages[+e.target.dataset.num - 1])),
+    { rootMargin: "3500px 0px" }
+  );
   function release(p) {
     // A page still drawing is left to finish: slow pages would never complete
     // if every scroll past them started the drawing over.
@@ -242,7 +291,7 @@
     p.el.classList.remove("is-rendered");
     p.renderedAt = 0;
   }
-  pages.forEach((p) => io.observe(p.el));
+  pages.forEach((p) => { io.observe(p.el); far.observe(p.el); });
 
   /* ---------- "You made it!" card after the last page ---------- */
   function endCard() {

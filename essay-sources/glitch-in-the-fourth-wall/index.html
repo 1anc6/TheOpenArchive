@@ -26,7 +26,7 @@ p{margin:0 0 3.2mm} b{color:var(--ink)}
 .vt{font-family:'VT323',monospace}
 
 .cover{page:cover;width:210mm;height:297mm;position:relative;overflow:hidden;background:var(--violet);color:#fff}
-.cover .scan{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px)}
+.cover .scan{position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='3' height='3'%3E%3Crect y='2' width='3' height='1' fill='%23fff' fill-opacity='.035'/%3E%3C/svg%3E") 0 0/3px 3px repeat}
 .cover .bars{position:absolute;left:0;right:0;top:0;height:9mm;display:flex}
 .cover .bars i{flex:1}
 .cover .inner{position:absolute;inset:22mm 18mm 18mm;display:flex;flex-direction:column}
@@ -47,14 +47,14 @@ h3{font:800 12.4pt 'Archivo';color:var(--violet-2);text-transform:uppercase;lett
 .chap:first-child{margin-top:0}
 .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm;margin:4mm 0 5mm;break-inside:avoid}
 .fact{background:var(--violet);color:#fff;border-radius:3mm;padding:4mm 3mm;text-align:center;position:relative;overflow:hidden}
-.fact::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.05) 0 1px,transparent 1px 3px)}
+.fact::after{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='3' height='3'%3E%3Crect y='2' width='3' height='1' fill='%23fff' fill-opacity='.05'/%3E%3C/svg%3E") 0 0/3px 3px repeat}
 .fact .big{font:400 40pt/1 'VT323';color:var(--yel)}
 .fact .big.c{color:var(--cyan)} .fact .big.m{color:var(--mag)}
 .fact span{display:block;font:400 9pt/1.3 'Source Serif 4';color:#dccfe5;margin-top:1.5mm}
 .photo{float:right;width:62mm;margin:1mm 0 3mm 5mm;border-radius:3mm;overflow:hidden;position:relative}
 .photo img{width:100%;display:block;filter:saturate(.8)}
 .photo span{position:absolute;left:0;right:0;bottom:0;font:400 10pt 'VT323';background:rgba(43,24,56,.8);color:#fff;padding:1mm 2mm}
-.callout{background:linear-gradient(90deg,rgba(19,196,217,.12),rgba(255,62,143,.1));border-left:3px solid var(--mag);padding:3.5mm 5mm;margin:4mm 0 5mm;font:italic 400 11.4pt/1.5 'Source Serif 4';color:var(--ink);break-inside:avoid}
+.callout{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3ClinearGradient id='g' %3E%3Cstop offset='0' stop-color='%2313c4d9' stop-opacity='0.12'/%3E%3Cstop offset='1' stop-color='%23ff3e8f' stop-opacity='0.1'/%3E%3C/linearGradient%3E%3Crect width='100' height='100' fill='url(%23g)'/%3E%3C/svg%3E") 0 0/100% 100% no-repeat;border-left:3px solid var(--mag);padding:3.5mm 5mm;margin:4mm 0 5mm;font:italic 400 11.4pt/1.5 'Source Serif 4';color:var(--ink);break-inside:avoid}
 .defs{display:grid;grid-template-columns:24mm 1fr;border:1px solid var(--rule);border-radius:3mm;overflow:hidden;margin:3mm 0 5mm;background:var(--card);break-inside:avoid}
 .defs div{padding:2.4mm 3.5mm;border-bottom:1px solid var(--rule);font-size:9.4pt;line-height:1.45}
 .defs div:nth-child(odd){background:var(--violet);color:#fff;text-align:center;display:flex;align-items:center;justify-content:center}
@@ -90,6 +90,8 @@ figcaption{font:400 11pt/1.3 'VT323';color:var(--muted);margin-top:2mm}
 .bib li{margin-bottom:1mm;word-break:break-word}
 .credits{font:400 10pt/1.3 'VT323';color:var(--muted);margin-top:2mm}
 .lp{text-align:center;font:400 19pt 'VT323';color:var(--mag);margin:3mm 0 0}
+/* Each chapter starts on a new page. */
+.chap{break-before:page}
 </style>
 </head>
 <body>

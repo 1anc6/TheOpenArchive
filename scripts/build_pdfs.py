@@ -56,6 +56,69 @@ def type3_glyphs(doc):
     return glyphs
 
 
+def pattern_resources(doc):
+    """The /Pattern and /Shading entries of every resource dictionary, by xref.
+    Chrome draws CSS gradients and background images as patterns."""
+    found = {}
+    for xref in range(1, doc.xref_length()):
+        for path in ("Resources/", ""):
+            pat = doc.xref_get_key(xref, path + "Pattern")
+            if pat[0] in ("dict", "xref"):
+                found[(xref, path)] = (pat[1], doc.xref_get_key(xref, path + "Shading"))
+    return found
+
+
+def restore_patterns(doc, saved):
+    """MuPDF's image pass swaps each /Pattern resource for a /Shading one set to
+    null. PDF.js then stops drawing the page at the first gradient or patterned
+    image ("Unknown PatternName"), leaving the rest of it blank."""
+    for (xref, path), (pattern, (kind, shading)) in saved.items():
+        doc.xref_set_key(xref, path + "Pattern", pattern)
+        doc.xref_set_key(xref, path + "Shading", shading if kind in ("dict", "xref") else "null")
+
+
+def shrink_images(doc, max_side=1800, quality=80):
+    """Downsample big images and store photos as JPEG, changing each image
+    object in place. Used for the essays printed from HTML: MuPDF's own image
+    pass rewrites their page drawings and drops the photos Chrome draws as
+    patterns (cover pictures, rounded-corner photos)."""
+    masks = {int(v.split()[0]) for x in range(1, doc.xref_length())
+             for k, v in [doc.xref_get_key(x, "SMask")] if k == "xref"}
+    for xref in range(1, doc.xref_length()):
+        if xref in masks or doc.xref_get_key(xref, "Subtype")[1] != "/Image":
+            continue
+        raw = len(doc.xref_stream_raw(xref))
+        w, h = int(doc.xref_get_key(xref, "Width")[1]), int(doc.xref_get_key(xref, "Height")[1])
+        is_jpeg = doc.xref_get_key(xref, "Filter")[1] == "/DCTDecode"
+        if max(w, h) <= max_side and (is_jpeg or raw < 120_000):
+            continue
+        pix = pymupdf.Pixmap(doc, xref)
+        if pix.alpha:
+            pix = pymupdf.Pixmap(pix, 0)
+        if pix.colorspace is None or pix.colorspace.n not in (1, 3):
+            pix = pymupdf.Pixmap(pymupdf.csRGB, pix)
+        f = min(1, max_side / max(w, h))
+        nw, nh = max(1, round(w * f)), max(1, round(h * f))
+        if f < 1:
+            pix = pymupdf.Pixmap(pix, nw, nh, None)
+        jpg = pix.tobytes("jpg", jpg_quality=quality)
+        if f == 1 and len(jpg) > raw * 0.7:
+            continue  # not worth it
+        doc.update_stream(xref, jpg, compress=False)
+        for key, val in (("Filter", "/DCTDecode"), ("DecodeParms", "null"), ("Width", str(nw)), ("Height", str(nh)),
+                         ("BitsPerComponent", "8"), ("ColorSpace", "/DeviceGray" if pix.n == 1 else "/DeviceRGB"),
+                         ("Decode", "null")):
+            doc.xref_set_key(xref, key, val)
+        kind, mask = doc.xref_get_key(xref, "SMask")
+        if kind == "xref" and f < 1:
+            m = int(mask.split()[0])
+            mpix = pymupdf.Pixmap(pymupdf.Pixmap(doc, m), nw, nh, None)
+            doc.update_stream(m, mpix.samples, compress=True)
+            for key, val in (("Width", str(nw)), ("Height", str(nh)), ("BitsPerComponent", "8"),
+                             ("ColorSpace", "/DeviceGray"), ("DecodeParms", "null")):
+                doc.xref_set_key(m, key, val)
+
+
 def unique_type3_names(doc):
     """Chrome gives outlined text two Type 3 fonts (the halo and the letters) with
     one FontName. PDF.js tells fonts apart by name, so it draws the halo's shapes
@@ -92,14 +155,19 @@ def main(only):
 
         doc = pymupdf.open(original)
         doc = embed_missing_fonts(doc, book["id"])
-        # Downsample big images to 150 dpi and re-encode them as JPEG.
-        # That pass also rewrites Type 3 glyphs (text in PDFs printed from Chrome)
-        # and adds "0 g" to each, which PDF.js obeys: outlined labels and coloured
-        # text come out black in the reader. So the glyphs are put back as they were.
-        glyphs = type3_glyphs(doc)
-        doc.rewrite_images(dpi_threshold=200, dpi_target=150, quality=78)
-        for xref, stream in glyphs.items():
-            doc.update_stream(xref, stream)
+        if (ROOT / "essay-sources" / book["id"] / "index.html").exists():
+            shrink_images(doc)  # essays printed from HTML, see shrink_images
+        else:
+            # Downsample big images to 150 dpi and re-encode them as JPEG.
+            # That pass also rewrites Type 3 glyphs and adds "0 g" to each, which
+            # PDF.js obeys: outlined labels and coloured text come out black in
+            # the reader. So the glyphs are put back as they were.
+            glyphs = type3_glyphs(doc)
+            patterns = pattern_resources(doc)
+            doc.rewrite_images(dpi_threshold=200, dpi_target=150, quality=78)
+            for xref, stream in glyphs.items():
+                doc.update_stream(xref, stream)
+            restore_patterns(doc, patterns)
         unique_type3_names(doc)
         # Keep only the characters each embedded font actually uses
         # (e.g. Secret Santa embedded a whole 3.8 MB emoji font).
