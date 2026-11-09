@@ -1904,3 +1904,24 @@ button, a, .chip, .pselect-menu li { touch-action: manipulation; }
 @media (min-width: 1001px) {
   #continueBlock:not([hidden]) { min-height: calc(100svh - 168px); }
 }
+
+/* 12. Phones: masthead and today's essay fit the first screen (title, quote and buttons in view) */
+@media (max-width: 650px) {
+  .masthead { padding: 10px 0 12px; gap: 6px; }
+  .masthead h1 { font-size: 34px; }
+  .standfirst { font-size: 15px; line-height: 1.45; padding-bottom: 0; }
+  .feature { margin: 10px 0 40px; padding: 16px 16px 18px 30px; gap: 12px; --margin: 16px; }
+  .feature-figure { width: 62%; max-width: 250px; margin: 12px 0 0 auto; justify-self: end; }
+  .feature-figure .photo { border-width: 5px; border-radius: 10px; }
+  .feature-glyph { font-size: 34px; left: -1.6em; top: -.35em; }
+  .feature-title { font-size: 28px; line-height: 1.08; }
+  .feature-meta { margin-top: 8px; font-size: 12px; }
+  .excerpt { margin: 12px 0 16px; }
+  .excerpt p { font-size: 16.5px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .excerpt footer { display: none; }
+  .excerpt-plain { margin: 12px 0 16px; font-size: 15.5px; }
+  .feature-actions { gap: 8px; }
+  .feature-actions .btn { min-height: 44px; padding: 10px 14px; font-size: 15px; }
+  /* the title already opens the essay page, so the second button can go */
+  .feature-actions .btn.ghost { display: none; }
+}
