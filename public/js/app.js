@@ -39,6 +39,12 @@
     const style = (b.placeholder ? `background-image:url(${b.placeholder})` : "") + (named ? `;view-transition-name:ph-${b.id}` : "");
     return `<span class="photo" style="${style}"><img src="${esc(small)}" srcset="${esc(small)} 640w, ${esc(b.image)} 1200w" sizes="(max-width: 650px) 80vw, 420px" alt="${esc(b.imageAlt || "")}" loading="${eager ? "eager" : "lazy"}" decoding="async" onload="this.classList.add('loaded')"></span>`;
   };
+  // Small cover for the Contents list: the phone-sized picture, tinted until it loads.
+  const thumb = (b) => {
+    const small = b.image.replace(".jpg", "-640.jpg");
+    const bg = b.placeholder ? ` style="background-image:url(${b.placeholder})"` : "";
+    return `<span class="photo entry-thumb"${bg}><img src="${esc(small)}" alt="" width="640" height="451" loading="lazy" decoding="async" onload="this.classList.add('loaded')"></span>`;
+  };
   /* ---------- Screens ---------- */
   const ORDER = ["essays", "room", "reviews", "about"];
   let screen = "essays";
@@ -146,8 +152,13 @@
           e.target.classList.add("is-seen");
           reveal.unobserve(e.target);
         }
-      }, { rootMargin: "0px 0px -8% 0px", threshold: 0.15 })
+      // Starts a little before an element reaches the screen, so a fast swipe
+      // on a phone never lands on rows that are still invisible.
+      }, { rootMargin: "0px 0px 15% 0px", threshold: 0 })
     : { observe: (el) => el.classList.add("is-seen"), unobserve() {} };
+
+  // Printing or saving the page shows everything, scrolled to or not.
+  addEventListener("beforeprint", () => document.querySelectorAll(".entry, .start-card, .feature").forEach((el) => el.classList.add("is-seen")));
 
   /* ---------- Featured essay ---------- */
   function renderFeature() {
@@ -257,11 +268,12 @@
     return `
       <li class="entry${p ? " is-started" : ""}${isDone(p) ? " is-done" : ""}" data-id="${b.id}" style="--i:${i}">
         <span class="entry-num">${isDone(p) ? `<svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>` : pad(b.num)}</span>
-        <span class="entry-glyph" aria-hidden="true">${notation(b.glyph)}</span>
+        <span class="entry-art" aria-hidden="true">${thumb(b)}<span class="entry-glyph">${notation(b.glyph)}</span></span>
         <div class="entry-body">
           <h3 class="entry-title"><a href="essays/${b.id}/">${esc(b.shortTitle)}</a><span class="entry-leader" aria-hidden="true"></span><span class="entry-pages" aria-hidden="true">${b.pages} pp.</span></h3>
           <p class="entry-desc">${esc(b.description)}</p>
           <p class="entry-meta"><span class="entry-pp">${b.pages} pages</span><span>${esc(b.category)}</span>${st ? `<span class="entry-status">${st}</span>` : ""}</p>
+          ${p && !isDone(p) ? `<span class="entry-bar" aria-hidden="true"><i style="width:${Math.round((p.page / p.total) * 100)}%"></i></span>` : ""}
         </div>
         <button class="entry-save${on ? " on" : ""}" aria-pressed="${on}" aria-label="Add ${esc(b.shortTitle)} to reading list" title="${on ? "In your reading list" : "Add to reading list"}">${BOOKMARK}</button>
       </li>`;
@@ -416,14 +428,10 @@
     if (store.get("books.greetingHidden")) return;
     const el = $("greeting");
     if (visits > 1) {
-      el.classList.add("is-compact");
       $("greetingTitle").textContent = "Welcome back! Thanks for coming again.";
+      $("greetingLine").hidden = true;
     }
     el.hidden = false;
-    el.querySelector("[data-start]").addEventListener("click", () => {
-      sfx.tick();
-      $("feature").scrollIntoView({ behavior: "smooth", block: "start" });
-    });
     el.querySelector(".greeting-close").addEventListener("click", () => {
       sfx.soft();
       store.set("books.greetingHidden", "1");

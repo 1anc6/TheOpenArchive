@@ -39,6 +39,36 @@
     setTheme(root.dataset.theme === "dark" ? "light" : "dark");
   });
 
+  /* ---------- "More" menu in the header: sound effects, look, share ---------- */
+  const moreBtn = $("moreBtn");
+  const moreMenu = $("moreMenu");
+  // Panels opened from the menu sit under the "⋯" button once the menu closes.
+  const anchor = (btn) => (btn && btn.getClientRects().length ? btn : moreBtn || btn);
+  function toggleMore(open = moreMenu.hidden) {
+    if (!moreMenu) return;
+    moreMenu.hidden = !open;
+    moreBtn.setAttribute("aria-expanded", String(open));
+    if (open) moreMenu.querySelector("button")?.focus({ preventScroll: true });
+  }
+  if (moreBtn && moreMenu) {
+    moreBtn.addEventListener("click", () => { sfx.soft(); toggleMore(); });
+    // Close first (capture), so the item's own panel opens under the "⋯" button.
+    moreMenu.addEventListener("click", () => toggleMore(false), true);
+    document.addEventListener("pointerdown", (e) => {
+      if (!moreMenu.hidden && !moreMenu.contains(e.target) && !moreBtn.contains(e.target)) toggleMore(false);
+    });
+    document.addEventListener("keydown", (e) => {
+      if (moreMenu.hidden) return;
+      if (e.key === "Escape") { toggleMore(false); moreBtn.focus(); }
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault();
+        const items = [...moreMenu.querySelectorAll("button")];
+        const i = items.indexOf(document.activeElement);
+        items[(i + (e.key === "ArrowDown" ? 1 : items.length - 1)) % items.length].focus();
+      }
+    });
+  }
+
   /* ---------- Sound effects: on/off and a choice of sound sets ---------- */
   // The button opens a small panel (styled like the music one) with an
   // on/off switch and the sound sets; picking a set plays a sample of it.
@@ -72,7 +102,7 @@
   }
   function placeSfx() {
     if (!sfxPop) return;
-    const r = sfxBtn.getBoundingClientRect();
+    const r = anchor(sfxBtn).getBoundingClientRect();
     const w = Math.min(300, innerWidth - 24);
     sfxPop.style.width = `${w}px`;
     sfxPop.style.top = `${Math.round(r.bottom + 8)}px`;
@@ -108,7 +138,7 @@
     document.removeEventListener("keydown", sfxKey);
     removeEventListener("resize", placeSfx);
     removeEventListener("scroll", placeSfx);
-    if (refocus) sfxBtn.focus({ preventScroll: true });
+    if (refocus) anchor(sfxBtn).focus({ preventScroll: true });
   }
   sfxBtn?.setAttribute("aria-haspopup", "dialog");
   sfxBtn?.setAttribute("aria-expanded", "false");
@@ -163,7 +193,7 @@
   }
   function placeUi() {
     if (!uiPop) return;
-    const r = uiBtn.getBoundingClientRect();
+    const r = anchor(uiBtn).getBoundingClientRect();
     const w = Math.min(300, innerWidth - 24);
     uiPop.style.width = `${w}px`;
     uiPop.style.top = `${Math.round(r.bottom + 8)}px`;
@@ -199,7 +229,7 @@
     document.removeEventListener("keydown", uiKey);
     removeEventListener("resize", placeUi);
     removeEventListener("scroll", placeUi);
-    if (refocus) uiBtn.focus({ preventScroll: true });
+    if (refocus) anchor(uiBtn).focus({ preventScroll: true });
   }
   uiBtn?.setAttribute("aria-haspopup", "dialog");
   uiBtn?.setAttribute("aria-expanded", "false");

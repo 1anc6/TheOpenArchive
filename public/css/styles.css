@@ -1658,3 +1658,107 @@ button, a, .chip, .pselect-menu li { touch-action: manipulation; }
 @media (hover: none) {
   .podium-card:hover, .related-card:hover, .start-card:hover, .shelf-card:hover, .rev-card:hover, .end-reactions button:hover { transform: none; }
 }
+
+/* ================================================================
+   Refresh (Nov 2026): essays first, covers in the list, one clear
+   action per essay page, a tidier header and a phone tab bar.
+   ================================================================ */
+
+/* 1. Home: a one-line welcome and a shorter masthead */
+.greeting.is-compact { grid-template-columns: 44px minmax(0, 1fr) 40px; align-items: center; max-width: none; margin: 20px 0 0; padding: 10px 10px 10px 12px; border-radius: 22px; box-shadow: none; }
+.greeting.is-compact .greeting-copy { display: block; min-width: 0; }
+.greeting.is-compact .greeting-title { font-size: 19px; line-height: 1.25; }
+.greeting-line { margin-top: 2px; font-size: 15px; line-height: 1.45; color: var(--muted); }
+.greeting-line[hidden] { display: none; }
+.greeting-line .link { font-size: inherit; color: var(--ink); white-space: nowrap; }
+.masthead { padding: 28px 0 20px; }
+.masthead h1 { font-size: clamp(38px, 4.4vw, 60px); }
+.standfirst { font-size: 17px; }
+.feature { margin: 28px 0 60px; }
+
+/* 2. Covers in the Contents list */
+.entry { grid-template-columns: 28px 120px minmax(0, 1fr) 44px; }
+.entry-art { display: flex; flex-direction: column; gap: 8px; padding-top: 4px; }
+.entry-art .entry-glyph { padding-top: 0; font-size: 16px; }
+.photo.entry-thumb { width: 100%; margin: 0; border-width: 3px; border-radius: 8px; box-shadow: 0 6px 14px -8px rgba(84, 66, 43, .35); }
+.entry-bar { display: block; height: 3px; max-width: 220px; margin-top: 10px; border-radius: 3px; background: var(--raised); overflow: hidden; }
+.entry-bar i { display: block; height: 100%; background: var(--hi); border-radius: inherit; }
+@media (hover: hover) and (pointer: fine) {
+  .entry:hover .entry-thumb img.loaded { transform: scale(1.04); }
+  .entry:hover .entry-glyph { transform: none; }
+}
+
+/* 3. Pictures show a tint (or their blurred preview) while they load */
+.photo { background-color: var(--raised); }
+@media print {
+  .index-list .entry, .start-list .start-card { opacity: 1 !important; transform: none !important; }
+  .ink { clip-path: none !important; filter: none !important; transform: none !important; }
+}
+
+/* 4. Essay page: one strong action, a quiet facts line, a bigger cover */
+.essay-facts { margin-top: 18px; font: 13px var(--mono); color: var(--muted); }
+.essay-actions { align-items: center; }
+.essay-actions .btn.ghost { font-size: 15px; }
+.essay-minor { display: inline-flex; gap: 2px; margin-left: 4px; }
+.essay-minor .ib { width: 44px; height: 44px; }
+.essay-minor .ib svg { width: 20px; height: 20px; }
+.sheet-glyph { top: 9%; z-index: 1; text-shadow: 0 0 18px var(--panel), 0 0 6px var(--panel); }
+.sheet-photo { right: 5%; bottom: 6%; width: 62%; transform: rotate(2deg); }
+
+/* 5. Header: music and theme stay; the rest live under "⋯" */
+.more-wrap { position: relative; }
+.more-menu {
+  position: absolute; top: calc(100% + 8px); right: 0; z-index: 40;
+  display: grid; min-width: 210px; padding: 6px;
+  border: 1px solid var(--line); border-radius: 16px;
+  background: var(--panel); box-shadow: 0 22px 44px -22px rgba(60, 45, 30, .45);
+  animation: rise .25s var(--ease);
+}
+.more-menu[hidden] { display: none; }
+.more-item { display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 8px 12px; border-radius: 10px; font: 15px var(--sans); color: var(--ink); text-align: left; }
+.more-item svg { width: 20px; height: 20px; flex: none; color: var(--muted); }
+.more-item:hover, .more-item:focus-visible { background: var(--raised); outline: none; }
+#moreBtn svg circle { fill: currentColor; stroke: none; }
+#moreBtn[aria-expanded="true"] { color: var(--ink); background: var(--raised); }
+
+/* 5. Phones: the four sections become a tab bar at the bottom, in thumb reach */
+@media (max-width: 650px) {
+  .site-header { flex-wrap: nowrap; padding: 12px 16px 4px; }
+  .main-nav {
+    position: fixed; left: 12px; right: 12px; bottom: calc(10px + env(safe-area-inset-bottom));
+    z-index: 30; order: 0; flex-basis: auto; margin: 0; padding: 5px; gap: 2px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    border: 1px solid var(--line); border-radius: 999px;
+    background: color-mix(in srgb, var(--panel) 94%, transparent);
+    box-shadow: 0 18px 36px -18px rgba(60, 45, 30, .5);
+  }
+  .main-nav :is(a, button) { justify-content: center; text-align: center; padding: 10px 4px; font-size: 14.5px; }
+  .stage { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+  .dock { bottom: calc(80px + env(safe-area-inset-bottom)); }
+  /* sits above the tab bar (and above the resume bar when it shows) */
+  body:has(.main-nav) .to-top { bottom: calc(80px + env(safe-area-inset-bottom)); }
+  body:has(.dock:not([hidden]):not(.is-away)) .to-top { bottom: calc(160px + env(safe-area-inset-bottom)); }
+  .greeting.is-compact { margin-top: 12px; }
+  .greeting.is-compact .greeting-copy { display: block; grid-column: 2; grid-row: 1; }
+  .greeting.is-compact .greeting-title { font-size: 17px; }
+  .greeting-line { font-size: 14px; }
+  .masthead h1 { font-size: 38px; }
+  .entry { grid-template-columns: 92px minmax(0, 1fr) 44px; }
+  .essay-minor { margin-left: auto; }
+  .essay-actions .btn.ghost { flex: 1 1 auto; }
+}
+
+/* 6. Polish: topic tabs fade at the edge on phones; search and surprise share a row */
+@media (max-width: 650px) {
+  .chips { -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); }
+  .contents-tools { flex-direction: row; flex-wrap: nowrap; align-items: center; width: 100%; }
+  .contents-tools .surprise { order: 2; }
+  .contents-tools .contents-search { flex: 1 1 auto; min-width: 0; }
+  .contents-tools .surprise { flex: none; width: 48px; min-height: 44px; padding: 0; justify-content: center; }
+  .contents-tools .surprise:not(.is-rolling):not(.is-picked) .surprise-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .contents-tools .surprise:is(.is-rolling, .is-picked) { width: auto !important; flex: 1 1 auto; padding-inline: 14px; }
+  .contents-tools:has(.surprise.is-rolling, .surprise.is-picked) .contents-search { display: none; }
+}
+.notify { margin-top: 56px; }
+.notify-copy h2 { font-size: clamp(28px, 2.8vw, 36px); }
+.notify-copy p { font-size: 16.5px; }

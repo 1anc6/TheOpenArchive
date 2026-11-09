@@ -19,7 +19,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 ROOT = Path(__file__).resolve().parent.parent
 PUBLIC = ROOT / "public"
-VERSION = "43"  # bump to make browsers fetch new CSS/JS
+VERSION = "46"  # bump to make browsers fetch new CSS/JS
 
 books = json.loads((PUBLIC / "data/books.json").read_text(encoding="utf-8"))
 site = json.loads((PUBLIC / "data/site.json").read_text(encoding="utf-8"))
@@ -280,20 +280,25 @@ def header(prefix, active):
         <button class="ib music-btn" data-music aria-pressed="false" aria-label="Background music" title="Music">
           <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
         </button>
-        <button class="ib" id="sfxBtn" aria-label="Sound effects" aria-pressed="true" title="Sound effects on">
-          <svg class="ic-sound" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M17 9.5a4 4 0 0 1 0 5"/></svg>
-          <svg class="ic-mute" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="m17 10 4 4m0-4-4 4"/></svg>
-        </button>
-        <button class="ib" id="shareBtn" aria-label="Share" title="Share">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>
-        </button>
-        <button class="ib" id="uiBtn" aria-label="Change the look" title="Look">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12.5 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg>
-        </button>
         <button class="ib" id="themeBtn" aria-label="Toggle theme" title="Toggle theme">
           <svg class="ic-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
           <svg class="ic-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>
         </button>
+        <span class="more-wrap">
+          <button class="ib" id="moreBtn" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="moreMenu" aria-label="More options" title="More"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></button>
+          <span class="more-menu" id="moreMenu" role="menu" aria-label="More options" hidden>
+            <button class="more-item" type="button" role="menuitem" id="sfxBtn" aria-label="Sound effects" aria-pressed="true" title="Sound effects on">
+          <svg class="ic-sound" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M17 9.5a4 4 0 0 1 0 5"/></svg>
+          <svg class="ic-mute" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="m17 10 4 4m0-4-4 4"/></svg>
+        <span>Sound effects</span></button>
+            <button class="more-item" type="button" role="menuitem" id="uiBtn" aria-label="Change the look" title="Look">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12.5 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg>
+        <span>Look</span></button>
+            <button class="more-item" type="button" role="menuitem" id="shareBtn" aria-label="Share" title="Share">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>
+        <span>Share this page</span></button>
+          </span>
+        </span>
       </span>
     </header>"""
 
@@ -440,16 +445,14 @@ def essay_page(b):
           <p class="byline">By {e(b['author'])} · {b.get('year', '')}{added_line(b)}</p>
           {permission_note(b)}
           <p class="summary">{e(b['description'])}</p>{excerpt(b)}
-          <div class="hero-numbers left">
-            <span><b>{b['pages']}</b><small>pages</small></span>
-            <span><b>~{minutes}</b><small>min read</small></span>
-            <span><b>PDF</b><small>format</small></span>
-          </div>
+          <p class="essay-facts">{b['pages']} pages · ~{minutes} min read</p>
           <div class="essay-actions">
             <a class="btn primary" data-read href="{prefix}reader.html?id={b['id']}">Read {noun}<svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a>
             <a class="btn ghost" href="{prefix}{e(b['file'])}" download data-title="{e(b['title'])}">Request PDF</a>
-            <button class="btn ghost" data-cite>Cite</button>
-            <button class="btn ghost" data-share>Share</button>
+            <span class="essay-minor">
+              <button class="ib" type="button" data-cite aria-label="Cite this {noun}" title="Cite"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h4v4c0 3-1.5 5-4 6M14 7h4v4c0 3-1.5 5-4 6"/></svg></button>
+              <button class="ib" type="button" data-share aria-label="Share this {noun}" title="Share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg></button>
+            </span>
           </div>
           <p class="progress-note" id="progressNote" hidden></p>
         </div>
