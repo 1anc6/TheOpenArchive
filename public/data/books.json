@@ -943,6 +943,96 @@
     "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDzyOJ5WCopJNSzWjwtscgOOq1HFPJEwZGwRTpbl5ZDI/LnvTfNcpctiEjB5ooJzRVECUUUUAFFFFAH/9k="
   },
   {
+    "id": "another-universe",
+    "title": "Do Black Holes Lead to Another Universe?",
+    "shortTitle": "Do Black Holes Lead to Another Universe?",
+    "author": "Lanchenba Mutum",
+    "file": "books/another-universe.pdf",
+    "pages": 27,
+    "category": "Physics",
+    "glyph": "ER = EPR",
+    "colors": [
+      "#0b0912",
+      "#d9771f"
+    ],
+    "description": "An easy walk through Einstein–Rosen bridges: what Einstein and Rosen found in the maths of a black hole in 1935, why the \"two universes\" idea misleads, why the bridge snaps shut before even light can cross, and what crossable wormholes, exotic matter, time machines and ER = EPR would really need.",
+    "excerpt": {
+      "text": "The bridge exists in the maths, but it can't be crossed. It snaps shut faster than anything, even light, can get through.",
+      "page": 2
+    },
+    "image": "images/another-universe.jpg",
+    "topics": [
+      "General relativity and curved spacetime",
+      "Schwarzschild black holes and event horizons",
+      "The 1935 Einstein–Rosen bridge",
+      "Penrose diagrams and the \"two universes\"",
+      "Why the bridge can't be crossed",
+      "Traversable wormholes and exotic matter",
+      "Wormhole time machines and chronology protection",
+      "What telescopes and gravitational waves show",
+      "ER = EPR"
+    ],
+    "year": 2026,
+    "sections": [
+      {
+        "title": "The Big Question",
+        "page": 2
+      },
+      {
+        "title": "Gravity Is Bent Space",
+        "page": 4
+      },
+      {
+        "title": "What a Black Hole Really Is",
+        "page": 6
+      },
+      {
+        "title": "Einstein and Rosen's Bridge",
+        "page": 8
+      },
+      {
+        "title": "\"Two Universes\"? The Full Map",
+        "page": 10
+      },
+      {
+        "title": "Why You Can't Cross",
+        "page": 12
+      },
+      {
+        "title": "Wormholes You Could Cross",
+        "page": 14
+      },
+      {
+        "title": "Wormholes as Time Machines",
+        "page": 18
+      },
+      {
+        "title": "What the Telescopes Say",
+        "page": 20
+      },
+      {
+        "title": "ER = EPR: A Strange Twist",
+        "page": 22
+      },
+      {
+        "title": "Myths vs Physics",
+        "page": 24
+      },
+      {
+        "title": "So, Does It Lead to Another Universe?",
+        "page": 25
+      },
+      {
+        "title": "References",
+        "page": 27
+      }
+    ],
+    "imageAlt": "A glowing wireframe funnel joined to a second funnel below it at a narrow throat, on a dark starry background, under the title 'Do Black Holes Lead to Another Universe?'.",
+    "added": "2026-11-09",
+    "permission": false,
+    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDirKGB4QzqCe9PZLNWIdQPTms1ZWVcClLOU3EAimMbMEEp8s/L2oplFMQVZ/5YfhRRSY0VqKKKYj//2Q=="
+  },
+  {
     "id": "metaproof",
     "kind": "project",
     "title": "MetaProof: Evidence-Based Authenticity Analysis for Images",

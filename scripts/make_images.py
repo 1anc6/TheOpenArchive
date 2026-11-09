@@ -44,6 +44,7 @@ FROM_PAGE = {
     "absolute-cinema-of-math": (0, 0.32, 0.82),
     "spooky-action": (0, 0.06, 0.56),
     "where-physics-runs-out": (0, 0.0, 0.45),
+    "another-universe": (0, 0.06, 0.56),
 }
 # Text at or above this size (pt) is left out of a page picture, e.g. a cover paragraph
 # that overlaps the edge of the map; small labels stay.

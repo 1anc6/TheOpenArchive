@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Do Black Holes Lead to Another Universe?</title>
+<meta name="author" content="Lanchenba Mutum">
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Alegreya:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Martian+Mono:wght@400;500;600&display=block" rel="stylesheet">
+<style>
+:root{
+  --void:#0b0912; --void-2:#1a1526; --ink:#17131f; --ink-2:#3d3747; --muted:#857d8f;
+  --paper:#f7f3ec; --paper-2:#ece5d8; --amber:#d9771f; --amber-2:#ffc77a; --violet:#6a4ccf; --violet-2:#bcaaff;
+  --line:#dcd3c3;
+}
+@page{ size:A4; margin:21mm 21mm 22mm; background:var(--paper);
+  @top-left{ content:"DO BLACK HOLES LEAD TO ANOTHER UNIVERSE?"; font:500 6pt 'Martian Mono'; letter-spacing:.2em; color:var(--muted); }
+  @top-right{ content:"◐ ── ◑"; font:500 7pt 'Martian Mono'; color:var(--amber); }
+  @bottom-center{ content:counter(page); font:500 7.6pt 'Martian Mono'; color:var(--ink-2); letter-spacing:.1em; }
+}
+@page cover{ margin:0; @top-left{content:none} @top-right{content:none} @bottom-center{content:none} }
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:var(--paper);color:var(--ink-2);font:400 12pt/1.58 'Alegreya',serif;hyphens:auto}
+p{margin:0 0 3.6mm;text-align:justify;orphans:3;widows:3}
+b{color:var(--ink);font-weight:700}
+i{font-style:italic}
+sub,sup{line-height:0}
+
+/* ---------- cover ---------- */
+.cover{page:cover;width:210mm;height:297mm;position:relative;overflow:hidden;background:var(--void);color:#f1ecf7}
+.cover svg.art{position:absolute;inset:0;width:100%;height:100%}
+.cover .t{position:absolute;left:20mm;right:20mm;top:24mm}
+.cover .k{font:500 6.8pt 'Martian Mono';letter-spacing:.34em;color:var(--amber-2)}
+.cover h1{font:400 54pt/.98 'Gloock';margin:7mm 0 0;color:#fff;letter-spacing:-.01em}
+.cover h1 em{font-style:normal;color:var(--amber-2)}
+.cover .sub{margin-top:6mm;font:italic 400 15pt/1.4 'Alegreya';color:#cfc6dd;max-width:128mm}
+.cover .by{position:absolute;left:20mm;bottom:22mm;font:500 7.2pt 'Martian Mono';letter-spacing:.26em;color:#cfc6dd}
+.cover .by b{display:block;color:#fff;font:400 21pt 'Gloock';letter-spacing:0;margin-top:2.4mm}
+.cover .b{position:absolute;right:20mm;bottom:22mm;font:500 6.8pt 'Martian Mono';letter-spacing:.3em;color:var(--amber-2)}
+
+/* ---------- chapters ---------- */
+.chapter .head{break-inside:avoid;break-after:avoid;margin-bottom:7mm}
+.head .num{font:500 7.4pt 'Martian Mono';letter-spacing:.3em;color:var(--violet)}
+.head h2{font:400 33pt/1.06 'Gloock';color:var(--ink);margin:2.5mm 0 3mm}
+.head h2 em{font-style:normal;color:var(--amber)}
+.head .kick{font:italic 400 13.4pt/1.4 'Alegreya';color:var(--muted);margin:0 0 4mm}
+.head svg{display:block;width:52mm;height:6mm}
+.head+p::first-letter{font:400 44pt/.8 'Gloock';float:left;color:var(--amber);margin:1.6mm 2.6mm 0 0}
+h3{font:600 7.4pt 'Martian Mono';letter-spacing:.2em;text-transform:uppercase;color:var(--violet);margin:6mm 0 2.4mm;break-after:avoid}
+
+/* ---------- figures ---------- */
+figure{margin:5mm 0 6mm;break-inside:avoid}
+figure img{width:100%;max-height:100mm;object-fit:cover;display:block;border-radius:2mm;background:var(--paper-2)}
+figure.side{display:grid;grid-template-columns:62mm 1fr;gap:6mm;align-items:end}
+figure.side img{max-height:none;aspect-ratio:4/5}
+figure.side figcaption{margin:0;font-size:10.8pt;line-height:1.5}
+figure svg{width:100%;height:auto;display:block}
+figure.card{background:#fff;border:1px solid var(--line);border-radius:3mm;padding:5mm}
+figure.dark{background:var(--void);border-radius:3mm;padding:5mm}
+figure.dark figcaption{color:#b3a9c2}
+figcaption{font:400 10pt/1.45 'Alegreya';color:var(--muted);margin-top:2.6mm}
+figcaption b{font:600 6.6pt 'Martian Mono';letter-spacing:.16em;text-transform:uppercase;color:var(--violet);margin-right:1.6mm}
+figure.dark figcaption b{color:var(--amber-2)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+
+.person{display:grid;grid-template-columns:34mm 1fr;gap:5.5mm;align-items:center;margin:5mm 0 6mm;break-inside:avoid;background:#fff;border:1px solid var(--line);border-radius:3mm;padding:4mm}
+.person img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 22%;border-radius:2mm;filter:grayscale(1) contrast(1.05)}
+.person .who{font:500 6.2pt 'Martian Mono';letter-spacing:.24em;color:var(--amber)}
+.person b{display:block;font:400 19pt/1.12 'Gloock';color:var(--ink);margin:1.2mm 0 1.4mm}
+.person span{font:400 10.8pt/1.48 'Alegreya';color:var(--ink-2)}
+
+.quote{font:italic 400 17pt/1.35 'Alegreya';color:var(--ink);margin:6mm 6mm 7mm;padding-left:6mm;border-left:2px solid var(--amber);break-inside:avoid}
+.quote small{display:block;font:500 6.4pt 'Martian Mono';font-style:normal;letter-spacing:.2em;color:var(--muted);margin-top:2.5mm}
+
+.note{background:#eee9fb;border-radius:3mm;padding:4.5mm 5.5mm;margin:5mm 0 6mm;break-inside:avoid}
+.note .tag{font:600 6.4pt 'Martian Mono';letter-spacing:.22em;color:var(--violet);margin-bottom:1.6mm}
+.note p{margin:0 0 2mm;text-align:left}.note p:last-child{margin:0}
+.note.warn{background:#fbecdc}.note.warn .tag{color:var(--amber)}
+
+.formula{background:var(--void);color:#ece6f5;border-radius:3mm;padding:5mm 6mm;margin:5mm 0 6mm;break-inside:avoid;text-align:center}
+.formula .eq{font:italic 400 18pt/1.5 'Alegreya';color:#fff}
+.formula .eq + .eq{margin-top:1mm}
+.formula .eq .u{font-style:normal;font-size:.8em;color:#cfc6dd}
+.formula .say{font:400 10.2pt/1.5 'Alegreya';color:#b9afc8;margin-top:2.4mm;text-align:left}
+.frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-size:.86em;margin:0 .15em}
+.frac span:first-child{border-bottom:1px solid currentColor;padding:0 .2em}
+
+.sizes{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm;margin:5mm 0 6mm;break-inside:avoid}
+.sizes>div{background:#fff;border:1px solid var(--line);border-radius:3mm;padding:3.4mm;text-align:center}
+.sizes .o{font:600 6.2pt 'Martian Mono';letter-spacing:.18em;color:var(--violet)}
+.sizes .r{font:400 17pt/1.2 'Gloock';color:var(--ink);margin:1.6mm 0 1mm}
+.sizes .c{font:400 9.6pt/1.35 'Alegreya';color:var(--muted)}
+
+.timeline{margin:5mm 0 6mm;break-inside:avoid}
+.timeline .row{display:grid;grid-template-columns:20mm 1fr;gap:4mm;padding:2.6mm 0;border-top:1px solid var(--line)}
+.timeline .row:last-child{border-bottom:1px solid var(--line)}
+.timeline .y{font:500 9.4pt 'Martian Mono';color:var(--amber)}
+.timeline .w{font:400 11pt/1.48 'Alegreya'}
+
+table.t{width:100%;border-collapse:collapse;margin:5mm 0 6mm;break-inside:avoid;font:400 10.6pt/1.42 'Alegreya'}
+table.t th{font:600 6.4pt 'Martian Mono';letter-spacing:.18em;text-transform:uppercase;color:var(--violet);text-align:left;padding:0 3mm 2mm 0;border-bottom:1.5px solid var(--ink)}
+table.t td{padding:1.9mm 3mm 1.9mm 0;border-bottom:1px solid var(--line);vertical-align:top}
+table.t td:first-child{color:var(--ink);font-weight:500}
+table.t tr{break-inside:avoid}
+
+.summary{background:var(--void);color:#e2dbec;border-radius:3mm;padding:7mm 8mm;margin-top:6mm;break-inside:avoid}
+.summary h4{font:400 21pt 'Gloock';color:#fff;margin:0 0 3mm}
+.summary ul{margin:0;padding-left:5mm}
+.summary li{margin-bottom:2mm;font-size:11pt;line-height:1.48}
+.summary li::marker{color:var(--amber-2)}
+
+dl.gloss{margin:4mm 0 0;display:grid;grid-template-columns:1fr 1fr;column-gap:7mm}
+dl.gloss>div{break-inside:avoid}
+dl.gloss dt{font:400 13pt 'Gloock';color:var(--ink);margin-top:2.6mm}
+dl.gloss dd{margin:.6mm 0 0;font-size:10.6pt;line-height:1.45}
+
+.refs{font:400 9.2pt/1.38 'Alegreya';padding-left:6mm}
+.refs li{margin-bottom:1.2mm}
+.credits{font:400 8.4pt/1.36 'Alegreya';color:var(--muted);columns:2;column-gap:8mm;padding-left:4mm}
+.credits li{margin-bottom:1.2mm}
+.mono{font-family:'Martian Mono';font-size:.8em}
+
+/* Each chapter starts on a new page. */
+.chapter{break-before:page}
+</style>
+</head>
+<body>
+
+<!-- ============ Cover ============ -->
+<section class="cover">
+  <svg class="art" viewBox="0 0 210 297" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffc77a"/><stop offset=".55" stop-color="#d9771f"/><stop offset="1" stop-color="#0b0912"/></radialGradient>
+      <radialGradient id="glow2" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#bcaaff"/><stop offset=".55" stop-color="#6a4ccf"/><stop offset="1" stop-color="#0b0912"/></radialGradient>
+    </defs>
+    <rect width="210" height="297" fill="#0b0912"/>
+    <g id="stars"></g>
+    <g id="funnel"></g>
+    <text x="196" y="132" text-anchor="end" font-family="Martian Mono" font-size="2.7" letter-spacing=".8" fill="#ffc77a">OUR UNIVERSE</text>
+    <text x="196" y="250" text-anchor="end" font-family="Martian Mono" font-size="2.7" letter-spacing=".8" fill="#bcaaff">THE OTHER SIDE ?</text>
+    <line x1="116" y1="200" x2="150" y2="200" stroke="#857d8f" stroke-width=".3" stroke-dasharray="1 1"/>
+    <text x="152" y="201" font-family="Martian Mono" font-size="2.3" letter-spacing=".6" fill="#cfc6dd">THE THROAT</text>
+  </svg>
+  <div class="t">
+    <div class="k">AN ESSAY ON EINSTEIN–ROSEN BRIDGES</div>
+    <h1>Do Black Holes Lead to <em>Another Universe?</em></h1>
+    <div class="sub">In 1935 Einstein found a tunnel hiding inside the maths of a black hole. Here's what it really is, and why nobody, not even light, can get through it.</div>
+  </div>
+  <div class="by">WRITTEN BY<b>Lanchenba Mutum</b></div>
+  <div class="b">THE OPEN ARCHIVE</div>
+</section>
+
+<!-- ============ I ============ -->
+<section class="chapter">
+  <div class="head">
+    <div class="num">CHAPTER 01</div>
+    <h2>The Big <em>Question</em></h2>
+    <div class="kick">You fall into a black hole. Do you come out somewhere else?</div>
+    <svg viewBox="0 0 104 12"><circle cx="6" cy="6" r="4.6" fill="#0b0912" stroke="#d9771f" stroke-width="1.6"/><path d="M13 6 C 30 6 36 1 52 1 S 74 6 91 6" fill="none" stroke="#dcd3c3" stroke-width="1.2"/><path d="M13 6 C 30 6 36 11 52 11 S 74 6 91 6" fill="none" stroke="#dcd3c3" stroke-width="1.2"/><circle cx="98" cy="6" r="4.6" fill="#0b0912" stroke="#6a4ccf" stroke-width="1.6"/></svg>
+  </div>
+  <p>If you've watched any sci-fi movie with space in it, you've probably seen this scene. The spaceship flies towards a black hole, everything starts shaking, the colours go crazy, and then, boom, the crew pops out in a totally different part of the universe. Or in a different universe altogether. The black hole was a door the whole time.</p>
+  <p>It's a really fun idea. And honestly, it isn't completely made up. In 1935, <b>Albert Einstein</b> and his young assistant <b>Nathan Rosen</b> were playing with the equations of gravity, and they found something strange: a shape in the maths where one region of space is joined to another region of space by a kind of narrow neck. They called it a <b>"bridge."</b> Today we call it an <b>Einstein–Rosen bridge</b>, and its more famous nickname is a <b>wormhole</b>.</p>
+  <figure class="side">
+    <img src="img/einstein.jpg" alt="Albert Einstein standing in front of a blackboard during a lecture in Vienna, 1921" style="object-position:50% 25%;filter:grayscale(1)">
+    <figcaption><b>Fig. 1</b><br>Albert Einstein giving a lecture in Vienna in 1921. Fourteen years later, while trying to fix a completely different problem, he and Nathan Rosen found the "bridge" that this whole essay is about.</figcaption>
+  </figure>
+  <p>So the question in the title is a real question that real physicists have thought about very carefully. Does a black hole lead to another universe? Is there a tunnel at the bottom? And if there is, can anything go through it?</p>
+  <p>I'll spoil the short answer right now, because the interesting part is the <i>why</i>: <b>the bridge exists in the maths, but it can't be crossed.</b> It snaps shut faster than anything, even light, can get through. And the "another universe" part turns out to be a bit of a misunderstanding too. But to really see why, we need to understand what gravity actually is, what a black hole actually is, and what Einstein and Rosen actually found. Let's go step by step.</p>
+  <div class="note">
+    <div class="tag">WHERE THIS ESSAY IS GOING</div>
+    <p><b>Chapters 2–3:</b> what gravity and black holes really are. <b>Chapters 4–6:</b> the 1935 bridge, the "two universes", and why you can't get through. <b>Chapters 7–8:</b> wormholes you <i>could</i> cross in theory, and why they might be time machines. <b>Chapters 9–12:</b> what telescopes actually see, a link to quantum entanglement, the most common myths, and the final answer.</p>
+  </div>
+</section>
+
+<!-- ============ II ============ -->
+<section class="chapter">
+  <div class="head">
+    <div class="num">CHAPTER 02</div>
+    <h2>Gravity Is <em>Bent Space</em></h2>
+    <div class="kick">Einstein's big idea, explained with a trampoline.</div>
+    <svg viewBox="0 0 104 12"><circle cx="6" cy="6" r="4.6" fill="#0b0912" stroke="#d9771f" stroke-width="1.6"/><path d="M13 6 C 30 6 36 1 52 1 S 74 6 91 6" fill="none" stroke="#dcd3c3" stroke-width="1.2"/><path d="M13 6 C 30 6 36 11 52 11 S 74 6 91 6" fill="none" stroke="#dcd3c3" stroke-width="1.2"/><circle cx="98" cy="6" r="4.6" fill="#0b0912" stroke="#6a4ccf" stroke-width="1.6"/></svg>
+  </div>
+  <p>In school, we learn Newton's version of gravity: every object pulls on every other object with a force. The Earth pulls the Moon, the Sun pulls the Earth. It works amazingly well, well enough to land people on the Moon. But Newton himself never explained <i>how</i> the Sun "reaches out" across 150 million kilometres of empty space to pull on us.</p>
+  <p>In 1915, Einstein gave a totally different answer with his theory of <b>general relativity</b>. He said gravity isn't really a force at all. Instead, mass and energy <b>bend space and time</b> (physicists glue them together and call it <b>spacetime</b>), and objects just move along the straightest possible path through that bent spacetime. Those "straightest paths" are called <b>geodesics</b>.</p>
+  <figure class="card">
+    <svg id="sheet" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg"></svg>
+    <figcaption><b>Fig. 2</b> The trampoline picture. A heavy ball (the Sun) makes a dip in a stretchy sheet (space). A small marble (the Earth) rolling past doesn't feel a "pull", it just follows the curve, and ends up going round and round.</figcaption>
+  </figure>
+  <p>The famous way to picture it is a trampoline. Put a bowling ball in the middle and the sheet sags. Now roll a marble past it: the marble curves around the dip, not because the bowling ball is "pulling" it, but because the surface it's rolling on is bent. That's basically what the Earth is doing around the Sun.</p>
+  <p>The maths version is Einstein's <b>field equation</b>. It looks scary, but in words it says something really simple:</p>
+  <div class="formula">
+    <div class="eq">G<sub>μν</sub> + Λ g<sub>μν</sub> = <span class="frac"><span>8πG</span><span>c<sup>4</sup></span></span> T<sub>μν</sub></div>
+    <div class="say"><b style="color:#fff">Left side:</b> how spacetime is curved (G<sub>μν</sub>), using the <i>metric</i> g<sub>μν</sub>, the rulebook that tells you distances and times. Λ is the cosmological constant, a tiny extra term for the expansion of the universe. <b style="color:#fff">Right side:</b> what's in that spacetime, the energy, mass, pressure and momentum (T<sub>μν</sub>). As the physicist John Wheeler put it: matter tells spacetime how to curve, and spacetime tells matter how to move.</div>
+  </div>
+  <div class="note warn">
+    <div class="tag">A WARNING ABOUT THESE PICTURES</div>
+    <p>The trampoline (and every "funnel" picture in this essay) is an <b>analogy</b>, called an <b>embedding diagram</b>. Real space isn't a rubber sheet sitting inside some bigger space, and there's no actual "down" for it to sag into. We draw a slice of space as a curved surface just so our 3D brains can see the curvature. Keep that in mind, because it's exactly where the "another universe" confusion comes from.</p>
+  </div>
+</section>
+
+<!-- ============ III ============ -->
+<section class="chapter">
+  <div class="head">
+    <div class="num">CHAPTER 03</div>
+    <h2>What a Black Hole <em>Really Is</em></h2>
+    <div class="kick">Squeeze anything small enough, and not even light can climb out.</div>
+    <svg viewBox="0 0 104 12"><circle cx="6" cy="6" r="4.6" fill="#0b0912" stroke="#d9771f" stroke-width="1.6"/><path d="M13 6 C 30 6 36 1 52 1 S 74 6 91 6" fill="none" stroke="#dcd3c3" stroke-width="1.2"/><path d="M13 6 C 30 6 36 11 52 11 S 74 6 91 6" fill="none" stroke="#dcd3c3" stroke-width="1.2"/><circle cx="98" cy="6" r="4.6" fill="#0b0912" stroke="#6a4ccf" stroke-width="1.6"/></svg>
+  </div>
+  <p>Only a few weeks after Einstein published general relativity, a German astronomer named <b>Karl Schwarzschild</b> found the first exact solution of his equations. And he did it while serving as a soldier on the Russian front in World War I. He worked out what spacetime looks like around a perfectly round, non-spinning, uncharged ball of mass, and mailed it to Einstein, who was surprised anyone had solved it so fast.</p>
+  <div class="person">
+    <img src="img/schwarzschild.jpg" alt="Portrait of Karl Schwarzschild">
+    <div><div class="who">THE FIRST SOLUTION · 1916</div><b>Karl Schwarzschild</b><span>(1873–1916) solved Einstein's equations from the war front. He died a few months later from an illness he caught there, never knowing that his solution describes black holes.</span></div>
+  </div>
+  <p>Hidden inside Schwarzschild's solution is a special distance, now called the <b>Schwarzschild radius</b>. If you squeeze a mass into a ball smaller than this radius, gravity wins completely. Nothing can climb back out, not rockets, not light, nothing. The edge of that region is the <b>event horizon</b>, and the thing inside it is a <b>black hole</b>.</p>
+  <div class="formula">
+    <div class="eq">r<sub>s</sub> = <span class="frac"><span>2GM</span><span>c<sup>2</sup></span></span></div>
+    <div class="say">M is the mass, G is the gravitational constant (6.67 × 10<sup>−11</sup>) and c is the speed of light (3 × 10<sup>8</sup> m/s). Because c² is enormous, r<sub>s</sub> is tiny for anything normal. You have to crush stuff unbelievably hard to make a black hole.</div>
+  </div>
+  <p>Let's put in some numbers, because they're kind of shocking:</p>
+  <div class="sizes">
+    <div><div class="o">EARTH</div><div class="r">9 mm</div><div class="c">Crush the whole planet to the size of a marble.</div></div>
+    <div><div class="o">THE SUN</div><div class="r">3 km</div><div class="c">A star 1.4 million km wide, squeezed into a small town.</div></div>
+    <div><div class="o">SGR A*</div><div class="r">18 Suns</div><div class="c">Our galaxy's central black hole, 4 million Suns heavy.</div></div>
+    <div><div class="o">M87*</div><div class="r">128 AU</div><div class="c">6.5 billion Suns. Bigger than our whole solar system.</div></div>
+  </div>
+  <p>One important thing: the event horizon is <b>not a wall</b>. There's nothing solid there. If you fell through it you wouldn't feel a bump. In Schwarzschild's original coordinates the maths seems to "blow up" at r<sub>s</sub>, but that turned out to be just a bad choice of map, like how a world map makes Greenland look huge. Physicists call it a <b>coordinate singularity</b>. With a better map, someone falling in crosses the horizon smoothly, in a perfectly normal, finite amount of their own time.</p>
+  <p>The <i>real</i> trouble is at the very centre, r = 0. There, the curvature of spacetime really does go to infinity. That's the <b>singularity</b>, and it's where general relativity itself breaks down and stops making predictions. Most physicists think a future theory of quantum gravity will replace it with something else, but nobody knows what yet.</p>
+  <figure>
+    <img src="img/m87.jpg" alt="The Event Horizon Telescope image of the M87 black hole: a glowing orange ring around a dark centre" style="aspect-ratio:16/10;object-position:50% 50%;background:#000">
+    <figcaption><b>Fig. 3</b> The first ever photo of a black hole: <b style="color:var(--amber)">M87*</b>, 55 million light years away, taken by the Event Horizon Telescope in 2017 and released in 2019. The bright ring is hot gas and light bent around the black hole. The dark middle is its "shadow". Notice there's no tunnel visible, and as we'll see, there wouldn't be.</figcaption>
+  </figure>
+</section>
+
+<!-- ============ IV ============ -->
+<section class="chapter">
+  <div class="head">
+    <div class="num">CHAPTER 04</div>
+    <h2>Einstein and Rosen's <em>Bridge</em></h2>
+    <div class="kick">1935: looking for particles, finding a tunnel.</div>
+    <svg viewBox="0 0 104 12"><circle cx="6" cy="6" r="4.6" fill="#0b0912" stroke="#d9771f" stroke-width="1.6"/><path d="M13 6 C 30 6 36 1 52 1 S 74 6 91 6" fill="none" stroke="#dcd3c3" stroke-width="1.2"/><path d="M13 6 C 30 6 36 11 52 11 S 74 6 91 6" fill="none" stroke="#dcd3c3" stroke-width="1.2"/><circle cx="98" cy="6" r="4.6" fill="#0b0912" stroke="#6a4ccf" stroke-width="1.6"/></svg>
+  </div>
+  <p>Here's the funny part. When Einstein and Rosen wrote their 1935 paper, <i>The Particle Problem in the General Theory of Relativity</i>, they weren't thinking about space travel at all. They weren't even really thinking about black holes. Back then, nobody was sure black holes were real, and the word "black hole" wouldn't be popular for another thirty years.</p>
+  <p>Their actual goal was to describe <b>particles</b>, like electrons, without singularities. Physicists hate singularities, points where a theory says something is infinitely dense or infinitely curved, because that's the theory basically saying "I give up." So Einstein and Rosen took Schwarzschild's solution and rewrote it in a clever way. And when they did, something surprising appeared: instead of space just ending at the middle, there were <b>two identical copies of the outside space</b>, joined together at a narrowest point. They called that joint a <b>bridge</b>, and hoped particles might be little bridges like this.</p>
+  <figure class="dark">
+    <svg id="bridge" viewBox="0 0 600 330" xmlns="http://www.w3.org/2000/svg"></svg>
+    <figcaption><b>Fig. 4</b> The Einstein–Rosen bridge as an embedding diagram. The top sheet is one region of space, the bottom sheet is another, and they meet at a narrowest circle called the <b>throat</b>. Remember this is one frozen snapshot. It doesn't show what happens over time, which, spoiler, is the whole problem.</figcaption>
+  </figure>
+  <p>The particle idea didn't work out. But the bridge stayed in the maths, and people kept coming back to it. It only became really clear what it was in <b>1960</b>, when two mathematicians, <b>Martin Kruskal</b> and <b>George Szekeres</b>, separately found a new set of coordinates that showed the whole Schwarzschild solution at once, horizon and all, with no fake blow-ups. Their map revealed the full shape, and it was stranger than anyone expected.</p>
+  <div class="timeline">
+    <div class="row"><div class="y">1915</div><div class="w">Einstein presents general relativity.</div></div>
+    <div class="row"><div class="y">1916</div><div class="w">Schwarzschild finds the first exact solution, for a perfectly round mass.</div></div>
+    <div class="row"><div class="y">1935</div><div class="w">Einstein and Rosen rewrite it and find their "bridge".</div></div>
+    <div class="row"><div class="y">1960</div><div class="w">Kruskal and Szekeres map the whole solution and show how the bridge really behaves.</div></div>
+    <div class="row"><div class="y">1962</div><div class="w">John Wheeler and Robert Fuller show the bridge pinches off too fast for even light to cross.</div></div>
+    <div class="row"><div class="y">1988</div><div class="w">Michael Morris and Kip Thorne work out what a wormhole you <i>could</i> cross would need.</div></div>
+    <div class="row"><div class="y">Today</div><div class="w">Still no wormhole has ever been observed.</div></div>
+  </div>
+</section>
+
+<!-- ============ V ============ -->
+<section class="chapter">
+  <div class="head">
+    <div class="num">CHAPTER 05</div>
+    <h2>"Two Universes"? <em>The Full Map</em></h2>
+    <div class="kick">What Kruskal's map shows, and why "another universe" is the wrong way to say it.</div>
+    <svg viewBox="0 0 104 12"><circle cx="6" cy="6" r="4.6" fill="#0b0912" stroke="#d9771f" stroke-width="1.6"/><path d="M13 6 C 30 6 36 1 52 1 S 74 6 91 6" fill="none" stroke="#dcd3c3" stroke-width="1.2"/><path d="M13 6 C 30 6 36 11 52 11 S 74 6 91 6" fill="none" stroke="#dcd3c3" stroke-width="1.2"/><circle cx="98" cy="6" r="4.6" fill="#0b0912" stroke="#6a4ccf" stroke-width="1.6"/></svg>
+  </div>
+  <p>When you extend Schwarzschild's solution as far as the maths allows (physicists call this the <b>maximally extended</b> solution), you get <b>four regions</b>, not one. The easiest way to see them is with a special kind of map called a <b>Penrose diagram</b>. It squishes all of infinite space and time into a finite shape, and it has one golden rule: <b>light always travels at 45°</b>. So anything slower than light, like you or me, always moves more upward than sideways.</p>
+  <figure class="card">
+    <svg id="penrose" viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg"></svg>
+    <figcaption><b>Fig. 5</b> The Penrose diagram of the full, eternal Schwarzschild black hole. Time goes up. <b>I</b> is our outside world. <b>II</b> is a second outside world. The top region is the black hole, the bottom one is a <b>white hole</b> (a black hole run backwards, which only spits things out). The zig-zag lines are singularities. The dashed line across the middle is the moment when the bridge of Fig. 4 exists.</figcaption>
+  </figure>
+  <p>So region I and region II are the two "sheets" from the bridge picture. This is where the phrase <b>"two universes"</b> comes from. But that phrase can really mislead you. Regions I and II aren't two different universes with different physics or a different Big Bang. They're just two far-away, flat outside regions of <b>one</b> single, very idealised spacetime. Physicists call them <b>asymptotically flat</b> regions, which just means that far from the black hole, space goes back to being normal and flat.</p>
+  <p>Now look at the diagram again and try to draw a path from region I to region II without ever going sideways faster than 45°. You can't. Every path that leaves region I to the right ends up in the black hole region, and hits the top singularity. That one picture is basically the whole answer to the question in the title, but let's not rush, we'll look at it carefully in the next chapter.</p>
+  <div class="note warn">
+    <div class="tag">THE BIGGEST CATCH OF ALL</div>
+    <p>This four-region shape belongs to an <b>eternal</b> black hole: one that has existed forever, never changes, and has nothing falling into it. That's a perfect mathematical object, not a real one. Real black holes form when a big star collapses. When you work out the maths for a collapsing star, the star's own matter covers up region II and the white hole completely. They're simply not there. So a real black hole made from a star doesn't even have a second "side" to go to.</p>
+  </div>
+  <p>That's a really important point that sci-fi always skips. The bridge isn't something hiding inside the black holes we photograph. It's a feature of a perfect, idealised solution that nature almost certainly never builds.</p>
+</section>
+
+<!-- ============ VI ============ -->
+<section class="chapter">
+  <div class="head">
+    <div class="num">CHAPTER 06</div>
+    <h2>Why You <em>Can't Cross</em></h2>
+    <div class="kick">The bridge snaps shut before anything can get through.</div>
+    <svg viewBox="0 0 104 12"><circle cx="6" cy="6" r="4.6" fill="#0b0912" stroke="#d9771f" stroke-width="1.6"/><path d="M13 6 C 30 6 36 1 52 1 S 74 6 91 6" fill="none" stroke="#dcd3c3" stroke-width="1.2"/><path d="M13 6 C 30 6 36 11 52 11 S 74 6 91 6" fill="none" stroke="#dcd3c3" stroke-width="1.2"/><circle cx="98" cy="6" r="4.6" fill="#0b0912" stroke="#6a4ccf" stroke-width="1.6"/></svg>
+  </div>
+  <p>Okay, but let's say we ignore that problem and imagine a perfect eternal black hole really exists. Could you go through its bridge then? Still no. And the reason is the most important idea in this essay: <b>the bridge doesn't stay open</b>.</p>
+  <p>Fig. 4 was a snapshot, like a single frame from a movie. If you play the movie, the throat grows from nothing, opens to its widest for a moment, and then pinches shut again, and all of this happens so fast that a beam of light can't get from one side to the other before it closes. In 1962, John Wheeler and Robert Fuller worked this out in detail. It's a bit like trying to run through a gap between two closing elevator doors, except the doors close faster than light can travel.</p>
+  <figure class="card">
+    <svg id="pinch" viewBox="0 0 600 210" xmlns="http://www.w3.org/2000/svg"></svg>
+    <figcaption><b>Fig. 6</b> The bridge over time. The throat opens, reaches its widest (the snapshot in Fig. 4) and pinches off into two separate singularities, all before any light signal can cross. Anything that tries to go through gets caught in the pinch.</figcaption>
+  </figure>
+  <h3>Light cones: the real rule of the road</h3>
+  <p>To see it properly, physicists use <b>light cones</b>. Imagine a flash of light going off at some point. In a spacetime picture, the light spreads out as a cone into the future. Everything you could ever possibly reach, travelling slower than light, is inside that cone. Everything outside it is off-limits to you, forever. Your future is always inside your light cone.</p>
+  <figure class="card">
+    <svg id="cones" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg"></svg>
+    <figcaption><b>Fig. 7</b> Light cones near a black hole. Far away, the cone points straight up and you can go wherever you like. Closer in, the cones tip towards the black hole. At the horizon, the outward edge of the cone points straight up, so even light can only "hover". Inside, every direction in your future points towards the centre.</figcaption>
+  </figure>
+  <p>Near a black hole, gravity tilts the light cones inward. And once you're past the horizon, something really weird happens: the centre of the black hole, r = 0, is no longer a <i>place</i> in front of you, it's a <i>time</i> in your future. Moving towards it is as unavoidable as moving towards tomorrow. You can't steer around it and climb out the other side into region II, because "the other side" is outside your light cone. Getting there would mean going faster than light.</p>
+  <div class="note">
+    <div class="tag">SO WHAT ACTUALLY HAPPENS IF YOU JUMP IN?</div>
+    <p>From region I, you cross the horizon without noticing anything special. If the black hole is small, tidal forces stretch you long and thin first (physicists honestly call this <b>spaghettification</b>). Either way, you hit the singularity in a finite time, for a Sun-mass black hole in about 10 microseconds after crossing, and for M87* in about a day. Someone falling in from region II could meet you inside the black hole, but neither of you could ever get out to tell anyone.</p>
+  </div>
+  <p>And there's one more problem. Real black holes are messy: gas, light and dust are always falling in, and they spin. Physicists have checked whether any of this "disturbance" could help prop the bridge open. It doesn't. It only makes the perfect eternal solution an even worse description of real black holes. So, put simply: <b>an event horizon is a one-way door, not a doorway to somewhere else</b>.</p>
+</section>
+
+<!-- ============ VII ============ -->
+<section class="chapter">
+  <div class="head">
+    <div class="num">CHAPTER 07</div>
+    <h2>Wormholes You <em>Could</em> Cross</h2>
+    <div class="kick">What would it take to keep a tunnel open? Something very strange.</div>
+    <svg viewBox="0 0 104 12"><circle cx="6" cy="6" r="4.6" fill="#0b0912" stroke="#d9771f" stroke-width="1.6"/><path d="M13 6 C 30 6 36 1 52 1 S 74 6 91 6" fill="none" stroke="#dcd3c3" stroke-width="1.2"/><path d="M13 6 C 30 6 36 11 52 11 S 74 6 91 6" fill="none" stroke="#dcd3c3" stroke-width="1.2"/><circle cx="98" cy="6" r="4.6" fill="#0b0912" stroke="#6a4ccf" stroke-width="1.6"/></svg>
+  </div>
+  <p>So, the 1935 bridge is a dead end. But physicists didn't stop there. In the 1980s, the astronomer <b>Carl Sagan</b> was writing his novel <i>Contact</i> and wanted his hero to travel through a wormhole without it being total nonsense. He asked his friend <b>Kip Thorne</b>, an expert on black holes, for help. Thorne and his student <b>Michael Morris</b> flipped the question around: instead of asking "what does a black hole do?", they asked <b>"what shape would a wormhole need to be so that people can actually travel through it, and what would it take to build that shape?"</b></p>
+  <div class="person">
+    <img src="img/thorne.jpg" alt="Kip Thorne at Caltech">
+    <div><div class="who">THE WORMHOLE ENGINEER</div><b>Kip Thorne</b><span>(born 1940) worked out the rules for a crossable wormhole with Michael Morris in 1988, advised on the film <i>Interstellar</i>, and shared the 2017 Nobel Prize for detecting gravitational waves.</span></div>
+  </div>
+  <p>Their answer, published in 1988, is called a <b>traversable wormhole</b>. It's a totally different thing from the Einstein–Rosen bridge. It needs to have <b>no event horizon</b> (otherwise it's a one-way trip again), and its throat has to <b>stay open</b> instead of pinching off. For the maths fans, one way to write it is:</p>
+  <div class="formula">
+    <div class="eq">ds<sup>2</sup> = −e<sup>2Φ(r)</sup>c<sup>2</sup>dt<sup>2</sup> + <span class="frac"><span>dr<sup>2</sup></span><span>1 − b(r)/r</span></span> + r<sup>2</sup>dΩ<sup>2</sup></div>
+    <div class="say">Don't panic about the symbols. Φ(r) controls how much clocks slow down (it must stay finite, so there's no horizon), and b(r) is the <b style="color:#fff">shape function</b> that sets how the tunnel curves. At the throat, r = r<sub>0</sub> and b(r<sub>0</sub>) = r<sub>0</sub>. The throat also has to "flare out", like the mouth of a trumpet, rather than squeeze shut.</div>
+  </div>
+  <figure class="dark">
+    <svg id="fold" viewBox="0 0 600 270" xmlns="http://www.w3.org/2000/svg"></svg>
+    <figcaption><b>Fig. 8</b> The classic way to draw a traversable wormhole: space folded over like a sheet of paper, with a short tunnel joining two places that are far apart the "normal" way. (Again, the folding is just to help us see it. Space doesn't need to bend into anything.)</figcaption>
+  </figure>
+  <h3>The catch: exotic matter</h3>
+  <p>Here's the problem. Normal matter and energy, the stuff stars, planets and people are made of, always have gravity that <b>pulls light rays together</b>, like a magnifying glass focusing sunlight. A wormhole throat needs the exact opposite. Light going into one mouth gets squeezed into the throat and then has to <b>spread out again</b> on the other side. To spread light apart like that, the throat needs stuff whose gravity pushes light rays apart, like a diverging lens.</p>
+  <figure class="card">
+    <svg id="lens" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg"></svg>
+    <figcaption><b>Fig. 9</b> Left: ordinary matter focuses light, like a convex lens. Right: to hold a wormhole open, the throat must defocus light, which needs "exotic" matter with negative energy.</figcaption>
+  </figure>
+  <p>Physicists turn this into a rule called the <b>null energy condition</b> (NEC). Written as T<sub>μν</sub>k<sup>μ</sup>k<sup>ν</sup> ≥ 0, it basically says "measured along a light ray, the energy is never negative." Every normal kind of matter obeys it. A traversable wormhole <b>must break it</b> near the throat. That's why every popular article says wormholes need <b>"exotic matter"</b>. And "exotic" here doesn't mean some weird chemical, it means stuff with <b>negative energy</b>, which is extremely unusual.</p>
+  <h3>Can energy really be negative?</h3>
+  <p>Negative energy sounds impossible, but quantum physics actually allows tiny amounts of it. The most famous example is the <b>Casimir effect</b>, predicted by the Dutch physicist Hendrik Casimir in 1948 and measured properly in 1997.</p>
+  <p>In quantum physics, empty space isn't truly empty. It's full of tiny fluctuations, little ripples of the electromagnetic field popping in and out all the time, of every possible wavelength. Now put two metal plates very, very close together, a few hundred nanometres apart. Between the plates, only the ripples that fit neatly in the gap are allowed. Outside, every ripple is allowed. So there's <b>less</b> going on between the plates than in "empty" space outside, and the energy between them counts as <b>negative</b> compared to normal empty space. The plates even get pushed together by it.</p>
+  <figure class="card">
+    <svg id="casimir" viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg"></svg>
+    <figcaption><b>Fig. 10</b> The Casimir effect. Between the plates, only waves that fit the gap can exist, so there's less energy there than in empty space outside: a small region of negative energy. The extra push from outside presses the plates together.</figcaption>
+  </figure>
+  <p>So negative energy is real. Does that mean we can build a wormhole? Sadly, no, or at least not anywhere close. Physicists like <b>Larry Ford</b> and <b>Thomas Roman</b> proved rules called <b>quantum inequalities</b>, which limit how much negative energy you can have, how long it can last, and how it can be arranged. The more negative energy you want, the shorter the time and the smaller the space it's allowed in. In 1996 they showed that if you tried to hold open a wormhole of any useful size, the negative energy would have to be squeezed into a band far, far thinner than the throat, which is a really awkward, probably impossible, design.</p>
+  <div class="note">
+    <div class="tag">WHERE THINGS STAND</div>
+    <p>Negative energy exists in tiny, controlled amounts in the lab. Nobody has any idea how to collect enough of it, in the right shape, for long enough, to hold a big stable wormhole open. Whether quantum gravity allows it at all is an open research question. There's no recipe, only limits.</p>
+  </div>
+  <p>I find this part really cool, honestly. The question "can we build a wormhole?" sounds like pure fantasy, but trying to answer it seriously taught physicists real things about the rules of energy in quantum physics. Sometimes the best way to learn the laws is to try really hard to break them.</p>
+</section>
+
+<!-- ============ VIII ============ -->
+<section class="chapter">
+  <div class="head">
+    <div class="num">CHAPTER 08</div>
+    <h2>Wormholes as <em>Time Machines</em></h2>
+    <div class="kick">If you could cross one, you might come out before you left.</div>
+    <svg viewBox="0 0 104 12"><circle cx="6" cy="6" r="4.6" fill="#0b0912" stroke="#d9771f" stroke-width="1.6"/><path d="M13 6 C 30 6 36 1 52 1 S 74 6 91 6" fill="none" stroke="#dcd3c3" stroke-width="1.2"/><path d="M13 6 C 30 6 36 11 52 11 S 74 6 91 6" fill="none" stroke="#dcd3c3" stroke-width="1.2"/><circle cx="98" cy="6" r="4.6" fill="#0b0912" stroke="#6a4ccf" stroke-width="1.6"/></svg>
+  </div>
+  <p>Here's where it gets even wilder. In 1988, Morris, Thorne and Ulvi Yurtsever showed that if you had a traversable wormhole, you could probably turn it into a <b>time machine</b>. And the trick only uses something that's already been proven by experiment many times: <b>time dilation</b>, the fact that moving clocks tick slower.</p>
+  <p>Imagine you have a wormhole with two mouths, A and B, both on Earth, and the tunnel between them is very short. Leave mouth A at home. Put mouth B on a rocket and fly it away at 99% of the speed of light, then bring it back. Because of time dilation, the clock next to mouth B ticks much slower during the trip. Let's say 10 years pass on Earth, but only about 1.4 years pass for mouth B.</p>
+  <figure class="card">
+    <svg id="clocks" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg"></svg>
+    <figcaption><b>Fig. 11</b> The wormhole time machine. Mouth B goes on a fast trip and comes back "younger" than mouth A. Because the tunnel itself is short, stepping in at B in 2036 drops you out of A in 2027.</figcaption>
+  </figure>
+  <p>Now here's the key part: <b>through the tunnel</b>, the two mouths still agree with each other on time, because inside the wormhole they're right next to each other and nothing moved. So after the trip, it's the year 2036 outside mouth A, but if you step into mouth B (which only aged 1.4 years since 2026, so it's "2027" for it) you come out of A in the year <b>2027</b>. You've gone nine years into the past. And if you then fly back to B the normal way and do it again, you get a loop in time, which physicists call a <b>closed timelike curve</b>.</p>
+  <p>That's obviously a huge problem. If you can go back in time, you get all the classic paradoxes, like going back and stopping yourself from ever building the wormhole in the first place. But notice how many big "ifs" this needs: a stable traversable wormhole, a way to move its mouths, a rocket going at nearly light speed, and quantum effects that don't wreck everything. None of these exist. And the original Einstein–Rosen bridge can't do any of this at all, because you can't cross it.</p>
+  <div class="person">
+    <img src="img/hawking.jpg" alt="Stephen Hawking at a NASA event in 2008" style="object-position:50% 35%">
+    <div><div class="who">THE CHRONOLOGY PROTECTOR</div><b>Stephen Hawking</b><span>(1942–2018) suggested in 1992 that the laws of physics will always find a way to stop time machines from forming. He once joked that the best evidence is that we haven't been invaded by tourists from the future.</span></div>
+  </div>
+  <p>Hawking's idea is called the <b>chronology protection conjecture</b>. The rough reasoning is that just as a time machine is about to form, light and quantum fluctuations could go round and round the loop again and again, piling up until the energy becomes enormous and destroys the wormhole. Calculations often do show that energy blowing up. But "conjecture" means it's a very educated guess, not a proof. To really settle it, we need a full theory of quantum gravity, which nobody has yet.</p>
+</section>
+
+<!-- ============ IX ============ -->
+<section class="chapter">
+  <div class="head">
+    <div class="num">CHAPTER 09</div>
+    <h2>What the Telescopes <em>Say</em></h2>
+    <div class="kick">We've photographed black holes and heard them collide. No wormholes, though.</div>
+    <svg viewBox="0 0 104 12"><circle cx="6" cy="6" r="4.6" fill="#0b0912" stroke="#d9771f" stroke-width="1.6"/><path d="M13 6 C 30 6 36 1 52 1 S 74 6 91 6" fill="none" stroke="#dcd3c3" stroke-width="1.2"/><path d="M13 6 C 30 6 36 11 52 11 S 74 6 91 6" fill="none" stroke="#dcd3c3" stroke-width="1.2"/><circle cx="98" cy="6" r="4.6" fill="#0b0912" stroke="#6a4ccf" stroke-width="1.6"/></svg>
+  </div>
+  <p>So far this has all been maths and thought experiments. What does the actual sky tell us? The honest answer: <b>there is no confirmed observation of an Einstein–Rosen bridge or any wormhole.</b> But we've gotten really good at looking at black holes, and everything we've seen matches general relativity's ordinary black holes very well.</p>
+  <figure>
+    <img src="img/ligo.jpg" alt="Aerial view of the LIGO Hanford gravitational-wave observatory, two long arms stretching across the desert" style="aspect-ratio:16/6.4;object-position:50% 62%">
+    <figcaption><b>Fig. 12</b> The LIGO detector in Hanford, Washington. Each arm is 4 km long. In 2015, laser light running up and down these arms noticed space stretching and squeezing by less than a thousandth of the width of a proton, caused by two black holes colliding 1.3 billion light years away.</figcaption>
+  </figure>
+  <div class="two">
+    <figure style="margin:0">
+      <img src="img/gw-signal.jpg" alt="The GW150914 gravitational-wave signal recorded at the two LIGO detectors" style="aspect-ratio:4/3;object-fit:contain;background:#fff;border:1px solid var(--line)">
+      <figcaption><b>Fig. 13</b> The first gravitational wave ever detected, GW150914, seen by both LIGO detectors. The wiggles speed up and grow as two black holes spiral in and merge.</figcaption>
+    </figure>
+    <figure style="margin:0">
+      <img src="img/sgra.jpg" alt="The Event Horizon Telescope image of Sagittarius A*, the black hole at the centre of the Milky Way" style="aspect-ratio:4/3;object-fit:contain;background:#000">
+      <figcaption><b>Fig. 14</b> Sagittarius A*, the black hole at the centre of our own galaxy, photographed by the Event Horizon Telescope and released in 2022.</figcaption>
+    </figure>
+  </div>
+  <p style="margin-top:5mm">Could we tell a wormhole apart from a black hole if we saw one? Scientists have suggested a few ways. A wormhole mouth might bend background light in an unusual pattern, gas swirling around it might glow differently, its "shadow" might look a bit different, and when two of them merge, the gravitational waves afterwards might have extra <b>echoes</b>. The problem is that most of these signals depend heavily on the exact model, and normal astrophysics, like messy gas or other strange compact objects, can produce similar effects. Some people have claimed hints of echoes, but none of them has held up as real evidence.</p>
+  <table class="t">
+    <tr><th style="width:24%">Method</th><th style="width:30%">What it looks at</th><th>What it says so far</th></tr>
+    <tr><td>Black hole photos (EHT)</td><td>How light bends right next to the hole</td><td>Looks like a normal black hole. Not proof of a bridge.</td></tr>
+    <tr><td>Gravitational waves</td><td>The "ringing" after two holes merge</td><td>Matches ordinary black hole mergers, as far as we can measure.</td></tr>
+    <tr><td>Gravitational lensing</td><td>How mass bends light from behind</td><td>Could rule out some exotic shapes, but no wormhole found.</td></tr>
+    <tr><td>Orbits of stars</td><td>Gravity around very dense objects</td><td>Tests relativity really well, but doesn't test for tunnels.</td></tr>
+  </table>
+  <figure class="side" style="grid-template-columns:46mm 1fr">
+    <img src="img/einstein-ring.jpg" alt="A Hubble image of a nearly complete blue ring of light around a red galaxy, a horseshoe Einstein ring" style="aspect-ratio:1/1;object-position:50% 50%;background:#000">
+    <figcaption><b>Fig. 15</b><br>A "horseshoe" Einstein ring photographed by Hubble. A heavy red galaxy bends the light of a blue galaxy far behind it into a ring. Lensing like this is one of the tools that could one day spot something unusual, like a wormhole mouth, if one exists.</figcaption>
+  </figure>
+</section>
+
+<!-- ============ X ============ -->
+<section class="chapter">
+  <div class="head">
+    <div class="num">CHAPTER 10</div>
+    <h2>ER = EPR: <em>A Strange Twist</em></h2>
+    <div class="kick">The same two names, Einstein and Rosen, on two very different 1935 papers.</div>
+    <svg viewBox="0 0 104 12"><circle cx="6" cy="6" r="4.6" fill="#0b0912" stroke="#d9771f" stroke-width="1.6"/><path d="M13 6 C 30 6 36 1 52 1 S 74 6 91 6" fill="none" stroke="#dcd3c3" stroke-width="1.2"/><path d="M13 6 C 30 6 36 11 52 11 S 74 6 91 6" fill="none" stroke="#dcd3c3" stroke-width="1.2"/><circle cx="98" cy="6" r="4.6" fill="#0b0912" stroke="#6a4ccf" stroke-width="1.6"/></svg>
+  </div>
+  <p>Here's a coincidence I love. In <b>1935</b>, Einstein and Rosen wrote <i>two</i> famous papers. One was the bridge paper, which we've been talking about, nicknamed <b>ER</b>. The other, written with Boris Podolsky, was the <b>EPR</b> paper about <b>quantum entanglement</b>, the "spooky action at a distance" where two particles stay linked no matter how far apart they are. (I wrote a whole essay about that one, <i>Spooky Action at a Distance</i>, also in this archive.) For almost 80 years, everyone thought these two papers had nothing to do with each other.</p>
+  <p>Then in 2013, the physicists <b>Juan Maldacena</b> and <b>Leonard Susskind</b> suggested something bold: maybe they're <b>the same thing</b>. Their idea, written as the short slogan <b>ER = EPR</b>, says that two entangled black holes are connected by an Einstein–Rosen bridge, and, going further, that maybe every bit of entanglement is connected by some kind of tiny, quantum version of a bridge.</p>
+  <figure class="dark">
+    <svg id="ereprsvg" viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg"></svg>
+    <figcaption><b>Fig. 16</b> ER = EPR. Top: two entangled particles (EPR). Bottom: two black holes joined by a bridge (ER). Maldacena and Susskind's idea is that these are two ways of describing the same kind of connection.</figcaption>
+  </figure>
+  <div class="person">
+    <img src="img/maldacena.jpg" alt="Juan Maldacena giving a public talk" style="object-position:82% 45%">
+    <div><div class="who">THE BRIDGE BUILDER</div><b>Juan Maldacena</b><span>(born 1968), shown giving a public talk, proposed ER = EPR with Leonard Susskind in their 2013 paper with the fun title <i>Cool horizons for entangled black holes</i>.</span></div>
+  </div>
+  <p>It's a really exciting idea, and it's very influential in research on quantum gravity. Some scientists even think space itself might be "stitched together" by entanglement. But I need to be careful here, because this is where pop science often goes wrong:</p>
+  <div class="note warn">
+    <div class="tag">WHAT ER = EPR DOES NOT SAY</div>
+    <p>It's a <b>conjecture</b>, not a proven fact. The bridges it talks about are the <b>non-traversable</b> kind, so you can't send anything through them. It does <b>not</b> mean entangled particles are little tunnels you can use. And entanglement can never send a message faster than light, a rule called the no-communication theorem. Both pictures agree on that: no shortcut, just a connection.</p>
+  </div>
+  <p>Actually, that's what makes the idea so pretty. The bridge you can't cross and the entanglement you can't use to send messages have the exact same "personality". Both are connections that don't let you cheat the speed of light. Maybe that's not a coincidence.</p>
+</section>
+
+<!-- ============ XI ============ -->
+<section class="chapter">
+  <div class="head">
+    <div class="num">CHAPTER 11</div>
+    <h2>Myths vs <em>Physics</em></h2>
+    <div class="kick">The most common things people get wrong about wormholes.</div>
+    <svg viewBox="0 0 104 12"><circle cx="6" cy="6" r="4.6" fill="#0b0912" stroke="#d9771f" stroke-width="1.6"/><path d="M13 6 C 30 6 36 1 52 1 S 74 6 91 6" fill="none" stroke="#dcd3c3" stroke-width="1.2"/><path d="M13 6 C 30 6 36 11 52 11 S 74 6 91 6" fill="none" stroke="#dcd3c3" stroke-width="1.2"/><circle cx="98" cy="6" r="4.6" fill="#0b0912" stroke="#6a4ccf" stroke-width="1.6"/></svg>
+  </div>
+  <p>We've covered a lot, so here's a quick cheat sheet. If you ever see a video or article saying one of these, now you know what's really going on.</p>
+  <table class="t">
+    <tr><th style="width:42%">The myth</th><th>What physics actually says</th></tr>
+    <tr><td>"A wormhole is just a black hole with an exit."</td><td>No. A black hole made by a collapsing star isn't known to have any exit at all. The star's own matter covers up the "other side".</td></tr>
+    <tr><td>"Einstein's 1935 bridge lets you travel between universes."</td><td>No. It pinches shut faster than light can cross it. And the "two universes" are two regions of one idealised spacetime.</td></tr>
+    <tr><td>"Negative energy makes a wormhole easy to build."</td><td>The negative energy we know about (like the Casimir effect) is tiny, and quantum inequalities strictly limit it.</td></tr>
+    <tr><td>"The funnel diagram proves you can travel through."</td><td>That picture is one frozen moment of space. To know if travel is possible, you have to look at light cones and all of spacetime.</td></tr>
+    <tr><td>"Entanglement sends information through a wormhole."</td><td>Entanglement creates correlations, but it can never send a message faster than light.</td></tr>
+    <tr><td>"Wormholes have been discovered."</td><td>No observation has ever been accepted as evidence for a wormhole.</td></tr>
+  </table>
+  <h3>A small glossary</h3>
+  <dl class="gloss">
+    <div><dt>Event horizon</dt><dd>The point of no return around a black hole. Beyond it, even light can't reach the outside.</dd></div>
+    <div><dt>Singularity</dt><dd>Where general relativity breaks down: curvature becomes infinite, or paths just end.</dd></div>
+    <div><dt>Geodesic</dt><dd>The "straightest" path through curved spacetime, the path a falling object or a light ray naturally follows.</dd></div>
+    <div><dt>Metric</dt><dd>The maths rulebook for a spacetime: it tells you distances, times, and which events can affect which.</dd></div>
+    <div><dt>Light cone</dt><dd>All the places light from an event can reach. Your possible future is always inside it.</dd></div>
+    <div><dt>Asymptotically flat</dt><dd>A region that turns back into ordinary, flat space far away from any mass.</dd></div>
+    <div><dt>Wormhole throat</dt><dd>The narrowest part of a wormhole, joining two bigger regions of space.</dd></div>
+    <div><dt>Null energy condition</dt><dd>A rule that normal matter obeys. Traversable wormholes would have to break it.</dd></div>
+  </dl>
+</section>
+
+<!-- ============ XII ============ -->
+<section class="chapter">
+  <div class="head">
+    <div class="num">CHAPTER 12</div>
+    <h2>So, Does It Lead to <em>Another Universe?</em></h2>
+    <div class="kick">The final answer.</div>
+    <svg viewBox="0 0 104 12"><circle cx="6" cy="6" r="4.6" fill="#0b0912" stroke="#d9771f" stroke-width="1.6"/><path d="M13 6 C 30 6 36 1 52 1 S 74 6 91 6" fill="none" stroke="#dcd3c3" stroke-width="1.2"/><path d="M13 6 C 30 6 36 11 52 11 S 74 6 91 6" fill="none" stroke="#dcd3c3" stroke-width="1.2"/><circle cx="98" cy="6" r="4.6" fill="#0b0912" stroke="#6a4ccf" stroke-width="1.6"/></svg>
+  </div>
+  <p>Short answer: <b>no, not as far as we know.</b> But the long answer is much more interesting than a plain "no".</p>
+  <p>Einstein and Rosen really did find a bridge in the equations of gravity, a neck joining two regions of space. That part is real maths. But the bridge belongs to a perfect, eternal black hole that has existed forever, which nature doesn't make. Real black holes come from collapsing stars, and in them the "other side" isn't even there. And even in the perfect version, the bridge snaps shut so fast that nothing, not even light, can get from one side to the other. Anything that falls in ends up at the singularity. A black hole is a one-way door with nothing behind it but the singularity.</p>
+  <p>Wormholes that you could actually travel through are a different idea, and general relativity doesn't forbid them outright. But they'd need large amounts of negative-energy "exotic matter", and quantum physics only allows tiny bits of it. If they did exist, they might even be time machines, which is a big hint that something in nature might stop them. And so far, every black hole we've photographed or heard colliding looks exactly like an ordinary one.</p>
+  <figure>
+    <img src="img/eht-array.jpg" alt="A night-time map of the Earth showing the radio telescopes that make up the Event Horizon Telescope" style="aspect-ratio:16/6.6;object-position:50% 48%;background:#000">
+    <figcaption><b>Fig. 17</b> The radio telescopes of the Event Horizon Telescope, spread from Hawaii to the South Pole. Linked together, they act like one telescope the size of the Earth, sharp enough to photograph a black hole's shadow. Whatever we learn about black holes next will probably come from projects like this.</figcaption>
+  </figure>
+  <p>But here's why I still think the Einstein–Rosen bridge is one of the coolest ideas in physics. It shows the edges of what we know. Asking "can I go through it?" forced physicists to think really carefully about light cones, about negative energy, about time travel, and even about how quantum entanglement and the shape of space might be the same thing. The tunnel doesn't lead to another universe, but it led to a lot of new physics. Not bad for a mistake about particles in 1935.</p>
+  <div class="summary">
+    <h4>The short version</h4>
+    <ul>
+      <li>General relativity says gravity is curved spacetime. A black hole forms when mass is squeezed inside its Schwarzschild radius, r<sub>s</sub> = 2GM/c².</li>
+      <li>In 1935 Einstein and Rosen found a "bridge" in the maths, joining two outside regions through a narrow throat.</li>
+      <li>Those "two universes" are really two regions of one perfect, eternal spacetime. Black holes made by collapsing stars don't have the second region at all.</li>
+      <li>The bridge pinches shut faster than light can cross it. Inside the horizon, every possible future leads to the singularity.</li>
+      <li>Traversable wormholes (Morris and Thorne, 1988) would need negative-energy exotic matter, which quantum physics only allows in tiny amounts.</li>
+      <li>If they existed, they could become time machines. Hawking's chronology protection idea suggests nature would stop that.</li>
+      <li>No wormhole has ever been observed. ER = EPR links bridges to entanglement, but neither can carry a faster-than-light message.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ References ============ -->
+<section class="chapter">
+  <div class="head">
+    <div class="num">SOURCES</div>
+    <h2>References</h2>
+    <svg viewBox="0 0 104 12"><circle cx="6" cy="6" r="4.6" fill="#0b0912" stroke="#d9771f" stroke-width="1.6"/><path d="M13 6 C 30 6 36 1 52 1 S 74 6 91 6" fill="none" stroke="#dcd3c3" stroke-width="1.2"/><path d="M13 6 C 30 6 36 11 52 11 S 74 6 91 6" fill="none" stroke="#dcd3c3" stroke-width="1.2"/><circle cx="98" cy="6" r="4.6" fill="#0b0912" stroke="#6a4ccf" stroke-width="1.6"/></svg>
+  </div>
+  <ol class="refs">
+    <li>A. Einstein and N. Rosen, "The Particle Problem in the General Theory of Relativity", <i>Physical Review</i> 48, 73–77 (1935). doi:10.1103/PhysRev.48.73</li>
+    <li>K. Schwarzschild, "Über das Gravitationsfeld eines Massenpunktes nach der Einsteinschen Theorie", <i>Sitzungsberichte der Königlich Preußischen Akademie der Wissenschaften</i>, 189–196 (1916).</li>
+    <li>M. D. Kruskal, "Maximal Extension of Schwarzschild Metric", <i>Physical Review</i> 119, 1743–1745 (1960). doi:10.1103/PhysRev.119.1743</li>
+    <li>G. Szekeres, "On the singularities of a Riemannian manifold", <i>Publicationes Mathematicae Debrecen</i> 7, 285–301 (1960).</li>
+    <li>R. W. Fuller and J. A. Wheeler, "Causality and Multiply Connected Space-Time", <i>Physical Review</i> 128, 919 (1962).</li>
+    <li>M. S. Morris and K. S. Thorne, "Wormholes in spacetime and their use for interstellar travel: A tool for teaching general relativity", <i>American Journal of Physics</i> 56, 395–412 (1988). doi:10.1119/1.15620</li>
+    <li>M. S. Morris, K. S. Thorne and U. Yurtsever, "Wormholes, Time Machines, and the Weak Energy Condition", <i>Physical Review Letters</i> 61, 1446–1449 (1988). doi:10.1103/PhysRevLett.61.1446</li>
+    <li>L. H. Ford and T. A. Roman, "Quantum field theory constrains traversable wormhole geometries", <i>Physical Review D</i> 53, 5496–5507 (1996). doi:10.1103/PhysRevD.53.5496</li>
+    <li>S. K. Lamoreaux, "Demonstration of the Casimir Force in the 0.6 to 6 μm Range", <i>Physical Review Letters</i> 78, 5 (1997).</li>
+    <li>S. W. Hawking, "Chronology protection conjecture", <i>Physical Review D</i> 46, 603–611 (1992). doi:10.1103/PhysRevD.46.603</li>
+    <li>J. Maldacena and L. Susskind, "Cool horizons for entangled black holes", <i>Fortschritte der Physik</i> 61, 781–811 (2013). doi:10.1002/prop.201300020</li>
+    <li>Event Horizon Telescope Collaboration, "First M87 Event Horizon Telescope Results. I. The Shadow of the Supermassive Black Hole", <i>Astrophysical Journal Letters</i> 875, L1 (2019).</li>
+    <li>Event Horizon Telescope Collaboration, "First Sagittarius A* Event Horizon Telescope Results. I.", <i>Astrophysical Journal Letters</i> 930, L12 (2022).</li>
+    <li>B. P. Abbott et al. (LIGO and Virgo), "Observation of Gravitational Waves from a Binary Black Hole Merger", <i>Physical Review Letters</i> 116, 061102 (2016).</li>
+    <li>R. M. Wald, <i>General Relativity</i>, University of Chicago Press (1984); M. Visser, <i>Lorentzian Wormholes: From Einstein to Hawking</i>, AIP Press (1995).</li>
+    <li>"Einstein-Rosen Bridges: A detailed guide to wormholes, spacetime geometry, black holes, and the limits of known physics", educational reference, November 2026; the source this essay is based on.</li>
+  </ol>
+  <h3 style="margin-top:8mm">Picture credits</h3>
+  <ul class="credits">
+    <li>Albert Einstein lecturing in Vienna, 1921 · Ferdinand Schmutzer, restored by Adam Cuerden · Public domain · via Wikimedia Commons</li>
+    <li>Karl Schwarzschild · Public domain · via Wikimedia Commons</li>
+    <li>M87* black hole · Event Horizon Telescope · CC BY 4.0 · via Wikimedia Commons</li>
+    <li>Kip Thorne at Caltech · Keenan Pepper · CC BY-SA 3.0 · via Wikimedia Commons</li>
+    <li>Stephen Hawking at NASA's 50th anniversary, 2008 · NASA/Paul E. Alers · Public domain · via Wikimedia Commons</li>
+    <li>LIGO Hanford, aerial view · LIGO Laboratory · Public domain · via Wikimedia Commons</li>
+    <li>GW150914 signal · B. P. Abbott et al. (LIGO Scientific Collaboration and Virgo Collaboration) · CC BY 3.0 · via Wikimedia Commons</li>
+    <li>Sagittarius A* · Event Horizon Telescope Collaboration · CC BY-SA 4.0 · via Wikimedia Commons</li>
+    <li>Horseshoe Einstein ring · ESA/Hubble &amp; NASA · Public domain · via Wikimedia Commons</li>
+    <li>Juan Maldacena giving a talk · Martinbalmacedaa · CC BY-SA 4.0 · via Wikimedia Commons</li>
+    <li>Telescopes of the Event Horizon Telescope · ESO/M. Kornmesser · CC BY 4.0 · via Wikimedia Commons</li>
+    <li>All diagrams and the cover were drawn for this edition.</li>
+  </ul>
+</section>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function E(svg,n,a,t){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(t!==undefined)e.textContent=t;svg.appendChild(e);return e}
+const AMB='#d9771f', AMB2='#ffc77a', VIO='#6a4ccf', VIO2='#bcaaff', INK='#3d3747', LINE='#dcd3c3', MUTED='#857d8f', VOID='#0b0912';
+const MONO='Martian Mono', SERIF='Alegreya';
+const T=(s,x,y,t,o={})=>E(s,'text',Object.assign({x,y,'font-family':MONO,'font-size':10,fill:INK},o),t);
+function arrowDefs(s,id,col){E(s,'defs',{}).innerHTML=`<marker id="${id}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="${col}"/></marker>`}
+
+// Embedding surface (Flamm's paraboloid style): rings at radius r, depth z(r); projected with perspective-ish squash.
+function surface(g,{cx,cy,ry,rmin,rmax,depth,dir,col,rings,spokes,w}){
+  // z grows from 0 at rmax to depth at rmin like sqrt profile
+  const z=r=>depth*(1-Math.sqrt((r-rmin)/(rmax-rmin)));
+  const Rs=[];for(let i=0;i<rings;i++){Rs.push(rmin+(rmax-rmin)*Math.pow(i/(rings-1),1.8))}
+  Rs.forEach((r,i)=>E(g,'ellipse',{cx,cy:cy+dir*z(r),rx:r,ry:r*ry,fill:'none',stroke:col,'stroke-width':i===0?w*1.8:w,opacity:i===0?1:.85}));
+  for(let k=0;k<spokes;k++){const a=k/spokes*2*Math.PI;let d='';
+    for(let j=0;j<=40;j++){const r=rmin+(rmax-rmin)*Math.pow(j/40,1.8);const x=cx+r*Math.cos(a),y=cy+dir*z(r)+r*ry*Math.sin(a);d+=(j?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)}
+    E(g,'path',{d,fill:'none',stroke:col,'stroke-width':w*.8,opacity:.7})}
+}
+
+// ---- cover: stars + bridge funnel
+(function(){
+  const svg=document.querySelector('.cover svg');const st=svg.querySelector('#stars'),f=svg.querySelector('#funnel');
+  let s=11;const rnd=()=>{s=(s*16807)%2147483647;return s/2147483647};
+  for(let i=0;i<190;i++)E(st,'circle',{cx:rnd()*210,cy:rnd()*297,r:rnd()*.42+.08,fill:rnd()>.85?AMB2:'#d6cfe3',opacity:.5+rnd()*.5});
+  surface(f,{cx:105,cy:200,ry:.16,rmin:9,rmax:92,depth:-62,dir:1,col:'#c98a4a',rings:13,spokes:22,w:.32});
+  surface(f,{cx:105,cy:200,ry:.16,rmin:9,rmax:92,depth:62,dir:1,col:'#8a78d6',rings:13,spokes:22,w:.32});
+  E(f,'ellipse',{cx:105,cy:200,rx:9,ry:1.5,fill:'none',stroke:'#fff','stroke-width':.6});
+})();
+
+// ---- Fig 2: trampoline sheet with a mass and an orbiting marble
+(function(){
+  const s=document.getElementById('sheet');const cx=300,cy=105;
+  const dip=(x,y)=>{const d=Math.hypot(x-cx,(y-cy)*2.4);return 70/(1+Math.pow(d/55,2))};
+  for(let i=0;i<=16;i++){let d1='',d2='';const v=20+i*(520/16),u=40+i*(130/16);
+    for(let j=0;j<=80;j++){const x=20+j*7,y=u;d1+=(j?'L':'M')+x+' '+(y+dip(x,y)).toFixed(1)}
+    for(let j=0;j<=80;j++){const y=40+j*(130/80),x=v;d2+=(j?'L':'M')+x+' '+(y+dip(x,y)).toFixed(1)}
+    E(s,'path',{d:d1,fill:'none',stroke:'#cfc4e8','stroke-width':1});E(s,'path',{d:d2,fill:'none',stroke:'#cfc4e8','stroke-width':1});}
+  E(s,'circle',{cx,cy:cy+58,r:24,fill:AMB});E(s,'circle',{cx:cx-7,cy:cy+50,r:7,fill:AMB2,opacity:.8});
+  let d='';for(let j=0;j<=100;j++){const a=j/100*2*Math.PI,x=cx+150*Math.cos(a),y=cy+30*Math.sin(a);d+=(j?'L':'M')+x.toFixed(1)+' '+(y+dip(x,y)).toFixed(1)}
+  E(s,'path',{d,fill:'none',stroke:VIO,'stroke-width':1.6,'stroke-dasharray':'5 4'});
+  const mx=cx+150*Math.cos(.6),my=cy+30*Math.sin(.6);E(s,'circle',{cx:mx,cy:my+dip(mx,my)-6,r:7,fill:VIO});
+  T(s,cx,236,'THE SUN BENDS SPACE · THE EARTH FOLLOWS THE CURVE',{'text-anchor':'middle','font-size':9.5,fill:MUTED,'letter-spacing':1});
+  T(s,mx+14,my+dip(mx,my)-2,'Earth',{'font-family':SERIF,'font-style':'italic','font-size':14,fill:VIO});
+  T(s,cx+34,cy+66,'Sun',{'font-family':SERIF,'font-style':'italic','font-size':14,fill:AMB});
+})();
+
+// ---- Fig 4: Einstein–Rosen bridge
+(function(){
+  const s=document.getElementById('bridge');
+  surface(s,{cx:300,cy:165,ry:.17,rmin:34,rmax:270,depth:-125,dir:1,col:'#d6a06a',rings:12,spokes:28,w:1});
+  surface(s,{cx:300,cy:165,ry:.17,rmin:34,rmax:270,depth:125,dir:1,col:'#9c8ae0',rings:12,spokes:28,w:1});
+  E(s,'ellipse',{cx:300,cy:165,rx:34,ry:34*.17,fill:'none',stroke:'#fff','stroke-width':2.2});
+  T(s,20,28,'REGION I · "OUR" SIDE',{fill:AMB2,'font-size':10.5,'letter-spacing':1.4});
+  T(s,20,318,'REGION II · THE OTHER SIDE',{fill:VIO2,'font-size':10.5,'letter-spacing':1.4});
+  E(s,'line',{x1:345,y1:165,x2:470,y2:165,stroke:'#fff','stroke-width':1,'stroke-dasharray':'3 3'});
+  E(s,'rect',{x:470,y:154,width:128,height:36,rx:4,fill:VOID,opacity:.92});
+  T(s,476,169,'THE THROAT',{fill:'#fff','font-size':10.5,'letter-spacing':1.4});
+  T(s,476,184,'(narrowest point, r = rₛ)',{fill:'#b3a9c2','font-size':9});
+})();
+
+// ---- Fig 5: Penrose diagram
+(function(){
+  const s=document.getElementById('penrose');arrowDefs(s,'pa',AMB);
+  const L=150,cx=300,cy=170; // diamond half width
+  const P=(x,y)=>`${cx+x},${cy-y}`;
+  // regions
+  E(s,'polygon',{points:[P(0,0),P(L,L),P(2*L,0),P(L,-L)].join(' '),fill:'#fbecdc',stroke:AMB,'stroke-width':1.4});
+  E(s,'polygon',{points:[P(0,0),P(-L,L),P(-2*L,0),P(-L,-L)].join(' '),fill:'#eee9fb',stroke:VIO,'stroke-width':1.4});
+  E(s,'polygon',{points:[P(0,0),P(L,L),P(-L,L)].join(' '),fill:'#2a2236',stroke:INK,'stroke-width':1.2});
+  E(s,'polygon',{points:[P(0,0),P(L,-L),P(-L,-L)].join(' '),fill:'#f3efe7',stroke:INK,'stroke-width':1.2});
+  // singularities (zigzag)
+  const zig=(y)=>{let d='';for(let i=0;i<=30;i++){const x=-L+i*(2*L/30);d+=(i?'L':'M')+(cx+x)+' '+(cy-y+(i%2?4:-4))}return d};
+  E(s,'path',{d:zig(L),fill:'none',stroke:AMB,'stroke-width':1.8});E(s,'path',{d:zig(-L),fill:'none',stroke:INK,'stroke-width':1.8});
+  // horizons dashed
+  E(s,'line',{x1:cx-L,y1:cy+L,x2:cx+L,y2:cy-L,stroke:'#fff','stroke-width':0});
+  // bridge slice
+  E(s,'line',{x1:cx-2*L,y1:cy,x2:cx+2*L,y2:cy,stroke:INK,'stroke-width':1.4,'stroke-dasharray':'6 5'});
+  T(s,cx+L,cy+32,'I',{'text-anchor':'middle','font-family':'Gloock','font-size':30,fill:AMB});
+  T(s,cx-L,cy+32,'II',{'text-anchor':'middle','font-family':'Gloock','font-size':30,fill:VIO});
+  T(s,cx,cy-L+46,'BLACK HOLE',{'text-anchor':'middle','font-size':10,fill:AMB2,'letter-spacing':1.4});
+  T(s,cx,cy+L-36,'WHITE HOLE',{'text-anchor':'middle','font-size':10,fill:INK,'letter-spacing':1.4});
+  T(s,cx,cy-L-10,'SINGULARITY',{'text-anchor':'middle','font-size':9,fill:AMB,'letter-spacing':1.4});
+  T(s,cx,cy+L+20,'SINGULARITY',{'text-anchor':'middle','font-size':9,fill:MUTED,'letter-spacing':1.4});
+  T(s,cx+2*L-6,cy-8,'bridge',{'text-anchor':'end','font-family':SERIF,'font-style':'italic','font-size':13,fill:INK});
+  // traveller from I
+  E(s,'path',{d:`M${cx+L+30} ${cy+40} C ${cx+L-10} ${cy-10}, ${cx+40} ${cy-60}, ${cx+20} ${cy-L+8}`,fill:'none',stroke:AMB,'stroke-width':2.2,'marker-end':'url(#pa)'});
+  T(s,cx+L+36,cy+56,'you',{'font-family':SERIF,'font-style':'italic','font-size':14,fill:AMB});
+  // light ray 45° example
+  E(s,'line',{x1:cx+L+70,y1:cy+20,x2:cx+L+30,y2:cy-20,stroke:MUTED,'stroke-width':1,'stroke-dasharray':'2 3'});
+  T(s,cx+L+74,cy+28,'light: 45°',{'font-size':8.5,fill:MUTED});
+  // time arrow
+  E(s,'line',{x1:28,y1:300,x2:28,y2:230,stroke:INK,'stroke-width':1.2,'marker-end':'url(#pa)'});T(s,36,240,'time',{'font-family':SERIF,'font-style':'italic','font-size':13});
+})();
+
+// ---- Fig 6: throat pinching over time
+(function(){
+  const s=document.getElementById('pinch');arrowDefs(s,'pp',MUTED);
+  const ws=[0,22,40,22,0],labels=['opens','widens','widest','closes','pinched off'];
+  ws.forEach((w,i)=>{const cx=112+i*108,top=30,bot=150,mid=90;
+    const path=(side)=>{const sx=side*1;return `M${cx+sx*38} ${top} C ${cx+sx*(w+4)} ${mid-30}, ${cx+sx*w} ${mid-8}, ${cx+sx*w} ${mid} C ${cx+sx*w} ${mid+8}, ${cx+sx*(w+4)} ${mid+30}, ${cx+sx*38} ${bot}`};
+    E(s,'path',{d:path(-1),fill:'none',stroke:i===2?AMB:INK,'stroke-width':1.8});E(s,'path',{d:path(1),fill:'none',stroke:i===2?AMB:INK,'stroke-width':1.8});
+    if(w===0){E(s,'circle',{cx,cy:mid,r:3.5,fill:AMB})}
+    else E(s,'ellipse',{cx,cy:mid,rx:w,ry:4,fill:'none',stroke:i===2?AMB:VIO,'stroke-width':1.4});
+    T(s,cx,182,labels[i],{'text-anchor':'middle','font-family':SERIF,'font-style':'italic','font-size':13,fill:i===2?AMB:INK});
+    if(i<4)E(s,'line',{x1:cx+44,y1:mid,x2:cx+62,y2:mid,stroke:MUTED,'stroke-width':1.2,'marker-end':'url(#pp)'});
+  });
+  T(s,300,204,'ALL OF THIS HAPPENS FASTER THAN LIGHT CAN CROSS THE THROAT',{'text-anchor':'middle','font-size':8.6,fill:MUTED,'letter-spacing':1});
+  T(s,4,40,'REGION I',{'font-size':8.5,fill:AMB,'letter-spacing':1.2});T(s,4,146,'REGION II',{'font-size':8.5,fill:VIO,'letter-spacing':1.2});
+})();
+
+// ---- Fig 7: light cones tipping near a black hole
+(function(){
+  const s=document.getElementById('cones');
+  E(s,'rect',{x:12,y:20,width:64,height:180,fill:VOID,rx:4});
+  T(s,44,112,'r = 0',{'text-anchor':'middle',fill:AMB2,'font-size':10});
+  E(s,'line',{x1:250,y1:14,x2:250,y2:206,stroke:AMB,'stroke-width':1.6,'stroke-dasharray':'6 4'});
+  T(s,250,226,'EVENT HORIZON',{'text-anchor':'middle',fill:AMB,'font-size':9,'letter-spacing':1.2});
+  const tilt=[[545,0],[445,18],[350,32],[250,45],[160,66]];
+  tilt.forEach(([x,t])=>{const h=70,y=150;const a=t*Math.PI/180;
+    // cone: two edges at 45° from axis, axis rotated left by angle a
+    const ax=-Math.sin(a),ay=-Math.cos(a);
+    const e=(sgn)=>{const b=a+sgn*Math.PI/4;return [x-Math.sin(b)*h,y-Math.cos(b)*h]};
+    const [lx,ly]=e(1),[rx,ry]=e(-1);
+    E(s,'polygon',{points:`${x},${y} ${lx},${ly} ${rx},${ry}`,fill:t>=45?'#fbecdc':'#eee9fb',stroke:t>=45?AMB:VIO,'stroke-width':1.4});
+    E(s,'circle',{cx:x,cy:y,r:3,fill:INK});
+  });
+  T(s,545,180,'far away',{'text-anchor':'middle','font-family':SERIF,'font-style':'italic','font-size':13});
+  T(s,398,180,'getting closer',{'text-anchor':'middle','font-family':SERIF,'font-style':'italic','font-size':13});
+  T(s,250,180,'at the horizon',{'text-anchor':'middle','font-family':SERIF,'font-style':'italic','font-size':13,fill:AMB});
+  T(s,150,180,'inside',{'text-anchor':'middle','font-family':SERIF,'font-style':'italic','font-size':13,fill:AMB});
+  T(s,590,30,'time ↑',{'text-anchor':'end','font-family':SERIF,'font-style':'italic','font-size':13,fill:MUTED});
+})();
+
+// ---- Fig 8: folded-space traversable wormhole
+(function(){
+  const s=document.getElementById('fold');
+  const sheet=(y0,col)=>{for(let i=0;i<=10;i++){const y=y0+i*7;E(s,'line',{x1:40+i*6,y1:y,x2:560-i*6,y2:y,stroke:col,'stroke-width':.9,opacity:.8})}
+    for(let j=0;j<=16;j++){const x=40+j*32.5;E(s,'line',{x1:x,y1:y0,x2:x+(300-x)*.12,y2:y0+70,stroke:col,'stroke-width':.9,opacity:.8})}};
+  sheet(30,'#d6a06a');sheet(170,'#9c8ae0');
+  E(s,'path',{d:'M40 30 C -10 30, -10 240, 40 240',fill:'none',stroke:'#4b4160','stroke-width':1.2,'stroke-dasharray':'4 4'});
+  // mouths and tunnel
+  const mx=420;E(s,'ellipse',{cx:mx,cy:84,rx:34,ry:8,fill:VOID,stroke:'#fff','stroke-width':1.6});E(s,'ellipse',{cx:mx,cy:186,rx:34,ry:8,fill:VOID,stroke:'#fff','stroke-width':1.6});
+  E(s,'path',{d:`M${mx-34} 84 C ${mx-14} 120, ${mx-14} 150, ${mx-34} 186`,fill:'none',stroke:'#fff','stroke-width':1.4});
+  E(s,'path',{d:`M${mx+34} 84 C ${mx+14} 120, ${mx+14} 150, ${mx+34} 186`,fill:'none',stroke:'#fff','stroke-width':1.4});
+  E(s,'circle',{cx:150,cy:65,r:6,fill:AMB2});T(s,162,60,'A',{fill:AMB2,'font-size':11});
+  E(s,'path',{d:`M150 65 C 60 90, 40 200, 150 205`,fill:'none',stroke:AMB2,'stroke-width':1.4,'stroke-dasharray':'5 4'});
+  T(s,60,140,'the long way',{'font-family':SERIF,'font-style':'italic','font-size':13,fill:AMB2});
+  T(s,mx+46,140,'the shortcut',{'font-family':SERIF,'font-style':'italic','font-size':13,fill:'#fff'});
+  E(s,'circle',{cx:150,cy:205,r:6,fill:VIO2});T(s,162,224,'B',{fill:VIO2,'font-size':11});
+  T(s,300,262,'EXOTIC MATTER HOLDS THE THROAT OPEN',{'text-anchor':'middle',fill:'#b3a9c2','font-size':9,'letter-spacing':1.2});
+})();
+
+// ---- Fig 9: focusing vs defocusing
+(function(){
+  const s=document.getElementById('lens');
+  const rays=(cx,focus,col,label,sub)=>{
+    E(s,'ellipse',{cx,cy:95,rx:focus?14:6,ry:62,fill:focus?'#fbecdc':'#eee9fb',stroke:col,'stroke-width':1.4});
+    if(!focus){E(s,'path',{d:`M${cx-14} 33 Q ${cx} 95 ${cx-14} 157 M${cx+14} 33 Q ${cx} 95 ${cx+14} 157`,fill:'none',stroke:col,'stroke-width':1.4})}
+    [-40,-20,0,20,40].forEach(o=>{const y=95+o;
+      E(s,'line',{x1:cx-130,y1:y,x2:cx,y2:y,stroke:INK,'stroke-width':1.1});
+      const y2=focus?95-o*0.15:95+o*1.9;E(s,'line',{x1:cx,y1:y,x2:cx+130,y2:y2,stroke:col,'stroke-width':1.3});});
+    T(s,cx,184,label,{'text-anchor':'middle','font-size':9.5,fill:col,'letter-spacing':1.2});
+    T(s,cx,14,sub,{'text-anchor':'middle','font-family':SERIF,'font-style':'italic','font-size':13,fill:INK});
+  };
+  rays(150,true,AMB,'NORMAL MATTER · FOCUSES','stars, planets, people');
+  rays(450,false,VIO,'EXOTIC MATTER · DEFOCUSES','what a throat needs');
+})();
+
+// ---- Fig 10: Casimir plates
+(function(){
+  const s=document.getElementById('casimir');arrowDefs(s,'ca',AMB);
+  E(s,'rect',{x:250,y:20,width:14,height:170,fill:INK,rx:2});E(s,'rect',{x:336,y:20,width:14,height:170,fill:INK,rx:2});
+  const wave=(x0,x1,y,n,amp,col)=>{let d='';for(let i=0;i<=120;i++){const x=x0+(x1-x0)*i/120;d+=(i?'L':'M')+x.toFixed(1)+' '+(y+amp*Math.sin(i/120*Math.PI*n)).toFixed(1)}E(s,'path',{d,fill:'none',stroke:col,'stroke-width':1.3})};
+  // inside: only whole-number fits
+  wave(264,336,60,1,16,VIO);wave(264,336,105,2,12,VIO);wave(264,336,150,3,10,VIO);
+  // outside: many waves
+  [[40,7],[60,11],[80,4],[100,15],[120,9],[140,19],[160,6],[180,13]].forEach(([y,n],i)=>{wave(20,236,y,n+.37*i,5,'#d6a06a');wave(364,580,y,n+.53*i,5,'#d6a06a')});
+  E(s,'line',{x1:200,y1:105,x2:244,y2:105,stroke:AMB,'stroke-width':2.4,'marker-end':'url(#ca)'});E(s,'line',{x1:400,y1:105,x2:356,y2:105,stroke:AMB,'stroke-width':2.4,'marker-end':'url(#ca)'});
+  T(s,300,210,'FEWER WAVES INSIDE = NEGATIVE ENERGY',{'text-anchor':'middle','font-size':9.5,fill:VIO,'letter-spacing':1.2});
+  T(s,128,14,'every wave allowed',{'text-anchor':'middle','font-family':SERIF,'font-style':'italic','font-size':13,fill:AMB});
+  T(s,472,14,'every wave allowed',{'text-anchor':'middle','font-family':SERIF,'font-style':'italic','font-size':13,fill:AMB});
+})();
+
+// ---- Fig 11: wormhole time machine
+(function(){
+  const s=document.getElementById('clocks');arrowDefs(s,'ck',MUTED);
+  const clock=(x,y,col,top,yr,sub)=>{E(s,'circle',{cx:x,cy:y,r:34,fill:'#fff',stroke:col,'stroke-width':2});
+    for(let i=0;i<12;i++){const a=i/12*2*Math.PI;E(s,'line',{x1:x+28*Math.sin(a),y1:y-28*Math.cos(a),x2:x+31*Math.sin(a),y2:y-31*Math.cos(a),stroke:col,'stroke-width':1.2})}
+    E(s,'line',{x1:x,y1:y,x2:x+12,y2:y-14,stroke:INK,'stroke-width':2});E(s,'line',{x1:x,y1:y,x2:x,y2:y-24,stroke:INK,'stroke-width':1.4});
+    T(s,x,y-46,top,{'text-anchor':'middle','font-size':9.5,fill:col,'letter-spacing':1.2});
+    T(s,x,y+58,yr,{'text-anchor':'middle','font-family':'Gloock','font-size':22,fill:INK});
+    T(s,x,y+76,sub,{'text-anchor':'middle','font-family':SERIF,'font-style':'italic','font-size':12,fill:MUTED});};
+  clock(110,110,AMB,'MOUTH A · STAYS HOME','2036','10 years passed');
+  clock(490,110,VIO,'MOUTH B · BACK FROM TRIP','2027','only 1.4 years passed');
+  E(s,'path',{d:'M150 100 C 250 60, 350 60, 450 100',fill:'none',stroke:VOID,'stroke-width':10,opacity:.9});
+  E(s,'path',{d:'M150 100 C 250 60, 350 60, 450 100',fill:'none',stroke:VIO2,'stroke-width':2,'stroke-dasharray':'2 5'});
+  T(s,300,56,'short tunnel: both ends agree on the time',{'text-anchor':'middle','font-family':SERIF,'font-style':'italic','font-size':13,fill:INK});
+  E(s,'path',{d:'M450 140 C 360 190, 240 190, 156 146',fill:'none',stroke:AMB,'stroke-width':1.8,'marker-end':'url(#ck)'});
+  T(s,300,214,'step into B in 2036 (outside time) → step out of A in 2027',{'text-anchor':'middle','font-size':9.2,fill:AMB});
+})();
+
+// ---- Fig 16: ER = EPR
+(function(){
+  const s=document.getElementById('ereprsvg');
+  // EPR: entangled particles with wavy link
+  E(s,'circle',{cx:110,cy:58,r:10,fill:AMB2});E(s,'circle',{cx:490,cy:58,r:10,fill:VIO2});
+  let d='';for(let x=124;x<=476;x++){d+=(x===124?'M':'L')+x+' '+(58+5*Math.sin((x-124)/8)).toFixed(1)}E(s,'path',{d,fill:'none',stroke:'#e2dbec','stroke-width':1.2});
+  T(s,300,30,'EPR · ENTANGLED PARTICLES',{'text-anchor':'middle',fill:'#e2dbec','font-size':10,'letter-spacing':1.4});
+  T(s,300,124,'=',{'text-anchor':'middle','font-family':'Gloock','font-size':34,fill:AMB2});
+  // ER: two black holes joined by a curved bridge
+  const bh=(x,col)=>{E(s,'circle',{cx:x,cy:180,r:24,fill:VOID,stroke:col,'stroke-width':3});E(s,'circle',{cx:x,cy:180,r:31,fill:'none',stroke:col,'stroke-width':1,opacity:.5})};
+  E(s,'path',{d:'M134 176 C 240 150, 360 150, 466 176',fill:'none',stroke:'#4b4160','stroke-width':16,'stroke-linecap':'round'});
+  E(s,'path',{d:'M134 176 C 240 150, 360 150, 466 176',fill:'none',stroke:'#e2dbec','stroke-width':1.2,'stroke-dasharray':'3 4'});
+  bh(110,AMB);bh(490,VIO2);
+  T(s,300,232,'ER · BLACK HOLES JOINED BY A BRIDGE (NOT CROSSABLE)',{'text-anchor':'middle',fill:'#e2dbec','font-size':10,'letter-spacing':1.4});
+})();
+</script>
+</body>
+</html>
