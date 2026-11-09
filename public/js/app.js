@@ -543,21 +543,31 @@
         const p = progress.get(b.id);
         const pct = p ? Math.round((p.page / p.total) * 100) : 0;
         const on = savedIds.includes(b.id);
-        const status = isDone(p) ? "Completed" : p ? `Page ${p.page} of ${p.total}` : `${b.pages} pages · Not started`;
+        const done = isDone(p);
+        const progressCell = done
+          ? `<span class="row-done"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Read</span>`
+          : p
+            ? `<small>Page ${p.page} of ${p.total}</small><div class="bar"><i style="width:${pct}%"></i></div>`
+            : "";
         return `
-          <div class="row" data-id="${b.id}" style="--i:${i}">
-            <span class="n">${pad(b.num)}</span>
-            <span class="row-glyph" aria-hidden="true">${notation(b.glyph)}</span>
-            <div class="row-title"><a href="essays/${b.id}/" class="row-link"><strong>${esc(b.shortTitle)}</strong></a><span>${esc(b.category)} · ${esc(b.author)}</span></div>
-            <div class="row-progress"><small>${status}</small><div class="bar"><i style="width:${pct}%"></i></div></div>
+          <div class="row${done ? " is-done" : ""}" data-id="${b.id}" style="--i:${i}">
+            ${thumb(b)}
+            <div class="row-title"><a href="essays/${b.id}/" class="row-link"><strong>${esc(b.shortTitle)}</strong></a><span class="row-meta"><span class="shelf-tag">${esc(b.category)}</span> ${b.pages} pages · ~${b.pages * MIN_PER_PAGE} min</span></div>
+            <div class="row-progress">${progressCell}</div>
             <div class="row-acts">
-              <button class="ib save-toggle${on ? " on" : ""}" aria-pressed="${on}" aria-label="Add ${esc(b.shortTitle)} to reading list" title="${on ? "In your reading list" : "Add to reading list"}">${BOOKMARK}</button>
-              <button class="ib cite-btn" aria-label="Cite this essay" title="Cite this essay"><svg viewBox="0 0 24 24"><path d="M7 7h4v4c0 3-1.5 5-4 6M14 7h4v4c0 3-1.5 5-4 6"/></svg></button>
-              <a class="ib" href="${esc(b.file)}" download data-title="${esc(b.title)}" aria-label="Request the PDF" title="Request the PDF"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg></a>
+              <button class="ib save-toggle${on ? " on" : ""}" aria-pressed="${on}" aria-label="${on ? "Remove" : "Add"} ${esc(b.shortTitle)} ${on ? "from" : "to"} reading list" title="${on ? "In your reading list" : "Add to reading list"}">${BOOKMARK}</button>
+              <details class="row-more">
+                <summary class="ib" aria-label="More for ${esc(b.shortTitle)}" title="More"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></summary>
+                <div class="row-menu">
+                  <button class="more-item cite-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h4v4c0 3-1.5 5-4 6M14 7h4v4c0 3-1.5 5-4 6"/></svg>Cite this essay</button>
+                  <a class="more-item" href="${esc(b.file)}" download data-title="${esc(b.title)}"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg>Request the PDF</a>
+                </div>
+              </details>
             </div>
           </div>`;
       })
       .join("");
+    $("listCount").textContent = list.length;
     $("empty").hidden = list.length > 0;
     $("empty").textContent = activeTopic === "Saved" && !savedIds.length ? "Your reading list is empty. Select + on any essay to add it." : "No essays match your search.";
   }
@@ -573,11 +583,30 @@
       return;
     }
     if (e.target.closest(".cite-btn")) {
+      row.querySelector(".row-more").open = false;
       const b = byId[row.dataset.id];
       window.Site.cite(b, new URL(`essays/${b.id}/`, location.href.split("#")[0]).href);
       return;
     }
-    if (e.target.closest("a")) sfx.tick(); // essay page or PDF request link
+    if (e.target.closest("a")) {
+      sfx.tick(); // essay page or PDF request link
+      const more = row.querySelector(".row-more");
+      if (more) more.open = false;
+    }
+  });
+  // Only one "More" menu open at a time; a tap elsewhere or Escape closes it.
+  $("shelfList").addEventListener("toggle", (e) => {
+    if (!e.target.open) return;
+    $("shelfList").querySelectorAll(".row-more[open]").forEach((d) => d !== e.target && (d.open = false));
+  }, true);
+  document.addEventListener("click", (e) => {
+    if (e.target.closest(".row-more")) return;
+    $("shelfList").querySelectorAll(".row-more[open]").forEach((d) => (d.open = false));
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    const d = $("shelfList").querySelector(".row-more[open]");
+    if (d) { d.open = false; d.querySelector("summary").focus(); }
   });
 
   /* ---------- Start ---------- */
