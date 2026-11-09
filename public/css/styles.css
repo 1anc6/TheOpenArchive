@@ -1721,22 +1721,9 @@ button, a, .chip, .pselect-menu li { touch-action: manipulation; }
 #moreBtn svg circle { fill: currentColor; stroke: none; }
 #moreBtn[aria-expanded="true"] { color: var(--ink); background: var(--raised); }
 
-/* 5. Phones: the four sections become a tab bar at the bottom, in thumb reach */
+/* 5. Phones: the four sections stay in the header, under the brand */
 @media (max-width: 650px) {
-  .site-header { flex-wrap: nowrap; padding: 12px 16px 4px; }
-  .main-nav {
-    position: fixed; left: 12px; right: 12px; bottom: calc(10px + env(safe-area-inset-bottom));
-    z-index: 30; order: 0; flex-basis: auto; margin: 0; padding: 5px; gap: 2px;
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    border: 1px solid var(--line); border-radius: 999px;
-    background: color-mix(in srgb, var(--panel) 94%, transparent);
-    box-shadow: 0 18px 36px -18px rgba(60, 45, 30, .5);
-  }
-  .main-nav :is(a, button) { justify-content: center; text-align: center; padding: 10px 4px; font-size: 14.5px; }
-  .stage { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
-  .dock { bottom: calc(80px + env(safe-area-inset-bottom)); }
-  /* sits above the tab bar (and above the resume bar when it shows) */
-  body:has(.main-nav) .to-top { bottom: calc(80px + env(safe-area-inset-bottom)); }
+  /* sits above the resume bar when it shows */
   body:has(.dock:not([hidden]):not(.is-away)) .to-top { bottom: calc(160px + env(safe-area-inset-bottom)); }
   .greeting.is-compact { margin-top: 12px; }
   .greeting.is-compact .greeting-copy { display: block; grid-column: 2; grid-row: 1; }
