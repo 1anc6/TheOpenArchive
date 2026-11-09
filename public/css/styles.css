@@ -1375,8 +1375,6 @@ body.no-scroll { overflow: hidden; }
 
 /* ============ Request form + alerts hints ============ */
 .request-foot { justify-content: flex-end; }
-.request-to { margin-top: 12px; font-size: 14px; }
-.request-to a { color: inherit; }
 .notify-how { flex-basis: 100%; font-size: 14px; color: var(--muted); }
 
 /* ============ Skip link ============ */

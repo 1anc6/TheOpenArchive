@@ -61,7 +61,6 @@
             <button class="btn primary" type="submit">Open my email app</button>
           </div>
           <p class="request-done" role="status" hidden></p>
-          <p class="request-to muted">Goes to <a href="mailto:${EMAIL}">${EMAIL}</a></p>
         </form>
       </div>`;
     document.body.appendChild(scrim);
@@ -93,8 +92,8 @@
         const ok = await copyText(`To: ${EMAIL}\nSubject: ${r.subject}\n\n${r.body}`);
         done.hidden = false;
         done.textContent = ok
-          ? `Copied. Paste it into a new email to ${EMAIL}.`
-          : `Couldn't copy automatically. Email ${EMAIL} with the essay title.`;
+          ? "Copied. Paste it into a new email, my address is on the first line."
+          : "Couldn't copy automatically. Use Open my email app instead.";
       }
     });
     form.addEventListener("submit", (e) => {
