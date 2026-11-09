@@ -155,8 +155,10 @@ def main(only):
 
         doc = pymupdf.open(original)
         doc = embed_missing_fonts(doc, book["id"])
-        if (ROOT / "essay-sources" / book["id"] / "index.html").exists():
-            shrink_images(doc)  # essays printed from HTML, see shrink_images
+        if (ROOT / "essay-sources" / book["id"]).is_dir():
+            # Essays printed from HTML (see shrink_images), and Gojo's Infinity,
+            # whose upscaled pictures would otherwise be cut back to 150 dpi.
+            shrink_images(doc)
         else:
             # Downsample big images to 150 dpi and re-encode them as JPEG.
             # That pass also rewrites Type 3 glyphs and adds "0 g" to each, which

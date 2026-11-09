@@ -5,7 +5,7 @@
     "shortTitle": "Gojo Satoru's Infinity",
     "author": "Lanchenba Mutum",
     "file": "books/gojo-infinity.pdf",
-    "pages": 10,
+    "pages": 12,
     "category": "Infinity",
     "glyph": "Σ ½ⁿ",
     "colors": [
@@ -37,27 +37,27 @@
       },
       {
         "title": "Geometric Series",
-        "page": 3
-      },
-      {
-        "title": "The Lebesgue Measure",
         "page": 4
       },
       {
+        "title": "The Lebesgue Measure",
+        "page": 5
+      },
+      {
         "title": "Riemannian Geometry",
-        "page": 6
+        "page": 7
       },
       {
         "title": "Mahoraga's Adaptation",
-        "page": 8
-      },
-      {
-        "title": "Conclusion",
         "page": 9
       },
       {
+        "title": "Conclusion",
+        "page": 11
+      },
+      {
         "title": "References",
-        "page": 10
+        "page": 12
       }
     ],
     "imageAlt": "Manga illustration of Gojo Satoru, smiling and reaching one hand towards the viewer.",

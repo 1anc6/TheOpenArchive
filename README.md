@@ -101,6 +101,17 @@ Eleven essays (the ones with a folder in `essay-sources/`) are laid out as web p
 - Each chapter starts on a new page: the rule is at the end of each essay's `<style>` (look for "Each chapter starts on a new page").
 - Avoid `repeating-linear-gradient`, and gradients with see-through colours or stops away from the ends. Chrome prints them in a form the reader (PDF.js) can't draw, so they vanish on the site. Use an SVG background instead, as the covers do.
 
+### Gojo Satoru's Infinity
+
+This essay was typeset in LaTeX and only its PDF survives. The untouched original is `essay-sources/gojo-infinity/original.pdf`, and `essay-sources/gojo-infinity/img/` holds 4x upscaled copies of its pictures. Real-ESRGAN's anime model was used for all of them except Figure 7, the handwritten notes, which got a plain resize so no pen strokes were invented. To rebuild it:
+
+```bash
+python scripts/gojo_chapter_pages.py
+python scripts/build_pdfs.py gojo-infinity
+```
+
+The first script starts each chapter on a new page. It does this by cutting the original pages into strips between lines, so the text and maths stay the original vector drawing. It prints the page each chapter now starts on, for `sections` in `books.json`.
+
 ## Sound effects
 
 Tapping a card plays a short tick, saving an essay plays a pop, and opening one plays a two-note ding. On phones you also feel a small vibration. The sounds are generated in the browser (`public/js/sfx.js`), so there are no audio files. The speaker button in the header turns them off.
