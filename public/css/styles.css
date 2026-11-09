@@ -1820,3 +1820,32 @@ button, a, .chip, .pselect-menu li { touch-action: manipulation; }
   .start-list { gap: 10px; }
   .podium { gap: 10px; }
 }
+
+/* 8. Larger screens: compact Library cards (cover beside the text) and shorter Start here covers */
+@media (min-width: 651px) {
+  .shelf-card { flex-direction: row; align-items: stretch; }
+  .shelf-card .photo { position: relative; width: 30%; max-width: 120px; flex: none; aspect-ratio: auto; min-height: 0; }
+  /* the text sets the card's height; the cover just fills it */
+  .shelf-card .photo img { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .shelf-body { padding: 14px 16px; gap: 6px; }
+  .shelf-card:not(.is-featured) .shelf-glyph { display: none; }
+  .shelf-card h3 { font-size: 19px; }
+  .shelf-meta { font-size: 12px; }
+  .shelf-pg { padding-top: 2px; font-size: 13.5px; }
+  .shelf-go { font-size: 14px; margin-top: 2px; }
+  /* the essay you were last reading: wider, but no taller than a postcard */
+  .shelf-card.is-featured .photo { width: 300px; max-width: 34%; min-height: 0; aspect-ratio: auto; align-self: stretch; }
+  .shelf-card.is-featured .shelf-body { padding: 18px 26px; gap: 6px; }
+  .shelf-card.is-featured .shelf-glyph { font-size: 22px; }
+  .shelf-card.is-featured h3 { font-size: 27px; }
+  .shelf-card.is-featured .shelf-pg { margin-top: 6px; font-size: 15px; }
+  .shelf-card.is-featured .shelf-go { margin-top: 8px; min-height: 40px; padding: 8px 18px; }
+  .podium { gap: 14px; }
+  .shelf-block { margin-bottom: 28px; }
+  .start-body { padding: 16px 20px 18px; gap: 8px; }
+  .start-ask { font-size: 18px; }
+  .start-glyph { font-size: 22px; }
+  .start-title { font-size: 23px; }
+}
+@media (min-width: 1001px) { .start-card .photo.start-cover { aspect-ratio: 2.4 / 1; } }
+@media (min-width: 651px) and (max-width: 1000px) { .start-card .photo.start-cover { width: 200px; min-height: 0; } }
