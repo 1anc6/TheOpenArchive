@@ -279,3 +279,11 @@
 #uiBtn svg { width: 17px; height: 17px; }
 /* glass menus need a little more body to stay readable over text */
 :root[data-ui="glass"] :is(.music-pop, .pselect-menu, .cite-dialog) { background-color: color-mix(in srgb, var(--panel) 80%, transparent); }
+
+/* Phones: Library and Start here cards keep their inner padding and a rounded cover
+   in every look (the rules above zero the padding for the wide, cover-on-the-edge layout) */
+@media (max-width: 650px) {
+  :root[data-ui] :is(.shelf-card, .start-card) { padding: 12px; border-radius: 18px; }
+  :root[data-ui] :is(.shelf-card, .start-card) .photo { border-radius: 8px; overflow: hidden; }
+  :root[data-ui] :is(.shelf-card, .start-card) .photo img { border-radius: 8px; }
+}
