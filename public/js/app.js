@@ -68,6 +68,7 @@
     screen = name;
     if (name === "room") renderRoom();
     if (name === "reviews") window.Reviews?.open();
+    if (name === "essays") placeFeature();
     window.scrollTo({ top: 0 });
     if (push) history.pushState({ screen: name }, "", name === "essays" ? location.pathname : `#${name}`);
   }
@@ -188,7 +189,18 @@
       </figure>`;
     inkify($("feature").querySelector(".feature-glyph"));
     reveal.observe($("feature"));
+    placeFeature();
   }
+  // Tell the CSS where the card starts, so it can fill the rest of the first screen (see styles.css §10).
+  function placeFeature() {
+    const f = $("feature");
+    if (!f.offsetParent) return;
+    let top = 0; // offsetTop ignores the card's entrance animation, unlike getBoundingClientRect
+    for (let el = f; el; el = el.offsetParent) top += el.offsetTop;
+    f.style.setProperty("--ft", `${top}px`);
+  }
+  addEventListener("resize", placeFeature);
+  addEventListener("load", placeFeature);
 
   /* ---------- Start here: three suggested first essays ---------- */
   function renderStart() {
@@ -446,7 +458,7 @@
       sfx.soft();
       store.set("books.greetingHidden", "1");
       el.classList.add("is-leaving");
-      setTimeout(() => (el.hidden = true), 300);
+      setTimeout(() => { el.hidden = true; placeFeature(); }, 300);
     });
   }
 

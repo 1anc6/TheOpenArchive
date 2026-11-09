@@ -1870,3 +1870,14 @@ button, a, .chip, .pselect-menu li { touch-action: manipulation; }
 }
 /* the Resume bar steps aside while today's essay card (with its own buttons) is on screen */
 .dock.is-tucked { transform: translate(-50%, 140%); opacity: 0; pointer-events: none; }
+
+/* 10. Computers: today's essay fills the first screen, so the next section starts below the fold.
+   It grows to fill the rest of the screen
+   up to 640px, and the space after it covers any height left over on very tall screens. */
+@media (min-width: 1001px) {
+  .feature {
+    /* --ft: how far down the page the card starts (set in app.js; 212px without the welcome note) */
+    min-height: clamp(380px, calc(100svh - var(--ft, 212px) - 56px), 640px);
+    margin-bottom: max(72px, calc(100svh - var(--ft, 212px) - 640px + 24px));
+  }
+}
