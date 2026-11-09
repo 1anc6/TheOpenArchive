@@ -439,7 +439,7 @@
     topBtn.tabIndex = show ? 0 : -1;
     // sit above the "Continue reading" dock when it's showing
     const dock = $("dock");
-    const dockUp = dock && !dock.hidden && !dock.classList.contains("is-away");
+    const dockUp = dock && !dock.hidden && !dock.classList.contains("is-away") && !dock.classList.contains("is-tucked");
     topBtn.style.bottom = dockUp ? `${dock.offsetHeight + 28}px` : "";
   }
   addEventListener("scroll", () => {

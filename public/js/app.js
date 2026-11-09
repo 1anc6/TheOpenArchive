@@ -412,6 +412,11 @@
     $("dockSub").textContent = `Page ${last.page} of ${last.total} · ~${(last.total - last.page + 1) * MIN_PER_PAGE} min left`;
     $("dockBtn").href = readerURL(b, last.page);
   }
+  // Keep the Resume bar from covering today's essay card: it steps aside while the card is in view.
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(([e]) => $("dock").classList.toggle("is-tucked", e.isIntersecting), { threshold: 0.15 })
+      .observe($("feature"));
+  }
 
   /* ---------- Visits (for the greeting and the Start here picks) ---------- */
   const visits = (() => {

@@ -1849,3 +1849,24 @@ button, a, .chip, .pselect-menu li { touch-action: manipulation; }
 }
 @media (min-width: 1001px) { .start-card .photo.start-cover { aspect-ratio: 2.4 / 1; } }
 @media (min-width: 651px) and (max-width: 1000px) { .start-card .photo.start-cover { width: 200px; min-height: 0; } }
+
+/* 9. Computers: masthead and today's essay fit on a laptop screen at 100% zoom */
+@media (min-width: 1001px) {
+  .masthead { padding: 18px 0 14px; }
+  .masthead h1 { font-size: clamp(38px, 3.6vw, 52px); }
+  .standfirst { font-size: 16px; }
+  .feature { margin: 20px 0 56px; gap: 28px clamp(28px, 4vw, 56px); padding: 32px clamp(28px, 3.6vw, 52px) 32px calc(var(--margin) + clamp(22px, 2.4vw, 34px)); }
+  .feature-title { font-size: clamp(32px, 3.2vw, 46px); }
+  .excerpt { margin: 18px 0 22px; }
+  .excerpt p { font-size: clamp(18px, 1.5vw, 21px); line-height: 1.4; }
+  .excerpt footer { margin-top: 8px; font-size: 14px; }
+  .excerpt-plain { margin: 16px 0 20px; font-size: 17px; }
+  .feature-figure { max-width: 420px; justify-self: center; }
+}
+/* shorter laptop screens: trim the quote so the buttons stay in view */
+@media (min-width: 1001px) and (max-height: 820px) {
+  .excerpt p { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .feature-figure { max-width: 360px; }
+}
+/* the Resume bar steps aside while today's essay card (with its own buttons) is on screen */
+.dock.is-tucked { transform: translate(-50%, 140%); opacity: 0; pointer-events: none; }
