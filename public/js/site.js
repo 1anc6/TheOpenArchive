@@ -280,7 +280,6 @@
 
   /* ---------- Citations ---------- */
   const SITE_TITLE = "The Open Archive";
-  const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
   function citations(book, url) {
     const parts = book.author.trim().split(/\s+/);
@@ -289,7 +288,6 @@
     const initials = parts.map((p) => p[0] + ".").join(" ");
     const year = book.year || new Date().getFullYear();
     const d = new Date();
-    const accessed = `${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
     const iso = d.toISOString().slice(0, 10);
     const t = book.title;
     const key = `${family.toLowerCase()}${year}${book.id.split("-")[0]}`;
@@ -298,10 +296,6 @@
         text: `${family}, ${initials} (${year}). ${t}. ${SITE_TITLE}. ${url}` },
       { name: "MLA", html: `${esc(family)}, ${esc(given)}. “${esc(t)}.” <i>${esc(SITE_TITLE)}</i>, ${year}, ${esc(url.replace(/^https?:\/\//, ""))}.`,
         text: `${family}, ${given}. “${t}.” ${SITE_TITLE}, ${year}, ${url.replace(/^https?:\/\//, "")}.` },
-      { name: "Chicago", html: `${esc(family)}, ${esc(given)}. “${esc(t)}.” <i>${esc(SITE_TITLE)}</i>, ${year}. ${esc(url)}.`,
-        text: `${family}, ${given}. “${t}.” ${SITE_TITLE}, ${year}. ${url}.` },
-      { name: "Harvard", html: `${esc(family)}, ${esc(initials)} (${year}) <i>${esc(t)}</i>. ${esc(SITE_TITLE)}. Available at: ${esc(url)} (Accessed: ${accessed}).`,
-        text: `${family}, ${initials} (${year}) ${t}. ${SITE_TITLE}. Available at: ${url} (Accessed: ${accessed}).` },
       { name: "BibTeX", mono: true,
         text: `@misc{${key},\n  author       = {${family}, ${given}},\n  title        = {${t}},\n  year         = {${year}},\n  howpublished = {${SITE_TITLE}},\n  url          = {${url}},\n  note         = {Accessed: ${iso}}\n}` },
     ];
