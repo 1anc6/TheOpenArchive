@@ -1792,3 +1792,31 @@ button, a, .chip, .pselect-menu li { touch-action: manipulation; }
 .notify { margin-top: 56px; }
 .notify-copy h2 { font-size: clamp(28px, 2.8vw, 36px); }
 .notify-copy p { font-size: 16.5px; }
+
+/* 7. Phones: compact cards (small cover on the left, text beside it) for Library and Start here */
+@media (max-width: 650px) {
+  .shelf-card, .shelf-card.is-featured, .start-card {
+    display: grid; grid-template-columns: 92px minmax(0, 1fr); align-items: start;
+    gap: 14px; padding: 12px;
+  }
+  .shelf-card .photo, .shelf-card.is-featured .photo,
+  .start-card .photo.start-cover {
+    width: 92px; min-height: 0; aspect-ratio: 4 / 3; border-radius: 8px;
+  }
+  :root[data-ui] :is(.shelf-card, .start-card) .photo { border-radius: 8px; }
+  .shelf-card .photo img, .start-card .start-cover img { border-radius: 8px; }
+  .shelf-body, .shelf-card.is-featured .shelf-body, .start-body { padding: 0; gap: 4px; }
+  .shelf-glyph, .start-glyph { display: none; }
+  .shelf-card h3, .shelf-card.is-featured h3, .start-title { font-size: 19px; line-height: 1.2; min-height: 0; }
+  .shelf-meta { font-size: 12px; gap: 6px; }
+  .shelf-meta .shelf-tag { font-size: 12px; padding: 1px 8px; }
+  .shelf-pg, .shelf-card.is-featured .shelf-pg { margin-top: 2px; padding-top: 0; font-size: 13px; }
+  .shelf-go { display: none; }
+  /* the essay you were reading keeps its Resume button */
+  .shelf-card.is-featured .shelf-go { display: inline-flex; align-self: stretch; min-height: 38px; margin-top: 8px; padding: 6px 14px; font-size: 15px; }
+  .start-ask { font-size: 15px; }
+  .start-meta { font-size: 12px; margin-top: 2px; }
+  .start-go { display: none; }
+  .start-list { gap: 10px; }
+  .podium { gap: 10px; }
+}
