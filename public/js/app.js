@@ -445,8 +445,6 @@
   function renderRoom() {
     const all = progress.all();
     const read = Object.entries(all).reduce((n, [id, p]) => n + (byId[id] ? p.page : 0), 0);
-    $("pagesRead").textContent = read;
-    $("pagesReadLabel").textContent = read === 1 ? "page read" : "pages read";
 
     const started = books.filter((b) => all[b.id]).sort((a, b) => all[b.id].at - all[a.id].at);
     const inProgress = started.filter((b) => !isDone(all[b.id]));
@@ -456,22 +454,28 @@
       .filter((b) => !all[b.id])
       .sort((a, b) => (a.startHere?.order ?? 99) - (b.startHere?.order ?? 99) || a.num - b.num);
     $("roomSub").textContent = started.length
-      ? `${inProgress.length} in progress · ${done} finished · saved on this device`
+      ? `${inProgress.length} in progress · ${done} finished · ${read} ${read === 1 ? "page" : "pages"} read · saved on this device`
       : "Nothing started yet. Your place in each essay is saved on this device.";
 
-    // Notebook cards led by the essay's symbol; progress only for started essays.
-    const card = (b, i, p) => {
+    // Cover-led cards; the most recent essay in progress gets a wide card with a Resume button.
+    const card = (b, i, p, featured = false) => {
       const pct = p ? Math.round((p.page / p.total) * 100) : 0;
+      const left = p ? (p.total - p.page + 1) * MIN_PER_PAGE : b.pages * MIN_PER_PAGE;
+      const cover = featured ? photo(b, true) : thumb(b);
       return `
-          <a class="shelf-card" href="${readerURL(b, p ? p.page : null)}" style="--i:${i}">
-            <span class="shelf-glyph" aria-hidden="true">${notation(b.glyph)}</span>
-            <h3>${esc(b.shortTitle)}</h3>
-            <p class="shelf-meta">No. ${pad(b.num)} · ${esc(b.category)} · ${b.pages} pages</p>
-            ${p ? `<p class="shelf-pg">Page ${p.page} of ${p.total} <span>${pct}%</span></p><div class="bar"><i style="width:${pct}%"></i></div>` : ""}
+          <a class="shelf-card${featured ? " is-featured" : ""}" href="${readerURL(b, p ? p.page : null)}" style="--i:${i}">
+            ${cover}
+            <span class="shelf-body">
+              <span class="shelf-glyph" aria-hidden="true">${notation(b.glyph)}</span>
+              <h3>${esc(b.shortTitle)}</h3>
+              <span class="shelf-meta"><span class="shelf-tag">${esc(b.category)}</span> No. ${pad(b.num)} · ${b.pages} pages</span>
+              ${p ? `<span class="shelf-pg">Page ${p.page} of ${p.total} · ~${left} min left</span><span class="bar"><i style="width:${pct}%"></i></span>` : `<span class="shelf-pg">~${left} min read</span>`}
+              <span class="shelf-go ${featured ? "btn" : ""}">${p ? (featured ? "Resume" : "Continue") : "Start"} <span aria-hidden="true">→</span></span>
+            </span>
           </a>`;
     };
     $("continueBlock").hidden = !inProgress.length;
-    $("podium").innerHTML = inProgress.slice(0, 3).map((b, i) => card(b, i, all[b.id])).join("");
+    $("podium").innerHTML = inProgress.slice(0, 4).map((b, i) => card(b, i, all[b.id], i === 0)).join("");
     $("upNextBlock").hidden = !unread.length;
     $("upNext").innerHTML = unread.slice(0, 3).map((b, i) => card(b, i, null)).join("");
     renderChips();
