@@ -1881,3 +1881,26 @@ button, a, .chip, .pselect-menu li { touch-action: manipulation; }
     margin-bottom: max(72px, calc(100svh - var(--ft, 212px) - 640px + 24px));
   }
 }
+
+/* 11. Computers: the whole Continue reading block fits on a laptop screen */
+@media (min-width: 651px) {
+  .room-page { padding-top: 12px; }
+  .room-heading { margin-bottom: 16px; }
+  .room-heading h1 { font-size: 44px; }
+  .room-heading p { margin-top: 6px; }
+  .shelf-h { margin-bottom: 10px; font-size: 24px; }
+  .shelf-card.is-featured .photo { width: 240px; }
+  .shelf-card.is-featured .shelf-body { padding: 14px 24px; gap: 4px; }
+  .shelf-card.is-featured .shelf-glyph { font-size: 19px; }
+  .shelf-card.is-featured h3 { font-size: 24px; }
+  .shelf-card.is-featured .shelf-pg { margin-top: 4px; }
+  .shelf-card.is-featured .shelf-go { margin-top: 6px; min-height: 36px; padding: 6px 16px; }
+  .shelf-card:not(.is-featured) .shelf-body { padding: 12px 14px; gap: 4px; }
+  .shelf-card:not(.is-featured) .shelf-pg { margin-top: auto; }
+  .podium { gap: 12px; }
+}
+/* Library on computers: Continue reading takes the first screen; Up next starts below the fold
+   (the block starts ~180px down, under the header and the Library heading) */
+@media (min-width: 1001px) {
+  #continueBlock:not([hidden]) { min-height: calc(100svh - 168px); }
+}
