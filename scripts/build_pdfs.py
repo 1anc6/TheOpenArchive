@@ -77,7 +77,7 @@ def restore_patterns(doc, saved):
         doc.xref_set_key(xref, path + "Shading", shading if kind in ("dict", "xref") else "null")
 
 
-def shrink_images(doc, max_side=1800, quality=80):
+def shrink_images(doc, max_side=2400, quality=90):
     """Downsample big images and store photos as JPEG, changing each image
     object in place. Used for the essays printed from HTML: MuPDF's own image
     pass rewrites their page drawings and drops the photos Chrome draws as
@@ -90,7 +90,7 @@ def shrink_images(doc, max_side=1800, quality=80):
         raw = len(doc.xref_stream_raw(xref))
         w, h = int(doc.xref_get_key(xref, "Width")[1]), int(doc.xref_get_key(xref, "Height")[1])
         is_jpeg = doc.xref_get_key(xref, "Filter")[1] == "/DCTDecode"
-        if max(w, h) <= max_side and (is_jpeg or raw < 120_000):
+        if max(w, h) <= max_side and (is_jpeg or raw < 400_000):
             continue
         pix = pymupdf.Pixmap(doc, xref)
         if pix.alpha:
@@ -102,7 +102,7 @@ def shrink_images(doc, max_side=1800, quality=80):
         if f < 1:
             pix = pymupdf.Pixmap(pix, nw, nh, None)
         jpg = pix.tobytes("jpg", jpg_quality=quality)
-        if f == 1 and len(jpg) > raw * 0.7:
+        if f == 1 and len(jpg) > raw * 0.5:
             continue  # not worth it
         doc.update_stream(xref, jpg, compress=False)
         for key, val in (("Filter", "/DCTDecode"), ("DecodeParms", "null"), ("Width", str(nw)), ("Height", str(nh)),

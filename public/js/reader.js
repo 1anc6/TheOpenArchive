@@ -162,12 +162,13 @@
     const cssWidth = p.el.clientWidth;
     if (!cssWidth || p.renderedAt === cssWidth) return;
     if (p.task) p.task.cancel();
-    // 2x so small print is drawn finely, capped at about 4 megapixels: phones
-    // with 3x screens would otherwise draw (and scroll) pages 2.25x the size
-    // for detail that can't be seen.
-    let scale = (cssWidth / p.w) * 2;
+    // The screen's full sharpness (at least 2x, so small print is drawn finely
+    // even on standard screens), capped at about 6 megapixels so a zoomed-in
+    // page stays light on phones.
+    const density = Math.min(Math.max(window.devicePixelRatio || 1, 2), 3);
+    let scale = (cssWidth / p.w) * density;
     const area = p.w * p.h * scale * scale;
-    if (area > 4e6) scale *= Math.sqrt(4e6 / area);
+    if (area > 6e6) scale *= Math.sqrt(6e6 / area);
     const vp = p.page.getViewport({ scale });
     const canvas = document.createElement("canvas");
     canvas.width = Math.floor(vp.width);
