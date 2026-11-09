@@ -129,7 +129,8 @@
       for (const child of [...node.childNodes]) {
         if (child.nodeType === 3) {
           const frag = document.createDocumentFragment();
-          for (const ch of child.textContent) {
+          // keep accents and bars (combining marks) on the letter they belong to
+          for (const ch of child.textContent.match(/\P{M}\p{M}*/gu) || []) {
             if (/\s/.test(ch)) { frag.append(ch); continue; }
             const span = document.createElement("span");
             span.className = "ink";
@@ -199,9 +200,13 @@
     $("startList").innerHTML = picks
       .map((b) => `
         <li class="start-card">
-          <h3 class="start-ask">${esc(b.startHere.ask)}</h3>
-          <a class="start-link" href="essays/${b.id}/"><span class="start-glyph" aria-hidden="true">${notation(b.glyph)}</span><span class="start-title">${esc(b.shortTitle)}</span></a>
-          <p class="start-meta">${b.pages} pages · ~${b.pages * MIN_PER_PAGE} min · ${esc(b.category)}</p>
+          ${thumb(b).replace("entry-thumb", "start-cover")}
+          <div class="start-body">
+            <h3 class="start-ask">${esc(b.startHere.ask)}</h3>
+            <a class="start-link" href="essays/${b.id}/"><span class="start-glyph" aria-hidden="true">${notation(b.glyph)}</span><span class="start-title">${esc(b.shortTitle)}</span></a>
+            <p class="start-meta">${b.pages} pages · ~${b.pages * MIN_PER_PAGE} min · ${esc(b.category)}</p>
+            <span class="start-go" aria-hidden="true">Start reading <span>→</span></span>
+          </div>
         </li>`)
       .join("");
     $("startList").querySelectorAll(".start-card").forEach((el) => {

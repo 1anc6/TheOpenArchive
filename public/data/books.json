@@ -126,7 +126,7 @@
     "file": "books/a-paradox-that-isnt.pdf",
     "pages": 11,
     "category": "Infinity",
-    "glyph": "0.9̅ = 1",
+    "glyph": "0.999… = 1",
     "colors": [
       "#6b2d2d",
       "#9c4a3c"
@@ -193,7 +193,7 @@
     "permission": false,
     "startHere": {
       "order": 1,
-      "ask": "Got five minutes?"
+      "ask": "Not sure where to begin?"
     }
   },
   {

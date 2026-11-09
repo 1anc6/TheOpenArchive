@@ -240,8 +240,8 @@
 :root[data-ui="glass"] :is(.feature, .notify, .essay-sheet, .shelf-card, .about-card.author-card:first-of-type, .rev-stats) { background-image: none; }
 :root[data-ui="glass"] .feature { padding-left: clamp(24px, 4.5vw, 64px); }
 :root[data-ui] .shelf-card { padding: 0; }
-:root[data-ui] .shelf-card .photo { padding: 0; border: 0; border-radius: 0; box-shadow: none; }
-:root[data-ui] .shelf-card .photo img { border-radius: 0; }
+:root[data-ui] :is(.shelf-card, .start-card) .photo { padding: 0; border: 0; border-radius: 0; box-shadow: none; }
+:root[data-ui] :is(.shelf-card, .start-card) .photo img { border-radius: 0; }
 :root[data-ui="glass"] .about-card.author-card:first-of-type { padding-left: 32px; }
 :root[data-ui="glass"] .masthead { border-bottom-color: #ffffff80; }
 :root[data-ui="glass"][data-theme="dark"] .masthead { border-bottom-color: #ffffff26; }
