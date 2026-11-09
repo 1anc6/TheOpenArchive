@@ -218,7 +218,7 @@ svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width:
 .meta { display: flex; justify-content: center; gap: 10px; font: 12px var(--mono); color: var(--muted); }
 .meta .num { color: var(--muted); }
 
-.editorial-note { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 16px; margin: 40px 0 8px; font-size: 15px; color: var(--muted); }
+.editorial-note { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0 16px; margin: 40px 0 8px; font-size: 15px; color: var(--muted); }
 .link { font-size: inherit; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 
 /* ============ Dock ============ */
@@ -1141,7 +1141,7 @@ body.no-scroll { overflow: hidden; }
   --margin: clamp(28px, 4.4vw, 64px);
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: end;
+  align-items: center;
   gap: 24px clamp(32px, 5vw, 64px);
   margin: 64px 0 0;
   padding: clamp(28px, 4vw, 48px) clamp(24px, 4vw, 48px) clamp(28px, 4vw, 48px) calc(var(--margin) + clamp(24px, 3vw, 40px));
