@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Where Physics Runs Out</title>
+<meta name="author" content="Lanchenba Mutum">
+<style>
+  @page { size: A4; margin: 0; }
+  :root {
+    --ink: #1b1f2a; --muted: #5d6374; --line: #e2e5ec; --soft: #f5f6fa;
+    --orange: #e8772e; --blue: #2f6bd8; --purple: #7b4fd0; --teal: #16927f; --red: #cf3f36;
+    --space: #0b0e17;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #fff; color: var(--ink); }
+  body { font-family: "Segoe UI", system-ui, sans-serif; font-size: 10.6pt; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { width: 210mm; height: 297mm; padding: 15mm 17mm 14mm; position: relative; overflow: hidden; page-break-after: always; display: flex; flex-direction: column; }
+  .page:last-child { page-break-after: auto; }
+  .run { display: flex; justify-content: space-between; font-size: 7.6pt; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 2.2mm; margin-bottom: 6mm; }
+  .run b { color: var(--orange); font-weight: 700; }
+  .kicker { font-size: 8.4pt; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--orange); margin: 0 0 1mm; }
+  h2 { font-family: Georgia, "Times New Roman", serif; font-weight: 700; font-size: 23pt; line-height: 1.12; margin: 0 0 2mm; letter-spacing: -.01em; }
+  .dek { font-size: 11.6pt; color: var(--muted); margin: 0 0 5mm; line-height: 1.4; }
+  h3 { font-size: 11.2pt; margin: 4mm 0 1.2mm; }
+  p { margin: 0 0 2.4mm; }
+  figure { margin: 1mm 0 4mm; }
+  figure img { width: 100%; display: block; }
+  figcaption { font-size: 8.6pt; color: var(--muted); margin-top: 1.5mm; line-height: 1.4; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 7mm; }
+  .side { display: grid; grid-template-columns: 1fr 62mm; gap: 6mm; align-items: start; }
+  .box { border-radius: 3mm; padding: 3.2mm 4mm; margin: 2.5mm 0; font-size: 9.9pt; line-height: 1.45; }
+  .box .t { display: block; font-size: 7.8pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin-bottom: .8mm; }
+  .simple { background: #eaf1fd; } .simple .t { color: var(--blue); }
+  .careful { background: #fdf0e6; } .careful .t { color: #b5541a; }
+  .key { background: var(--ink); color: #f1f3f8; } .key .t { color: #ffb377; }
+  .formula { border: 1px solid var(--line); border-left: 3px solid var(--purple); border-radius: 2mm; padding: 2.6mm 4mm; margin: 2.5mm 0; font-size: 9.8pt; }
+  .formula .eq { font-family: "Cambria Math", Cambria, Georgia, serif; font-size: 13.5pt; display: block; margin-bottom: .8mm; }
+  .formula em { color: var(--muted); font-style: normal; }
+  table { width: 100%; border-collapse: collapse; font-size: 9.4pt; margin: 2mm 0 3mm; }
+  th { text-align: left; font-size: 7.8pt; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); border-bottom: 1.5px solid var(--ink); padding: 1.4mm 2mm; }
+  td { border-bottom: 1px solid var(--line); padding: 1.6mm 2mm; vertical-align: top; }
+  td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  ul.tight { margin: 0 0 2.4mm; padding-left: 4.5mm; } ul.tight li { margin-bottom: 1mm; }
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5mm; margin: 2mm 0 3mm; }
+  .card { background: var(--soft); border-radius: 3mm; padding: 3mm 3.6mm; font-size: 9.5pt; line-height: 1.42; }
+  .card b { display: block; font-size: 10.2pt; margin-bottom: .6mm; }
+  .myth { display: grid; grid-template-columns: 17mm 1fr; gap: 3mm; padding: 2.6mm 0; border-bottom: 1px solid var(--line); }
+  .tag { font-size: 7.4pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: .8mm 0; border-radius: 1.4mm; text-align: center; height: fit-content; }
+  .tag.m { background: #fbe3e1; color: var(--red); } .tag.f { background: #dff3ef; color: var(--teal); }
+  .spacer { flex: 1; }
+  .foot { font-size: 7.6pt; color: var(--muted); border-top: 1px solid var(--line); padding-top: 2mm; display: flex; justify-content: space-between; }
+
+  /* cover */
+  .cover { background: var(--space); color: #eef0f6; padding: 0; }
+  .cover img { width: 100%; display: block; }
+  .cover .inner { padding: 6mm 18mm 0; }
+  .cover .eyebrow { font-size: 8.6pt; letter-spacing: .24em; text-transform: uppercase; color: #ffb377; font-weight: 700; margin: 4mm 0 4mm; }
+  .cover h1 { font-family: Georgia, serif; font-size: 46pt; line-height: 1.02; margin: 0 0 5mm; letter-spacing: -.015em; }
+  .cover .sub { font-size: 15pt; line-height: 1.35; color: #c4c9d6; margin: 0 0 9mm; max-width: 150mm; }
+  .cover .note { border-left: 3px solid var(--orange); padding: 1mm 0 1mm 5mm; font-size: 10.4pt; color: #d6dae4; max-width: 160mm; line-height: 1.5; }
+  .cover .bottom { position: absolute; left: 18mm; right: 18mm; bottom: 12mm; display: flex; justify-content: space-between; font-size: 8.4pt; color: #8d94a6; letter-spacing: .08em; }
+
+  .toc { counter-reset: none; margin: 1mm 0 0; padding: 0; list-style: none; }
+  .toc li { display: grid; grid-template-columns: 9mm 1fr auto; gap: 2mm; padding: 1.05mm 0; border-bottom: 1px dotted #cfd3dc; font-size: 9.6pt; }
+  .toc li span:first-child { color: var(--orange); font-weight: 700; }
+  .toc li span:last-child { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .big-answer { font-family: Georgia, serif; font-size: 15pt; line-height: 1.38; margin: 0 0 4mm; }
+  .big-answer s { color: var(--muted); text-decoration-color: var(--red); text-decoration-thickness: 2px; }
+</style>
+</head>
+<body>
+
+<!-- 1 COVER -->
+<section class="page cover">
+  <img src="img/cover.png" alt="">
+  <div class="inner">
+    <div class="eyebrow">Black holes · an illustrated guide</div>
+    <h1>Where Physics<br>Runs Out</h1>
+    <p class="sub">Why our best theories break down inside a black hole, and what that really means.</p>
+    <p class="note">The laws of nature don't switch off at a black hole. What fails is our <em>description</em> of them. At the centre, Einstein's general relativity predicts infinities it cannot make sense of, and quantum mechanics has never been joined up with it. This guide explains why, step by step and in plain language.</p>
+  </div>
+  <div class="bottom"><span>Spacetime · Singularities · Hawking radiation · Information</span><span>November 2026</span></div>
+</section>
+
+<!-- 2 SHORT ANSWER + CONTENTS -->
+<section class="page">
+  <div class="run"><span><b>Where Physics Runs Out</b></span><span>2</span></div>
+  <div class="kicker">Before we start</div>
+  <h2>The short answer</h2>
+  <p class="big-answer"><s>“The laws of physics break down in a black hole.”</s><br>Better: <strong>our current theories stop giving sensible answers at the centre of a black hole.</strong></p>
+  <figure><img src="img/two_theories.svg" alt="" style="width:74%;margin:0 auto"><figcaption>Physics runs on two hugely successful theories that have never been unified. General relativity handles heavy things; quantum mechanics handles tiny things. A black hole's centre is both at once.</figcaption></figure>
+  <div class="cols">
+    <div>
+      <h3>Where does it actually fail?</h3>
+      <p><strong>Not at the event horizon.</strong> The horizon is the famous point of no return, but the equations there are perfectly well behaved. A falling astronaut wouldn't notice anything special when crossing it.</p>
+      <p><strong>At the singularity.</strong> There, general relativity predicts infinite curvature, and paths through spacetime simply end. An infinity in an equation usually means the theory has gone beyond the range where it works.</p>
+    </div>
+    <div>
+      <h3>What's in this guide</h3>
+      <ol class="toc">
+        <li><span>01</span><span>Gravity is geometry</span><span>3</span></li>
+        <li><span>02</span><span>How black holes are born</span><span>4</span></li>
+        <li><span>03</span><span>Anatomy of a black hole</span><span>5</span></li>
+        <li><span>04</span><span>Light cones: why nothing escapes</span><span>6</span></li>
+        <li><span>05</span><span>Time and the horizon</span><span>7</span></li>
+        <li><span>06</span><span>Inside: the future points inward</span><span>8</span></li>
+        <li><span>07</span><span>Tides and spaghettification</span><span>9</span></li>
+        <li><span>08</span><span>Spinning black holes</span><span>10</span></li>
+        <li><span>09</span><span>The singularity</span><span>11</span></li>
+        <li><span>10</span><span>Why relativity reaches its limit</span><span>12</span></li>
+        <li><span>11</span><span>Hawking radiation</span><span>13</span></li><li><span>12</span><span>Black-hole entropy</span><span>14</span></li><li><span>13</span><span>The information paradox</span><span>15</span></li><li><span>14</span><span>The Page curve</span><span>16</span></li>
+        <li><span>15</span><span>What might replace the singularity</span><span>17</span></li><li><span>16</span><span>Evidence from observation</span><span>18</span></li><li><span>17</span><span>Myths and takeaways</span><span>19</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 3 GRAVITY IS GEOMETRY -->
+<section class="page">
+  <div class="run"><span><b>01</b> Gravity is geometry</span><span>3</span></div>
+  <div class="kicker">01 · The foundation</div>
+  <h2>Gravity is the shape of spacetime</h2>
+  <p class="dek">Einstein replaced Newton's invisible pulling force with something stranger: mass bends space and time, and everything moves along the bends.</p>
+  <figure><img src="img/grid.png" alt="" style="width:78%;margin:0 auto"><figcaption>The classic picture. A heavy mass curves the “fabric” around it, and a planet (orange) rolls around the dip in an orbit. The real curvature is in four-dimensional spacetime, including time, so treat this as an analogy, not a literal sheet.</figcaption></figure>
+  <div class="cols">
+    <div>
+      <h3>The central idea</h3>
+      <p>In general relativity, matter and energy tell spacetime how to curve, and curved spacetime tells matter and light how to move. A planet orbiting a star isn't being tugged on a string. It is moving as straight as it can through curved spacetime. Such a “straightest possible path” is called a <strong>geodesic</strong>.</p>
+      <p>Near a black hole that curvature becomes extremely strong. That's where the theory gets pushed hardest, and eventually past its limits.</p>
+    </div>
+    <div>
+      <div class="formula"><span class="eq">G<sub>μν</sub> + Λg<sub>μν</sub> = (8πG / c⁴) T<sub>μν</sub></span>
+        <em>Left side:</em> the geometry of spacetime (how it curves).<br><em>Right side:</em> the matter and energy present.<br>It reads: <strong>“stuff here ⇄ curvature here.”</strong> It's a relationship, not a claim that space literally tears like cloth.</div>
+      <div class="box simple"><span class="t">In simple terms</span>Imagine ants walking “straight ahead” on a curved apple. Their paths bend together even though no force pushes them. That bending is what we feel as gravity.</div>
+    </div>
+  </div>
+  <div class="box careful"><span class="t">How sure are we?</span>Very. Bending of starlight (gravitational lensing), gravitational waves, precise orbits and images of the regions around black holes all match general relativity, even in strong gravity. But none of these tests reach the singularity itself.</div>
+</section>
+
+<!-- 4 FORMATION -->
+<section class="page">
+  <div class="run"><span><b>02</b> How black holes are born</span><span>4</span></div>
+  <div class="kicker">02 · Collapse</div>
+  <h2>How black holes are born</h2>
+  <p class="dek">A black hole doesn't form just because a star is big. It forms when nothing is left that can hold back gravity.</p>
+  <figure><img src="img/fates.svg" alt=""><figcaption>Three possible endings for a star's core. Above about three solar masses, no pressure we know of can halt the collapse.</figcaption></figure>
+  <div class="cols">
+    <div>
+      <h3>A tug-of-war that gravity wins</h3>
+      <p>For most of a star's life, heat and pressure from nuclear fusion push outward and balance gravity's inward pull. When the fuel runs low, the core contracts. Depending on its mass it becomes a white dwarf, a neutron star, or it keeps collapsing.</p>
+      <p>Past a certain point the collapse creates a <strong>trapped region</strong>: a zone where even light aimed outward is forced inward.</p>
+      <h3>The first model (1939)</h3>
+      <p>Oppenheimer and Snyder calculated the collapse of an idealised, perfectly round cloud of pressureless dust. It's not a realistic star, but it showed that collapse really can produce a black hole. Today, supercomputer simulations (numerical relativity) handle real stars with pressure, spin and magnetic fields.</p>
+    </div>
+    <div>
+      <h3>Trapped surfaces</h3>
+      <p>Picture a flash of light going off on the surface of a sphere. Normally the outward-going part of the flash spreads out and the inward part shrinks. On a <strong>trapped surface</strong>, <em>both</em> parts shrink. Even the “outward” light is losing ground.</p>
+      <div class="box simple"><span class="t">In simple terms</span>“Escape velocity faster than light” is a handy slogan, but the real reason is geometric. Space is shaped so that every direction you could travel leads further in.</div>
+      <h3>Penrose's theorem</h3>
+      <p>Roger Penrose proved that once a trapped surface forms (and matter behaves normally), some paths through spacetime <em>must</em> come to an end. So the singularity is not an accident of assuming perfect roundness. But the theorem says the classical theory reaches a limit. It doesn't describe what is physically there.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5 ANATOMY -->
+<section class="page">
+  <div class="run"><span><b>03</b> Anatomy of a black hole</span><span>5</span></div>
+  <div class="kicker">03 · Structure</div>
+  <h2>Anatomy of a black hole</h2>
+  <p class="dek">A black hole has more structure than the dark circle in a picture. Almost everything we can see happens outside the horizon.</p>
+  <figure><img src="img/anatomy.svg" alt=""><figcaption>Schematic, not to scale. Distances in brackets are multiples of the horizon radius for a non-spinning black hole.</figcaption></figure>
+  <div class="cols">
+    <div>
+      <p><strong>Event horizon:</strong> the boundary beyond which no signal can ever reach the outside universe. It is not a solid surface.</p>
+      <p><strong>Photon sphere:</strong> where gravity is strong enough to bend light into a circle. Light here is balanced on a knife-edge.</p>
+      <p><strong>Accretion disk:</strong> gas spiralling inward, heated to millions of degrees by friction. It glows brightly, and all of that glow comes from <em>outside</em> the horizon.</p>
+      <p><strong>Jets:</strong> beams of plasma launched by magnetic fields and spin. They are not material escaping from inside.</p>
+    </div>
+    <div>
+      <div class="formula"><span class="eq">r<sub>s</sub> = 2GM / c²</span>The <strong>Schwarzschild radius</strong>, the horizon size of an ideal, non-spinning black hole. Double the mass and the horizon doubles: about <strong>2.95 km per solar mass</strong>.</div>
+      <table>
+        <tr><th>If this were squeezed…</th><th>Horizon radius</th></tr>
+        <tr><td>Earth</td><td class="num">≈ 9 mm (a marble)</td></tr>
+        <tr><td>The Sun</td><td class="num">≈ 3 km</td></tr>
+        <tr><td>A 10-Sun stellar black hole</td><td class="num">≈ 30 km</td></tr>
+        <tr><td>Sagittarius A* (our galaxy's)</td><td class="num">≈ 12 million km</td></tr>
+        <tr><td>M87* (giant)</td><td class="num">≈ 130 × Earth–Sun</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 6 LIGHT CONES -->
+<section class="page">
+  <div class="run"><span><b>04</b> Light cones: why nothing escapes</span><span>6</span></div>
+  <div class="kicker">04 · Causality</div>
+  <h2>Why nothing escapes: tipping light cones</h2>
+  <p class="dek">Light always moves at the same local speed. A black hole doesn't slow it down. It reshapes which directions count as “the future.”</p>
+  <figure><img src="img/lightcones.svg" alt=""><figcaption>Each cone shows where light could go next from that spot (time runs upward). Outside (blue), one edge of every cone still points outward, so light can escape. At the horizon (orange) the outward edge points straight up, so light there just hovers. Inside (purple) the whole cone tips toward the centre. Drawn from the exact Eddington–Finkelstein geometry.</figcaption></figure>
+  <div class="cols">
+    <div>
+      <h3>What a light cone is</h3>
+      <p>From any event, imagine a flash of light. Its spread through space and time makes a cone, and anything with mass must travel <em>inside</em> it. Your possible futures live in that cone.</p>
+      <p>Gravity tilts the cones. Near a black hole they lean inward more and more. At the horizon, the outward edge of the cone lines up exactly with the horizon. Inside, every future direction points to smaller radius.</p>
+    </div>
+    <div>
+      <h3>Why a bigger rocket doesn't help</h3>
+      <p>In Newton's picture, escape is just about speed. In relativity, inside the horizon there is <strong>no path into your future that leads outward</strong>. A rocket of unlimited power still has to stay inside its own light cone, and the whole cone points inward.</p>
+      <div class="box simple"><span class="t">Helpful analogy (with a warning)</span>Imagine space flowing inward like a river, faster than light can swim against it. It helps the intuition, but space isn't literally a fluid. The precise statement is about light cones.</div>
+    </div>
+  </div>
+  <div class="box key"><span class="t">Key point</span>The horizon is a causal boundary, not a physical wall that light hits. Locating it exactly requires knowing the entire future of the spacetime.</div>
+</section>
+
+<!-- 7 TIME -->
+<section class="page">
+  <div class="run"><span><b>05</b> Time and the horizon</span><span>7</span></div>
+  <div class="kicker">05 · Time</div>
+  <h2>The horizon is not a magic wall</h2>
+  <p class="dek">Crossing the event horizon of a large black hole is not dramatic for the person falling in. The drama is in what outside observers see.</p>
+  <figure><img src="img/redshift.svg" alt=""><figcaption>Gravitational time dilation. A clock hovering close to the horizon ticks slowly compared with a far-away clock, and its light reaches us stretched to redder colours. Holding still that close needs enormous rocket thrust. Nobody can hover exactly on the horizon.</figcaption></figure>
+  <div class="cols">
+    <div>
+      <h3>Three different “times”</h3>
+      <p>Most black-hole myths come from mixing these up:</p>
+      <ul class="tight">
+        <li><strong>Proper time</strong>: what your own wristwatch shows.</li>
+        <li><strong>Coordinate time</strong>: a label from a chosen mathematical map.</li>
+        <li><strong>Signal time</strong>: when far-away observers <em>receive</em> your light.</li>
+      </ul>
+      <p>Your watch reaches the horizon in a finite time. Distant observers see your signals arrive more and more delayed and redshifted, so you seem to freeze and fade. Both are true. They describe different things.</p>
+    </div>
+    <div>
+      <h3>Gravitational redshift</h3>
+      <p>Light climbing out of a gravity well arrives with less energy, shifted toward red. That isn't “tired light.” It's how clocks at different heights compare in curved spacetime. The factor involved is (1 − r<sub>s</sub>/r), which heads to zero at the horizon.</p>
+      <div class="box careful"><span class="t">Myth check</span><strong>“A falling person sees the whole future of the universe.”</strong> No. You can only see light that actually reaches you. Extreme time dilation for <em>hovering</em> observers doesn't give a <em>falling</em> one a fast-forward view of cosmic history.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 INSIDE -->
+<section class="page">
+  <div class="run"><span><b>06</b> Inside: the future points inward</span><span>8</span></div>
+  <div class="kicker">06 · Inside the horizon</div>
+  <h2>Inside, the centre is in your future</h2>
+  <p class="dek">“Space and time swap places” is a popular shortcut. The real point is deeper: inside, the singularity is not a place you could steer around. It's a moment you can't avoid.</p>
+  <div class="side" style="grid-template-columns:1fr 72mm">
+    <div>
+      <h3>Why inward becomes unavoidable</h3>
+      <p>In the usual Schwarzschild coordinates, the labels for “radius” and “time” change character at the horizon. But coordinates are just labels, and other maps are perfectly smooth there. The statement that holds in every coordinate system is about causes and effects: <strong>inside, no future path returns to the outside</strong>.</p>
+      <p>In the ideal, non-spinning black hole, the singularity lies <em>ahead in time</em> for anyone inside. Moving toward it is less like being pulled toward a distant object and more like being unable to stop tomorrow from arriving.</p>
+      <h3>Reading the diagram</h3>
+      <p>The diagram on the right is a <strong>Penrose diagram</strong>: the whole infinite spacetime squeezed onto one page, with light always moving at 45°. A star collapses (yellow), a horizon forms (orange), and anyone who crosses it (purple) is carried to the singularity, drawn as a jagged line across the top. It is a <em>time</em>, not a point in space.</p>
+    </div>
+    <figure style="margin-top:2mm"><img src="img/penrose.svg" alt=""><figcaption>Penrose diagram of a black hole formed by collapse. Light travels along diagonal lines.</figcaption></figure>
+  </div>
+  <div class="box simple"><span class="t">In simple terms</span>Outside, you can choose to go left, right, in or out, but you can't choose to stop moving forward in time. Inside the horizon, “inward” becomes just as unavoidable as “forward in time.”</div>
+  <div class="box careful"><span class="t">Important limitation</span>Real black holes spin (see page 10). The spinning, or Kerr, solution has a far stranger interior, with an inner horizon that appears to be unstable. Nobody has observed any black hole's interior, so it's misleading to say every black hole contains a simple point at the centre.</div>
+</section>
+
+<!-- 9 TIDES -->
+<section class="page">
+  <div class="run"><span><b>07</b> Tides and spaghettification</span><span>9</span></div>
+  <div class="kicker">07 · Tidal forces</div>
+  <h2>Tides and spaghettification</h2>
+  <p class="dek">What hurts isn't gravity's strength. It's the <em>difference</em> in pull from one end of your body to the other.</p>
+  <figure><img src="img/tidal.svg" alt=""><figcaption>Left: feet nearer the hole are pulled harder than the head, so the body is stretched lengthwise and squeezed sideways. Right: the stretch felt at the horizon for a 2-metre person, from the Newtonian estimate below. The bigger the black hole, the gentler its horizon.</figcaption></figure>
+  <div class="cols">
+    <div>
+      <h3>How tides stretch</h3>
+      <p>The same effect raises ocean tides on Earth: the Moon pulls the near side of Earth slightly harder than the far side. Near a compact mass the difference becomes enormous. You get stretched radially and compressed from the sides. Physicists really do call this <strong>spaghettification</strong>.</p>
+      <div class="formula"><span class="eq">Δa ≈ 2GML / r³</span>The difference in pull across a body of length <em>L</em> at distance <em>r</em>. Because of the <em>r³</em>, getting closer makes it rapidly worse.</div>
+    </div>
+    <div>
+      <h3>A surprising size effect</h3>
+      <p>The horizon radius grows in step with the mass. So at the horizon, tidal stretching actually <em>falls</em> as the black hole gets heavier, by the square of the mass.</p>
+      <table>
+        <tr><th>Black hole</th><th>Stretch at horizon</th></tr>
+        <tr><td>10 Suns</td><td class="num">≈ 20 million g: lethal well before</td></tr>
+        <tr><td>Sgr A*, 4 million Suns</td><td class="num">≈ 0.0001 g: unnoticeable</td></tr>
+      </table>
+      <div class="box careful"><span class="t">But…</span>You could in principle cross a supermassive horizon unharmed. Further in, the classical theory says tides grow without limit, so the deep interior is lethal no matter what.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 KERR -->
+<section class="page">
+  <div class="run"><span><b>08</b> Spinning black holes</span><span>10</span></div>
+  <div class="kicker">08 · Rotation</div>
+  <h2>Real black holes spin</h2>
+  <p class="dek">Stars rotate, so the black holes they leave behind should too. Spin changes the geometry dramatically.</p>
+  <figure><img src="img/kerr.svg" alt=""><figcaption>Cross-section of a rapidly spinning (Kerr) black hole. The purple pumpkin shape is the ergosphere, which bulges at the equator. Inside the outer horizon lies an inner horizon.</figcaption></figure>
+  <div class="side">
+    <div>
+      <h3>Frame dragging and the ergosphere</h3>
+      <p>Roy Kerr found the exact solution for a spinning black hole in 1963. Its spin twists spacetime around it, an effect called <strong>frame dragging</strong>. Spin is measured by a = J/(Mc), where J is angular momentum. In natural units its size can't exceed one.</p>
+      <p>Just outside the horizon lies the <strong>ergosphere</strong>. Space there is dragged so hard that nothing can stay still relative to the distant stars; you're forced to swirl with it. You can still escape, though.</p>
+      <h3>Stealing energy: the Penrose process</h3>
+      <p>A particle enters the ergosphere and splits. One piece falls in with “negative” energy (as counted from far away). The other leaves with <em>more</em> energy than the original. The extra comes from the black hole's spin. Real jets are powered mainly by magnetic fields tapping spin energy, not literal particle splitting.</p>
+    </div>
+    <figure><img src="img/penrose_process.svg" alt=""><figcaption>The Penrose process, in which spin energy is extracted inside the ergosphere.</figcaption></figure>
+  </div>
+  <div class="box careful"><span class="t">The inner horizon problem: another place the maths struggles</span>The exact Kerr solution has an inner horizon. Ripples falling in pile up there and get blueshifted to enormous energies (“mass inflation”). This suggests the neat idealised interior wouldn't survive in a real, disturbed black hole. What actually happens is an open research question.</div>
+</section>
+
+<!-- 11 SINGULARITY -->
+<section class="page">
+  <div class="run"><span><b>09</b> The singularity</span><span>11</span></div>
+  <div class="kicker">09 · The breaking point</div>
+  <h2>What is a singularity?</h2>
+  <p class="dek">An infinity in an equation is not automatically a real physical object. It's usually a sign that the theory is being used outside its range.</p>
+  <figure><img src="img/curvature.svg" alt=""><figcaption>Curvature (tidal strength) as you fall toward the centre, for a stellar black hole and for Sgr A*. Both curves shoot upward without limit. Long before reaching zero, they cross into the purple zone where quantum effects of gravity must matter and general relativity's predictions can't be trusted.</figcaption></figure>
+  <div class="cols">
+    <div>
+      <h3>A real infinity vs a fake one</h3>
+      <p>Some infinities come from a bad choice of map. Schwarzschild's original coordinates misbehave at the horizon, but switch to better coordinates and the problem disappears. The centre is different. Curvature measured in a way that every observer agrees on keeps growing:</p>
+      <div class="formula"><span class="eq">K = 48 G²M² / (c⁴ r⁶)</span>The <strong>Kretschmann scalar</strong>, a coordinate-free measure of curvature. As <em>r</em> → 0, <em>K</em> → ∞. No change of coordinates removes this.</div>
+    </div>
+    <div>
+      <h3>Paths that just stop</h3>
+      <p>The singularity theorems of Penrose and Hawking show something more general: under broad conditions, some paths through spacetime <strong>can't be continued</strong>. A falling clock would simply have no “next tick” in the theory. This is called <em>geodesic incompleteness</em>.</p>
+      <p>It does <em>not</em> prove there's a literal point of infinite density. It proves the classical description runs out.</p>
+      <div class="box key"><span class="t">This is the real breakdown</span>Quantum effects might change the interior before any infinity arises. No experimentally confirmed theory yet tells us what replaces the classical singularity.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 WHY GR FAILS -->
+<section class="page">
+  <div class="run"><span><b>10</b> Why relativity reaches its limit</span><span>12</span></div>
+  <div class="kicker">10 · The missing ingredient</div>
+  <h2>Why general relativity reaches its limit</h2>
+  <p class="dek">General relativity treats spacetime as perfectly smooth. Everything else in nature is quantum, so somewhere that smoothness has to give.</p>
+  <figure><img src="img/scales.svg" alt=""><figcaption>Everything in the universe plotted by mass and size. The black line marks the black-hole limit; the purple line marks where quantum fuzziness takes over. They cross at the Planck scale (red), where neither theory works alone. A black hole's collapsing matter is driven down toward exactly that corner.</figcaption></figure>
+  <div class="cols">
+    <div>
+      <h3>Smooth geometry meets a quantum world</h3>
+      <p>Atoms and particles obey quantum mechanics: they're fuzzy, uncertain and come in lumps. But spacetime in general relativity is classical: smooth and exact. At extreme curvature, the geometry itself should start to jitter quantum-mechanically, and treating it as smooth stops being a good approximation.</p>
+      <div class="formula"><span class="eq">ℓ<sub>P</sub> = √(ħG / c³) ≈ 1.6 × 10⁻³⁵ m</span>The <strong>Planck length</strong> combines quantum theory (ħ), gravity (G) and relativity (c). It's where quantum gravity is expected to matter. It is not a proven “smallest possible length.”</div>
+    </div>
+    <div>
+      <h3>Why a new theory is so hard</h3>
+      <p>Quantum theories normally describe particles moving on a fixed stage of spacetime. In general relativity, the stage itself moves and bends. A complete theory has to describe <strong>quantum states of the stage</strong>, keep cause and effect working, and make predictions we can test.</p>
+      <div class="box simple"><span class="t">In simple terms</span>General relativity is like a superb map of the land. Zoom in far enough and you find the map is made of pixels it never knew about. The singularity is where we've zoomed in too far.</div>
+      <p>At ordinary energies, gravity <em>can</em> be treated quantum-mechanically as an approximation (an effective field theory). It's only at Planck-scale energies, like a black hole's centre, that we have no reliable answer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 13 HAWKING -->
+<section class="page">
+  <div class="run"><span><b>11</b> Hawking radiation</span><span>13</span></div>
+  <div class="kicker">11 · Quantum fields near a horizon</div>
+  <h2>Black holes aren't completely black</h2>
+  <p class="dek">In 1974 Stephen Hawking added quantum fields to a curved spacetime and found that black holes should glow, very faintly.</p>
+  <figure><img src="img/hawking.svg" alt=""><figcaption>Hawking temperature versus mass. Heavier means colder. Every black hole we know of is far colder than the 2.7 K microwave glow that fills space, so today it absorbs more than it emits. Only a hole lighter than about the Moon would be hotter than space.</figcaption></figure>
+  <div class="side">
+    <div>
+      <h3>The result</h3>
+      <p>Hawking's semiclassical calculation (quantum fields on a classical curved background) predicts that a black hole emits radiation with a nearly thermal spectrum, as if it had a temperature:</p>
+      <div class="formula"><span class="eq">T<sub>H</sub> = ħc³ / (8πGMk<sub>B</sub>)</span>Mass <em>M</em> sits on the bottom, so bigger black holes are colder. A Sun-mass black hole: about 0.00000006 K.</div>
+      <h3>Why it matters</h3>
+      <p>Radiation carries energy away, so an isolated black hole slowly loses mass and could eventually evaporate. That's a staggeringly long time: about 10⁶⁷ years for a Sun-mass hole. This is where gravity, quantum theory and heat first meet in one formula.</p>
+    </div>
+    <figure><img src="img/pair.svg" alt=""><figcaption><strong>Cartoon only.</strong> The popular picture shows a particle pair split at the horizon. The real result is a global property of quantum fields and the horizon's causal structure, not particles being torn apart at a point.</figcaption></figure>
+  </div>
+  <div class="box careful"><span class="t">Not yet observed</span>For real black holes the signal is far too faint and is swamped by the cosmic background. Lab “analogue black holes” in fluids and optics mimic the maths of horizons, but they aren't detections of real evaporation.</div>
+</section>
+
+<!-- 14 ENTROPY -->
+<section class="page">
+  <div class="run"><span><b>12</b> Entropy and the four laws</span><span>14</span></div>
+  <div class="kicker">12 · Thermodynamics</div>
+  <h2>Black holes have entropy</h2>
+  <p class="dek">If something has a temperature, it should also have entropy, a count of its hidden internal arrangements. For black holes, that count turns out to be very strange.</p>
+  <div class="side">
+    <div>
+      <h3>Entropy measured by area</h3>
+      <p>Jacob Bekenstein proposed that a black hole's entropy is proportional to its horizon <strong>area</strong>. Hawking's calculation then fixed the exact number:</p>
+      <div class="formula"><span class="eq">S = k<sub>B</sub> c³ A / (4Għ) = k<sub>B</sub> A / (4ℓ<sub>P</sub>²)</span>Entropy = horizon area counted in tiny Planck-sized tiles, divided by four.</div>
+      <p>For a normal gas, entropy grows with <em>volume</em>: double the box, double the room for disorder. Here it grows with <em>surface area</em>. That hints that gravity's deepest degrees of freedom are organised in a fundamentally different way, which led to the idea of <strong>holography</strong>.</p>
+    </div>
+    <figure><img src="img/bits.svg" alt=""><figcaption>A picture of the area law. The horizon behaves as if it were tiled with bits of information.</figcaption></figure>
+  </div>
+  <h3>The four laws: a perfect mirror</h3>
+  <table>
+    <tr><th>Law</th><th>Ordinary thermodynamics</th><th>Black-hole mechanics</th></tr>
+    <tr><td>0th</td><td>Temperature is uniform in equilibrium</td><td>Surface gravity is uniform on the horizon</td></tr>
+    <tr><td>1st</td><td>Energy is conserved: dE = T dS + …</td><td>dM = (surface gravity / 8π) dA + spin and charge terms</td></tr>
+    <tr><td>2nd</td><td>Entropy never decreases</td><td>Horizon area never decreases (classically)</td></tr>
+    <tr><td>3rd</td><td>You can't reach absolute zero</td><td>You can't reduce surface gravity to zero</td></tr>
+  </table>
+  <div class="cols">
+    <div class="box simple" style="margin-top:0"><span class="t">The generalized second law</span>Hawking radiation <em>shrinks</em> the horizon, which breaks the area rule. The fix is to add up everything: S<sub>total</sub> = S<sub>black hole</sub> + S<sub>outside</sub>. That total never decreases, a deep bridge between gravity, quantum fields and heat.</div>
+    <div class="box key" style="margin-top:0"><span class="t">Why it matters</span>Entropy means there are hidden microscopic states. Any quantum gravity theory must be able to count them. String theory has done this exactly for certain special black holes, a major success.</div>
+  </div>
+</section>
+
+<!-- 15 INFORMATION -->
+<section class="page">
+  <div class="run"><span><b>13</b> The information paradox</span><span>15</span></div>
+  <div class="kicker">13 · The paradox</div>
+  <h2>The information paradox</h2>
+  <p class="dek">Combine Hawking radiation with the rules of quantum mechanics and two of physics' most trusted principles collide head-on.</p>
+  <figure><img src="img/info.svg" alt=""><figcaption>The puzzle in three steps. Quantum mechanics says the book's information can be scrambled but never truly deleted. Hawking's original calculation says the final radiation carries no trace of it.</figcaption></figure>
+  <div class="cols">
+    <div>
+      <h3>Quantum rule: information survives</h3>
+      <p>Quantum evolution is <strong>unitary</strong>: given the complete final state, you could in principle run time backwards and recover the starting state. Burn a book and the information is hopelessly scrambled in smoke, ash and heat, but not destroyed.</p>
+      <h3>Gravity's answer: it's gone?</h3>
+      <p>A black hole is described from outside by just mass, spin and charge (the “no-hair” idea). If it then evaporates into perfectly <em>thermal</em> radiation, which is random and featureless, nothing seems to record what fell in. A pure, fully specified quantum state would have turned into a mixed, random one. Quantum mechanics forbids that.</p>
+    </div>
+    <div>
+      <h3>Why it's a big deal</h3>
+      <p>Something has to give:</p>
+      <ul class="tight">
+        <li>Information is truly lost, and quantum mechanics is wrong in gravity.</li>
+        <li>The information escapes in subtle correlations in the radiation.</li>
+        <li>Something survives, such as a tiny remnant.</li>
+        <li>Our picture of the horizon or interior is wrong.</li>
+      </ul>
+      <div class="box careful"><span class="t">Be precise</span>The paradox is a clash between theoretical principles. Nobody has observed information vanishing. It's a thought experiment that shows our theories don't fit together, which is exactly what this guide is about.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 16 PAGE CURVE -->
+<section class="page">
+  <div class="run"><span><b>14</b> The Page curve</span><span>16</span></div>
+  <div class="kicker">14 · Modern progress</div>
+  <h2>The Page curve and “islands”</h2>
+  <p class="dek">Since 2019, new calculations have reshaped the information debate and point toward information coming back out.</p>
+  <figure><img src="img/page.svg" alt=""><figcaption>Entanglement entropy measures how much the radiation is “entangled” with what's left behind. If information is preserved, it must rise and then fall back to zero: the Page curve (blue). Hawking's original answer (red) keeps rising forever.</figcaption></figure>
+  <div class="cols">
+    <div>
+      <h3>What a “no loss” answer looks like</h3>
+      <p>Early on, each bit of radiation is entangled with the black hole, so the radiation's entropy climbs. If nothing is lost, then after roughly half the hole has evaporated (the <strong>Page time</strong>), later radiation must start revealing the hidden correlations. The entropy falls back to zero when the hole is gone. Don Page worked this out in 1993.</p>
+      <div class="box simple"><span class="t">In simple terms</span>Think of a secret message read out one word at a time, scrambled. The early words look like nonsense. Only after you've heard more than half do the pieces start to fit together.</div>
+    </div>
+    <div>
+      <h3>Islands and replica wormholes</h3>
+      <p>New semiclassical calculations use <em>quantum extremal surfaces</em> and <em>replica wormholes</em>. When computing the radiation's entropy, they include a region behind the horizon called an <strong>island</strong>. With the island counted, the maths reproduces the Page curve.</p>
+      <div class="box careful"><span class="t">What remains unresolved</span>This is real progress, but it's done in simplified model universes. Physicists still debate what the interior really is, how spacetime itself emerges, and exactly how information gets out. Getting the entropy right is not the same as a complete, tested account of everything inside a black hole.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 17 QUANTUM GRAVITY -->
+<section class="page">
+  <div class="run"><span><b>15</b> Proposed quantum-gravity answers</span><span>17</span></div>
+  <div class="kicker">15 · Looking for the next theory</div>
+  <h2>What might replace the singularity?</h2>
+  <p class="dek">Several research programmes are trying to build the theory that takes over where general relativity runs out.</p>
+  <div class="cards">
+    <div class="card"><b>String theory &amp; holography</b>Replaces point particles with tiny vibrating strings, which naturally include gravity. Holography links a gravitational universe to a quantum theory on its boundary, without gravity, especially in “anti-de Sitter” model universes.</div>
+    <div class="card"><b>Loop quantum gravity</b>Quantizes geometry itself, so that area and volume come in discrete chunks. Some models replace the singularity with a “bounce.”</div>
+    <div class="card"><b>Asymptotic safety</b>Asks whether gravity, viewed at ever-higher energies, settles into a well-behaved “fixed point” instead of blowing up.</div>
+    <div class="card"><b>Causal dynamical triangulations</b>Builds spacetime from tiny building blocks glued together with cause and effect built in, then lets the shape emerge.</div>
+  </div>
+  <figure><img src="img/alternatives.svg" alt=""><figcaption>Some proposed pictures of what lies at the centre. Only the first is a prediction of an established theory, and it's the one we know can't be the full story.</figcaption></figure>
+  <div class="cols">
+    <div class="box careful" style="margin-top:0"><span class="t">Speculative ideas</span>Regular cores, bounces, remnants, fuzzballs and white holes all appear in models. Wormholes appear in mathematical solutions, but there's <strong>no evidence that an ordinary black hole is a traversable portal</strong>.</div>
+    <div class="box key" style="margin-top:0"><span class="t">How to judge a proposal</span>A winning theory must (1) reproduce general relativity and quantum physics where they already work, (2) resolve the contradictions, and (3) make testable predictions. Elegance alone isn't confirmation.</div>
+  </div>
+</section>
+
+<!-- 18 OBSERVATIONS -->
+<section class="page">
+  <div class="run"><span><b>16</b> What observations can tell us</span><span>18</span></div>
+  <div class="kicker">16 · Evidence</div>
+  <h2>Testing gravity without seeing inside</h2>
+  <p class="dek">We can't look past the horizon, but we can test gravity right up to its edge.</p>
+  <figure><img src="img/windows.svg" alt=""><figcaption>Three windows on black holes: stellar orbits, gravitational waves and horizon-scale radio images (illustrative sketches).</figcaption></figure>
+  <div class="cols">
+    <div>
+      <h3>1 · Stars racing around Sgr A*</h3>
+      <p>Decades of tracking stars at the Milky Way's centre reveal a compact object of about 4 million solar masses packed into a tiny volume.</p>
+      <h3>2 · Gravitational waves</h3>
+      <p>Orbiting black holes ripple spacetime and spiral together. LIGO first detected this in 2015. The signal has three phases: <strong>inspiral</strong> (a rising “chirp”), <strong>merger</strong> (the horizons join, modelled with supercomputers) and <strong>ringdown</strong> (the new hole “rings” like a bell as it settles). The ringing tones depend only on mass and spin, which makes them a precise test of the Kerr prediction. This is called black-hole spectroscopy.</p>
+    </div>
+    <div>
+      <h3>3 · The Event Horizon Telescope</h3>
+      <p>Radio dishes across the globe link up into an Earth-sized telescope. It imaged M87* in 2019 and Sgr A* in 2022. The dark centre is a <strong>shadow</strong> made by light being captured and bent. The bright ring is hot gas whose light has been lensed around the hole. It is not a photo of the horizon.</p>
+      <div class="box careful"><span class="t">Avoid overclaiming</span>None of this shows the singularity or the interior. A wave signal doesn't prove an infinite-density point exists. Any deviation found later might come from messy gas and magnetic fields rather than new physics, so strong claims need several independent observations.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 19 MYTHS + TAKEAWAYS -->
+<section class="page">
+  <div class="run"><span><b>17</b> Myths and takeaways</span><span>19</span></div>
+  <div class="kicker">17 · Putting it together</div>
+  <h2>Myths, facts and the big takeaway</h2>
+  <p class="dek">The weirdest claims about black holes are often where precision matters most.</p>
+  <div class="myth"><span class="tag m">Myth</span><div><strong>Gravity becomes infinitely strong at the horizon.</strong> <span class="tag f" style="display:inline-block;padding:.4mm 2mm;margin-left:1mm">Fact</span> Tides at a big black hole's horizon can be gentle. The horizon is a causal boundary, not where curvature blows up.</div></div>
+  <div class="myth"><span class="tag m">Myth</span><div><strong>Black holes suck everything in like a vacuum cleaner.</strong> <span class="tag f" style="display:inline-block;padding:.4mm 2mm;margin-left:1mm">Fact</span> From far away, a black hole pulls just like any other object of the same mass. If the Sun became a black hole, Earth would keep the same orbit.</div></div>
+  <div class="myth"><span class="tag m">Myth</span><div><strong>Light slows down and gets stuck.</strong> <span class="tag f" style="display:inline-block;padding:.4mm 2mm;margin-left:1mm">Fact</span> Light always moves at <em>c</em> locally. The light cones tip so that every future direction points inward.</div></div>
+  <div class="myth"><span class="tag m">Myth</span><div><strong>A falling person watches the whole future of the universe.</strong> <span class="tag f" style="display:inline-block;padding:.4mm 2mm;margin-left:1mm">Fact</span> You only see light that reaches you along your path. There's no cosmic fast-forward.</div></div>
+  <div class="myth"><span class="tag m">Myth</span><div><strong>The EHT photographed the event horizon.</strong> <span class="tag f" style="display:inline-block;padding:.4mm 2mm;margin-left:1mm">Fact</span> It imaged the shadow and glowing gas around the horizon, bent by gravity.</div></div>
+  <div class="myth"><span class="tag m">Myth</span><div><strong>Black holes destroy the laws of physics.</strong> <span class="tag f" style="display:inline-block;padding:.4mm 2mm;margin-left:1mm">Fact</span> General relativity predicts situations where it becomes incomplete. That shows our theory is unfinished, not that reality stops following rules.</div></div>
+  <h3 style="margin-top:6mm">Black holes as engines</h3>
+  <p>Black holes aren't only dead ends. Gas spiralling into supermassive ones powers quasars, among the brightest objects in the universe, and launches jets that heat gas and shape how whole galaxies form stars. All of that energy comes from matter <em>outside</em> the horizon.</p>
+  <div class="spacer"></div>
+  <div class="box key" style="padding:5mm 6mm"><span class="t">The central takeaway</span><span style="font-family:Georgia,serif;font-size:13.5pt;line-height:1.45;display:block">Black holes are laboratories for the limits of our knowledge. The horizon is well understood in classical geometry. The singularity and the information puzzle show exactly where the next theory is needed: one that unites the smooth spacetime of Einstein with the quantum world.</span></div>
+</section>
+
+<!-- 20 GLOSSARY + SOURCES -->
+<section class="page">
+  <div class="run"><span><b>Reference</b></span><span>20</span></div>
+  <div class="kicker">Reference</div>
+  <h2>Glossary and sources</h2>
+  <div class="cols" style="font-size:9.3pt;line-height:1.42">
+    <div>
+      <h3 style="margin-top:0">Glossary</h3>
+      <p><strong>Event horizon</strong>: the boundary of no escape; a causal limit, not a surface.</p>
+      <p><strong>Geodesic</strong>: the straightest possible path through curved spacetime.</p>
+      <p><strong>Proper time</strong>: the time measured by a clock carried along a path.</p>
+      <p><strong>Light cone</strong>: all the directions light can travel from an event; it bounds your possible futures.</p>
+      <p><strong>Trapped surface</strong>: a closed surface where even outward-going light converges.</p>
+      <p><strong>Singularity</strong>: where classical spacetime cannot be extended; paths end and curvature diverges.</p>
+      <p><strong>Ergosphere</strong>: the region around a spinning hole where nothing can stand still.</p>
+      <p><strong>Entropy</strong>: a measure of hidden microscopic arrangements, or missing information.</p>
+      <p><strong>Unitarity</strong>: the quantum rule that information and total probability are preserved over time.</p>
+      <p><strong>Page time</strong>: the moment, about halfway through evaporation, when radiation entropy should peak.</p>
+      <p><strong>Quasinormal modes</strong>: the “ringing tones” of a disturbed black hole settling down.</p>
+      <p><strong>Quantum gravity</strong>: the hoped-for quantum theory of gravity and spacetime.</p>
+    </div>
+    <div>
+      <h3 style="margin-top:0">Selected sources</h3>
+      <p>NASA Science, <em>Black Holes</em> and <em>Anatomy of a Black Hole</em>. science.nasa.gov/universe/black-holes/</p>
+      <p>NASA, <em>10 Questions You Might Have About Black Holes</em>. science.nasa.gov</p>
+      <p>Stanford Encyclopedia of Philosophy, <em>Singularities and Black Holes</em>. plato.stanford.edu/entries/spacetime-singularities/</p>
+      <p>Hawking, S. (1976). Black holes and thermodynamics. <em>Physical Review D</em> 13, 191. doi:10.1103/PhysRevD.13.191</p>
+      <p>Almheiri, A. et al. (2021). The entropy of Hawking radiation. <em>Reviews of Modern Physics</em> 93, 035002. doi:10.1103/RevModPhys.93.035002</p>
+      <p>Lessons from the information paradox (2022). <em>Physics Reports</em>. doi:10.1016/j.physrep.2021.10.001</p>
+      <p>Mann (2026). Black-hole thermodynamics. <em>Nature Reviews Physics</em>. doi:10.1038/s42254-026-00942-9</p>
+      <p>Event Horizon Telescope Collaboration, M87* (2019) and Sgr A* (2022) results. eventhorizontelescope.org</p>
+      <p>LIGO Scientific Collaboration. ligo.caltech.edu</p>
+      <div class="box careful" style="margin-top:4mm"><span class="t">A note on certainty</span>Statements about the interior and about quantum-gravity proposals are marked here as theoretical or unresolved, not established observation. Diagrams are schematic unless noted.</div>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <div class="box simple" style="padding:5mm 6mm"><span class="t">Final thought</span><span style="font-family:Georgia,serif;font-size:13pt;line-height:1.45;display:block">The most intriguing thing about a black hole is not that it defies every rule. It's that our best-tested rules point to a frontier where a deeper explanation must exist.</span></div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="157.86pt" height="151.344pt" viewBox="0 0 157.86 151.344" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-09T10:26:49.856379</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.5, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 151.344 
+L 157.86 151.344 
+L 157.86 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 3.6 147.744 
+L 63.864 147.744 
+L 63.864 3.6 
+L 3.6 3.6 
+z
+" clip-path="url(#pba077dc10d)" style="fill: #1b1f2a; stroke: #1b1f2a; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 70.185945 69.84213 
+Q 60.098991 56.596076 51.095802 44.773207 
+" clip-path="url(#pba077dc10d)" style="fill: none; stroke: #cf3f36; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 52.094444 50.046035 
+L 51.095802 44.773207 
+L 55.913249 47.137991 
+z
+" clip-path="url(#pba077dc10d)" style="fill: #cf3f36; stroke: #cf3f36; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 73.01105 70.256922 
+Q 103.409736 48.11689 131.820186 27.424933 
+" clip-path="url(#pba077dc10d)" style="fill: none; stroke: #f2b544; stroke-width: 2.2; stroke-linecap: round"/>
+    <path d="M 126.527247 28.310822 
+L 131.820186 27.424933 
+L 129.353134 32.190817 
+z
+" clip-path="url(#pba077dc10d)" style="fill: #f2b544; stroke: #f2b544; stroke-width: 2.2; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 63.864 147.744 
+L 63.864 3.6 
+" clip-path="url(#pba077dc10d)" style="fill: none; stroke: #e8772e; stroke-width: 2.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 69.51375 109.588235 
+L 70.654946 108.941527 
+L 71.749095 108.29482 
+L 72.751093 107.648112 
+L 73.619631 107.001404 
+L 74.318904 106.354696 
+L 74.820084 105.707988 
+L 75.102511 105.06128 
+L 75.154541 104.414572 
+L 74.97403 103.767864 
+L 74.568418 103.121157 
+L 73.954427 102.474449 
+L 73.15737 101.827741 
+L 72.210104 101.181033 
+L 71.151681 100.534325 
+L 70.025734 99.887617 
+L 68.878681 99.240909 
+L 67.757808 98.594201 
+L 66.709325 97.947494 
+L 65.776453 97.300786 
+L 64.997652 96.654078 
+L 64.405027 96.00737 
+L 64.023009 95.360662 
+L 63.867347 94.713954 
+L 63.944458 94.067246 
+L 64.251163 93.420538 
+L 64.774819 92.773831 
+L 65.493837 92.127123 
+L 66.378575 91.480415 
+L 67.392562 90.833707 
+L 68.493994 90.186999 
+L 69.637466 89.540291 
+L 70.775838 88.893583 
+L 71.86218 88.246875 
+L 72.851708 87.600167 
+L 73.703629 86.95346 
+L 74.382822 86.306752 
+L 74.861287 85.660044 
+L 75.1193 85.013336 
+L 75.146224 84.366628 
+L 74.94095 83.71992 
+L 74.511939 83.073212 
+L 73.876877 82.426504 
+L 73.061946 81.779797 
+L 72.10074 81.133089 
+L 71.032885 80.486381 
+L 69.902404 79.839673 
+L 68.755901 79.192965 
+L 67.64064 78.546257 
+L 66.602598 77.899549 
+L 65.684569 77.252841 
+L 64.924397 76.606134 
+L 64.353422 75.959426 
+L 63.995181 75.312718 
+L 63.864443 74.66601 
+L 63.966598 74.019302 
+L 64.297435 73.372594 
+L 64.843314 72.725886 
+L 65.581732 72.079178 
+L 66.482247 71.432471 
+" clip-path="url(#pba077dc10d)" style="fill: none; stroke: #f2b544; stroke-width: 1.4; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 8.5px; font-family: 'Segoe UI'; text-anchor: middle; fill: #ffffff" x="33.732" y="139.264941" transform="rotate(-0 33.732 139.264941)">inside</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'Segoe UI'; text-anchor: start; fill: #e8772e" x="66.8772" y="14.198824" transform="rotate(-0 66.8772 14.198824)">horizon</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 8px; font-family: 'Segoe UI'; fill: #6b7080" transform="translate(90.2295 87.454706)">a pair of particles</text>
+    <text style="font-size: 8px; font-family: 'Segoe UI'; fill: #6b7080" transform="translate(90.2295 96.401706)">borrowed from</text>
+    <text style="font-size: 8px; font-family: 'Segoe UI'; fill: #6b7080" transform="translate(90.2295 105.348706)">empty space</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 8px; font-family: 'Segoe UI'; fill: #a8780e" transform="translate(107.17875 52.166412)">escapes as</text>
+    <text style="font-size: 8px; font-family: 'Segoe UI'; fill: #a8780e" transform="translate(107.17875 61.113412)">radiation</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 8px; font-family: 'Segoe UI'; fill: #ff8c80" transform="translate(9.24975 26.449471)">partner</text>
+    <text style="font-size: 8px; font-family: 'Segoe UI'; fill: #ff8c80" transform="translate(9.24975 35.396471)">falls in</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pba077dc10d">
+   <rect x="3.6" y="3.6" width="150.66" height="144.144"/>
+  </clipPath>
+ </defs>
+</svg>

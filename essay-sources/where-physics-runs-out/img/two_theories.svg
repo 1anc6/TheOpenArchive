@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="370.08pt" height="206.784pt" viewBox="0 0 370.08 206.784" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-09T10:26:48.484039</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.5, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 206.784 
+L 370.08 206.784 
+L 370.08 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 126.9792 161.4528 
+C 146.707765 161.4528 165.630954 153.614558 179.581156 139.664356 
+C 193.531358 125.714154 201.3696 106.790965 201.3696 87.0624 
+C 201.3696 67.333835 193.531358 48.410646 179.581156 34.460444 
+C 165.630954 20.510242 146.707765 12.672 126.9792 12.672 
+C 107.250635 12.672 88.327446 20.510242 74.377244 34.460444 
+C 60.427042 48.410646 52.5888 67.333835 52.5888 87.0624 
+C 52.5888 106.790965 60.427042 125.714154 74.377244 139.664356 
+C 88.327446 153.614558 107.250635 161.4528 126.9792 161.4528 
+z
+" clip-path="url(#pcf4945d912)" style="fill: #2f6bd8; opacity: 0.1"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 126.9792 161.4528 
+C 146.707765 161.4528 165.630954 153.614558 179.581156 139.664356 
+C 193.531358 125.714154 201.3696 106.790965 201.3696 87.0624 
+C 201.3696 67.333835 193.531358 48.410646 179.581156 34.460444 
+C 165.630954 20.510242 146.707765 12.672 126.9792 12.672 
+C 107.250635 12.672 88.327446 20.510242 74.377244 34.460444 
+C 60.427042 48.410646 52.5888 67.333835 52.5888 87.0624 
+C 52.5888 106.790965 60.427042 125.714154 74.377244 139.664356 
+C 88.327446 153.614558 107.250635 161.4528 126.9792 161.4528 
+L 126.9792 161.4528 
+z
+" clip-path="url(#pcf4945d912)" style="fill: none; stroke: #2f6bd8; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 243.1008 161.4528 
+C 262.829365 161.4528 281.752554 153.614558 295.702756 139.664356 
+C 309.652958 125.714154 317.4912 106.790965 317.4912 87.0624 
+C 317.4912 67.333835 309.652958 48.410646 295.702756 34.460444 
+C 281.752554 20.510242 262.829365 12.672 243.1008 12.672 
+C 223.372235 12.672 204.449046 20.510242 190.498844 34.460444 
+C 176.548642 48.410646 168.7104 67.333835 168.7104 87.0624 
+C 168.7104 106.790965 176.548642 125.714154 190.498844 139.664356 
+C 204.449046 153.614558 223.372235 161.4528 243.1008 161.4528 
+z
+" clip-path="url(#pcf4945d912)" style="fill: #7b4fd0; opacity: 0.1"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 243.1008 161.4528 
+C 262.829365 161.4528 281.752554 153.614558 295.702756 139.664356 
+C 309.652958 125.714154 317.4912 106.790965 317.4912 87.0624 
+C 317.4912 67.333835 309.652958 48.410646 295.702756 34.460444 
+C 281.752554 20.510242 262.829365 12.672 243.1008 12.672 
+C 223.372235 12.672 204.449046 20.510242 190.498844 34.460444 
+C 176.548642 48.410646 168.7104 67.333835 168.7104 87.0624 
+C 168.7104 106.790965 176.548642 125.714154 190.498844 139.664356 
+C 204.449046 153.614558 223.372235 161.4528 243.1008 161.4528 
+L 243.1008 161.4528 
+z
+" clip-path="url(#pcf4945d912)" style="fill: none; stroke: #7b4fd0; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 185.04 109.56096 
+C 191.006688 109.56096 196.729799 107.19037 200.948884 102.971284 
+C 205.16797 98.752199 207.53856 93.029088 207.53856 87.0624 
+C 207.53856 81.095712 205.16797 75.372601 200.948884 71.153516 
+C 196.729799 66.93443 191.006688 64.56384 185.04 64.56384 
+C 179.073312 64.56384 173.350201 66.93443 169.131116 71.153516 
+C 164.91203 75.372601 162.54144 81.095712 162.54144 87.0624 
+C 162.54144 93.029088 164.91203 98.752199 169.131116 102.971284 
+C 173.350201 107.19037 179.073312 109.56096 185.04 109.56096 
+z
+" clip-path="url(#pcf4945d912)" style="fill: #1b1f2a; stroke: #1b1f2a; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 185.04 170.340193 
+Q 185.04 142.403555 185.04 115.808558 
+" clip-path="url(#pcf4945d912)" style="fill: none; stroke: #1b1f2a; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 182.64 120.608558 
+L 185.04 115.808558 
+L 187.44 120.608558 
+z
+" clip-path="url(#pcf4945d912)" style="fill: #1b1f2a; stroke: #1b1f2a; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 11.5px; font-family: 'Segoe UI'; text-anchor: middle; fill: #2f6bd8" x="103.392" y="45.3312" transform="rotate(-0 103.392 45.3312)">General relativity</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: middle; fill: #6b7080" x="103.392" y="59.8464" transform="rotate(-0 103.392 59.8464)">the very big &amp; heavy</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 9.5px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1b1f2a" x="103.392" y="81.6192" transform="rotate(-0 103.392 81.6192)">planets &amp; orbits</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 9.5px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1b1f2a" x="103.392" y="95.40864" transform="rotate(-0 103.392 95.40864)">GPS clocks</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 9.5px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1b1f2a" x="103.392" y="109.19808" transform="rotate(-0 103.392 109.19808)">bending light</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 9.5px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1b1f2a" x="103.392" y="122.98752" transform="rotate(-0 103.392 122.98752)">grav. waves</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 11.5px; font-family: 'Segoe UI'; text-anchor: middle; fill: #7b4fd0" x="266.688" y="45.3312" transform="rotate(-0 266.688 45.3312)">Quantum mechanics</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 9px; font-family: 'Segoe UI'; text-anchor: middle; fill: #6b7080" x="266.688" y="59.8464" transform="rotate(-0 266.688 59.8464)">the very small</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 9.5px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1b1f2a" x="266.688" y="81.6192" transform="rotate(-0 266.688 81.6192)">atoms &amp; electrons</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 9.5px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1b1f2a" x="266.688" y="95.40864" transform="rotate(-0 266.688 95.40864)">lasers &amp; chips</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 9.5px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1b1f2a" x="266.688" y="109.19808" transform="rotate(-0 266.688 109.19808)">the Sun's fusion</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 9.5px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1b1f2a" x="266.688" y="122.98752" transform="rotate(-0 266.688 122.98752)">particle physics</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 22px; font-family: 'Segoe UI'; text-anchor: middle; fill: #ffffff" x="185.04" y="88.321277" transform="rotate(-0 185.04 88.321277)">?</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Segoe UI'; fill: #1b1f2a" transform="translate(111.526328 186.936628)">Very big AND very small at once:</text>
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Segoe UI'; fill: #1b1f2a" transform="translate(97.260742 197.7408)">the centre of a black hole, the Big Bang</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pcf4945d912">
+   <rect x="3.6" y="3.6" width="362.88" height="199.584"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -830,6 +830,119 @@
     "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDiIEhMQL9frSTpCI/lGW+tVVZhwDS7mPetSRlFTvayJbrOR8jHAooAiFKOtFFMRfuf+QZH9aKKKQ2f/9k="
   },
   {
+    "id": "where-physics-runs-out",
+    "title": "Where Physics Runs Out: Why Our Theories Break Down Inside a Black Hole",
+    "shortTitle": "Where Physics Runs Out",
+    "author": "Lanchenba Mutum",
+    "file": "books/where-physics-runs-out.pdf",
+    "pages": 20,
+    "category": "Physics",
+    "glyph": "r = 2GM/c²",
+    "colors": [
+      "#0b0e17",
+      "#e8772e"
+    ],
+    "description": "An illustrated guide to black holes in plain language: light cones, time dilation, spaghettification, spinning holes, Hawking radiation and the information paradox, and why the real breakdown is not at the event horizon but at the singularity, where general relativity stops giving answers.",
+    "excerpt": {
+      "text": "The laws of nature don't switch off at a black hole. What fails is our description of them.",
+      "page": 1
+    },
+    "image": "images/where-physics-runs-out.jpg",
+    "imageAlt": "A black hole with a glowing orange accretion disk bent around a dark shadow, on a starry navy background.",
+    "topics": [
+      "Spacetime curvature and general relativity",
+      "Event horizons, light cones and time dilation",
+      "Tidal forces and spaghettification",
+      "Rotating Kerr black holes and the ergosphere",
+      "Singularities and where general relativity fails",
+      "Hawking radiation and black-hole entropy",
+      "The information paradox and the Page curve",
+      "Quantum gravity proposals and observational tests"
+    ],
+    "year": 2026,
+    "sections": [
+      {
+        "title": "The Short Answer",
+        "page": 2
+      },
+      {
+        "title": "Gravity Is Geometry",
+        "page": 3
+      },
+      {
+        "title": "How Black Holes Are Born",
+        "page": 4
+      },
+      {
+        "title": "Anatomy of a Black Hole",
+        "page": 5
+      },
+      {
+        "title": "Why Nothing Escapes: Light Cones",
+        "page": 6
+      },
+      {
+        "title": "The Horizon Is Not a Magic Wall",
+        "page": 7
+      },
+      {
+        "title": "Inside, the Centre Is in Your Future",
+        "page": 8
+      },
+      {
+        "title": "Tides and Spaghettification",
+        "page": 9
+      },
+      {
+        "title": "Real Black Holes Spin",
+        "page": 10
+      },
+      {
+        "title": "What Is a Singularity?",
+        "page": 11
+      },
+      {
+        "title": "Why General Relativity Reaches Its Limit",
+        "page": 12
+      },
+      {
+        "title": "Black Holes Aren't Completely Black",
+        "page": 13
+      },
+      {
+        "title": "Black Holes Have Entropy",
+        "page": 14
+      },
+      {
+        "title": "The Information Paradox",
+        "page": 15
+      },
+      {
+        "title": "The Page Curve and Islands",
+        "page": 16
+      },
+      {
+        "title": "What Might Replace the Singularity?",
+        "page": 17
+      },
+      {
+        "title": "Testing Gravity Without Seeing Inside",
+        "page": 18
+      },
+      {
+        "title": "Myths, Facts and the Big Takeaway",
+        "page": 19
+      },
+      {
+        "title": "Glossary and Sources",
+        "page": 20
+      }
+    ],
+    "added": "2026-11-09",
+    "permission": false,
+    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDzyOJ5WCopJNSzWjwtscgOOq1HFPJEwZGwRTpbl5ZDI/LnvTfNcpctiEjB5ooJzRVECUUUUAFFFFAH/9k="
+  },
+  {
     "id": "metaproof",
     "kind": "project",
     "title": "MetaProof: Evidence-Based Authenticity Analysis for Images",

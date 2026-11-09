@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="433.9pt" height="198.417375pt" viewBox="0 0 433.9 198.417375" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-09T10:26:50.020633</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.5, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 198.417375 
+L 433.9 198.417375 
+L 433.9 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 28.54 181.008 
+L 430.3 181.008 
+L 430.3 3.6 
+L 28.54 3.6 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="text_1">
+     <text style="font-size: 10px; font-family: 'Segoe UI'; text-anchor: middle; fill: #1b1f2a" x="229.42" y="192.517375" transform="rotate(-0 229.42 192.517375)">time  (from formation → complete evaporation)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="text_2">
+     <text style="font-size: 10px; font-family: 'Segoe UI'; fill: #1b1f2a" transform="translate(11.003125 141.500094) rotate(-90)">entanglement entropy</text>
+     <text style="font-size: 10px; font-family: 'Segoe UI'; fill: #1b1f2a" transform="translate(22.24 126.23525) rotate(-90)">of the radiation</text>
+    </g>
+   </g>
+   <g id="line2d_1">
+    <path d="M 28.54 39.0816 
+L 61.768271 47.019154 
+L 92.982707 54.696044 
+L 123.190226 62.354337 
+L 151.38391 69.732103 
+L 177.563759 76.808955 
+L 201.729774 83.561743 
+L 224.888872 90.260493 
+L 246.034135 96.600316 
+L 266.172481 102.868075 
+L 284.296992 108.732142 
+L 301.414586 114.497854 
+L 317.525263 120.162761 
+L 331.622105 125.345167 
+L 344.71203 130.383524 
+L 356.795038 135.267965 
+L 367.871128 139.986735 
+L 377.940301 144.525593 
+L 387.002556 148.866938 
+L 395.057895 152.988528 
+L 402.106316 156.861551 
+L 408.14782 160.447688 
+L 413.182406 163.694673 
+L 417.210075 166.529947 
+L 421.237744 169.67766 
+L 424.258496 172.361333 
+L 426.272331 174.409358 
+L 428.286165 176.851116 
+L 429.293083 178.389327 
+L 430.3 181.008 
+L 430.3 181.008 
+" clip-path="url(#p5ac1e44fa3)" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #6b7080; stroke-width: 1.6"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 28.54 181.008 
+L 61.768271 173.070446 
+L 92.982707 165.393556 
+L 123.190226 157.735263 
+L 151.38391 150.357497 
+L 177.563759 143.280645 
+L 201.729774 136.527857 
+L 224.888872 129.829107 
+L 246.034135 123.489284 
+L 266.172481 117.221525 
+L 284.296992 111.357458 
+L 301.414586 105.591746 
+L 317.525263 99.926839 
+L 331.622105 94.744433 
+L 344.71203 89.706076 
+L 356.795038 84.821635 
+L 367.871128 80.102865 
+L 377.940301 75.564007 
+L 387.002556 71.222662 
+L 395.057895 67.101072 
+L 402.106316 63.228049 
+L 408.14782 59.641912 
+L 413.182406 56.394927 
+L 417.210075 53.559653 
+L 421.237744 50.41194 
+L 424.258496 47.728267 
+L 426.272331 45.680242 
+L 428.286165 43.238484 
+L 429.293083 41.700273 
+L 430.3 39.0816 
+L 430.3 39.0816 
+" clip-path="url(#p5ac1e44fa3)" style="fill: none; stroke: #cf3f36; stroke-width: 2.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 28.54 181.008 
+L 61.768271 173.070446 
+L 92.982707 165.393556 
+L 123.190226 157.735263 
+L 151.38391 150.357497 
+L 177.563759 143.280645 
+L 201.729774 136.527857 
+L 224.888872 129.829107 
+L 246.034135 123.489284 
+L 266.172481 117.221525 
+L 284.296992 111.357458 
+L 288.324662 110.06754 
+L 305.442256 115.890801 
+L 320.546015 121.254192 
+L 334.642857 126.487019 
+L 347.732782 131.581807 
+L 359.815789 136.52986 
+L 370.89188 141.320909 
+L 379.954135 145.467141 
+L 388.009474 149.3672 
+L 396.064812 153.524806 
+L 403.113233 157.439944 
+L 409.154737 161.075545 
+L 414.189323 164.380463 
+L 418.216992 167.282271 
+L 421.237744 169.67766 
+L 424.258496 172.361333 
+L 426.272331 174.409358 
+L 428.286165 176.851116 
+L 429.293083 178.389327 
+L 430.3 181.008 
+L 430.3 181.008 
+" clip-path="url(#p5ac1e44fa3)" style="fill: none; stroke: #2f6bd8; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 288.324662 181.008 
+L 288.324662 3.6 
+" clip-path="url(#p5ac1e44fa3)" style="fill: none; stroke-dasharray: 0.8,1.32; stroke-dashoffset: 0; stroke: #1b1f2a; stroke-width: 0.8"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 28.54 181.008 
+L 28.54 3.6 
+" style="fill: none; stroke: #9aa0ad; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 28.54 181.008 
+L 430.3 181.008 
+" style="fill: none; stroke: #9aa0ad; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 8.5px; font-family: 'Segoe UI'; fill: #1b1f2a" transform="translate(292.342262 164.251961)">Page time</text>
+    <text style="font-size: 8.5px; font-family: 'Segoe UI'; fill: #1b1f2a" transform="translate(292.342262 173.91168)">(about halfway)</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_5">
+     <path d="M 36.1 14.438625 
+L 44.5 14.438625 
+L 52.9 14.438625 
+" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #6b7080; stroke-width: 1.6"/>
+    </g>
+    <g id="text_4">
+     <text style="font-size: 8.4px; font-family: 'Segoe UI'; text-anchor: start; fill: #1b1f2a" x="59.62" y="17.378625" transform="rotate(-0 59.62 17.378625)">black hole's own entropy (shrinks as it evaporates)</text>
+    </g>
+    <g id="line2d_6">
+     <path d="M 36.1 26.923125 
+L 44.5 26.923125 
+L 52.9 26.923125 
+" style="fill: none; stroke: #cf3f36; stroke-width: 2.2; stroke-linecap: square"/>
+    </g>
+    <g id="text_5">
+     <text style="font-size: 8.4px; font-family: 'Segoe UI'; text-anchor: start; fill: #1b1f2a" x="59.62" y="29.863125" transform="rotate(-0 59.62 29.863125)">Hawking's 1975 answer: keeps rising → information lost</text>
+    </g>
+    <g id="line2d_7">
+     <path d="M 36.1 39.407625 
+L 44.5 39.407625 
+L 52.9 39.407625 
+" style="fill: none; stroke: #2f6bd8; stroke-width: 3; stroke-linecap: square"/>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 8.4px; font-family: 'Segoe UI'; text-anchor: start; fill: #1b1f2a" x="59.62" y="42.347625" transform="rotate(-0 59.62 42.347625)">Page curve: rises then falls → information comes back out</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p5ac1e44fa3">
+   <rect x="28.54" y="3.6" width="401.76" height="177.408"/>
+  </clipPath>
+ </defs>
+</svg>
