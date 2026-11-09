@@ -89,7 +89,7 @@ The PDFs in `public/books/` are web copies of the untouched originals kept in `s
 
 ### Essays designed in HTML
 
-Eleven essays (the ones with a folder in `essay-sources/`) are laid out as web pages and printed to PDF. Each folder has an `index.html` and an `img/` folder, with photo licences listed in `img/credits.jsonl`.
+Twelve essays (the ones with an `index.html` in `essay-sources/`) are laid out as web pages and printed to PDF. Each folder has an `index.html` and an `img/` folder, with photo licences listed in `img/credits.jsonl`.
 
 - To change one of them, edit `essay-sources/<id>/index.html` and render it to `source-pdfs/`:
   ```bash

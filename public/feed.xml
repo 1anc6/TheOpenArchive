@@ -6,7 +6,15 @@
     <atom:link href="https://theopenarchive.onrender.com/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Essays on maths and science, and write-ups of the projects he builds, by Lanchenba Mutum. Free to read online, with PDFs on request.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 20 Oct 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2026 09:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Spooky Action at a Distance</title>
+      <link>https://theopenarchive.onrender.com/essays/spooky-action/</link>
+      <guid isPermaLink="true">https://theopenarchive.onrender.com/essays/spooky-action/</guid>
+      <description>A casual walk through quantum entanglement: why Einstein called it spooky, how Bell&#x27;s test proved it real, and the GRID Extra Dimensions idea that space is made of tiny cells wired together, including why it still can&#x27;t give us a faster-than-light phone. “Two particles get linked together in such a way that measuring one of them instantly tells you about the other one, no matter how far apart they are. Across a room, across a country, or across the whole galaxy, it doesn&#x27;t matter.”</description>
+      <category>Physics</category>
+      <pubDate>Mon, 09 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>MetaProof: Evidence-Based Authenticity Analysis for Images</title>
       <link>https://theopenarchive.onrender.com/essays/metaproof/</link>

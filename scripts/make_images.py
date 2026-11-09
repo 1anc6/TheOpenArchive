@@ -42,6 +42,7 @@ FROM_PAGE = {
     "planet-of-fractal-geometry": (0, 0.05, 0.55),
     "patterns-in-nature": (0, 0.05, 0.55),
     "absolute-cinema-of-math": (0, 0.32, 0.82),
+    "spooky-action": (0, 0.06, 0.56),
 }
 # Text at or above this size (pt) is left out of a page picture, e.g. a cover paragraph
 # that overlaps the edge of the map; small labels stay.

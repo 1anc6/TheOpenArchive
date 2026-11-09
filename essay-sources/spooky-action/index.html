@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Spooky Action at a Distance</title>
+<meta name="author" content="Lanchenba Mutum">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=block" rel="stylesheet">
+<style>
+:root{
+  --night:#0c1322; --night-2:#16213a; --ink:#141a26; --ink-2:#3a4254; --muted:#7b8496;
+  --paper:#f6f4ef; --paper-2:#ebe7de; --cyan:#1aa6b7; --cyan-2:#8fe3ec; --magenta:#c2417a; --magenta-2:#f2a6c6;
+  --line:#d8d2c4;
+}
+@page{ size:A4; margin:21mm 21mm 22mm; background:var(--paper);
+  @top-left{ content:"SPOOKY ACTION AT A DISTANCE"; font:500 6.6pt 'IBM Plex Mono'; letter-spacing:.24em; color:var(--muted); }
+  @top-right{ content:"● ─── ●"; font:500 7pt 'IBM Plex Mono'; color:var(--cyan); }
+  @bottom-center{ content:counter(page); font:500 8pt 'IBM Plex Mono'; color:var(--ink-2); letter-spacing:.1em; }
+}
+@page cover{ margin:0; @top-left{content:none} @top-right{content:none} @bottom-center{content:none} }
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:var(--paper);color:var(--ink-2);font:400 11.6pt/1.62 'Newsreader',serif;font-optical-sizing:auto;hyphens:auto}
+p{margin:0 0 3.6mm;text-align:justify;orphans:3;widows:3}
+b{color:var(--ink);font-weight:600}
+i{font-style:italic}
+sub,sup{line-height:0}
+
+/* ---------- cover ---------- */
+.cover{page:cover;width:210mm;height:297mm;position:relative;overflow:hidden;background:var(--night);color:#eef3fb}
+.cover svg.art{position:absolute;inset:0;width:100%;height:100%}
+.cover .t{position:absolute;left:20mm;right:20mm;top:26mm}
+.cover .k{font:500 7.4pt 'IBM Plex Mono';letter-spacing:.36em;color:var(--cyan-2)}
+.cover h1{font:400 64pt/.92 'Instrument Serif';margin:7mm 0 0;color:#fff;letter-spacing:-.01em}
+.cover h1 em{font-style:italic;color:var(--magenta-2)}
+.cover .sub{margin-top:7mm;font:italic 400 15pt/1.4 'Newsreader';color:#c9d4e6;max-width:130mm}
+.cover .by{position:absolute;left:20mm;bottom:22mm;font:500 8pt 'IBM Plex Mono';letter-spacing:.28em;color:#c9d4e6}
+.cover .by b{display:block;color:#fff;font:400 22pt 'Instrument Serif';letter-spacing:0;margin-top:2mm}
+.cover .b{position:absolute;right:20mm;bottom:22mm;font:500 7.4pt 'IBM Plex Mono';letter-spacing:.3em;color:var(--cyan-2)}
+
+/* ---------- chapters ---------- */
+.chapter .head{break-before:page;break-inside:avoid;break-after:avoid;margin-bottom:7mm}
+.head .num{font:500 8pt 'IBM Plex Mono';letter-spacing:.32em;color:var(--cyan)}
+.head h2{font:400 36pt/1.02 'Instrument Serif';color:var(--ink);margin:2.5mm 0 3mm;letter-spacing:-.005em}
+.head h2 em{color:var(--magenta)}
+.head .kick{font:italic 400 13pt/1.4 'Newsreader';color:var(--muted);margin:0 0 4mm}
+.head svg{display:block;width:46mm;height:5mm}
+.head+p::first-letter,.lead::first-letter{font:400 46pt/.82 'Instrument Serif';float:left;color:var(--magenta);margin:1.4mm 2.6mm 0 0}
+h3{font:600 8pt 'IBM Plex Mono';letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);margin:6mm 0 2.4mm;break-after:avoid}
+
+/* ---------- figures ---------- */
+figure{margin:5mm 0 6mm;break-inside:avoid}
+figure img{width:100%;max-height:96mm;object-fit:cover;display:block;border-radius:2mm;background:var(--paper-2)}
+figure.side{display:grid;grid-template-columns:58mm 1fr;gap:6mm;align-items:end}
+figure.side img{max-height:none;aspect-ratio:4/5}
+figure.side figcaption{margin:0;font-size:10.6pt;line-height:1.55}
+figure svg{width:100%;height:auto;display:block}
+figure.card{background:#fff;border:1px solid var(--line);border-radius:3mm;padding:5mm}
+figcaption{font:400 9.6pt/1.45 'Newsreader';color:var(--muted);margin-top:2.6mm}
+figcaption b{font:600 7pt 'IBM Plex Mono';letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-right:1.6mm}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+
+.person{display:grid;grid-template-columns:34mm 1fr;gap:5.5mm;align-items:center;margin:5mm 0 6mm;break-inside:avoid;background:#fff;border:1px solid var(--line);border-radius:3mm;padding:4mm}
+.person img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;border-radius:2mm;filter:grayscale(1) contrast(1.05)}
+.person .who{font:500 6.8pt 'IBM Plex Mono';letter-spacing:.26em;color:var(--magenta)}
+.person b{display:block;font:400 21pt/1.1 'Instrument Serif';color:var(--ink);margin:1mm 0 1.4mm}
+.person span{font:400 10.4pt/1.5 'Newsreader';color:var(--ink-2)}
+
+.quote{font:italic 400 19pt/1.3 'Instrument Serif';color:var(--ink);margin:6mm 6mm 7mm;padding-left:6mm;border-left:2px solid var(--magenta);break-inside:avoid}
+.quote small{display:block;font:500 7pt 'IBM Plex Mono';font-style:normal;letter-spacing:.2em;color:var(--muted);margin-top:2.5mm}
+
+.note{background:#e7f5f6;border-radius:3mm;padding:4.5mm 5.5mm;margin:5mm 0 6mm;break-inside:avoid}
+.note .tag{font:600 6.8pt 'IBM Plex Mono';letter-spacing:.24em;color:var(--cyan);margin-bottom:1.6mm}
+.note p{margin:0 0 2mm;text-align:left}.note p:last-child{margin:0}
+.note.warn{background:#fbe9f0}.note.warn .tag{color:var(--magenta)}
+
+.formula{background:var(--night);color:#e8eef8;border-radius:3mm;padding:5mm 6mm;margin:5mm 0 6mm;break-inside:avoid;text-align:center}
+.formula .eq{font:italic 400 17pt/1.5 'Newsreader';color:#fff}
+.formula .eq + .eq{margin-top:1mm}
+.formula .eq .u{font-style:normal}
+.formula .say{font:400 9.8pt/1.5 'Newsreader';color:#b9c5d8;margin-top:2.4mm}
+.frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-size:.86em;margin:0 .15em}
+.frac span:first-child{border-bottom:1px solid currentColor;padding:0 .2em}
+.root{border-top:1px solid currentColor;padding:0 .15em}
+
+.timeline{margin:5mm 0 6mm;break-inside:avoid}
+.timeline .row{display:grid;grid-template-columns:20mm 1fr;gap:4mm;padding:2.6mm 0;border-top:1px solid var(--line)}
+.timeline .row:last-child{border-bottom:1px solid var(--line)}
+.timeline .y{font:500 10pt 'IBM Plex Mono';color:var(--magenta)}
+.timeline .w{font:400 10.6pt/1.5 'Newsreader'}
+
+.summary{background:var(--night);color:#dfe7f3;border-radius:3mm;padding:7mm 8mm;margin-top:6mm;break-inside:avoid}
+.summary h4{font:400 22pt 'Instrument Serif';color:#fff;margin:0 0 3mm}
+.summary ul{margin:0;padding-left:5mm}
+.summary li{margin-bottom:2mm;font-size:10.8pt;line-height:1.5}
+.summary li::marker{color:var(--cyan-2)}
+
+.refs{font:400 9.2pt/1.42 'Newsreader';padding-left:6mm}
+.refs li{margin-bottom:1.4mm}
+.credits{font:400 8.2pt/1.42 'Newsreader';color:var(--muted)}
+.credits li{margin-bottom:1.2mm}
+.mono{font-family:'IBM Plex Mono';font-size:.86em}
+</style>
+</head>
+<body>
+
+<!-- ============ Cover ============ -->
+<section class="cover">
+  <svg class="art" viewBox="0 0 210 297" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="gc" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#bff4f8"/><stop offset="1" stop-color="#0c1322"/></radialGradient>
+      <radialGradient id="gm" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffd0e3"/><stop offset="1" stop-color="#0c1322"/></radialGradient>
+    </defs>
+    <rect width="210" height="297" fill="#0c1322"/>
+    <g id="stars"></g>
+    <g id="cells"></g>
+    <g id="link"></g>
+    <circle cx="44" cy="214" r="17" fill="url(#gc)"/>
+    <circle cx="44" cy="214" r="3.2" fill="#ffffff"/>
+    <circle cx="170" cy="150" r="17" fill="url(#gm)"/>
+    <circle cx="170" cy="150" r="3.2" fill="#ffffff"/>
+    <text x="44" y="238" text-anchor="middle" font-family="IBM Plex Mono" font-size="3.2" letter-spacing=".8" fill="#8fe3ec">SPIN UP ?</text>
+    <text x="170" y="174" text-anchor="middle" font-family="IBM Plex Mono" font-size="3.2" letter-spacing=".8" fill="#f2a6c6">SPIN DOWN ?</text>
+    <text x="113" y="190" text-anchor="middle" font-family="IBM Plex Mono" font-size="2.8" letter-spacing="1" fill="#7b8aa5" transform="rotate(-27 113 190)">LIGHT YEARS APART · STILL ONE SYSTEM</text>
+  </svg>
+  <div class="t">
+    <div class="k">AN ESSAY ON QUANTUM ENTANGLEMENT</div>
+    <h1>Spooky Action<br>at a <em>Distance</em></h1>
+    <div class="sub">Einstein hated it, experiments proved it, and one wild idea says the answer is hiding in the gaps between pieces of space.</div>
+  </div>
+  <div class="by">WRITTEN BY<b>Lanchenba Mutum</b></div>
+  <div class="b">THE OPEN ARCHIVE</div>
+</section>
+
+<!-- ============ I ============ -->
+<section class="chapter">
+  <div class="head">
+    <div class="num">CHAPTER 01</div>
+    <h2>Why Einstein Called It <em>Spooky</em></h2>
+    <div class="kick">The one part of quantum physics that the smartest man of the century just couldn't accept.</div>
+    <svg viewBox="0 0 92 10"><circle cx="5" cy="5" r="3.4" fill="#1aa6b7"/><path d="M10 5 Q 18 0 26 5 T 42 5 T 58 5 T 74 5 T 82 5" fill="none" stroke="#d8d2c4" stroke-width="1.2"/><circle cx="87" cy="5" r="3.4" fill="#c2417a"/></svg>
+  </div>
+  <p>Let's say you have two coins. You flip one in Delhi and the other one in New York, at the exact same moment. Normally, you'd expect nothing special, one lands heads, the other one lands whatever it wants, because how would a coin in New York even know what happened in Delhi? Now imagine that every single time, without fail, the moment you look at the Delhi coin and see heads, the New York coin is tails. Every time. That's weird, right?</p>
+  <p>Well, in quantum mechanics, this actually happens, not with coins, but with tiny particles like photons and electrons. It's called <b>quantum entanglement</b>. Two particles get linked together in such a way that measuring one of them instantly tells you about the other one, no matter how far apart they are. Across a room, across a country, or across the whole galaxy, it doesn't matter.</p>
+  <div class="person">
+    <img src="img/einstein.jpg" alt="Albert Einstein in 1921">
+    <div><div class="who">THE SKEPTIC</div><b>Albert Einstein</b><span>(1879–1955) helped start quantum physics himself, and then spent years trying to prove that this part of it had to be incomplete.</span></div>
+  </div>
+  <p>Albert Einstein really did not like this. In a letter to his friend Max Born in 1947, he called it <i>"spukhafte Fernwirkung"</i>, which in English means <b>"spooky action at a distance."</b> To him, it sounded like magic. His own theory of relativity says nothing, not even information, can travel faster than light. So how can one particle "know" what happened to the other one instantly?</p>
+  <div class="quote">"I cannot seriously believe in it because the theory cannot be reconciled with the idea that physics should represent a reality in time and space, free from spooky actions at a distance."<small>— ALBERT EINSTEIN, LETTER TO MAX BORN, 1947</small></div>
+  <p>So, how can that be? That's the question this whole essay is about. We'll look at what entanglement really is, how scientists proved Einstein wrong about it, and then a pretty wild idea called the <b>GRID Extra Dimensions Theory</b>, which tries to explain the spookiness by saying space itself is built out of tiny cells, with hidden "wires" running between them. And at the end, we'll ask the big question: could we use any of this to send messages faster than light?</p>
+</section>
+
+<!-- ============ II ============ -->
+<section class="chapter">
+  <div class="head">
+    <div class="num">CHAPTER 02</div>
+    <h2>Two Particles, <em>One Story</em></h2>
+    <div class="kick">What entanglement actually is, explained with a pair of gloves.</div>
+    <svg viewBox="0 0 92 10"><circle cx="5" cy="5" r="3.4" fill="#1aa6b7"/><path d="M10 5 Q 18 0 26 5 T 42 5 T 58 5 T 74 5 T 82 5" fill="none" stroke="#d8d2c4" stroke-width="1.2"/><circle cx="87" cy="5" r="3.4" fill="#c2417a"/></svg>
+  </div>
+  <p>Imagine I have a pair of gloves. I put the left one in one box and the right one in another box, shuffle them, and send one box to you and the other one to your friend on the other side of the world. The moment you open your box and see a left glove, you instantly know your friend has the right one. Nothing travelled anywhere. The answer was already decided when I packed the boxes, you just didn't know it yet.</p>
+  <figure class="card">
+    <svg viewBox="0 0 600 190" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono">
+      <rect x="20" y="40" width="130" height="100" rx="8" fill="#fbe9f0" stroke="#c2417a" stroke-width="1.6"/>
+      <text x="85" y="98" text-anchor="middle" font-size="40" fill="#c2417a">L</text>
+      <text x="85" y="166" text-anchor="middle" font-size="11" letter-spacing="2" fill="#7b8496">YOUR BOX</text>
+      <rect x="450" y="40" width="130" height="100" rx="8" fill="#e7f5f6" stroke="#1aa6b7" stroke-width="1.6"/>
+      <text x="515" y="98" text-anchor="middle" font-size="40" fill="#1aa6b7">R</text>
+      <text x="515" y="166" text-anchor="middle" font-size="11" letter-spacing="2" fill="#7b8496">FRIEND'S BOX</text>
+      <line x1="165" y1="90" x2="435" y2="90" stroke="#d8d2c4" stroke-width="2" stroke-dasharray="6 6"/>
+      <text x="300" y="78" text-anchor="middle" font-size="12" fill="#3a4254">thousands of kilometres</text>
+      <text x="300" y="112" text-anchor="middle" font-size="12" fill="#7b8496">open yours → you know theirs</text>
+    </svg>
+    <figcaption><b>Fig. 1</b> The glove picture. It explains the "instantly knowing" part, but as we'll see, real particles are stranger than gloves.</figcaption>
+  </figure>
+  <p>For a long time, that's exactly what Einstein thought was going on with particles. He believed each particle carried a little hidden "instruction sheet" from the start, which physicists call <b>hidden variables</b>. Quantum mechanics just wasn't seeing them, so it had to be incomplete.</p>
+  <p>But quantum mechanics says something much stranger. It says that before you measure, the particle doesn't <i>have</i> a definite answer at all. A photon's polarisation, or an electron's spin, is genuinely undecided, it's in a mix of possibilities called a <b>superposition</b>. When two particles are entangled, they share one single combined state. Neither particle has its own answer, but the pair together has a rule, like "whatever happens, we'll come out opposite." The moment you measure one, both answers become real at the same time.</p>
+  <figure class="card">
+    <svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono">
+      <rect x="14" y="96" width="92" height="28" rx="5" fill="#0c1322"/><text x="60" y="114" text-anchor="middle" font-size="11" fill="#8fe3ec" letter-spacing="1.5">LASER</text>
+      <line x1="106" y1="110" x2="236" y2="110" stroke="#7a4fd0" stroke-width="4"/>
+      <text x="171" y="98" text-anchor="middle" font-size="10" fill="#7a4fd0">one blue photon</text>
+      <polygon points="236,78 276,72 276,148 236,142" fill="#dfe8f5" stroke="#9fb3d1" stroke-width="1.4"/>
+      <text x="256" y="168" text-anchor="middle" font-size="10" fill="#7b8496" letter-spacing="1">CRYSTAL</text>
+      <path d="M276 110 L560 30 L560 74 Z" fill="#fbe9f0" stroke="#c2417a" stroke-width="1.2"/>
+      <path d="M276 110 L560 190 L560 146 Z" fill="#e7f5f6" stroke="#1aa6b7" stroke-width="1.2"/>
+      <circle cx="470" cy="62" r="7" fill="#c2417a"/><circle cx="470" cy="158" r="7" fill="#1aa6b7"/>
+      <line x1="470" y1="70" x2="470" y2="150" stroke="#3a4254" stroke-width="1.2" stroke-dasharray="3 4"/>
+      <text x="482" y="114" font-size="10" fill="#3a4254">entangled pair</text>
+      <text x="400" y="20" text-anchor="middle" font-size="10" fill="#c2417a">red photon → Alice</text>
+      <text x="400" y="212" text-anchor="middle" font-size="10" fill="#1aa6b7">red photon → Bob</text>
+    </svg>
+    <figcaption><b>Fig. 2</b> How labs actually make entangled photons. A laser is shone into a special crystal, and once in a while one photon splits into two lower-energy photons that fly off in two different directions, entangled. This is called spontaneous parametric down-conversion, which is a fancy name for "one photon becomes two".</figcaption>
+  </figure>
+  <div class="note">
+    <div class="tag">SO, GLOVES OR NOT GLOVES?</div>
+    <p>That's literally the whole fight. If it's like gloves, the answers were decided at the start and nothing spooky is happening. If quantum mechanics is right, nothing was decided until you looked. It sounds like a philosophy argument you could never settle, but amazingly, it turned out you can test it in a lab.</p>
+  </div>
+</section>
+
+<!-- ============ III ============ -->
+<section class="chapter">
+  <div class="head">
+    <div class="num">CHAPTER 03</div>
+    <h2>Einstein vs Bohr: <em>The EPR Paper</em></h2>
+    <div class="kick">Three physicists, four pages, and a question that took fifty years to answer.</div>
+    <svg viewBox="0 0 92 10"><circle cx="5" cy="5" r="3.4" fill="#1aa6b7"/><path d="M10 5 Q 18 0 26 5 T 42 5 T 58 5 T 74 5 T 82 5" fill="none" stroke="#d8d2c4" stroke-width="1.2"/><circle cx="87" cy="5" r="3.4" fill="#c2417a"/></svg>
+  </div>
+  <p>In 1935, Einstein, together with Boris Podolsky and Nathan Rosen, wrote a short paper with a pretty bold title: <i>"Can Quantum-Mechanical Description of Physical Reality Be Considered Complete?"</i> People call it the <b>EPR paper</b>, after their initials.</p>
+  <p>Their argument went like this. Take two entangled particles and send them far apart. If I measure particle A, I can predict the result for particle B with 100% certainty, without touching B at all. And if I can predict something for sure without disturbing it, then, they said, that thing must have been real all along, an "element of reality." But quantum mechanics says it wasn't decided. So either quantum mechanics is missing something, or measuring A somehow instantly affects B far away. And Einstein thought the second option was just ridiculous.</p>
+  <figure class="side">
+    <img src="img/bohr-einstein.jpg" alt="Niels Bohr and Albert Einstein" style="object-position:50% 30%">
+    <figcaption><b>Fig. 3</b><br> Niels Bohr and Albert Einstein, photographed by Paul Ehrenfest. They argued about quantum mechanics for decades, and stayed good friends the whole time.</figcaption>
+  </figure>
+  <p>Niels Bohr, the father of the Copenhagen interpretation, replied that you just can't talk about the particles as separate things with their own properties. The entangled pair is one system, and asking "what was particle B's value before we measured?" doesn't really mean anything.</p>
+  <p>Honestly, for almost thirty years, this was a stalemate. Both sides agreed on what experiments would show, they only disagreed on what it <i>meant</i>. Most physicists just shrugged and got on with calculating things. It took an Irish physicist named John Bell to turn this into something you could actually test.</p>
+</section>
+
+<!-- ============ IV ============ -->
+<section class="chapter">
+  <div class="head">
+    <div class="num">CHAPTER 04</div>
+    <h2>Bell's Test: <em>Einstein Loses</em></h2>
+    <div class="kick">How a clever inequality turned philosophy into an experiment.</div>
+    <svg viewBox="0 0 92 10"><circle cx="5" cy="5" r="3.4" fill="#1aa6b7"/><path d="M10 5 Q 18 0 26 5 T 42 5 T 58 5 T 74 5 T 82 5" fill="none" stroke="#d8d2c4" stroke-width="1.2"/><circle cx="87" cy="5" r="3.4" fill="#c2417a"/></svg>
+  </div>
+  <figure>
+    <img src="img/bell.jpg" alt="John Stewart Bell at CERN in front of a blackboard" style="aspect-ratio:16/10;object-fit:cover;object-position:50% 38%">
+    <figcaption><b>Fig. 4</b> John Stewart Bell (1928–1990), a physicist from Belfast, at CERN. Look at the blackboard behind him: it says "2√2", the exact score quantum mechanics predicts in his test.</figcaption>
+  </figure>
+  <p>Bell's idea was really smart. He said, okay, let's assume Einstein is right, every particle carries a hidden instruction sheet and nothing travels faster than light. Then, if you measure the pairs along different angles and compare how often they agree, there's a <b>limit</b> to how strongly they can be correlated. That limit is called <b>Bell's inequality</b>.</p>
+  <div class="formula">
+    <div class="eq">|S| ≤ 2 <span class="u">&nbsp;&nbsp;(any hidden instruction sheet)</span></div>
+    <div class="eq">|S| = 2√2 ≈ 2.83 <span class="u">&nbsp;&nbsp;(quantum mechanics)</span></div>
+    <div class="say">S is a score you get by combining the agreement between both detectors at four pairs of angles (the CHSH version of Bell's test). Gloves can never score more than 2. Quantum particles can reach about 2.83.</div>
+  </div>
+  <p>So now it's not a matter of opinion anymore. You make thousands of entangled pairs, measure them, calculate S, and see who wins. If you get more than 2, then no hidden instruction sheet can explain it, and the particles really are linked in a way no gloves ever could be.</p>
+  <div class="timeline">
+    <div class="row"><div class="y">1964</div><div class="w">John Bell publishes his inequality.</div></div>
+    <div class="row"><div class="y">1972</div><div class="w">John Clauser and Stuart Freedman do the first real test. Quantum mechanics wins.</div></div>
+    <div class="row"><div class="y">1982</div><div class="w">Alain Aspect's team in Paris switches the detector angles <i>while the photons are flying</i>, so the two sides can't secretly "talk". Quantum mechanics wins again.</div></div>
+    <div class="row"><div class="y">2015</div><div class="w">Teams in Delft, Vienna and Boulder close the last big loopholes in one go. Still quantum.</div></div>
+    <div class="row"><div class="y">2022</div><div class="w">Aspect, Clauser and Anton Zeilinger get the Nobel Prize in Physics for these experiments.</div></div>
+  </div>
+  <figure class="side">
+    <img src="img/aspect.jpg" alt="Alain Aspect" style="object-position:50% 25%">
+    <figcaption><b>Fig. 5</b><br> Alain Aspect, whose experiments in the early 1980s showed that the "spooky" correlations are real, and that the measurement settings can be chosen too late for any light-speed signal to explain them.</figcaption>
+  </figure>
+  <p>So, as the EPR paper itself put it, either quantum mechanics is incomplete or something non-local is going on. Bell's experiments showed that any "complete" version with local hidden variables is just wrong. The spooky action is real. Einstein, sadly, lost this one. But here's the thing, nobody really knows <i>how</i> it works. Physics tells us what happens, not what's going on "underneath." And that's exactly the gap the GRID theory tries to fill.</p>
+</section>
+
+<!-- ============ V ============ -->
+<section class="chapter">
+  <div class="head">
+    <div class="num">CHAPTER 05</div>
+    <h2>The Double Slit and <em>the Collapse</em></h2>
+    <div class="kick">Why looking at a particle changes what it does.</div>
+    <svg viewBox="0 0 92 10"><circle cx="5" cy="5" r="3.4" fill="#1aa6b7"/><path d="M10 5 Q 18 0 26 5 T 42 5 T 58 5 T 74 5 T 82 5" fill="none" stroke="#d8d2c4" stroke-width="1.2"/><circle cx="87" cy="5" r="3.4" fill="#c2417a"/></svg>
+  </div>
+  <p>To understand the rest of this essay, we need one more famous experiment: the <b>double slit</b>. You fire particles, say photons or electrons, one at a time, at a wall with two thin slits in it, and see where they land on a screen behind.</p>
+  <p>If nobody checks which slit the particle went through, something crazy happens. Even though you send them one by one, slowly, after a while the hits build up into a pattern of bright and dark stripes, an <b>interference pattern</b>. That only makes sense if each single particle went through <i>both</i> slits at once, like a wave, and interfered with itself.</p>
+  <figure style="display:grid;grid-template-columns:44mm 1fr;gap:6mm;align-items:center">
+    <img src="img/double-slit.jpg" alt="Single electrons building up an interference pattern over time">
+    <figcaption style="margin:0;font-size:11pt;line-height:1.55"><b>Fig. 6</b><br>Electrons sent one at a time through a double slit, in Akira Tonomura's experiment at Hitachi. Each white dot is one electron landing on the screen.<br><br><i>(a)</i> 11 electrons: looks random.<br><i>(b)</i> 200 electrons: still random.<br><i>(c)</i> 6,000 electrons: hmm…<br><i>(d)</i> 40,000 electrons: stripes showing up.<br><i>(e)</i> 140,000 electrons: there they are.<br><br>No single electron "knows" about the pattern, and yet together they draw it. Every one of them went through both slits.</figcaption>
+  </figure>
+  <div class="two">
+    <figure class="card" style="margin:0">
+      <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono">
+        <text x="10" y="18" font-size="11" fill="#c2417a" letter-spacing="1.5">DETECTOR OFF</text>
+        <rect x="90" y="30" width="14" height="40" fill="#3a4254"/><rect x="90" y="80" width="14" height="20" fill="#3a4254"/><rect x="90" y="110" width="14" height="40" fill="#3a4254"/>
+        <g fill="#1aa6b7"><rect x="210" y="34" width="34" height="8" rx="4" opacity=".35"/><rect x="210" y="52" width="34" height="8" rx="4" opacity=".7"/><rect x="210" y="70" width="34" height="8" rx="4"/><rect x="210" y="88" width="34" height="8" rx="4"/><rect x="210" y="106" width="34" height="8" rx="4" opacity=".7"/><rect x="210" y="124" width="34" height="8" rx="4" opacity=".35"/></g>
+        <path d="M20 90 L90 75 M20 90 L90 105" stroke="#d8d2c4" stroke-width="1.5"/>
+        <circle cx="20" cy="90" r="5" fill="#c2417a"/>
+      </svg>
+      <figcaption><b>Wave</b> Nobody knows the slit: stripes.</figcaption>
+    </figure>
+    <figure class="card" style="margin:0">
+      <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono">
+        <text x="10" y="18" font-size="11" fill="#1aa6b7" letter-spacing="1.5">DETECTOR ON</text>
+        <rect x="90" y="30" width="14" height="40" fill="#3a4254"/><rect x="90" y="80" width="14" height="20" fill="#3a4254"/><rect x="90" y="110" width="14" height="40" fill="#3a4254"/>
+        <g fill="#1aa6b7"><rect x="210" y="58" width="34" height="18" rx="9"/><rect x="210" y="102" width="34" height="18" rx="9"/></g>
+        <path d="M20 90 L90 75" stroke="#d8d2c4" stroke-width="1.5"/>
+        <circle cx="20" cy="90" r="5" fill="#c2417a"/>
+        <rect x="112" y="60" width="22" height="16" rx="3" fill="#c2417a"/><text x="123" y="54" text-anchor="middle" font-size="9" fill="#c2417a">EYE</text>
+      </svg>
+      <figcaption><b>Particle</b> Someone checks the slit: just two blobs.</figcaption>
+    </figure>
+  </div>
+  <p style="margin-top:5mm">Now put a detector at the slits to check which one each particle goes through. The stripes vanish. You just get two plain blobs, like you'd expect from tiny bullets. The act of finding out "which way" forces the particle to pick one path. Physicists call this the <b>collapse of the wave function</b>: before measuring, the particle is a spread-out wave of possibilities, and the moment you measure, it snaps into one definite place.</p>
+  <p>And here's where it ties back to entanglement. If you have an entangled pair and measure which slit one photon went through, you've also learned which slit its partner went through, instantly. So the collapse doesn't just happen in one place, it happens to the whole entangled system at once, even if the two halves are light years apart. How does the universe do that so fast? Nobody knows. Which brings us to the GRID.</p>
+</section>
+
+<!-- ============ VI ============ -->
+<section class="chapter">
+  <div class="head">
+    <div class="num">CHAPTER 06</div>
+    <h2>A Wild Idea: <em>The GRID</em></h2>
+    <div class="kick">What if space is made of tiny cells, with hidden wiring in between?</div>
+    <svg viewBox="0 0 92 10"><circle cx="5" cy="5" r="3.4" fill="#1aa6b7"/><path d="M10 5 Q 18 0 26 5 T 42 5 T 58 5 T 74 5 T 82 5" fill="none" stroke="#d8d2c4" stroke-width="1.2"/><circle cx="87" cy="5" r="3.4" fill="#c2417a"/></svg>
+  </div>
+  <p>While reading about all this, I came across a presentation of a theory called the <b>GRID Extra Dimensions Theory</b>, also called the QUT, the Quantized Universe Theory. It's not part of mainstream physics, it's a speculative idea, but I found it a really fun and visual way to think about the spookiness, so let's walk through it.</p>
+  <h3>Idea 1 · space comes in tiny pieces</h3>
+  <p>The first idea is that space is not smooth. It's <b>quantized</b>, built out of tiny 3D cells, kind of like how a picture on your phone is built out of pixels. Each cell is around the size of the <b>Planck length</b>, about 1.6 × 10<sup>−35</sup> metres, which is so small that if an atom were the size of the whole observable universe, a Planck length would be roughly the size of a tree. Time, too, would tick in tiny steps, each one a <b>Planck time</b>, about 5.4 × 10<sup>−44</sup> seconds. The cells don't have to be cubes, they could be spheres, and they could be moving, rotating or vibrating. Cubes just make the drawings easier.</p>
+  <h3>Idea 2 · there's a "grid" between the cells</h3>
+  <p>The second idea is the main one. Between the cells, there are extra dimensions, the <b>GRID dimensions</b>. The theory compares them to the wiring in a microchip: the pixels are the cells of space, and the GRID is like the layers of conductors that connect every pixel to every other pixel. The key thing is that the GRID isn't made of space and time like our world is. So inside it, "distance" and "how long" don't mean anything, and a signal through the GRID could reach any cell at once.</p>
+  <figure class="card">
+    <svg id="grid" viewBox="0 0 600 270" xmlns="http://www.w3.org/2000/svg"></svg>
+    <figcaption><b>Fig. 7</b> The GRID picture, drawn flat for simplicity. Blue squares are cells of ordinary space. The thin lines between them are the GRID dimensions. Two entangled particles sit in far-apart cells, but through the GRID they're right next to each other.</figcaption>
+  </figure>
+  <p>Everything we know, Newton's laws, relativity, electromagnetism, gravity, the speed of light, atoms, chemistry, even our own brains and every measuring tool we've ever built, all of it lives <i>inside</i> the cells. So, the theory says, that's why we can't see or measure the GRID directly. We're made of the wrong stuff.</p>
+  <div class="note">
+    <div class="tag">WHAT THE GRID IS SUPPOSED TO EXPLAIN</div>
+    <p><b>Entanglement</b>, because the two particles are linked through the GRID, where there's no distance.</p>
+    <p><b>Wave function collapse</b>, because the "collapse signal" goes to every cell at once through the GRID.</p>
+    <p><b>Pauli's exclusion principle</b>, the rule that two electrons can't sit in the same state, because the GRID lets every electron "check" the others instantly.</p>
+  </div>
+</section>
+
+<!-- ============ VII ============ -->
+<section class="chapter">
+  <div class="head">
+    <div class="num">CHAPTER 07</div>
+    <h2>The Collapse, <em>Cell by Cell</em></h2>
+    <div class="kick">What a measurement looks like if the GRID is real.</div>
+    <svg viewBox="0 0 92 10"><circle cx="5" cy="5" r="3.4" fill="#1aa6b7"/><path d="M10 5 Q 18 0 26 5 T 42 5 T 58 5 T 74 5 T 82 5" fill="none" stroke="#d8d2c4" stroke-width="1.2"/><circle cx="87" cy="5" r="3.4" fill="#c2417a"/></svg>
+  </div>
+  <p>Let's look at a single photon before anyone measures where it is. In quantum mechanics, its wave function is spread out, and every place has some chance of finding it there. In the GRID picture, that means every cell of space has a probability bigger than zero of "holding" the photon, and the GRID is what keeps all those probabilities connected and in sync.</p>
+  <figure class="card">
+    <svg id="before" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg"></svg>
+    <figcaption><b>Fig. 8 · Before</b> The wave is spread over many cells. The redder the cell, the higher the chance of finding the photon there.</figcaption>
+  </figure>
+  <p>Then, the moment you measure, a signal goes through the GRID to <i>all</i> the cells at the same time. One cell gets chosen, its probability becomes 1, and every other cell drops to 0. The wave becomes a particle, sitting in one definite cell. Since the GRID doesn't care about distance or the speed of light, this happens everywhere at once, which is exactly what collapse seems to do.</p>
+  <figure class="card">
+    <svg id="after" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg"></svg>
+    <figcaption><b>Fig. 9 · After</b> One cell wins with probability 1. All the others go to 0, instantly, through the GRID.</figcaption>
+  </figure>
+  <p>For an entangled pair, it's the same thing, just with two particles sharing one wave. Measure one, the collapse signal runs through the GRID, and the partner's cell is decided at the same instant, even if it's light years away. Einstein's "spooky action" is then just the GRID doing its job.</p>
+  <div class="note warn">
+    <div class="tag">A FAIR WARNING</div>
+    <p>This is a picture, not a proven theory. Ordinary quantum mechanics already predicts all of these results perfectly without any GRID. So the GRID only becomes real science if it predicts something <i>different</i> that we can go and check. Let's see if it does.</p>
+  </div>
+</section>
+
+<!-- ============ VIII ============ -->
+<section class="chapter">
+  <div class="head">
+    <div class="num">CHAPTER 08</div>
+    <h2>Doing the <em>Maths</em></h2>
+    <div class="kick">If space comes in steps, then so do wavelength, momentum and speed.</div>
+    <svg viewBox="0 0 92 10"><circle cx="5" cy="5" r="3.4" fill="#1aa6b7"/><path d="M10 5 Q 18 0 26 5 T 42 5 T 58 5 T 74 5 T 82 5" fill="none" stroke="#d8d2c4" stroke-width="1.2"/><circle cx="87" cy="5" r="3.4" fill="#c2417a"/></svg>
+  </div>
+  <p>Here's where the theory gets interesting, because if space really is made of cells, then any length we measure has to be a whole number of cells. That includes the wavelength of a particle. Louis de Broglie showed that every particle with momentum <i>p</i> also behaves like a wave with wavelength λ:</p>
+  <div class="formula">
+    <div class="eq">λ = <span class="frac"><span>h</span><span>p</span></span></div>
+    <div class="say">h is Planck's constant, 6.63 × 10<sup>−34</sup> kg·m²/s. Big momentum means short wavelength.</div>
+  </div>
+  <p>Let's call the Planck length <i>h*</i>. If wavelength can only be a whole number <i>N</i> of cells, so λ = N · h*, with N = 1, 2, 3, …, then momentum can only take certain values too:</p>
+  <div class="formula">
+    <div class="eq">p<sub>N</sub> = <span class="frac"><span>h</span><span>N · h*</span></span> = <span class="frac"><span>A</span><span>N</span></span>, &nbsp;&nbsp; A = <span class="frac"><span>h</span><span>h*</span></span> ≈ 41 <span class="u">kg·m/s</span></div>
+    <div class="say">The smallest possible wavelength is one cell (N = 1), so no particle can ever have more momentum than A, about 41 kg·m/s. (Fun fact: that's exactly 2π times what physicists call the Planck momentum.)</div>
+  </div>
+  <p>Now mix in Einstein's relativity, where a moving particle's momentum is <i>p = mass<sub>0</sub> · v</i> divided by √(1 − v²/c²). Set that equal to A/N and solve for the speed, and you get the theory's <b>quantized velocity</b>:</p>
+  <div class="formula">
+    <div class="eq">v<sub>N</sub> = c · <span class="frac"><span>A</span><span>√( (mass<sub>0</sub> · c · N)² + A² )</span></span></div>
+    <div class="say">So a particle can't take any speed it likes, only one of these steps, one for each N. And the biggest one, at N = 1, is a speed limit for that particle that's slightly <i>below</i> the speed of light.</div>
+  </div>
+  <p>That's actually a cool prediction, every particle with mass would have its own personal speed limit. But let's put in real numbers for an electron. Its rest mass is 9.11 × 10<sup>−31</sup> kg, so mass<sub>0</sub> · c is about 2.7 × 10<sup>−22</sup>, which is tiny compared to A = 41. That makes the electron's speed limit:</p>
+  <div class="formula">
+    <div class="eq">v<sub>max</sub> ≈ c · (1 − 2 × 10<sup>−47</sup>)</div>
+    <div class="say">That's the speed of light minus about 0.000…0007 m/s, with 38 zeros after the decimal point.</div>
+  </div>
+  <p>So yes, the limit exists, but it's so absurdly close to c that no experiment we could ever imagine would notice it. Same for the gaps between the allowed speeds. That's a little disappointing, but it's also normal, anything that happens at the Planck scale is ridiculously hard to see. If you push even more energy into a particle that's already at its limit, the presentation suggests that some of its mass would turn into energy (E = mc²) so it can keep speeding up.</p>
+</section>
+
+<!-- ============ IX ============ -->
+<section class="chapter">
+  <div class="head">
+    <div class="num">CHAPTER 09</div>
+    <h2>A Faster-Than-Light <em>Phone?</em></h2>
+    <div class="kick">The most exciting claim in the notes, and why, sadly, it doesn't work.</div>
+    <svg viewBox="0 0 92 10"><circle cx="5" cy="5" r="3.4" fill="#1aa6b7"/><path d="M10 5 Q 18 0 26 5 T 42 5 T 58 5 T 74 5 T 82 5" fill="none" stroke="#d8d2c4" stroke-width="1.2"/><circle cx="87" cy="5" r="3.4" fill="#c2417a"/></svg>
+  </div>
+  <p>Okay, so if the GRID connects everything instantly, can we use it to talk instantly? The presentation describes a clever plan with two people, <b>Yoav</b> (the sender) and <b>Eran</b> (the receiver), light years apart.</p>
+  <figure class="card">
+    <svg id="phone" viewBox="0 0 600 230" xmlns="http://www.w3.org/2000/svg"></svg>
+    <figcaption><b>Fig. 10</b> The plan. A source halfway between them sends out entangled photon pairs, one to Yoav, one to Eran, at the speed of light, ahead of time. Each of them has a double slit and a screen.</figcaption>
+  </figure>
+  <p>Here's the plan. If Yoav turns his which-slit detector <b>on</b>, his photons collapse and he gets two blobs. Since Eran's photons are entangled with his, they collapse too, so Eran should also see two blobs. They agree that means <b>"1"</b>. If Yoav turns his detector <b>off</b>, he sees stripes, so Eran should see stripes too, and that means <b>"0"</b>. Switch the detector on and off, and you're sending bits across light years, instantly. The photons themselves travelled at light speed, but they were sent in advance, so once they arrive, the "switching" through the GRID is instant.</p>
+  <p>I really wanted this to work. It's such a neat idea. But it doesn't, and the reason is actually one of the most beautiful facts in physics.</p>
+  <div class="note warn">
+    <div class="tag">THE CATCH · THE NO-COMMUNICATION THEOREM</div>
+    <p>Eran never sees stripes, no matter what Yoav does. When you only look at one half of an entangled pair, the pattern is always just a featureless blur. The stripes only show up later, when Eran and Yoav compare notes and sort Eran's dots into groups based on Yoav's results. And to compare notes, they have to send a normal message, which is limited to the speed of light.</p>
+  </div>
+  <p>This isn't just theory, it was checked in the <b>delayed-choice quantum eraser</b> experiment (Kim and colleagues, published in 2000). On the receiver's side, the total pattern was always one plain blob. Only after the hits were matched up with the partner photons' results did the stripes appear, hidden inside the blob, in sub-groups that cancel each other out when you add them together. So the receiver's screen looks exactly the same whether the detector on the other side is on or off.</p>
+  <p>Physicists proved this in general, it's called the <b>no-communication theorem</b>. Measuring one particle of an entangled pair changes the <i>correlations</i>, but never the odds of what the other side sees on its own. Entanglement is spooky, but it can't carry a message. Funnily enough, this is exactly why it doesn't break Einstein's relativity, the universe found a way to be non-local without letting anyone send signals faster than light.</p>
+  <p>So if the GRID theory wants to keep its faster-than-light phone, it would have to predict that Eran's screen <i>does</i> change. That would contradict ordinary quantum mechanics, and every experiment so far has sided with quantum mechanics. Still, that's what's nice about it: it's a clear, testable difference, and if anyone ever saw Eran's stripes, it would be the biggest discovery in a hundred years.</p>
+</section>
+
+<!-- ============ X ============ -->
+<section class="chapter">
+  <div class="head">
+    <div class="num">CHAPTER 10</div>
+    <h2>Can We Test <em>Pixelated Space?</em></h2>
+    <div class="kick">Using light from across the universe to look for the cells.</div>
+    <svg viewBox="0 0 92 10"><circle cx="5" cy="5" r="3.4" fill="#1aa6b7"/><path d="M10 5 Q 18 0 26 5 T 42 5 T 58 5 T 74 5 T 82 5" fill="none" stroke="#d8d2c4" stroke-width="1.2"/><circle cx="87" cy="5" r="3.4" fill="#c2417a"/></svg>
+  </div>
+  <p>The faster-than-light phone doesn't survive, but the other big part of the theory, that space is made of tiny cells, is something real physicists take seriously. Lots of theories of quantum gravity, like loop quantum gravity, suggest space could be "grainy" at the Planck scale. The problem is how to see something 10<sup>−35</sup> metres wide.</p>
+  <p>One clever trick is to use the whole universe as the lab. If space is grainy, then maybe light of different energies would move through it at very slightly different speeds, like how a pebble and a marble roll differently over gravel. Over a short distance, you'd never notice. But over billions of light years, the tiny difference adds up.</p>
+  <figure>
+    <img src="img/deep-field.jpg" alt="The Hubble Ultra Deep Field, thousands of distant galaxies" style="aspect-ratio:16/9">
+    <figcaption><b>Fig. 11</b> The Hubble Ultra Deep Field. Almost every dot here is a whole galaxy, and the light from the farthest ones has been travelling for over 13 billion years. That's a long enough "race track" to test whether space is grainy.</figcaption>
+  </figure>
+  <p>In 2009, NASA's Fermi telescope caught a gamma-ray burst called <b>GRB 090510</b>, from about 7 billion light years away. A super high-energy photon arrived less than a second after the low-energy ones, after a 7-billion-year race. That ruled out the simplest kinds of "grainy space" where speed changes in a straight line with energy, even right down at the Planck scale. Later, Fermilab's <b>Holometer</b> experiment looked for a tiny "jitter" of space in 2015, and didn't find the version it was searching for.</p>
+  <p>So far, space looks perfectly smooth to every test we've thrown at it. That doesn't mean it is smooth, it might be grainy in a sneakier way that doesn't affect the speed of light. But it tells us that if cells of space exist, they have to be pretty well hidden, which, funnily enough, is exactly what the GRID theory says about itself.</p>
+</section>
+
+<!-- ============ XI ============ -->
+<section class="chapter">
+  <div class="head">
+    <div class="num">CHAPTER 11</div>
+    <h2><em>Conclusion</em></h2>
+    <div class="kick">So, is the universe spooky or not?</div>
+    <svg viewBox="0 0 92 10"><circle cx="5" cy="5" r="3.4" fill="#1aa6b7"/><path d="M10 5 Q 18 0 26 5 T 42 5 T 58 5 T 74 5 T 82 5" fill="none" stroke="#d8d2c4" stroke-width="1.2"/><circle cx="87" cy="5" r="3.4" fill="#c2417a"/></svg>
+  </div>
+  <p>Honestly, yes, it is. Einstein thought entanglement was too weird to be true, and that particles must secretly carry their answers with them, like gloves in boxes. Bell found a way to test that, and Clauser, Aspect, Zeilinger and many others showed again and again that the gloves idea is wrong. Entangled particles really are linked in a way that ignores distance.</p>
+  <p>What physics still can't tell us is <i>how</i>. The GRID Extra Dimensions Theory is one attempt at a picture: space made of Planck-sized cells, with hidden dimensions running between them that don't care about space or time. It gives a really nice way to imagine entanglement and collapse happening "everywhere at once," and it even makes some predictions, like a speed limit for every particle. Those predictions turn out to be way too tiny to measure, and its faster-than-light phone runs into the no-communication theorem, which experiments back up. So right now, it's a fun idea to think with, not something we can call true.</p>
+  <figure>
+    <img src="img/zeilinger.jpg" alt="Anton Zeilinger speaking at a podium" style="aspect-ratio:16/9;object-position:60% 30%">
+    <figcaption><b>Fig. 12</b> Anton Zeilinger, who shared the 2022 Nobel Prize with Aspect and Clauser. In 2017 his team in Vienna and Chinese scientists used the Micius satellite to hold the first video call protected by quantum encryption, between Vienna and Beijing.</figcaption>
+  </figure>
+  <p>And maybe that's the best part. A hundred years ago, entanglement was a thought experiment that even Einstein thought was nonsense. Today, it's being used for quantum computers and unhackable quantum encryption, and in 2017 a Chinese satellite called Micius sent entangled photons to ground stations about 1,200 kilometres apart. The universe is stranger than our intuition, and every time someone, a Nobel winner or just a curious person with a slide deck, tries to picture what's happening underneath, we get a little closer to understanding it.</p>
+  <div class="summary">
+    <h4>The short version</h4>
+    <ul>
+      <li>Entangled particles share one state. Measuring one instantly fixes what you'll find for the other, at any distance.</li>
+      <li>Einstein called this "spooky action at a distance" and believed hidden instruction sheets explained it.</li>
+      <li>Bell's inequality turned this into a test, and experiments from 1972 to 2015 proved the instruction-sheet idea wrong.</li>
+      <li>The GRID theory pictures space as Planck-sized cells joined by extra dimensions with no distance in them, which would explain the instant link.</li>
+      <li>It predicts a speed limit for every particle, but for an electron it's about c × (1 − 2 × 10<sup>−47</sup>), far too close to c to measure.</li>
+      <li>Entanglement can't send messages faster than light: the receiver's screen always looks the same (the no-communication theorem).</li>
+      <li>Grainy space is a real research question, but so far, light from billions of light years away shows no sign of it.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ References ============ -->
+<section class="chapter">
+  <div class="head">
+    <div class="num">SOURCES</div>
+    <h2>References</h2>
+    <svg viewBox="0 0 92 10"><circle cx="5" cy="5" r="3.4" fill="#1aa6b7"/><path d="M10 5 Q 18 0 26 5 T 42 5 T 58 5 T 74 5 T 82 5" fill="none" stroke="#d8d2c4" stroke-width="1.2"/><circle cx="87" cy="5" r="3.4" fill="#c2417a"/></svg>
+  </div>
+  <ol class="refs">
+    <li>A. Einstein, B. Podolsky and N. Rosen, "Can Quantum-Mechanical Description of Physical Reality Be Considered Complete?", <i>Physical Review</i> 47, 777 (1935).</li>
+    <li>A. Einstein, letter to Max Born, 3 March 1947, in <i>The Born–Einstein Letters</i>, Macmillan, 1971.</li>
+    <li>N. Bohr, "Can Quantum-Mechanical Description of Physical Reality Be Considered Complete?", <i>Physical Review</i> 48, 696 (1935).</li>
+    <li>J. S. Bell, "On the Einstein Podolsky Rosen Paradox", <i>Physics</i> 1, 195 (1964).</li>
+    <li>S. J. Freedman and J. F. Clauser, "Experimental Test of Local Hidden-Variable Theories", <i>Physical Review Letters</i> 28, 938 (1972).</li>
+    <li>A. Aspect, J. Dalibard and G. Roger, "Experimental Test of Bell's Inequalities Using Time-Varying Analyzers", <i>Physical Review Letters</i> 49, 1804 (1982).</li>
+    <li>B. Hensen et al., "Loophole-free Bell inequality violation using electron spins separated by 1.3 kilometres", <i>Nature</i> 526, 682 (2015).</li>
+    <li>The Nobel Prize in Physics 2022, nobelprize.org.</li>
+    <li>A. Tonomura et al., "Demonstration of single-electron buildup of an interference pattern", <i>American Journal of Physics</i> 57, 117 (1989).</li>
+    <li>Y.-H. Kim, R. Yu, S. P. Kulik, Y. Shih and M. O. Scully, "A Delayed Choice Quantum Eraser", <i>Physical Review Letters</i> 84, 1 (2000).</li>
+    <li>G. C. Ghirardi, A. Rimini and T. Weber, "A general argument against superluminal transmission through the quantum mechanical measurement process", <i>Lettere al Nuovo Cimento</i> 27, 293 (1980).</li>
+    <li>A. A. Abdo et al. (Fermi collaboration), "A limit on the variation of the speed of light arising from quantum gravity effects", <i>Nature</i> 462, 331 (2009).</li>
+    <li>A. S. Chou et al. (Holometer collaboration), "Interferometric Constraints on Quantum Geometrical Shear Noise Correlations", <i>Physical Review Letters</i> 117, 111102 (2016).</li>
+    <li>J. Yin et al., "Satellite-based entanglement distribution over 1200 kilometers", <i>Science</i> 356, 1140 (2017).</li>
+    <li>"The GRID Extra Dimensions Theory (QUT, Quantized Universe Theory)", slide presentation; the source of the GRID ideas, figures and formulas discussed in Chapters 6 to 9.</li>
+  </ol>
+  <h3 style="margin-top:8mm">Picture credits</h3>
+  <ul class="credits">
+    <li>Albert Einstein, 1947 · Orren Jack Turner · Public domain · via Wikimedia Commons</li>
+    <li>Niels Bohr and Albert Einstein, c. 1925 · Paul Ehrenfest · Public domain · via Wikimedia Commons</li>
+    <li>John Stewart Bell at CERN · CERN · CC BY 4.0 · via Wikimedia Commons</li>
+    <li>Alain Aspect · École polytechnique, Université Paris-Saclay · CC BY-SA 2.0 · via Wikimedia Commons</li>
+    <li>Electron build-up of a double-slit pattern (A. Tonomura) · Wikimedia user Belsazar · CC BY-SA 3.0 · via Wikimedia Commons</li>
+    <li>Hubble Ultra Deep Field · NASA and ESA · Public domain · via Wikimedia Commons</li>
+    <li>Anton Zeilinger, 2019 · CEU / Daniel Vegel · CC BY 2.0 · via Wikimedia Commons</li>
+    <li>All diagrams and the cover were drawn for this edition. The GRID diagrams are redrawn from the GRID Extra Dimensions Theory presentation.</li>
+  </ul>
+</section>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function E(svg,n,a,t){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(t!==undefined)e.textContent=t;svg.appendChild(e);return e}
+const CYAN='#1aa6b7', MAG='#c2417a', INK='#3a4254', LINE='#d8d2c4', MUTED='#7b8496';
+
+// ---- cover: stars, faint grid of space cells, and a wavy link between the pair
+(function(){
+  const svg=document.querySelector('.cover svg');
+  const stars=svg.querySelector('#stars'), cells=svg.querySelector('#cells'), link=svg.querySelector('#link');
+  let s=7; const rnd=()=>{s=(s*16807)%2147483647;return s/2147483647};
+  for(let i=0;i<170;i++)E(stars,'circle',{cx:rnd()*210,cy:rnd()*297,r:rnd()*.45+.1,fill:rnd()>.85?'#8fe3ec':'#c9d4e6'});
+  for(let x=-10;x<230;x+=14)for(let y=120;y<300;y+=14){
+    const d=Math.hypot(x-107,y-185); if(d>95)continue;
+    E(cells,'rect',{x:x+1.5,y:y+1.5,width:11,height:11,rx:1.2,fill:'none',stroke:'#2a3a5c','stroke-width':.35});
+  }
+  // link: a sine wave along the line between the two particles
+  const x1=44,y1=214,x2=170,y2=150, L=Math.hypot(x2-x1,y2-y1), ux=(x2-x1)/L, uy=(y2-y1)/L;
+  let d='';
+  for(let t=20;t<=L-20;t+=1){const a=Math.sin(t/1.6)*2.2; const x=x1+ux*t-uy*a, y=y1+uy*t+ux*a; d+=(t===20?'M':'L')+x.toFixed(2)+' '+y.toFixed(2)}
+  E(link,'path',{d,fill:'none',stroke:'#8fe3ec','stroke-width':.5});
+  E(link,'line',{x1:x1+ux*20,y1:y1+uy*20,x2:x2-ux*20,y2:y2-uy*20,stroke:'#f2a6c6','stroke-width':.25,'stroke-dasharray':'1 1.6'});
+})();
+
+// ---- Fig 6: GRID of cells with wiring and an entangled pair
+(function(){
+  const s=document.getElementById('grid'), cols=7, rows=3, w=62, h=52, gx=20, gy=26, x0=24, y0=26;
+  for(let c=0;c<cols-1;c++){const x=x0+(c+1)*(w+gx)-gx/2;E(s,'line',{x1:x,y1:y0-12,x2:x,y2:y0+rows*(h+gy)-gy+12,stroke:LINE,'stroke-width':1.4})}
+  for(let r=0;r<rows-1;r++){const y=y0+(r+1)*(h+gy)-gy/2;E(s,'line',{x1:x0-12,y1:y,x2:x0+cols*(w+gx)-gx+12,y2:y,stroke:LINE,'stroke-width':1.4})}
+  for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){
+    const x=x0+c*(w+gx), y=y0+r*(h+gy), A=(r===0&&c===0), B=(r===2&&c===6);
+    E(s,'rect',{x,y,width:w,height:h,rx:5,fill:A?'#fbe9f0':B?'#e7f5f6':'#dfe8f5',stroke:A?MAG:B?CYAN:'#9fb3d1','stroke-width':A||B?2:1});
+    if(A||B){E(s,'circle',{cx:x+w/2,cy:y+h/2,r:9,fill:A?MAG:CYAN});E(s,'text',{x:x+w/2,y:y+h/2+4,'text-anchor':'middle','font-family':'IBM Plex Mono','font-size':11,'font-weight':600,fill:'#fff'},A?'A':'B')}
+  }
+  // the "instant" GRID path from A to B along the wiring
+  const ax=x0+w+gx/2, by=y0+2*(h+gy)-gy/2;
+  E(s,'path',{d:`M${x0+w} ${y0+h/2} L${ax} ${y0+h/2} L${ax} ${by} L${x0+6*(w+gx)-gx/2} ${by} L${x0+6*(w+gx)-gx/2} ${y0+2*(h+gy)+h/2} L${x0+6*(w+gx)} ${y0+2*(h+gy)+h/2}`,fill:'none',stroke:MAG,'stroke-width':2.4,'stroke-dasharray':'7 5'});
+  E(s,'text',{x:300,y:y0+h+gy/2+4,'text-anchor':'middle','font-family':'IBM Plex Mono','font-size':10.5,fill:MAG,'letter-spacing':1},'GRID LINK · NO DISTANCE');
+})();
+
+// ---- Fig 7/8: probability per cell before and after the collapse
+function cells(id,probs,labels){
+  const s=document.getElementById(id), w=150, h=74, gx=36, gy=30, x0=21, y0=8;
+  const col=p=>{const a=[255,236,200],b=[194,65,122];return `rgb(${a.map((v,i)=>Math.round(v+(b[i]-v)*p)).join(',')})`};
+  for(let c=0;c<2;c++){const x=x0+(c+1)*(w+gx)-gx/2;E(s,'line',{x1:x,y1:0,x2:x,y2:2*h+gy+16,stroke:'#9fb3d1','stroke-width':1.2})}
+  E(s,'line',{x1:0,y1:y0+h+gy/2,x2:600,y2:y0+h+gy/2,stroke:'#9fb3d1','stroke-width':1.2});
+  probs.forEach((p,i)=>{const r=Math.floor(i/3),c=i%3,x=x0+c*(w+gx),y=y0+r*(h+gy);
+    E(s,'rect',{x,y,width:w,height:h,rx:5,fill:labels?(p===1?MAG:'#ffffff'):col(p),stroke:labels?(p===1?MAG:'#9fb3d1'):'#e0b9a0','stroke-width':1.2});
+    E(s,'text',{x:x+w/2,y:y+h/2+5,'text-anchor':'middle','font-family':'IBM Plex Mono','font-size':12.5,'font-weight':500,fill:p>.55?'#fff':INK},(labels?'P = ':'P ≈ ')+(labels?p:p.toFixed(2)));
+  });
+}
+cells('before',[.18,.86,.32,.08,.22,.45]);
+cells('after',[0,1,0,0,0,0],true);
+
+// ---- Fig 9: the Yoav / Eran plan
+(function(){
+  const s=document.getElementById('phone');
+  E(s,'defs',{}).innerHTML='<marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#7b8496"/></marker>';
+  // source
+  E(s,'circle',{cx:300,cy:70,r:22,fill:'#0c1322'});E(s,'text',{x:300,y:74,'text-anchor':'middle','font-family':'IBM Plex Mono','font-size':9,fill:'#8fe3ec'},'SOURCE');
+  E(s,'path',{d:'M278 78 Q 200 110 130 120',fill:'none',stroke:MUTED,'stroke-width':1.4,'stroke-dasharray':'5 4','marker-end':'url(#ar)'});
+  E(s,'path',{d:'M322 78 Q 400 110 470 120',fill:'none',stroke:MUTED,'stroke-width':1.4,'stroke-dasharray':'5 4','marker-end':'url(#ar)'});
+  E(s,'text',{x:300,y:24,'text-anchor':'middle','font-family':'Newsreader','font-style':'italic','font-size':13,fill:INK},'entangled pairs, sent in advance at light speed');
+  // two stations
+  [['ERAN · RECEIVER',40,CYAN],['YOAV · SENDER',430,MAG]].forEach(([t,x,c])=>{
+    E(s,'rect',{x,y:128,width:130,height:80,rx:6,fill:'#fff',stroke:c,'stroke-width':1.6});
+    E(s,'text',{x:x+65,y:222,'text-anchor':'middle','font-family':'IBM Plex Mono','font-size':10,'letter-spacing':1.5,fill:c},t);
+    E(s,'rect',{x:x+18,y:142,width:10,height:52,fill:INK});E(s,'rect',{x:x+21,y:160,width:4,height:6,fill:'#fff'});E(s,'rect',{x:x+21,y:172,width:4,height:6,fill:'#fff'});
+    E(s,'rect',{x:x+92,y:140,width:22,height:56,rx:2,fill:'#0c1322'});
+  });
+  // Yoav: detector switch
+  E(s,'rect',{x:470,y:136,width:16,height:12,rx:2,fill:MAG});E(s,'text',{x:500,y:147,'font-family':'IBM Plex Mono','font-size':9,fill:MAG},'ON / OFF');
+  // Eran's screen: the same blur either way
+  for(let i=0;i<6;i++)E(s,'rect',{x:136,y:146+i*8,width:10,height:5,rx:2.5,fill:'#5d6b82'});
+  E(s,'text',{x:250,y:176,'text-anchor':'middle','font-family':'IBM Plex Mono','font-size':9.5,fill:CYAN},'stripes or blobs?');
+})();
+</script>
+</body>
+</html>

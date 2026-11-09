@@ -746,6 +746,90 @@
     "permission": false
   },
   {
+    "id": "spooky-action",
+    "title": "Spooky Action at a Distance",
+    "shortTitle": "Spooky Action at a Distance",
+    "author": "Lanchenba Mutum",
+    "file": "books/spooky-action.pdf",
+    "pages": 23,
+    "category": "Physics",
+    "glyph": "|ψ⟩ ⊗ |ψ⟩",
+    "colors": [
+      "#0c1322",
+      "#1aa6b7"
+    ],
+    "description": "A casual walk through quantum entanglement: why Einstein called it spooky, how Bell's test proved it real, and the GRID Extra Dimensions idea that space is made of tiny cells wired together, including why it still can't give us a faster-than-light phone.",
+    "excerpt": {
+      "text": "Two particles get linked together in such a way that measuring one of them instantly tells you about the other one, no matter how far apart they are. Across a room, across a country, or across the whole galaxy, it doesn't matter.",
+      "page": 2
+    },
+    "image": "images/spooky-action.jpg",
+    "topics": [
+      "Quantum entanglement and superposition",
+      "The EPR paper and hidden variables",
+      "Bell's inequality and the experiments that tested it",
+      "The double-slit experiment and wave function collapse",
+      "The GRID Extra Dimensions Theory and quantized space",
+      "The no-communication theorem",
+      "Testing whether space is grainy"
+    ],
+    "year": 2026,
+    "sections": [
+      {
+        "title": "Why Einstein Called It Spooky",
+        "page": 2
+      },
+      {
+        "title": "Two Particles, One Story",
+        "page": 4
+      },
+      {
+        "title": "Einstein vs Bohr: The EPR Paper",
+        "page": 6
+      },
+      {
+        "title": "Bell's Test",
+        "page": 7
+      },
+      {
+        "title": "The Double Slit and the Collapse",
+        "page": 9
+      },
+      {
+        "title": "A Wild Idea: The GRID",
+        "page": 11
+      },
+      {
+        "title": "The Collapse, Cell by Cell",
+        "page": 13
+      },
+      {
+        "title": "Doing the Maths",
+        "page": 15
+      },
+      {
+        "title": "A Faster-Than-Light Phone?",
+        "page": 17
+      },
+      {
+        "title": "Can We Test Pixelated Space?",
+        "page": 19
+      },
+      {
+        "title": "Conclusion",
+        "page": 21
+      },
+      {
+        "title": "References",
+        "page": 23
+      }
+    ],
+    "imageAlt": "Two glowing particles linked by a wavy line across a grid of space cells on a dark starry background, under the title 'Spooky Action at a Distance'.",
+    "added": "2026-11-09",
+    "permission": false,
+    "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAARABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDiIEhMQL9frSTpCI/lGW+tVVZhwDS7mPetSRlFTvayJbrOR8jHAooAiFKOtFFMRfuf+QZH9aKKKQ2f/9k="
+  },
+  {
     "id": "metaproof",
     "kind": "project",
     "title": "MetaProof: Evidence-Based Authenticity Analysis for Images",
